@@ -45,11 +45,11 @@ async function handleAmPassLogin(params: LoginParams) {
   await passwordElement?.type(params.password);
   await loginBtnElement?.click();
 
-  console.debug("is logined?");
-
   const cookies = await page.cookies();
 
   await page.close();
   await browser.close();
-  return cookies;
+
+  console.debug("login checked");
+  return cookies.find((cookie) => cookie.name === "PHPSESSID");
 }
