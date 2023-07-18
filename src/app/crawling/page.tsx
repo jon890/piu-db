@@ -1,7 +1,6 @@
 "use client";
 
 import { loginToAmPass } from "@/client/http.client";
-import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
 export type LoginParams = {
@@ -15,11 +14,6 @@ export default function CrawlingPage() {
     password: "",
   });
 
-  const loginToAmPassMutation = useMutation({
-    mutationKey: ["login-to-ampass"],
-    mutationFn: (loginParams: LoginParams) => loginToAmPass(loginParams),
-  });
-
   const handleInputChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setLoginParams({
       ...loginParams,
@@ -28,8 +22,7 @@ export default function CrawlingPage() {
   };
 
   const onSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    loginToAmPassMutation.mutateAsync(loginParams);
+    loginToAmPass(loginParams);
   };
 
   return (

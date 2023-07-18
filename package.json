@@ -20,11 +20,12 @@
     "ky": "^0.33.3",
     "next": "13.4.10",
     "postcss": "8.4.26",
-    "pupeteer": "^0.0.1",
+    "puppeteer": "^20.8.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.29.25",
