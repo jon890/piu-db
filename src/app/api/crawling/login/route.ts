@@ -26,8 +26,9 @@ export async function POST(request: NextRequest) {
 }
 
 async function handleAmPassLogin(params: LoginParams) {
-  const browser = await puppeteer.launch({
-    headless: true,
+  const browser = await puppeteer.connect({
+    browserWSEndpoint: `wss://chrome.browserless.io/token=${process.env.BLESS_TOKEN}`,
+    // headless: true,
   });
 
   console.debug("launch browser");
