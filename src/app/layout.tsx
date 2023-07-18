@@ -23,7 +23,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`${inter.className} w-screen flex justify-center items-center`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

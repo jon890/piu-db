@@ -1,7 +1,7 @@
 "use client";
 
-import { loadRecordFromPIU, loginToAmPass } from "@/client/http.client";
-import { Protocol } from "puppeteer";
+import { loginToAmPass } from "@/client/api";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
 export type LoginParams = {
@@ -14,9 +14,20 @@ export default function CrawlingPage() {
     email: "",
     password: "",
   });
-  const [cookies, setCookies] = useState<Protocol.Network.Cookie[] | null>(
-    null
-  );
+  const [bestScores, setBestScores] = useState<
+    | {
+        isSingle: boolean;
+        isDouble: boolean;
+        level: string;
+        songName: string;
+        score: string;
+      }[]
+    | null
+  >(null);
+
+  const { mutate, data, error, isLoading } = useMutation({
+    mutationFn: (param: LoginParams) => loginToAmPass(param),
+  });
 
   const handleInputChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setLoginParams({
@@ -26,33 +37,34 @@ export default function CrawlingPage() {
   };
 
   const onSubmit = async (e: React.SyntheticEvent) => {
-    const data = await loginToAmPass(loginParams);
-    console.log(data);
-    setCookies((data as any).data.cookies);
-    alert("로그인 성공");
-  };
+    e.preventDefault();
 
-  const handleClickRecordLoad = async () => {
-    if (cookies == null) {
-      alert("먼저 로그인하세요");
-      return;
-    }
+    mutate(loginParams, {
+      onSuccess: (data) => {
+        console.log(data);
+        setBestScores((data as any).data.bestScore);
 
-    const data = await loadRecordFromPIU(cookies);
-    console.log(data);
+        console.log(bestScores);
+        alert("기록 크롤링 성공");
+      },
+    });
   };
 
   return (
     <>
-      <div className="container w-screen h-screen mx-auto">
+      <div className="container w-full h-screen flex flex-col justify-center items-center">
         <h1 className="text-3xl font-bold">크롤링 페이지</h1>
 
-        <div>
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-col justify-center items-center space-y-5"
+        >
           <input
             className="input input-bordered mt-4"
             type="text"
             name="email"
             placeholder="아이디"
+            autoComplete="username"
             value={loginParams.email}
             onChange={handleInputChange}
           />
@@ -62,23 +74,48 @@ export default function CrawlingPage() {
             name="password"
             placeholder="비밀번호"
             value={loginParams.password}
+            autoComplete="current-password"
             onChange={handleInputChange}
           />
-          <button className="btn btn-primary" onClick={onSubmit} type="button">
+          <button className="btn btn-primary w-full" type="submit">
             시작
           </button>
-        </div>
+        </form>
 
-        <div>
-          <h2 className="text-2xl font-medium">기록 불러오기</h2>
-          <button
-            className="btn btn-primary"
-            onClick={handleClickRecordLoad}
-            type="button"
-          >
-            로드
-          </button>
-        </div>
+        {bestScores ? (
+          <table className="table table-md mt-10">
+            <thead>
+              <tr className="bg-base-300">
+                <th>No.</th>
+                <th>싱글/더블</th>
+                <th>레벨</th>
+                <th>곡 이름</th>
+                <th>점수</th>
+              </tr>
+            </thead>
+            <tbody>
+              {bestScores.map((it, index) => (
+                <tr key={index}>
+                  <td>{index}</td>
+                  <td>
+                    {it.isSingle ? (
+                      <span className="text-red-500">싱글</span>
+                    ) : (
+                      <span className="text-green-500">더블</span>
+                    )}
+                  </td>
+                  <td>{it.level}</td>
+                  <td>{it.songName}</td>
+                  <td>{it.score}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <h2 className="mt-10 font-semibold text-violet-500">
+            로그인 하고 기록을 불러와 보세요
+          </h2>
+        )}
       </div>
     </>
   );

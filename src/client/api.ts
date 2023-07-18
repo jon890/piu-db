@@ -5,7 +5,7 @@ import ky from "ky";
 import { Protocol } from "puppeteer";
 
 const client = ky.extend({
-  prefixUrl: "http://localhost:3000",
+  prefixUrl: process.env.NEXT_PUBLIC_API_URL,
 });
 
 export const loginToAmPass = (params: LoginParams) =>
