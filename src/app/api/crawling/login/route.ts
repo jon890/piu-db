@@ -1,6 +1,7 @@
 import { LoginParams } from "@/app/crawling/page";
+import { Ephesis } from "next/font/google";
 import { NextRequest, NextResponse } from "next/server";
-import puppeteer from "puppeteer";
+import puppeteer, { Browser, Dialog, Page } from "puppeteer";
 import { z } from "zod";
 
 const LoginParams = z.object({
@@ -17,8 +18,12 @@ const LoginParams = z.object({
 
 export async function POST(request: NextRequest) {
   const reqBody = (await request.json()) as unknown;
-  const cookies = await handleAmPassLogin(LoginParams.parse(reqBody));
-  return NextResponse.json({ successful: true, data: { cookies } });
+  await handleAmPassLogin(LoginParams.parse(reqBody));
+
+  return NextResponse.json({
+    successful: true,
+    data: {},
+  });
 }
 
 async function handleAmPassLogin(params: LoginParams) {
@@ -45,11 +50,35 @@ async function handleAmPassLogin(params: LoginParams) {
   await passwordElement?.type(params.password);
   await loginBtnElement?.click();
 
-  const cookies = await page.cookies();
+  console.debug("login checked");
+
+  await getBestScore(browser);
 
   await page.close();
   await browser.close();
+}
 
-  console.debug("login checked");
-  return cookies.find((cookie) => cookie.name === "PHPSESSID");
+async function getBestScore(browser: Browser) {
+  const page = await browser.newPage();
+
+  const authFailedHandler = (dialog: Dialog) => {
+    console.log("on dialog");
+    if (dialog.message() === "Please try again after logging in.") {
+      throw Error("Login failed");
+    }
+    return dialog.accept();
+  };
+
+  page.on("dialog", authFailedHandler);
+
+  await page.goto("https://www.piugame.com/my_page/my_best_score.php");
+  console.debug("move to my best score page");
+
+  const data = await page.$$eval("ul.my_best_scoreList li", (lis) =>
+    lis.map((it) => it.innerHTML)
+  );
+  console.log(data);
+
+  page.off("dialog", authFailedHandler);
+  page.close();
 }
