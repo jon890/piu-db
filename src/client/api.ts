@@ -11,6 +11,7 @@ const client = ky.extend({
 export const loginToAmPass = (params: LoginParams) =>
   client
     .post("api/crawling/login", {
+      timeout: false,
       json: params,
     })
     .json();
