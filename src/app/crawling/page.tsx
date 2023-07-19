@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import utils from "@/client/utils";
 
 export type LoginParams = {
   email: string;
@@ -120,8 +121,14 @@ export default function CrawlingPage() {
               autoComplete="current-password"
               onChange={handleInputChange}
             />
-            <button className="btn btn-primary w-full" type="submit">
-              시작
+            <button
+              className={utils.classnames(
+                "btn w-full",
+                start ? "btn-disabled" : "btn-primary"
+              )}
+              type="submit"
+            >
+              {start ? "불러오는 중 입니다..." : "시작"}
             </button>
           </form>
 
