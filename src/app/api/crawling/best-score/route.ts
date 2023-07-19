@@ -63,7 +63,9 @@ export async function GET(request: NextRequest) {
     encodeMessage(
       writer,
       encoder,
-      CrawlingMessage.error(`failed.. login info is invalid!`)
+      CrawlingMessage.error(
+        `failed.. login info is invalid! ${JSON.stringify(e)}`
+      )
     );
     writer.close();
   }
