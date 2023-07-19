@@ -39,20 +39,21 @@ export default function CrawlingPage() {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    console.log("hihi");
-
-    const data = await loginToAmPass(loginParams);
-    setBestScores((data as any)?.data?.bestScore);
-
-    // mutate(loginParams, {
-    //   onSuccess: (data) => {
-    //     console.log(data);
-    //     setBestScores((data as any).data.bestScore);
-
-    //     console.log(bestScores);
-    //     alert("기록 크롤링 성공");
-    //   },
-    // });
+    const eventSource = new EventSource(
+      `/api/crawling/best-score?accessToken=${btoa(
+        JSON.stringify(loginParams)
+      )}`,
+      { withCredentials: true }
+    );
+    eventSource.onmessage = (event) => {
+      console.log(event);
+    };
+    eventSource.onmessage = (error) => {
+      console.log(error);
+    };
+    eventSource.onopen = (event) => {
+      console.log(event);
+    };
   };
 
   return (

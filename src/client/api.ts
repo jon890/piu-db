@@ -14,9 +14,11 @@ export const loginToAmPass = (params: { email: string; password: string }) =>
     })
     .json();
 
-export const loadRecordFromPIU = () =>
-  client
-    .post("api/crawling/best-score", {
-      json: {},
-    })
-    .json();
+// export const loadRecordFromPIU = (params: { email: string; password: string }) =>
+//   client
+//     .post("api/crawling/best-score", {
+//       json: params,
+//       headers: {
+//         'Content-Type': 'text/event-stream'
+//       }
+//     }).
