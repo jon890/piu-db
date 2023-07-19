@@ -1,6 +1,6 @@
 import { BestScore } from "@/server/puppeteer/load-best-score";
 
-type CrawlingProgress = "best-score" | "info" | "finish";
+type CrawlingProgress = "best-score" | "info" | "finish" | "error";
 
 export class CrawlingMessage {
   type: CrawlingProgress;
@@ -21,5 +21,9 @@ export class CrawlingMessage {
 
   static finish(message: string) {
     return new CrawlingMessage("finish", { message });
+  }
+
+  static error(message: string) {
+    return new CrawlingMessage("error", { message });
   }
 }

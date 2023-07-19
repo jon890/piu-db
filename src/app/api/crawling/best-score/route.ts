@@ -1,11 +1,10 @@
-import { LoginParams } from "@/app/crawling/page";
 import puppeteer from "@/server/puppeteer";
 import { BestScore } from "@/server/puppeteer/load-best-score";
 import getQueryParmas from "@/server/utils/getQueryParams";
 import { NextRequest } from "next/server";
+import { z } from "zod";
 import { CrawlingMessage } from "./CrawlingMessage";
 import { encodeMessage } from "./encodeMessage";
-import { z } from "zod";
 
 const LoginParamsValidator = z.object({
   email: z.string().email(),
@@ -55,8 +54,11 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (e) {
-    writer.write(
-      encoder.encode("data: 로그인 정보를 제대로 입력했는지 확인해주세요\n\n")
+    console.error(e);
+    encodeMessage(
+      writer,
+      encoder,
+      CrawlingMessage.error(`failed.. login info is invalid!`)
     );
     writer.close();
   }
