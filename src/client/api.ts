@@ -1,14 +1,12 @@
 "use client";
 
-import { LoginParams } from "@/app/crawling/page";
 import ky from "ky";
-import { Protocol } from "puppeteer";
 
 const client = ky.extend({
   prefixUrl: process.env.NEXT_PUBLIC_API_URL,
 });
 
-export const loginToAmPass = (params: LoginParams) =>
+export const loginToAmPass = (params: { email: string; password: string }) =>
   client
     .post("api/crawling/login", {
       timeout: false,
@@ -16,11 +14,9 @@ export const loginToAmPass = (params: LoginParams) =>
     })
     .json();
 
-export const loadRecordFromPIU = (cookies: Protocol.Network.Cookie[]) =>
+export const loadRecordFromPIU = () =>
   client
     .post("api/crawling/best-score", {
-      json: {
-        cookies,
-      },
+      json: {},
     })
     .json();

@@ -39,15 +39,20 @@ export default function CrawlingPage() {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    mutate(loginParams, {
-      onSuccess: (data) => {
-        console.log(data);
-        setBestScores((data as any).data.bestScore);
+    console.log("hihi");
 
-        console.log(bestScores);
-        alert("기록 크롤링 성공");
-      },
-    });
+    const data = await loginToAmPass(loginParams);
+    setBestScores((data as any)?.data?.bestScore);
+
+    // mutate(loginParams, {
+    //   onSuccess: (data) => {
+    //     console.log(data);
+    //     setBestScores((data as any).data.bestScore);
+
+    //     console.log(bestScores);
+    //     alert("기록 크롤링 성공");
+    //   },
+    // });
   };
 
   return (
