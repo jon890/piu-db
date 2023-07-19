@@ -1,8 +1,6 @@
 "use client";
 
-import { loginToAmPass } from "@/client/api";
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type LoginParams = {
   email: string;
@@ -14,6 +12,11 @@ export default function CrawlingPage() {
     email: "",
     password: "",
   });
+  const [eventSource, setEventSource] = useState<EventSource | null>(null);
+  const [start, setStart] = useState<boolean>(false);
+  const [messages, setMessages] = useState<{ time: string; message: string }[]>(
+    []
+  );
   const [bestScores, setBestScores] = useState<
     | {
         isSingle: boolean;
@@ -25,10 +28,6 @@ export default function CrawlingPage() {
     | null
   >(null);
 
-  const { mutate, data, error, isLoading } = useMutation({
-    mutationFn: (param: LoginParams) => loginToAmPass(param),
-  });
-
   const handleInputChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
     setLoginParams({
       ...loginParams,
@@ -39,54 +38,108 @@ export default function CrawlingPage() {
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    const eventSource = new EventSource(
-      `/api/crawling/best-score?accessToken=${btoa(
-        JSON.stringify(loginParams)
-      )}`,
-      { withCredentials: true }
+    if (start) {
+      return;
+    }
+
+    setStart(() => true);
+    setMessages(() => []);
+    setEventSource(
+      new EventSource(
+        `/api/crawling/best-score?accessToken=${btoa(
+          JSON.stringify(loginParams)
+        )}`,
+        { withCredentials: true }
+      )
     );
-    eventSource.onmessage = (event) => {
-      console.log(event);
-    };
-    eventSource.onmessage = (error) => {
-      console.log(error);
-    };
-    eventSource.onopen = (event) => {
-      console.log(event);
-    };
   };
+
+  useEffect(() => {
+    if (eventSource) {
+      eventSource.onmessage = (event) => {
+        if (event.data === "login success") {
+          eventSource.close();
+          setStart(false);
+          setEventSource(null);
+        }
+
+        setMessages((old) => [
+          ...old,
+          { message: event.data, time: event.timeStamp.toFixed(0) },
+        ]);
+      };
+      eventSource.onerror = (event) => {
+        setMessages((old) => [
+          ...old,
+          { message: "error occurred!!", time: event.timeStamp.toFixed(0) },
+        ]);
+        eventSource.close();
+        setStart(false);
+        setEventSource(null);
+      };
+      eventSource.onopen = (event) => {
+        setMessages((old) => [
+          ...old,
+          { message: "start", time: event.timeStamp.toFixed(0) },
+        ]);
+      };
+    }
+  }, [eventSource, messages, start]);
 
   return (
     <>
       <div className="container w-full h-screen flex flex-col justify-center items-center">
-        <h1 className="text-3xl font-bold">크롤링 페이지</h1>
+        <h1 className="text-3xl font-bold">베스트 스코어 불러오기</h1>
 
-        <form
-          onSubmit={onSubmit}
-          className="flex flex-col justify-center items-center space-y-5"
-        >
-          <input
-            className="input input-bordered mt-4"
-            type="text"
-            name="email"
-            placeholder="아이디"
-            autoComplete="username"
-            value={loginParams.email}
-            onChange={handleInputChange}
-          />
-          <input
-            className="input input-bordered"
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            value={loginParams.password}
-            autoComplete="current-password"
-            onChange={handleInputChange}
-          />
-          <button className="btn btn-primary w-full" type="submit">
-            시작
-          </button>
-        </form>
+        <div className="flex flex-row space-x-10">
+          <form
+            onSubmit={onSubmit}
+            className="flex flex-col justify-center items-center space-y-5"
+          >
+            <input
+              className="input input-bordered mt-4"
+              type="text"
+              name="email"
+              placeholder="아이디"
+              autoComplete="username"
+              value={loginParams.email}
+              onChange={handleInputChange}
+            />
+            <input
+              className="input input-bordered"
+              type="password"
+              name="password"
+              placeholder="비밀번호"
+              value={loginParams.password}
+              autoComplete="current-password"
+              onChange={handleInputChange}
+            />
+            <button className="btn btn-primary w-full" type="submit">
+              시작
+            </button>
+          </form>
+
+          <table
+            className={`table table-xs mt-10 transition-all ${
+              messages.length > 0 ? "" : "hidden"
+            }`}
+          >
+            <thead>
+              <tr>
+                <th>시간</th>
+                <th>메시지</th>
+              </tr>
+            </thead>
+            <tbody>
+              {messages.map((it) => (
+                <tr key={it.time}>
+                  <td>{it.time}</td>
+                  <td>{it.message}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {bestScores ? (
           <table className="table table-md mt-10">
