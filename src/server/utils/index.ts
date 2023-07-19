@@ -1,4 +1,8 @@
 import getQueryParmas from "./getQueryParams";
 import sleep from "./sleep";
 
-export default { sleep, getQueryParmas };
+const index = {
+  sleep,
+  getQueryParmas,
+};
+export default index;

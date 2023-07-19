@@ -1,3 +1,4 @@
 import loadBestScore from "./load-best-score";
 
-export default { loadBestScore };
+const index = { loadBestScore };
+export default index;

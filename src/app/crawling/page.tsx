@@ -42,8 +42,8 @@ export default function CrawlingPage() {
       return;
     }
 
-    setStart(() => true);
-    setMessages(() => []);
+    setStart(true);
+    setMessages([]);
     setEventSource(
       new EventSource(
         `/api/crawling/best-score?accessToken=${btoa(

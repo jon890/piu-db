@@ -3,39 +3,14 @@ import puppeteer from "@/server/puppeteer";
 import { BestScore } from "@/server/puppeteer/load-best-score";
 import getQueryParmas from "@/server/utils/getQueryParams";
 import { NextRequest } from "next/server";
-import { WritableStreamDefaultWriter } from "stream/web";
+import { CrawlingMessage } from "./CrawlingMessage";
+import { encodeMessage } from "./encodeMessage";
+import { z } from "zod";
 
-type CrawlingProgress = "best-score" | "info" | "finish";
-
-export class CrawlingMessage {
-  type: CrawlingProgress;
-  data: unknown;
-
-  constructor(type: CrawlingProgress, data: unknown) {
-    this.type = type;
-    this.data = data;
-  }
-
-  static info(message: string) {
-    return new CrawlingMessage("info", { message });
-  }
-
-  static toBestScore(bestScore: BestScore[]) {
-    return new CrawlingMessage("best-score", { bestScore });
-  }
-
-  static finish(message: string) {
-    return new CrawlingMessage("finish", { message });
-  }
-}
-
-function encodeMessage(
-  writer: WritableStreamDefaultWriter,
-  encoder: TextEncoder,
-  data: CrawlingMessage
-) {
-  return writer.write(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
-}
+const LoginParamsValidator = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
 
 export async function GET(request: NextRequest) {
   const responseStream = new TransformStream();
@@ -45,7 +20,7 @@ export async function GET(request: NextRequest) {
   try {
     const query = getQueryParmas(request.url);
     const maybeToken = query.accessToken;
-    const data = JSON.parse(atob(maybeToken)) as LoginParams;
+    const data = LoginParamsValidator.parse(JSON.parse(atob(maybeToken)));
 
     puppeteer.loadBestScore(data, {
       onLaunchBrowser() {
@@ -83,6 +58,7 @@ export async function GET(request: NextRequest) {
     writer.write(
       encoder.encode("data: 로그인 정보를 제대로 입력했는지 확인해주세요\n\n")
     );
+    writer.close();
   }
 
   return new Response(responseStream.readable, {
