@@ -1,5 +1,7 @@
 const { join } = require("path");
 
+const chromeVersion = "114.0.5735.133";
+
 /**
  * @type {import("puppeteer").Configuration}
  */
@@ -8,9 +10,14 @@ module.exports = {
   cacheDirectory: join(__dirname, "puppeteer"),
   logLevel: "warn",
   defaultProduct: "chrome",
-  browserRevision: "114.0.5735.133",
+  browserRevision: chromeVersion,
   ...(process?.env?.NODE_ENV === "production" && {
-    executablePath:
-      "/home/jon89071/piu-db/puppeteer/chrome/linux64-114.0.5735.133/chrome-linux64/chrome",
+    executablePath: join(
+      __dirname,
+      "chrome",
+      `linux64-${chromeVersion}`,
+      "chrome-linux64",
+      "chrome"
+    ),
   }),
 };
