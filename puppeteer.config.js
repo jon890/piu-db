@@ -14,6 +14,7 @@ module.exports = {
   ...(process?.env?.NODE_ENV === "production" && {
     executablePath: join(
       __dirname,
+      "puppeteer",
       "chrome",
       `linux64-${chromeVersion}`,
       "chrome-linux64",

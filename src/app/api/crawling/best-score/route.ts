@@ -6,10 +6,10 @@ import { z } from "zod";
 import { CrawlingMessage } from "./CrawlingMessage";
 import { encodeMessage } from "./encodeMessage";
 
-// const LoginParamsValidator = z.object({
-//   email: z.string().email(),
-//   password: z.string(),
-// });
+const LoginParamsValidator = z.object({
+  email: z.string({ required_error: "Email is required" }).email(),
+  password: z.string(),
+});
 
 export const dynamic = "force-dynamic";
 
@@ -21,10 +21,7 @@ export async function GET(request: NextRequest) {
   try {
     const query = getQueryParmas(request.url);
     const maybeToken = query.accessToken;
-    const data =
-      // LoginParamsValidator.parse(
-      JSON.parse(atob(maybeToken));
-    // );
+    const data = LoginParamsValidator.parse(JSON.parse(atob(maybeToken)));
 
     puppeteer.loadBestScore(data, {
       onLaunchBrowser() {
@@ -63,9 +60,7 @@ export async function GET(request: NextRequest) {
     encodeMessage(
       writer,
       encoder,
-      CrawlingMessage.error(
-        `failed.. login info is invalid! ${JSON.stringify(e)}`
-      )
+      CrawlingMessage.error(`failed.. login info is invalid! cause: ${e}`)
     );
     writer.close();
   }
