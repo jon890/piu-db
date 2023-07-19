@@ -1,3 +1,3 @@
-import loginToPiu from "./login-piu";
+import loadBestScore from "./load-best-score";
 
-export default { loginToPiu };
+export default { loadBestScore };

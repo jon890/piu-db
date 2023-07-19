@@ -1,7 +1,41 @@
 import { LoginParams } from "@/app/crawling/page";
 import puppeteer from "@/server/puppeteer";
+import { BestScore } from "@/server/puppeteer/load-best-score";
 import getQueryParmas from "@/server/utils/getQueryParams";
 import { NextRequest } from "next/server";
+import { WritableStreamDefaultWriter } from "stream/web";
+
+type CrawlingProgress = "best-score" | "info" | "finish";
+
+export class CrawlingMessage {
+  type: CrawlingProgress;
+  data: unknown;
+
+  constructor(type: CrawlingProgress, data: unknown) {
+    this.type = type;
+    this.data = data;
+  }
+
+  static info(message: string) {
+    return new CrawlingMessage("info", { message });
+  }
+
+  static toBestScore(bestScore: BestScore[]) {
+    return new CrawlingMessage("best-score", { bestScore });
+  }
+
+  static finish(message: string) {
+    return new CrawlingMessage("finish", { message });
+  }
+}
+
+function encodeMessage(
+  writer: WritableStreamDefaultWriter,
+  encoder: TextEncoder,
+  data: CrawlingMessage
+) {
+  return writer.write(encoder.encode(`data: ${JSON.stringify(data)}\n\n`));
+}
 
 export async function GET(request: NextRequest) {
   const responseStream = new TransformStream();
@@ -13,19 +47,36 @@ export async function GET(request: NextRequest) {
     const maybeToken = query.accessToken;
     const data = JSON.parse(atob(maybeToken)) as LoginParams;
 
-    puppeteer.loginToPiu(data, {
+    puppeteer.loadBestScore(data, {
       onLaunchBrowser() {
-        console.log("asdfasdf");
-        writer.write(encoder.encode("data: connect to piugame.com\n\n"));
-      },
-      onError() {
-        writer.write(encoder.encode("data: login failed..\n\n"));
-      },
-      onLoginComplete() {
-        writer.write(encoder.encode("data: login success\n\n"));
+        encodeMessage(
+          writer,
+          encoder,
+          CrawlingMessage.info("Start Login to piugame.com")
+        );
       },
       onMoveLoginPage() {
-        writer.write(encoder.encode("data: move to login page\n\n"));
+        encodeMessage(
+          writer,
+          encoder,
+          CrawlingMessage.info("move to login page")
+        );
+      },
+      onLoginComplete() {
+        encodeMessage(writer, encoder, CrawlingMessage.info("login success!"));
+      },
+      onLoadBestScore(bestScore: BestScore[]) {
+        encodeMessage(writer, encoder, CrawlingMessage.toBestScore(bestScore));
+      },
+      onFinish() {
+        encodeMessage(writer, encoder, CrawlingMessage.finish("Finish!!"));
+      },
+      onError(message) {
+        encodeMessage(
+          writer,
+          encoder,
+          CrawlingMessage.info(`failed.. cause:${message}`)
+        );
       },
     });
   } catch (e) {

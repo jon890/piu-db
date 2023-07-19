@@ -57,21 +57,27 @@ export default function CrawlingPage() {
   useEffect(() => {
     if (eventSource) {
       eventSource.onmessage = (event) => {
-        if (event.data === "login success") {
-          eventSource.close();
+        const dataObject = JSON.parse(event.data);
+
+        setMessages((old) => [
+          ...old,
+          { message: event.data, time: event.timeStamp.toFixed(1) },
+        ]);
+
+        if (dataObject.type === "finish") {
           setStart(false);
           setEventSource(null);
         }
 
-        setMessages((old) => [
-          ...old,
-          { message: event.data, time: event.timeStamp.toFixed(0) },
-        ]);
+        if (dataObject.type === "best-score") {
+          console.log(dataObject);
+          setBestScores(dataObject.data.bestScore);
+        }
       };
       eventSource.onerror = (event) => {
         setMessages((old) => [
           ...old,
-          { message: "error occurred!!", time: event.timeStamp.toFixed(0) },
+          { message: "error occurred!!", time: event.timeStamp.toFixed(1) },
         ]);
         eventSource.close();
         setStart(false);
@@ -80,7 +86,7 @@ export default function CrawlingPage() {
       eventSource.onopen = (event) => {
         setMessages((old) => [
           ...old,
-          { message: "start", time: event.timeStamp.toFixed(0) },
+          { message: "Event Stream Opened", time: event.timeStamp.toFixed(1) },
         ]);
       };
     }
