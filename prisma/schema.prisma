@@ -16,20 +16,146 @@ model User {
   name      String   @unique
   password  String
   nickname  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  piuUser    PiuUser @relation(fields: [piuUserSeq], references: [seq])
-  piuUserSeq Int     @map("piu_user_seq")
+  piuUser   PiuUser?
+  records   Record[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("td_user")
 }
 
 model PiuUser {
-  seq      Int    @id @default(autoincrement())
-  email    String @unique
-  password String
-  User     User[]
+  seq       Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  User      User     @relation(fields: [userSeq], references: [seq])
+  userSeq   Int      @unique @map("user_seq")
+  records   Record[]
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("td_piu_user")
+}
+
+model PiuProfile {
+  seq              Int      @id @default(autoincrement())
+  nickname         String
+  hashCode         String   @map("hash_code")
+  lastLoginDate    String   @map("last_login_date")
+  lastPlayedCenter String   @map("last_played_center")
+  pp               Int
+  records          Record[]
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  @@map("td_piu_profile")
+}
+
+model Song {
+  seq       Int        @id @default(autoincrement())
+  name      String
+  artist    String
+  bpm       Float
+  version   PiuVersion
+  songType  SongType   @map("song_type")
+  charts    Chart[]
+  records   Record[]
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+
+  @@map("td_song")
+}
+
+enum SongType {
+  ARCADE
+  REMIX
+  FULL_SONG
+  SHORT_CUT
+}
+
+enum PiuVersion {
+  FIRST_ZERO
+  NX_NXA
+  FIESTA_FIESTA2
+  PRIME
+  PRIME2
+  XX
+  PHOENIX
+}
+
+model Chart {
+  seq       Int       @id @default(autoincrement())
+  song      Song      @relation(fields: [songSeq], references: [seq])
+  songSeq   Int       @map("song_seq")
+  chartType ChartType @map("chart_type")
+  level     Int
+  records   Record[]
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("td_chart")
+}
+
+enum ChartType {
+  SINGLE
+  DOUBLE
+  CO_OP
+  UCS
+}
+
+model Record {
+  seq           Int         @id @default(autoincrement())
+  song          Song        @relation(fields: [songSeq], references: [seq])
+  songSeq       Int         @map("song_seq")
+  chart         Chart       @relation(fields: [chartSeq], references: [seq])
+  chartSeq      Int         @map("chart_seq")
+  user          User        @relation(fields: [userSeq], references: [seq])
+  userSeq       Int         @map("user_seq")
+  piuUser       PiuUser     @relation(fields: [piuUserSeq], references: [seq])
+  piuUserSeq    Int         @map("piu_user_seq")
+  piuProfile    PiuProfile  @relation(fields: [piuProfileSeq], references: [seq])
+  piuProfileSeq Int         @map("piu_profile_seq")
+  score         Int
+  perfect       Int
+  great         Int
+  good          Int
+  bad           Int
+  miss          Int
+  maxCombo      Int         @map("max_combo")
+  grade         RecordGrade
+  plate         RecordPlate
+  createdAt     DateTime    @default(now()) @map("created_at")
+  updatedAt     DateTime    @updatedAt @map("updated_at")
+
+  @@map("td_record")
+}
+
+enum RecordGrade {
+  ROUGH_GAME
+  FAIR_GAME
+  TALENTED_GAME
+  MARVELOUS_GAME
+  SUPERB_GAME
+  EXTREME_GAME
+  ULTIMATE_GAME
+  PERFECT_GAME
+}
+
+enum RecordPlate {
+  SSS_PLUS
+  SSS
+  SS_PLUS
+  SS
+  S_PLUS
+  S
+  AAA_PLUS
+  AAA
+  AA_PLUS
+  AA
+  A_PLUS
+  A
+  B
+  C
+  D
+  F
 }
