@@ -15,7 +15,7 @@ model User {
   seq       Int      @id @default(autoincrement())
   name      String   @unique
   password  String
-  nickname  String
+  nickname  String   @unique
   piuUser   PiuUser?
   records   Record[]
   createdAt DateTime @default(now()) @map("created_at")

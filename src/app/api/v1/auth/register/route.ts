@@ -10,17 +10,18 @@ import BaseApiResponse from "./dto/BaseApiResponse";
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  const { name, nickname, password, passwordConfirm } =
-    RegisterRequestSchema.parse(body);
+  const { name, nickname, password } = RegisterRequestSchema.parse(body);
 
-  const exist = await prisma.user.findUnique({
+  const exist = await prisma.user.findMany({
     where: {
-      name,
+      OR: [{ name }, { nickname }],
     },
   });
 
-  if (exist) {
-    return NextResponse.json(BaseApiResponse.error("이미 가입된 유저입니다"));
+  if (exist.length) {
+    return NextResponse.json(
+      BaseApiResponse.error("아이디와 닉네임은 중복될 수 없습니다")
+    );
   }
 
   const newUser = await prisma.user.create({
