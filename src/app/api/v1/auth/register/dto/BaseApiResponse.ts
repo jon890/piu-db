@@ -14,6 +14,6 @@ export default class BaseApiResponse<T, E> {
   }
 
   static error<E>(message: string = "", error?: E) {
-    return new BaseApiResponse(true, message, null, error);
+    return new BaseApiResponse(false, message, null, error);
   }
 }
