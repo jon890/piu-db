@@ -1,7 +1,7 @@
 import { RegisterRequestSchema } from "@/app/auth/register/register-param";
 import prisma from "@/server/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import BaseApiResponse from "./dto/BaseApiResponse";
+import BaseApiResponse from "../../../dto/BaseApiResponse";
 
 /**
  * 회원가입
