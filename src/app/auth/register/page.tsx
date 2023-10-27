@@ -3,7 +3,7 @@
 import api from "@/client/api";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../../components/InputWithLabel";
 import { RegisterParam } from "./register-param";
 
 export default function AuthPage() {
