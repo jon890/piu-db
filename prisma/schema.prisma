@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  seq       Int      @id @default(autoincrement())
+  name      String   @unique
+  password  String
+  nickname  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  piuUser    PiuUser @relation(fields: [piuUserSeq], references: [seq])
+  piuUserSeq Int     @map("piu_user_seq")
+
+  @@map("td_user")
+}
+
+model PiuUser {
+  seq      Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+  User     User[]
+
+  @@map("td_piu_user")
+}
