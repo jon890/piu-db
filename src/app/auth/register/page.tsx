@@ -1,11 +1,13 @@
 "use client";
 
+import api from "@/client/api";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import InputWithLabel from "./InputWithLabel";
-import api from "@/client/api";
 import { RegisterParam } from "./register-param";
 
 export default function AuthPage() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ export default function AuthPage() {
 
       if (response.ok) {
         alert("축하합니다 회원가입 되었습니다!");
+        router.push("/");
       } else {
         alert(`실패 했습니다 ㅠㅠ ${response.message ?? ""}`);
       }
@@ -86,7 +89,9 @@ export default function AuthPage() {
         <div className="flex flex-col space-y-2 mt-4">
           {errors &&
             Object.entries(errors).map(([k, v]) => (
-              <p className="text-red-500 font-bold">{v?.message}</p>
+              <p key={k} className="text-red-500 font-bold">
+                {v?.message}
+              </p>
             ))}
         </div>
       </section>
