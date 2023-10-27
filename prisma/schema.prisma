@@ -12,14 +12,17 @@ datasource db {
 }
 
 model User {
-  seq       Int      @id @default(autoincrement())
-  name      String   @unique
-  password  String
-  nickname  String   @unique
-  piuUser   PiuUser?
-  records   Record[]
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  seq                        Int                          @id @default(autoincrement())
+  name                       String                       @unique
+  password                   String
+  nickname                   String                       @unique
+  createdAt                  DateTime                     @default(now()) @map("created_at")
+  updatedAt                  DateTime                     @updatedAt @map("updated_at")
+  piuUser                    PiuUser?
+  records                    Record[]
+  assignmentRooms            AssignmentRoom[]
+  assignmentRoomParticipants AssignmentRoomParticipants[]
+  assignmentRecords          AssigmentRecord[]
 
   @@map("td_user")
 }
@@ -28,7 +31,7 @@ model PiuUser {
   seq       Int      @id @default(autoincrement())
   email     String   @unique
   password  String
-  User      User     @relation(fields: [userSeq], references: [seq])
+  user      User     @relation(fields: [userSeq], references: [seq])
   userSeq   Int      @unique @map("user_seq")
   records   Record[]
   createdAt DateTime @default(now()) @map("created_at")
@@ -84,14 +87,15 @@ enum PiuVersion {
 }
 
 model Chart {
-  seq       Int       @id @default(autoincrement())
-  song      Song      @relation(fields: [songSeq], references: [seq])
-  songSeq   Int       @map("song_seq")
-  chartType ChartType @map("chart_type")
-  level     Int
-  records   Record[]
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime  @updatedAt @map("updated_at")
+  seq        Int          @id @default(autoincrement())
+  song       Song         @relation(fields: [songSeq], references: [seq])
+  songSeq    Int          @map("song_seq")
+  chartType  ChartType    @map("chart_type")
+  level      Int
+  records    Record[]
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+  Assignment Assignment[]
 
   @@map("td_chart")
 }
@@ -104,28 +108,29 @@ enum ChartType {
 }
 
 model Record {
-  seq           Int         @id @default(autoincrement())
-  song          Song        @relation(fields: [songSeq], references: [seq])
-  songSeq       Int         @map("song_seq")
-  chart         Chart       @relation(fields: [chartSeq], references: [seq])
-  chartSeq      Int         @map("chart_seq")
-  user          User        @relation(fields: [userSeq], references: [seq])
-  userSeq       Int         @map("user_seq")
-  piuUser       PiuUser     @relation(fields: [piuUserSeq], references: [seq])
-  piuUserSeq    Int         @map("piu_user_seq")
-  piuProfile    PiuProfile  @relation(fields: [piuProfileSeq], references: [seq])
-  piuProfileSeq Int         @map("piu_profile_seq")
-  score         Int
-  perfect       Int
-  great         Int
-  good          Int
-  bad           Int
-  miss          Int
-  maxCombo      Int         @map("max_combo")
-  grade         RecordGrade
-  plate         RecordPlate
-  createdAt     DateTime    @default(now()) @map("created_at")
-  updatedAt     DateTime    @updatedAt @map("updated_at")
+  seq             Int               @id @default(autoincrement())
+  song            Song              @relation(fields: [songSeq], references: [seq])
+  songSeq         Int               @map("song_seq")
+  chart           Chart             @relation(fields: [chartSeq], references: [seq])
+  chartSeq        Int               @map("chart_seq")
+  user            User              @relation(fields: [userSeq], references: [seq])
+  userSeq         Int               @map("user_seq")
+  piuUser         PiuUser           @relation(fields: [piuUserSeq], references: [seq])
+  piuUserSeq      Int               @map("piu_user_seq")
+  piuProfile      PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
+  piuProfileSeq   Int               @map("piu_profile_seq")
+  score           Int
+  perfect         Int
+  great           Int
+  good            Int
+  bad             Int
+  miss            Int
+  maxCombo        Int               @map("max_combo")
+  grade           RecordGrade
+  plate           RecordPlate
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  AssigmentRecord AssigmentRecord[]
 
   @@map("td_record")
 }
@@ -158,4 +163,61 @@ enum RecordPlate {
   C
   D
   F
+}
+
+model AssignmentRoom {
+  seq                        Int                          @id @default(autoincrement())
+  name                       String                       @unique
+  description                String?
+  bannerImage                String?                      @map("banner_image")
+  admin                      User                         @relation(fields: [adminUserSeq], references: [seq])
+  adminUserSeq               Int                          @map("admin_user_seq")
+  assignments                Assignment[]
+  assignmentRoomParticipants AssignmentRoomParticipants[]
+  updatedAt                  DateTime                     @updatedAt @map("updated_at")
+  createdAt                  DateTime                     @default(now()) @map("created_at")
+
+  @@map("td_assignment_room")
+}
+
+model AssignmentRoomParticipants {
+  seq               Int            @id @default(autoincrement())
+  room              AssignmentRoom @relation(fields: [assignmentRoomSeq], references: [seq])
+  user              User           @relation(fields: [userSeq], references: [seq])
+  assignmentRoomSeq Int            @map("room_seq")
+  userSeq           Int            @map("user_seq")
+  updatedAt         DateTime       @updatedAt @map("updated_at")
+  createdAt         DateTime       @default(now()) @map("created_at")
+
+  @@unique([assignmentRoomSeq, userSeq])
+  @@map("td_assignment_room_participants")
+}
+
+model Assignment {
+  seq       Int               @id @default(autoincrement())
+  room      AssignmentRoom    @relation(fields: [roomSeq], references: [seq])
+  roomSeq   Int               @map("room_seq")
+  startDate DateTime          @map("start_date")
+  endDate   DateTime          @map("end_date")
+  chart     Chart             @relation(fields: [chartSeq], references: [seq])
+  chartSeq  Int               @map("chart_seq")
+  records   AssigmentRecord[]
+  updatedAt DateTime          @updatedAt @map("updated_at")
+  createdAt DateTime          @default(now()) @map("created_at")
+
+  @@map("td_assignment")
+}
+
+model AssigmentRecord {
+  seq           Int        @id @default(autoincrement())
+  assignment    Assignment @relation(fields: [assignmentSeq], references: [seq])
+  assignmentSeq Int        @map("assignment_seq")
+  user          User       @relation(fields: [userSeq], references: [seq])
+  userSeq       Int        @map("user_seq")
+  record        Record     @relation(fields: [recordSeq], references: [seq])
+  recordSeq     Int        @map("record_seq")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  createdAt     DateTime   @default(now()) @map("created_at")
+
+  @@map("td_assignment_record")
 }
