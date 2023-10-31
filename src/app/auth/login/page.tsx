@@ -6,7 +6,7 @@ import api from "@/client/api";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const router = useRouter();
   const {
     register,
