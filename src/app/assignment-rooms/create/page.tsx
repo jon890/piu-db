@@ -6,7 +6,11 @@ import api from "@/client/api";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-export default function RegisterPage() {
+/**
+ * 숙제방 생성 페이지
+ * @returns
+ */
+export default function CreatePage() {
   const router = useRouter();
   const {
     register,
@@ -38,22 +42,21 @@ export default function RegisterPage() {
   return (
     <main className="w-full">
       <section className="w-full flex justify-center flex-col items-center">
-        <h1 className="text-3xl font-bold mb-10">회원가입</h1>
+        <h1 className="text-3xl font-bold mb-10 mt-10">방 생성</h1>
         <form
           className="flex justify-center items-center w-1/2 flex-col"
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputWithLabel
-            topLeft="아이디"
-            placeholder="아이디를 입력해주세요"
+            topLeft="방 이름"
+            placeholder="이름을 입력해주세요"
             register={register("name", {
               required: { value: true, message: "아이디는 필수 입니다" },
             })}
           />
           <InputWithLabel
-            type="password"
-            topLeft="비밀번호"
-            placeholder="비밀번호를 입력해주세요"
+            topLeft="설명"
+            placeholder="설명"
             register={register("password", {
               required: { value: true, message: "비밀번호는 필수 입니다" },
               minLength: {

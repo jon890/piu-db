@@ -1,6 +1,6 @@
 import { RegisterParam } from "@/app/auth/register/register-param";
 import { client } from "./api-client";
-import BaseApiResponse from "@/app/api/dto/BaseApiResponse";
+import BaseApiResponse from "@/server/dto/BaseApiResponse";
 
 export const register = (params: RegisterParam) =>
   client

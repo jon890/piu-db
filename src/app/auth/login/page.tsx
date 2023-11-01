@@ -1,6 +1,6 @@
 "use client";
 
-import InputWithLabel from "@/app/components/InputWithLabel";
+import InputWithLabel from "@/components/InputWithLabel";
 import { authenticate } from "@/server/action/authenticate";
 import { useFormState, useFormStatus } from "react-dom";
 

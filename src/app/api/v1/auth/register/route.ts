@@ -1,7 +1,7 @@
 import { RegisterRequestSchema } from "@/app/auth/register/register-param";
 import prisma from "@/server/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import BaseApiResponse from "@/app/api/dto/BaseApiResponse";
+import BaseApiResponse from "@/server/dto/BaseApiResponse";
 import bcrypt from "bcrypt";
 
 /**
