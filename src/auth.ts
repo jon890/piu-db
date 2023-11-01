@@ -1,17 +1,14 @@
+import { authConfig } from "@/auth.config";
 import prisma from "@/server/prisma/client";
 import { User } from "@prisma/client";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-import { authConfig } from "./auth.config";
 
 async function getUser(name: string): Promise<User | null> {
   try {
     const user = await prisma.user.findUnique({ where: { name } });
-
-    console.log("getUser", user);
-
     return user;
   } catch (error) {
     console.log("Failed to fetch user:", error);
@@ -40,10 +37,8 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-
           console.log("passwordsMatch", passwordsMatch);
-
-          if (passwordsMatch) return { ...user, id: user.seq };
+          if (passwordsMatch) return { id: user.seq };
         }
 
         console.log("Invalid credentials");

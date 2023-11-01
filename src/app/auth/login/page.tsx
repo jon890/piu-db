@@ -1,7 +1,7 @@
 "use client";
 
 import InputWithLabel from "@/app/components/InputWithLabel";
-import { authenticate } from "@/app/server-action/authenticate";
+import { authenticate } from "@/server/action/authenticate";
 import { useFormState, useFormStatus } from "react-dom";
 
 export default function LoginPage() {

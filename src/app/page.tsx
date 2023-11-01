@@ -1,8 +1,10 @@
-import { GetServerSideProps } from "next";
 import Link from "next/link";
 import { auth } from "../auth";
 
-export default function Home() {
+export default async function Home() {
+  const { user } = await auth();
+  console.log(user);
+
   return (
     <div className="container w-full h-screen flex justify-center items-center flex-col">
       <h1 className="text-3xl">Welcome to PIU DB</h1>
