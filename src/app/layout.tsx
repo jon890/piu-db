@@ -24,12 +24,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={classnames(inter.className)}>
-        <div
-          id="app"
-          className={classnames(
-            "w-screen flex justify-center items-center min-h-screen"
-          )}
-        >
+        <div id="app" className={classnames("w-screen min-h-screen")}>
           {children}
         </div>
       </body>
