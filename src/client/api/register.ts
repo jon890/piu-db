@@ -4,7 +4,7 @@ import BaseApiResponse from "@/server/dto/BaseApiResponse";
 
 export const register = (params: RegisterParam) =>
   client
-    .post("/api/v1/auth/register", {
+    .post("auth/register", {
       json: params,
     })
     .json<BaseApiResponse<unknown, unknown>>();

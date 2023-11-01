@@ -1,8 +1,8 @@
 "use client";
 
 import { RegisterParam } from "@/app/auth/register/register-param";
-import InputWithLabel from "@/components/InputWithLabel";
 import api from "@/client/api";
+import InputWithLabel from "@/components/InputWithLabel";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 

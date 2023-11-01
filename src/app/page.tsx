@@ -2,12 +2,12 @@ import Link from "next/link";
 import { auth } from "../auth";
 
 export default async function Home() {
-  const { user } = await auth();
-  console.log(user);
-
   return (
     <div className="container w-full h-screen flex justify-center items-center flex-col">
-      <h1 className="text-3xl">Welcome to PIU DB</h1>
+      <h1 className="text-3xl font-bold">PIU DB에 오신것을 환영합니다</h1>
+      <p className="mt-4">
+        사이트의 모든 기능을 이용하려면 먼저 로그인해주세요
+      </p>
 
       <Link
         href="/auth/login"
