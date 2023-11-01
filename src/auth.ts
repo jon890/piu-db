@@ -37,12 +37,20 @@ export const { auth, signIn, signOut } = NextAuth({
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          console.log("passwordsMatch", passwordsMatch);
-          if (passwordsMatch)
-            return { id: user.seq, email: user.name, name: user.nickname };
+          // console.log("passwordsMatch", passwordsMatch);
+
+          // TODO KBT : 리턴값이 custom 화 될 수 없는지?
+          // declare module 로 동작하지 않는듯..
+          if (passwordsMatch) {
+            return {
+              id: user.seq.toString(),
+              name: user.name,
+              email: user.seq.toString(),
+            };
+          }
         }
 
-        console.log("Invalid credentials");
+        // console.log("Invalid credentials");
         return null;
       },
     }),

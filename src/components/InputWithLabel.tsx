@@ -6,6 +6,8 @@ type InputWithLabelProps = {
   topLeft?: string;
   placeholder?: string;
   register?: UseFormRegisterReturn;
+
+  [key: string]: unknown;
 };
 
 export default function InputWithLabel({
@@ -14,6 +16,7 @@ export default function InputWithLabel({
   topLeft,
   placeholder,
   register,
+  ...rest
 }: InputWithLabelProps) {
   return (
     <div className="form-control w-full max-w-md">
@@ -27,6 +30,7 @@ export default function InputWithLabel({
         placeholder={placeholder ?? ""}
         className="input input-bordered w-full max-w-md"
         {...register}
+        {...rest}
       />
       <label className="label">
         {/* <span className="label-text-alt">Bottom Left label</span>
