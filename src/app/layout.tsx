@@ -1,8 +1,7 @@
+import classnames from "@/client/utils/classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Providers from "../client/providers";
-import classnames from "@/client/utils/classnames";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={classnames(inter.className)}>
         <div
           id="app"
@@ -31,7 +30,7 @@ export default function RootLayout({
             "w-screen flex justify-center items-center min-h-screen"
           )}
         >
-          <Providers>{children}</Providers>
+          {children}
         </div>
       </body>
     </html>

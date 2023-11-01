@@ -1,7 +1,8 @@
 import { RegisterRequestSchema } from "@/app/auth/register/register-param";
 import prisma from "@/server/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-import BaseApiResponse from "../../../dto/BaseApiResponse";
+import BaseApiResponse from "@/app/api/dto/BaseApiResponse";
+import bcrypt from "bcrypt";
 
 /**
  * 회원가입
@@ -24,11 +25,12 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = await prisma.user.create({
     data: {
       name,
       nickname,
-      password,
+      password: hashedPassword,
     },
   });
 

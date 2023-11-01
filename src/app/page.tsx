@@ -1,4 +1,6 @@
+import { GetServerSideProps } from "next";
 import Link from "next/link";
+import { auth } from "../auth";
 
 export default function Home() {
   return (
