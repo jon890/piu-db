@@ -1,5 +1,7 @@
 import { NextAuthConfig } from "next-auth";
 
+const protectedRoute = ["/assignment-rooms"];
+
 /**
  * NextAuth Config
  */
@@ -11,17 +13,19 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnHome = nextUrl.pathname.startsWith("/dashboard");
+      const isProtected = !!protectedRoute.find((it) =>
+        nextUrl.pathname.startsWith(it)
+      );
 
       console.log("auth:", auth);
-      console.log("isLoggedIn:", isLoggedIn, "isOnHome:", isOnHome);
+      console.log("isLoggedIn:", isLoggedIn, "isProtected:", isProtected);
 
-      if (isOnHome) {
+      if (isProtected) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
         console.log("authorized check:", nextUrl.toString());
-        return Response.redirect(new URL("/", nextUrl));
+        return Response.redirect(new URL("/assignment-rooms", nextUrl));
       }
       return true;
     },
