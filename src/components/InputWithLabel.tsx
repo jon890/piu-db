@@ -1,11 +1,9 @@
-import { UseFormRegisterReturn } from "react-hook-form";
-
 type InputWithLabelProps = {
   name?: string;
   type?: "text" | "password";
   topLeft?: string;
   placeholder?: string;
-  register?: UseFormRegisterReturn;
+  errors?: string[];
 
   [key: string]: unknown;
 };
@@ -15,7 +13,7 @@ export default function InputWithLabel({
   type,
   topLeft,
   placeholder,
-  register,
+  errors,
   ...rest
 }: InputWithLabelProps) {
   return (
@@ -29,13 +27,24 @@ export default function InputWithLabel({
         name={name ?? ""}
         placeholder={placeholder ?? ""}
         className="input input-bordered w-full max-w-md"
-        {...register}
+        aria-describedby={`${name}-error`}
         {...rest}
       />
       <label className="label">
         {/* <span className="label-text-alt">Bottom Left label</span>
         <span className="label-text-alt">Bottom Left label</span> */}
       </label>
+      {errors && (
+        <div
+          id={`${name}-error`}
+          aria-live="polite"
+          className="text-sm text-red-500"
+        >
+          {errors.map((error: string) => (
+            <p key={error}>{error}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
