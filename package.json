@@ -11,7 +11,8 @@
     "db-push:local": "dotenv -e .env.local -- npx prisma migrate dev --name $name",
     "db-push:dev": "dotenv -e .env.development -- npx prisma migrate dev --name $name",
     "db:generate": "prisma generate",
-    "db:init": "dotenv -e .env.local -- ts-node ./db/init_songs"
+    "db-init:local": "dotenv -e .env.local -- ts-node ./db/init_songs",
+    "db-init:dev": "dotenv -e .env.development -- ts-node ./db/init_songs"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
