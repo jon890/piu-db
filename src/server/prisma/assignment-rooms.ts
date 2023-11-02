@@ -22,3 +22,24 @@ export async function getRoom(seq: number) {
     },
   });
 }
+
+export async function getRoomWithParticipants(seq: number) {
+  const room = await prisma.assignmentRoom.findUnique({
+    where: {
+      seq,
+    },
+  });
+
+  const participants = room
+    ? await prisma.assignmentRoomParticipants.findMany({
+        where: {
+          assignmentRoomSeq: room.seq,
+        },
+        include: {
+          user: true,
+        },
+      })
+    : null;
+
+  return { room, participants };
+}

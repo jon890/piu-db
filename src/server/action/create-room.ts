@@ -24,11 +24,11 @@ const createRoomSchema = z.object({
 
 export async function createRoom(prevState: State, formData: FormData) {
   const session = await auth();
-  const username = session?.user?.email;
+  const userSeq = session?.user?.email;
 
   const validatedFields = createRoomSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
-    adminUserSeq: username ? Number(username) : null,
+    adminUserSeq: userSeq ? Number(userSeq) : null,
   });
 
   if (!validatedFields.success) {
