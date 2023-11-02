@@ -6,11 +6,19 @@ import prisma from "@/server/prisma/client";
 const ROOM_PAGING_UNIT = 10;
 
 /**
- * 바
+ * 방 목록
  */
 export async function getRooms(page: number = 0) {
   return prisma.assignmentRoom.findMany({
     skip: page * ROOM_PAGING_UNIT,
     take: ROOM_PAGING_UNIT,
+  });
+}
+
+export async function getRoom(seq: number) {
+  return prisma.assignmentRoom.findUnique({
+    where: {
+      seq,
+    },
   });
 }

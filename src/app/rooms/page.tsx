@@ -1,4 +1,4 @@
-import CardGlass from "@/components/CardGlass";
+import Room from "@/components/Room";
 import { getRooms } from "@/server/db/assignment-rooms";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -22,13 +22,9 @@ async function RoomList() {
   const rooms = await getRooms();
 
   return (
-    <div className="grid grid-cols-2 gap-5">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
       {rooms.map((r) => (
-        <CardGlass
-          key={r.seq}
-          title="방1"
-          image="https://burst.shopifycdn.com/photos/city-lights-through-rain-window.jpg"
-        />
+        <Room key={r.seq} room={r} />
       ))}
     </div>
   );

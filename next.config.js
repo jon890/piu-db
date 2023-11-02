@@ -12,24 +12,24 @@ const getCorsHeaders = () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "burst.shopifycdn.com",
-        port: "",
-        pathname: "/photos/**",
-      },
-    ],
-  },
-  headers: async () => {
-    return [
-      {
-        source: "/api/(.*)",
-        headers: getCorsHeaders(),
-      },
-    ];
-  },
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: "https",
+  //       hostname: "burst.shopifycdn.com",
+  //       port: "",
+  //       pathname: "/photos/**",
+  //     },
+  //   ],
+  // },
+  // headers: async () => {
+  //   return [
+  //     {
+  //       source: "/api/(.*)",
+  //       headers: getCorsHeaders(),
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;
