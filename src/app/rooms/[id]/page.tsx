@@ -1,8 +1,5 @@
-import Room from "@/components/Room";
-import { getRoom, getRooms } from "@/server/db/assignment-rooms";
-import Link from "next/link";
+import { getRoom } from "@/server/prisma/assignment-rooms";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 
 export default async function RoomDetailPage({
   params,

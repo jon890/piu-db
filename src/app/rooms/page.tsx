@@ -1,5 +1,5 @@
 import Room from "@/components/Room";
-import { getRooms } from "@/server/db/assignment-rooms";
+import { getRooms } from "@/server/prisma/assignment-rooms";
 import Link from "next/link";
 import { Suspense } from "react";
 
