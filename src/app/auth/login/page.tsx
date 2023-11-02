@@ -2,6 +2,7 @@
 
 import InputWithLabel from "@/components/InputWithLabel";
 import { authenticate } from "@/server/action/authenticate";
+import Link from "next/link";
 import { useFormState, useFormStatus } from "react-dom";
 
 export default function LoginPage() {
@@ -10,8 +11,28 @@ export default function LoginPage() {
 
   return (
     <main className="w-full">
-      <section className="w-full flex justify-center flex-col items-center">
-        <h1 className="text-3xl font-bold mb-10">로그인</h1>
+      <section className="w-full h-screen flex justify-center flex-col items-center">
+        <div className="flex flex-row items-center w-1/2 mb-10">
+          <Link href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
+              />
+            </svg>
+          </Link>
+
+          <h1 className="text-3xl font-bold mx-auto">로그인</h1>
+        </div>
+
         <form
           action={action}
           className="flex justify-center items-center w-1/2 flex-col"
@@ -38,7 +59,7 @@ export default function LoginPage() {
           {code === "CredentialSignin" && (
             <>
               <p aria-live="polite" className="text-sm text-red-500">
-                Invalid credentials
+                정확히 정보를 입력해주세요
               </p>
             </>
           )}
