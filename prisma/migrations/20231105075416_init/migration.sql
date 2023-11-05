@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "td_song" ALTER COLUMN "bpm" SET DATA TYPE TEXT;

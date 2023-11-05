@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { Songs } from "./songs";
+import { FIRST_ZERO_SONGS, SongData } from "./first-to-zero";
 
 const prisma = new PrismaClient({
   log: [
@@ -22,8 +22,8 @@ const prisma = new PrismaClient({
   ],
 });
 
-async function initSongAndCharts() {
-  for (const song of Songs) {
+async function initSongAndCharts(songs: SongData[]) {
+  for (const song of songs) {
     await prisma.song.create({
       data: {
         name: song.name,
@@ -46,7 +46,7 @@ async function deleteAll() {
 
 async function main() {
   await deleteAll();
-  await initSongAndCharts();
+  await initSongAndCharts(FIRST_ZERO_SONGS);
 }
 
 main();

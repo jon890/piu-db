@@ -58,7 +58,7 @@ model Song {
   seq       Int        @id @default(autoincrement())
   name      String
   artist    String
-  bpm       Float
+  bpm       String
   version   PiuVersion
   songType  SongType   @map("song_type")
   charts    Chart[]

@@ -51,8 +51,9 @@ export default function LoginPage() {
           <button
             className="btn btn-primary w-full max-w-md mt-5"
             aria-disabled={pending}
+            disabled={pending}
           >
-            로그인
+            {pending ? "잠시만 기다려주세요" : "로그인"}
           </button>
         </form>
         <div className="flex h-8 items-end space-x-1">
