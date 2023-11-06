@@ -286,7 +286,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 15
     name: "에너지 시너지 매트릭스",
     artist: "Tanchiky",
-    bpm: 160,
+    bpm: "160",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
