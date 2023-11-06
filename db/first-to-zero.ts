@@ -1,4 +1,4 @@
-import { SongData } from "./nx-to-nxa";
+import { SongData } from "./song-type";
 
 export const FIRST_ZERO_SONGS: SongData[] = [
   {

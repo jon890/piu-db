@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { FIRST_ZERO_SONGS } from "./first-to-zero";
-import { NX_NXA_SONGS, SongData } from "./nx-to-nxa";
 import { PHOENIX_SONGS } from "./phoenix";
+import { SongData } from "./song-type";
 
 const prisma = new PrismaClient({
   log: [
