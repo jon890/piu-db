@@ -209,7 +209,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 11
     name: "쥬핀",
     artist: "Sobrem",
-    bpm: 173,
+    bpm: "173",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -229,7 +229,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 12
     name: "추격",
     artist: "MAX",
-    bpm: 176,
+    bpm: "176",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -248,7 +248,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 13
     name: "굿텍",
     artist: "EBIMAYO",
-    bpm: 190,
+    bpm: "190",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -268,7 +268,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 14
     name: "코스믹 레일로드",
     artist: "kanone",
-    bpm: 155,
+    bpm: "155",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -305,7 +305,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 16
     name: "밀크",
     artist: "MoriMori Atsushi",
-    bpm: 150,
+    bpm: "150",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -325,7 +325,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 17
     name: "어콰이어",
     artist: "ryhki",
-    bpm: 155,
+    bpm: "155",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -346,7 +346,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 18
     name: "진폐증 ft. Kagamine Len/GUMI",
     artist: "DASU",
-    bpm: 156,
+    bpm: "156",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -361,7 +361,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 19
     name: "알테일",
     artist: "sakuzyo",
-    bpm: 90,
+    bpm: "90",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -383,7 +383,7 @@ export const PHOENIX_SONGS: SongData[] = [
     // 20
     name: "할시온",
     artist: "xi",
-    bpm: 191, // todo 40 - 191
+    bpm: "40-191",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
