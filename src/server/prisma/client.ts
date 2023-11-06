@@ -1,4 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import { createCertificate } from "../utils/create-certificate";
+
+if (process.env.NODE_ENV === "production") {
+  createCertificate();
+}
 
 const prisma = new PrismaClient({
   log: [
