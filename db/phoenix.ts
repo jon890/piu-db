@@ -1,20 +1,11 @@
-import { ChartType, PiuVersion, SongType } from "@prisma/client";
+import { SongData } from "./song-type";
 
-type Song = {
-  name: string;
-  artist: string;
-  bpm: number;
-  version: PiuVersion;
-  songType: SongType;
-  charts: { level: number; chartType: ChartType }[];
-};
-
-export const Songs: Song[] = [
+export const PHOENIX_SONGS: SongData[] = [
   {
     // 1
     name: "보카",
     artist: "드림캐쳐",
-    bpm: 200,
+    bpm: "200",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -36,7 +27,7 @@ export const Songs: Song[] = [
     // 2
     name: "누드",
     artist: "(여자)아이들",
-    bpm: 136,
+    bpm: "136",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -57,7 +48,7 @@ export const Songs: Song[] = [
     // 3
     name: "테디베어",
     artist: "스테이씨",
-    bpm: 119,
+    bpm: "119",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -78,7 +69,7 @@ export const Songs: Song[] = [
     // 4
     name: "얼론",
     artist: "하이라이트",
-    bpm: 115,
+    bpm: "115",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -98,7 +89,7 @@ export const Songs: Song[] = [
     // 5
     name: "아모르파티",
     artist: "김연자",
-    bpm: 135,
+    bpm: "135",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -118,7 +109,7 @@ export const Songs: Song[] = [
     // 6
     name: "애프터 라이크",
     artist: "아이브",
-    bpm: 125,
+    bpm: "125",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -141,7 +132,7 @@ export const Songs: Song[] = [
     // 7
     name: "벡터",
     artist: "Zekk",
-    bpm: 174,
+    bpm: "174",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -159,7 +150,7 @@ export const Songs: Song[] = [
     // 8
     name: "베르사이유",
     artist: "HyuN & MIIM",
-    bpm: 160, // todo 160 ~ 175
+    bpm: "160-175",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -178,7 +169,7 @@ export const Songs: Song[] = [
     // 9
     name: "쇼다운",
     artist: "litmus*",
-    bpm: 130,
+    bpm: "130",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [
@@ -198,7 +189,7 @@ export const Songs: Song[] = [
     // 10
     name: "유포리아닉",
     artist: "SHK",
-    bpm: 140,
+    bpm: "140",
     version: "PHOENIX",
     songType: "ARCADE",
     charts: [

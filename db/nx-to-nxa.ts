@@ -1,12 +1,12 @@
-import { SongData } from "./nx-to-nxa";
+import { SongData } from "./song-type";
 
-export const FIRST_ZERO_SONGS: SongData[] = [
+export const NX_NXA_SONGS: SongData[] = [
   {
     // 1
     name: "디그니티 - FULL SONG",
     artist: "크래쉬",
     bpm: "195",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "FULL_SONG",
     charts: [
       { level: 15, chartType: "SINGLE" },
@@ -21,7 +21,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "디그니티",
     artist: "크래쉬",
     bpm: "195",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -42,7 +42,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "슬램",
     artist: "노바소닉",
     bpm: "131.99",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -61,7 +61,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "또다른 진심",
     artist: "노바소닉",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -81,7 +81,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "비트 오브 더 워 2",
     artist: "반야",
     bpm: "120-190",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -100,7 +100,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "월광",
     artist: "반야",
     bpm: "180",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -119,7 +119,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "위치닥터",
     artist: "반야",
     bpm: "195",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -139,7 +139,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "러브 이즈 어 데인저 존 pt.2",
     artist: "반야",
     bpm: "162",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -157,7 +157,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "팬텀",
     artist: "반야",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -176,7 +176,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "파파 곤잘레스",
     artist: "반야",
     bpm: "145",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -194,7 +194,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "점프",
     artist: "반야",
     bpm: "96",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -210,7 +210,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "러브 이즈 어 데인저 존 2 (try to B.P.M.)",
     artist: "반야",
     bpm: "140-169",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 16, chartType: "SINGLE" },
@@ -225,7 +225,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "러브 이즈 어 데인저 존 pt.2 어나더",
     artist: "반야",
     bpm: "162",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 17, chartType: "SINGLE" },
@@ -239,7 +239,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "제이 봉",
     artist: "반야",
     bpm: "140",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -256,7 +256,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "하이 바이",
     artist: "반야",
     bpm: "145",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -274,7 +274,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "무혼",
     artist: "반야",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -291,7 +291,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "캐논 디",
     artist: "반야",
     bpm: "160",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -312,7 +312,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "트림 북 오브 더 워",
     artist: "반야",
     bpm: "184-202",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 14, chartType: "SINGLE" },
@@ -327,7 +327,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "반야 클래식 리믹스",
     artist: "반야",
     bpm: "162-170",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 13, chartType: "SINGLE" },
@@ -342,7 +342,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "반야 힙합 리믹스",
     artist: "반야",
     bpm: "99",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 6, chartType: "SINGLE" },
@@ -356,7 +356,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "캐논디 - FULL SONG",
     artist: "반야",
     bpm: "160",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "FULL_SONG",
     charts: [
       { level: 15, chartType: "SINGLE" },
@@ -371,7 +371,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "파이널 오디션 3",
     artist: "반야",
     bpm: "130.5",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -390,7 +390,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "태동",
     artist: "반야",
     bpm: "129",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 9, chartType: "SINGLE" },
@@ -405,7 +405,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "몽키 핑거즈",
     artist: "반야",
     bpm: "186",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -421,7 +421,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "블레이징",
     artist: "반야",
     bpm: "158",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -438,7 +438,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "펌프 미 아마데우스",
     artist: "반야",
     bpm: "170",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -457,7 +457,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "엑스트림",
     artist: "반야",
     bpm: "162",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -475,7 +475,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "겟 업!",
     artist: "반야",
     bpm: "180",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -493,7 +493,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "비",
     artist: "반야",
     bpm: "160",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 7, chartType: "SINGLE" },
@@ -513,7 +513,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "디갱",
     artist: "반야",
     bpm: "150",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -531,7 +531,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "헬로우",
     artist: "반야",
     bpm: "140",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 11, chartType: "SINGLE" },
@@ -545,7 +545,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "비트 오브 더 워",
     artist: "반야",
     bpm: "140-202",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -564,7 +564,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "컴 투 미",
     artist: "반야",
     bpm: "100-107",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -582,7 +582,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "닥터 엠",
     artist: "반야",
     bpm: "145",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -601,7 +601,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "엠페러",
     artist: "반야",
     bpm: "150",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -618,7 +618,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "겟 유어 그르부 온",
     artist: "반야",
     bpm: "96",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -634,7 +634,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "러브 이즈 어 데인저 존",
     artist: "반야",
     bpm: "140",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -654,7 +654,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "마리아",
     artist: "반야",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 7, chartType: "SINGLE" },
@@ -671,7 +671,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "미션 파서블",
     artist: "반야",
     bpm: "124",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -685,7 +685,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "마이 웨이",
     artist: "반야",
     bpm: "118",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -702,7 +702,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "포인트 브레이크",
     artist: "반야",
     bpm: "92",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -719,7 +719,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "스트리트 쇼 다운",
     artist: "반야",
     bpm: "124",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 8, chartType: "SINGLE" },
@@ -735,7 +735,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "탑 시티",
     artist: "반야",
     bpm: "110.8",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -752,7 +752,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "윈터",
     artist: "반야",
     bpm: "168",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -771,7 +771,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "윌 오 더 위스프",
     artist: "반야",
     bpm: "210",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -792,7 +792,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "틸 디 엔드 오브 타임",
     artist: "반야",
     bpm: "140",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -811,7 +811,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "오이 오이 오이",
     artist: "반야",
     bpm: "148",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -827,7 +827,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "위 윌 밋 어게인",
     artist: "반야",
     bpm: "118",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -842,7 +842,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "미스 에스 스토리",
     artist: "반야",
     bpm: "111",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 7, chartType: "SINGLE" },
@@ -856,7 +856,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "셋 미 업",
     artist: "반야",
     bpm: "120",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -873,7 +873,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "댄스 위드 미",
     artist: "반야",
     bpm: "122",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -890,7 +890,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "부크",
     artist: "반야",
     bpm: "184",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -910,7 +910,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "우편마차",
     artist: "반야",
     bpm: "180",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -930,7 +930,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "치킨 윙",
     artist: "반야",
     bpm: "200",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -950,7 +950,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "라젠스키 캉캉",
     artist: "반야",
     bpm: "197",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 7, chartType: "SINGLE" },
@@ -967,7 +967,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "파이널 오디션 에피소드 1",
     artist: "반야",
     bpm: "189",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -987,7 +987,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "엑스트라 반야 리믹스",
     artist: "반야",
     bpm: "200",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 12, chartType: "SINGLE" },
@@ -1001,7 +1001,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "펌프 점프",
     artist: "반야",
     bpm: "106",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1015,7 +1015,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "엔",
     artist: "반야",
     bpm: "106",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1029,7 +1029,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "롤링 크리스마스",
     artist: "반야",
     bpm: "142",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -1050,7 +1050,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "올 아이 원트 포 크리스마스",
     artist: "반야",
     bpm: "130",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -1065,7 +1065,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "베트벤 바이러스",
     artist: "반야",
     bpm: "162",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -1089,7 +1089,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "오! 로사!",
     artist: "반야",
     bpm: "148",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 9, chartType: "SINGLE" },
@@ -1104,7 +1104,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "첫사랑",
     artist: "반야",
     bpm: "103.05",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 6, chartType: "SINGLE" },
@@ -1118,7 +1118,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "사랑가",
     artist: "반야",
     bpm: "92",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 1, chartType: "SINGLE" },
@@ -1136,7 +1136,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "무혼",
     artist: "반야",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -1156,7 +1156,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "미스터 라푸스",
     artist: "반야",
     bpm: "190",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -1177,7 +1177,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "파이널 오디션 2",
     artist: "반야",
     bpm: "130",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -1196,7 +1196,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "태동",
     artist: "반야",
     bpm: "136",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1213,7 +1213,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "터키 행진곡",
     artist: "반야",
     bpm: "150",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -1233,7 +1233,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "님과함께",
     artist: "반야",
     bpm: "124",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1248,7 +1248,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "서울구경",
     artist: "반야",
     bpm: "160",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 6, chartType: "SINGLE" },
@@ -1261,7 +1261,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "악몽",
     artist: "반야",
     bpm: "120",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 3, chartType: "SINGLE" },
@@ -1275,7 +1275,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "눈을 감아",
     artist: "반야",
     bpm: "105",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [{ level: 6, chartType: "SINGLE" }],
   },
@@ -1285,7 +1285,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "프리스타일",
     artist: "반야",
     bpm: "99",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1300,7 +1300,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "미드나잇 블루",
     artist: "반야",
     bpm: "80",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 12, chartType: "SINGLE" },
@@ -1313,7 +1313,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "그녀는 피자를 좋아해",
     artist: "반야",
     bpm: "210",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 9, chartType: "SINGLE" },
@@ -1330,7 +1330,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "펌핑 업",
     artist: "반야",
     bpm: "135",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 5, chartType: "SINGLE" },
@@ -1345,7 +1345,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "파이널 오디션",
     artist: "반야",
     bpm: "130.5",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 2, chartType: "SINGLE" },
@@ -1363,7 +1363,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "엑스트라 바간자",
     artist: "반야",
     bpm: "195",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
@@ -1383,7 +1383,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
     name: "리피토먼트 리믹스",
     artist: "반야",
     bpm: "150",
-    version: "FIRST_ZERO",
+    version: "NX_NXA",
     songType: "REMIX",
     charts: [
       { level: 18, chartType: "SINGLE" },
