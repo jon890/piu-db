@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import { FIRST_ZERO_SONGS } from "./first-to-zero";
 import { PHOENIX_SONGS } from "./phoenix";
 import { SongData } from "./song-type";
+import { NX_NXA_SONGS } from "./nx-to-nxa";
 
 const prisma = new PrismaClient({
   log: [
@@ -49,7 +50,7 @@ async function deleteAll() {
 async function main() {
   await deleteAll();
   await initSongAndCharts(FIRST_ZERO_SONGS);
-  // await initSongAndCharts(NX_NXA_SONGS);
+  await initSongAndCharts(NX_NXA_SONGS);
   await initSongAndCharts(PHOENIX_SONGS);
 }
 
