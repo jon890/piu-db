@@ -1,4 +1,4 @@
-import CreateForm from "@/app/rooms/create/create-form";
+import CreateForm from "./create-form";
 
 /**
  * 숙제방 생성 페이지
