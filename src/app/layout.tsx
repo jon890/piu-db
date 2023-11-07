@@ -1,9 +1,9 @@
 import classnames from "@/client/utils/classnames";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "PIU DB",
@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={classnames(inter.className)}>
+      <body className={classnames(notoSansKR.className)}>
         <div id="app" className={classnames("w-screen min-h-screen")}>
           {children}
         </div>

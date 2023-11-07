@@ -29,7 +29,9 @@ export default async function NavBar() {
       </div>
 
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">daysiUI</a>
+        <Link href="/rooms" className="btn btn-ghost normal-case text-xl">
+          PIU DB
+        </Link>
       </div>
 
       {session?.user && (

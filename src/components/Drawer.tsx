@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Menu from "./Menu";
 import NavBar from "./NavBar";
 
 export default function Drawer({ children }: { children: React.ReactNode }) {
@@ -7,7 +7,12 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         <NavBar />
-        {children}
+        <div className="flex flex-row min-h-screen">
+          <div className="hidden lg:block transition-all">
+            <Menu />
+          </div>
+          {children}
+        </div>
       </div>
 
       <div className="drawer-side">
@@ -16,14 +21,7 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-base-200">
-          <li>
-            <Link href="#">Sidebar Item 1</Link>
-          </li>
-          <li>
-            <Link href="#">Sidebar Item 2</Link>
-          </li>
-        </ul>
+        <Menu />
       </div>
     </div>
   );

@@ -5,10 +5,10 @@ import { Suspense } from "react";
 
 export default function RoomListPage() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full space-y-10">
-      <h1 className="text-3xl mt-10">목록</h1>
+    <div className="flex flex-col items-center justify-start w-full h-full space-y-10">
+      <h1 className="text-3xl mt-10">방 목록</h1>
       <Link href="/rooms/create">
-        <button className="btn btn-primary">생성</button>
+        <button className="btn btn-primary">방 생성</button>
       </Link>
 
       <Suspense fallback={<p>방 목록을 읽고 있습니다...</p>}>
