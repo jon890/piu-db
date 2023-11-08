@@ -1000,382 +1000,713 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 59
-    name: "엔",
-    artist: "반야",
-    bpm: "106",
+    name: "반야 프로덕션 클래식 리믹스",
+    artist: "반야 프로덕션",
+    bpm: "1164",
     version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
+    songType: "REMIX",
     charts: [
-      { level: 5, chartType: "SINGLE" },
-      { level: 16, chartType: "SINGLE" },
-      { level: 16, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 60
-    name: "롤링 크리스마스",
-    artist: "반야",
-    bpm: "142",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 3, chartType: "SINGLE" },
-      { level: 5, chartType: "SINGLE" },
-      { level: 8, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 5, chartType: "DOUBLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 16, chartType: "DOUBLE" },
-      { level: 22, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
-    ],
-  },
-
-  {
-    // 61
-    name: "올 아이 원트 포 크리스마스",
-    artist: "반야",
-    bpm: "130",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 3, chartType: "SINGLE" },
-      { level: 5, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 8, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 62
-    name: "베트벤 바이러스",
-    artist: "반야",
-    bpm: "162",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 16, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 21, chartType: "SINGLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 21, chartType: "DOUBLE" },
-      { level: 24, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
-    ],
-  },
-
-  {
-    // 63
-    name: "오! 로사!",
-    artist: "반야",
-    bpm: "148",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 9, chartType: "SINGLE" },
       { level: 14, chartType: "SINGLE" },
-      { level: 11, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
-    ],
-  },
-
-  {
-    // 64
-    name: "첫사랑",
-    artist: "반야",
-    bpm: "103.05",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 6, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 15, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 65
-    name: "사랑가",
-    artist: "반야",
-    bpm: "92",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 1, chartType: "SINGLE" },
-      { level: 5, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 16, chartType: "SINGLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 17, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 66
-    name: "무혼",
-    artist: "반야",
-    bpm: "136",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 2, chartType: "SINGLE" },
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 8, chartType: "SINGLE" },
-      { level: 11, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
       { level: 18, chartType: "SINGLE" },
-      { level: 10, chartType: "DOUBLE" },
-      { level: 17, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 67
-    name: "미스터 라푸스",
-    artist: "반야",
-    bpm: "190",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 3, chartType: "SINGLE" },
-      { level: 5, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 15, chartType: "SINGLE" },
-      { level: 20, chartType: "SINGLE" },
-      { level: 22, chartType: "SINGLE" },
-      { level: 16, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 22, chartType: "DOUBLE" },
-      { level: 23, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 68
-    name: "파이널 오디션 2",
-    artist: "반야",
-    bpm: "130",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 10, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 18, chartType: "SINGLE" },
-      { level: 12, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 20, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 69
-    name: "태동",
-    artist: "반야",
-    bpm: "136",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 5, chartType: "SINGLE" },
-      { level: 8, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 20, chartType: "SINGLE" },
-      { level: 12, chartType: "DOUBLE" },
-      { level: 16, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 70
-    name: "터키 행진곡",
-    artist: "반야",
-    bpm: "150",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 3, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 19, chartType: "SINGLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 21, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
-    ],
-  },
-
-  {
-    // 71
-    name: "님과함께",
-    artist: "반야",
-    bpm: "124",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 5, chartType: "SINGLE" },
-      { level: 12, chartType: "SINGLE" },
-      { level: 14, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 72
-    name: "서울구경",
-    artist: "반야",
-    bpm: "160",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 6, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-    ],
-  },
-
-  {
-    // 73
-    name: "악몽",
-    artist: "반야",
-    bpm: "120",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 3, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 14, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 74
-    name: "눈을 감아",
-    artist: "반야",
-    bpm: "105",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [{ level: 6, chartType: "SINGLE" }],
-  },
-
-  {
-    // 75
-    name: "프리스타일",
-    artist: "반야",
-    bpm: "99",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 5, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 76
-    name: "미드나잇 블루",
-    artist: "반야",
-    bpm: "80",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 12, chartType: "SINGLE" },
-      { level: 13, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 77
-    name: "그녀는 피자를 좋아해",
-    artist: "반야",
-    bpm: "210",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 9, chartType: "SINGLE" },
-      { level: 10, chartType: "SINGLE" },
-      { level: 21, chartType: "SINGLE" },
-      { level: 11, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 23, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 78
-    name: "펌핑 업",
-    artist: "반야",
-    bpm: "135",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 5, chartType: "SINGLE" },
-      { level: 10, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 15, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 79
-    name: "파이널 오디션",
-    artist: "반야",
-    bpm: "130.5",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 2, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 10, chartType: "SINGLE" },
-      { level: 18, chartType: "SINGLE" },
-      { level: 19, chartType: "SINGLE" },
-      { level: 17, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
   },
 
   {
-    // 80
-    name: "엑스트라 바간자",
-    artist: "반야",
-    bpm: "195",
+    // 60
+    name: "파파 헬로이징",
+    artist: "반야 프로덕션",
+    bpm: "145-158",
+    version: "FIESTA_FIESTA2",
+    songType: "REMIX",
+    charts: [
+      { level: 10, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+    ],
+  },
+
+  {
+    // 61
+    name: "반야 프로덕션 클래식 리믹스 2",
+    artist: "반야 프로덕션",
+    bpm: "180",
     version: "FIESTA_FIESTA2",
     songType: "ARCADE",
     charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 8, chartType: "SINGLE" },
-      { level: 11, chartType: "SINGLE" },
       { level: 13, chartType: "SINGLE" },
-      { level: 19, chartType: "SINGLE" },
-      { level: 22, chartType: "SINGLE" },
-      { level: 15, chartType: "DOUBLE" },
+      { level: 18, chartType: "SINGLE" },
+    ],
+  },
+
+  {
+    // 62
+    name: "셋업 미투 믹스",
+    artist: "반야 프로덕션",
+    bpm: "122",
+    version: "FIESTA_FIESTA2",
+    songType: "REMIX",
+    charts: [{ level: 18, chartType: "SINGLE" }],
+  },
+
+  {
+    // 63
+    name: "엠.에스.군 리믹스 파트.6",
+    artist: "엠.에스.군",
+    bpm: "150",
+    version: "FIESTA_FIESTA2",
+    songType: "REMIX",
+    charts: [
+      { level: 21, chartType: "SINGLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 64
+    name: "파이널 오디션 2 - SHORT CUT",
+    artist: "반야",
+    bpm: "130",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 17, chartType: "SINGLE" },
+      { level: 19, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 65
+    name: "파이널 오디션 3 - SHORT CUT",
+    artist: "반야",
+    bpm: "130.5",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 18, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 66
+    name: "파이널 오디션 에피소드 2-X - SHORT CUT",
+    artist: "이 얍",
+    bpm: "170",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 20, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 67
+    name: "러브 이즈 어 데인저 존 - SHORT CUT",
+    artist: "반야",
+    bpm: "140",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 13, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 68
+    name: "러브 이즈 어 데인저 존 pt.2 - SHORT CUT",
+    artist: "반야",
+    bpm: "162",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 69
+    name: "엑스트라바간자 - SHORT CUT",
+    artist: "반야",
+    bpm: "195",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 16, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 70
+    name: "치킨 윙 - SHORT CUT",
+    artist: "반야",
+    bpm: "200",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 20, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 71
+    name: "윈터 - SHORT CUT",
+    artist: "반야",
+    bpm: "168",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 6, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 72
+    name: "무혼 2 - SHORT CUT",
+    artist: "반야",
+    bpm: "136",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 18, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 73
+    name: "월광 - SHORT CUT",
+    artist: "반야",
+    bpm: "180",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 15, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 74
+    name: "위치 닥터 - SHORT CUT",
+    artist: "반야",
+    bpm: "195",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 14, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 17, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 75
+    name: "익시드2 오프닝 - SHORT CUT",
+    artist: "반야",
+    bpm: "178",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 76
+    name: "NX 오프닝 - SHORT CUT",
+    artist: "이 얍",
+    bpm: "133",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 77
+    name: "케이.오.에이 : 엘리스 인 원더월드 - SHORT CUT",
+    artist: "반야 프로덕션",
+    bpm: "156",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 78
+    name: "비메라 - SHORT CUT",
+    artist: "이 얍",
+    bpm: "210",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 15, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 19, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 79
+    name: "펌트리스 8비트 ver. - SHORT CUT",
+    artist: "이 얍",
+    bpm: "162",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 8, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 80
+    name: "데스티네이션 - SHORT CUT",
+    artist: "SHK",
+    bpm: "150",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 11, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
   },
 
   {
     // 81
-    name: "리피토먼트 리믹스",
-    artist: "반야",
-    bpm: "150",
+    name: "테프리스",
+    artist: "도인",
+    bpm: "145",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 2, chartType: "SINGLE" },
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 82
+    name: "네이팜",
+    artist: "도인",
+    bpm: "185",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 15, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 83
+    name: "드림 투 나이트메어",
+    artist: "Nightmare",
+    bpm: "178",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 22, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 84
+    name: "VVV",
+    artist: "ZiGZaG",
+    bpm: "310",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 18, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 85
+    name: "팝 더 트랙",
+    artist: "J-Mi & Midi-D & Ft. Hanna Stockzell",
+    bpm: "160",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 2, chartType: "SINGLE" },
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 86
+    name: "파사칼리아",
+    artist: "SynthWulf",
+    bpm: "175",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 8, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 87
+    name: "바로크 바이러스",
+    artist: "Zircon",
+    bpm: "135",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 5, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 88
+    name: "인피니티 리믹스",
+    artist: "SynthWulf & 맥스",
+    bpm: "175",
     version: "FIESTA_FIESTA2",
     songType: "REMIX",
     charts: [
+      { level: 19, chartType: "SINGLE" },
+      { level: 19, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 89
+    name: "팝 더 트랙 - SHORT CUT",
+    artist: "J-Mi & Midi-D & Ft. Hanna Stockzell",
+    bpm: "160",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
       { level: 18, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 90
+    name: "파사칼리아 - SHORT CUT",
+    artist: "SynthWulf",
+    bpm: "175",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 17, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 91
+    name: "모노리스",
+    artist: "Affinity",
+    bpm: "196",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 92
+    name: "레이디 버그",
+    artist: "Coconut",
+    bpm: "133",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 1, chartType: "SINGLE" },
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 93
+    name: "키티 캣",
+    artist: "Coconut",
+    bpm: "128",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 1, chartType: "SINGLE" },
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 6, chartType: "DOUBLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 94
+    name: "하드코어 오브 더 노스",
+    artist: "Diclonius Kid",
+    bpm: "190",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 95
+    name: "트라이브 어택커",
+    artist: "Hi-G",
+    bpm: "150",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 10, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 96
+    name: "유토피아",
+    artist: "Smiley",
+    bpm: "166",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 97
+    name: "이그니스 패터스(DM Ashura 믹스) - SHORT CUT",
+    artist: "반야 & DM Ashura",
+    bpm: "220",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 21, chartType: "SINGLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 98
+    name: "에프 에프 에프 - SHORT CUT",
+    artist: "도인",
+    bpm: "200",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 18, chartType: "SINGLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 99
+    name: "유니크 - SHORT CUT",
+    artist: "SHK",
+    bpm: "145",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 18, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 100
+    name: "유 갓 미 락킹 - SHORT CUT",
+    artist: "맥스",
+    bpm: "128",
+    version: "FIESTA_FIESTA2",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 17, chartType: "SINGLE" },
+      { level: 17, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 101
+    name: "클리너",
+    artist: "도인",
+    bpm: "203",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 102
+    name: "인터퍼런스",
+    artist: " 도인",
+    bpm: "180.54",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 103
+    name: "리얼리티",
+    artist: "SHK",
+    bpm: "135",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 6, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 6, chartType: "DOUBLE" },
+      { level: 15, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 104
+    name: "테이크 아웃",
+    artist: "SHK",
+    bpm: "170",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 105
+    name: "버터플라이",
+    artist: "맥스 & 로리체슬",
+    bpm: "128",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 6, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 8, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
     ],
   },
 ];
