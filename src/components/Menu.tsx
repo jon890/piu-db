@@ -7,7 +7,7 @@ export default function Menu() {
         <Link href="/rooms">방 목록</Link>
       </li>
       <li>
-        <Link href="/asdf">펌프잇업 기록 연동</Link>
+        <Link href="/crawling">펌프잇업 기록 연동</Link>
       </li>
     </ul>
   );

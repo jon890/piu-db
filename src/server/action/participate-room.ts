@@ -2,7 +2,6 @@
 
 import { auth } from "@/auth";
 import prisma from "@/server/prisma/client";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 
 type State = {

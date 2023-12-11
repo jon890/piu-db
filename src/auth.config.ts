@@ -1,6 +1,6 @@
 import { NextAuthConfig } from "next-auth";
 
-const protectedRoute = ["/rooms"];
+const protectedRoute = ["/rooms", "/crawling"];
 const authRoute = ["/auth/login", "/auth/register", "/"];
 
 /**

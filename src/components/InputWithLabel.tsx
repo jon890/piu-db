@@ -1,9 +1,12 @@
+import { RefObject } from "react";
+
 type InputWithLabelProps = {
   name?: string;
   type?: "text" | "password";
   topLeft?: string;
   placeholder?: string;
   errors?: string[];
+  inputRef?: RefObject<HTMLInputElement>;
 
   [key: string]: unknown;
 };
@@ -14,6 +17,7 @@ export default function InputWithLabel({
   topLeft,
   placeholder,
   errors,
+  inputRef,
   ...rest
 }: InputWithLabelProps) {
   return (
@@ -28,6 +32,7 @@ export default function InputWithLabel({
         placeholder={placeholder ?? ""}
         className="input input-bordered w-full max-w-md"
         aria-describedby={`${name}-error`}
+        ref={inputRef}
         {...rest}
       />
       <label className="label">

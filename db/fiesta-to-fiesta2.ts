@@ -1567,7 +1567,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 97
-    name: "이그니스 패터스(DM Ashura 믹스) - SHORT CUT",
+    name: "슈샤",
     artist: "반야 & DM Ashura",
     bpm: "220",
     version: "FIESTA_FIESTA2",

@@ -18,7 +18,7 @@ model User {
   nickname                   String                       @unique
   createdAt                  DateTime                     @default(now()) @map("created_at")
   updatedAt                  DateTime                     @updatedAt @map("updated_at")
-  piuUser                    PiuUser?
+  piuProfiles                PiuProfile[]
   records                    Record[]
   assignmentRooms            AssignmentRoom[]
   assignmentRoomParticipants AssignmentRoomParticipants[]
@@ -27,30 +27,18 @@ model User {
   @@map("td_user")
 }
 
-model PiuUser {
-  seq       Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  user      User     @relation(fields: [userSeq], references: [seq])
-  userSeq   Int      @unique @map("user_seq")
-  records   Record[]
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("td_piu_user")
-}
-
 model PiuProfile {
   seq              Int      @id @default(autoincrement())
-  nickname         String
-  hashCode         String   @map("hash_code")
-  lastLoginDate    String   @map("last_login_date")
-  lastPlayedCenter String   @map("last_played_center")
-  pp               Int
+  gameId           String   @map("game_id")
+  lastLoginDate    String?  @map("last_login_date")
+  lastPlayedCenter String?  @map("last_played_center")
   records          Record[]
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
+  User             User     @relation(fields: [userSeq], references: [seq])
+  userSeq          Int
 
+  @@unique([gameId])
   @@map("td_piu_profile")
 }
 
@@ -115,8 +103,6 @@ model Record {
   chartSeq        Int               @map("chart_seq")
   user            User              @relation(fields: [userSeq], references: [seq])
   userSeq         Int               @map("user_seq")
-  piuUser         PiuUser           @relation(fields: [piuUserSeq], references: [seq])
-  piuUserSeq      Int               @map("piu_user_seq")
   piuProfile      PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
   piuProfileSeq   Int               @map("piu_profile_seq")
   score           Int
