@@ -84,13 +84,12 @@ export async function getGameId(
 
     return { data: res };
   } catch (e) {
-    console.log(e);
-
     let errorMsg: string;
     if (e instanceof HTTPError) {
       const errorBody = await e.response.json();
       errorMsg = errorBody;
     } else {
+      console.log(e);
       errorMsg = (e as Error).message;
     }
 
