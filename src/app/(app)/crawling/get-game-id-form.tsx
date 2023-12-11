@@ -2,18 +2,27 @@
 
 import InputWithLabel from "@/components/InputWithLabel";
 import { getGameId } from "@/server/action/get-game-id";
+import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
-export default function GetGameIdForm() {
+export type GetGameIdProps = {
+  onLoaded?: () => void | Promise<void>;
+};
+
+export default function GetGameIdForm({ onLoaded }: GetGameIdProps) {
   const initialState = {
     errors: undefined,
     message: undefined,
     data: undefined,
   };
   const [state, action] = useFormState(getGameId, initialState);
-  const { pending } = useFormStatus();
 
-  console.log(state);
+  useEffect(() => {
+    // success
+    if (state?.data?.gameIds) {
+      onLoaded?.();
+    }
+  }, [state?.data?.gameIds]);
 
   return (
     <form
@@ -35,15 +44,28 @@ export default function GetGameIdForm() {
         errors={state?.errors?.password}
       />
 
-      <button
-        className="btn btn-primary w-full max-w-md mt-5"
-        type="submit"
-        aria-disabled={pending}
-      >
-        펌프잇업에 로그인
-      </button>
+      <SubmitButton />
 
-      <div className="mt-6 text-sm text-red-500 font-bold">{state.message}</div>
+      <div className="mt-6 text-sm text-red-500 font-bold">
+        <p>{state?.message}</p>
+        {state?.errors?.crawler && <p>{state?.errors?.crawler}</p>}
+      </div>
     </form>
+  );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      className="btn btn-primary w-full max-w-md mt-5"
+      type="submit"
+      aria-disabled={pending}
+      disabled={pending}
+    >
+      {pending
+        ? "로그인 중 입니다.. 잠시만 기다려 주세요"
+        : "펌프잇업에 로그인"}
+    </button>
   );
 }

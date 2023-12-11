@@ -1,10 +1,12 @@
 "use server";
 
+import type { GameId } from "@/@types/game-id";
 import { auth } from "@/auth";
+import crawlerClient from "@/server/client/crawler.client";
+import prisma from "@/server/prisma/client";
 import { HTTPError } from "ky";
+import { redirect } from "next/navigation";
 import { z } from "zod";
-import crawlerClient from "../client/crawler.client";
-import prisma from "../prisma/client";
 
 export type GameIdFormState = {
   errors?: {
@@ -13,19 +15,12 @@ export type GameIdFormState = {
     crawler?: string;
   };
   message?: string;
-  data?: any;
-};
-
-export type GameId = {
-  title: string;
-  nickname: string;
-  latestLoginDate: string;
-  latestGameCenter: string;
+  data?: { gameIds: GameId[] };
 };
 
 const participateRoomSchema = z.object({
-  email: z.string(),
-  password: z.string(),
+  email: z.string().min(1, "아이디를 입력해주세요"),
+  password: z.string().min(1, "비밀번호를 입력해주세요"),
   userSeq: z.coerce.number().gt(0, "유저 정보가 잘못되었습니다"),
 });
 
@@ -44,7 +39,7 @@ export async function getGameId(
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: "로그인 정보가 잘못되었습니다",
+      message: "입력한 정보를 다시 확인해주세요",
     };
   }
 
@@ -55,8 +50,6 @@ export async function getGameId(
       .getGameIds(email, password)
       .json<{ gameIds: GameId[] }>();
 
-    console.log(res);
-
     const piuProfiles = await prisma.piuProfile.findMany({
       where: {
         gameId: {
@@ -65,13 +58,9 @@ export async function getGameId(
       },
     });
 
-    console.log(piuProfiles);
-
-    const notExistIds = res.gameIds.filter((id) =>
-      piuProfiles.find((profile) => profile.gameId === id.nickname)
+    const notExistIds = res.gameIds.filter(
+      (id) => !piuProfiles.find((profile) => profile.gameId === id.nickname)
     );
-
-    console.log(notExistIds);
 
     await prisma.piuProfile.createMany({
       data: notExistIds.map((id) => ({
@@ -81,8 +70,6 @@ export async function getGameId(
         lastLoginDate: id.latestLoginDate === "-" ? null : id.latestLoginDate,
       })),
     });
-
-    return { data: res };
   } catch (e) {
     let errorMsg: string;
     if (e instanceof HTTPError) {
@@ -95,4 +82,6 @@ export async function getGameId(
 
     return { errors: { crawler: errorMsg }, message: "실패했습니다" };
   }
+
+  redirect("/crawling");
 }

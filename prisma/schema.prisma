@@ -36,7 +36,7 @@ model PiuProfile {
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
   User             User     @relation(fields: [userSeq], references: [seq])
-  userSeq          Int
+  userSeq          Int      @map("user_seq")
 
   @@unique([gameId])
   @@map("td_piu_profile")
