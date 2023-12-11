@@ -2,7 +2,6 @@
 
 import prisma from "@/server/prisma/client";
 import bcrypt from "bcrypt";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -23,7 +22,10 @@ const regsiterUserSchema = z.object({
   nickname: z.string().min(1, "닉네임을 입력해주세요"),
 });
 
-export async function registerUser(prevState: State, formData: FormData) {
+export async function registerUser(
+  prevState: State,
+  formData: FormData
+): Promise<State> {
   const validatedFields = regsiterUserSchema.safeParse(
     Object.fromEntries(formData.entries())
   );

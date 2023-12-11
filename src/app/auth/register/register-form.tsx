@@ -5,7 +5,7 @@ import { registerUser } from "@/server/action/register-user";
 import { useFormState, useFormStatus } from "react-dom";
 
 export default function RegisterForm() {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: undefined, errors: undefined };
   const [state, action] = useFormState(registerUser, initialState);
   const { pending } = useFormStatus();
 

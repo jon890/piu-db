@@ -12,7 +12,7 @@ export type State = {
     description?: string[];
     bannerIamge?: string[];
   };
-  message?: string | null;
+  message?: string;
 };
 
 const createRoomSchema = z.object({
@@ -22,7 +22,10 @@ const createRoomSchema = z.object({
   bannerImage: z.string(),
 });
 
-export async function createRoom(prevState: State, formData: FormData) {
+export async function createRoom(
+  prevState: State,
+  formData: FormData
+): Promise<State> {
   const session = await auth();
   const userSeq = session?.user?.email;
 

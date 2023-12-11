@@ -5,7 +5,7 @@ import { createRoom } from "@/server/action/create-room";
 import { useFormState } from "react-dom";
 
 export default function CreateForm() {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: undefined, errors: undefined };
   const [state, action] = useFormState(createRoom, initialState);
 
   return (

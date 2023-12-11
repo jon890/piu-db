@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
 
-type State = {
+export type ParticipateRoomState = {
   errors?: {
     roomSeq?: string[];
     userSeq?: string[];
@@ -17,7 +17,10 @@ const participateRoomSchema = z.object({
   userSeq: z.coerce.number().gt(0, "유저 정보가 잘못되었습니다"),
 });
 
-export async function participateRoom(prevState: State, formData: FormData) {
+export async function participateRoom(
+  prevState: ParticipateRoomState,
+  formData: FormData
+): Promise<ParticipateRoomState> {
   const session = await auth();
   const maybeUserSeq = session?.user?.email;
 
