@@ -21,7 +21,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
     if (state?.ok) {
       onSuccess?.();
     }
-  }, [state?.ok]);
+  }, [state?.ok, onSuccess]);
 
   return (
     <form
