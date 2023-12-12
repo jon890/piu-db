@@ -8,7 +8,7 @@ type State = {
   profiles: PiuProfile[];
 };
 
-export async function getPiuProfiles(prevState: State, formData: FormData) {
+export async function getPiuProfiles() {
   const session = await auth();
   const maybeUserSeq = session?.user?.email;
   if (!maybeUserSeq) return { profiles: [] };

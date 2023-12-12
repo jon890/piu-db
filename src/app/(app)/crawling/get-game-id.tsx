@@ -9,7 +9,7 @@ export type GetGameIdProps = {
   onSuccess?: () => void | Promise<void>;
 };
 
-export default function GetGameIdForm({ onSuccess }: GetGameIdProps) {
+export default function GetGameId({ onSuccess }: GetGameIdProps) {
   const initialState = {
     ok: false,
     errors: undefined,
