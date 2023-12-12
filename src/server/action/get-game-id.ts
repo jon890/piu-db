@@ -5,17 +5,16 @@ import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
 import prisma from "@/server/prisma/client";
 import { HTTPError } from "ky";
-import { redirect } from "next/navigation";
 import { z } from "zod";
 
 export type GameIdFormState = {
+  ok: boolean;
   errors?: {
     email?: string[];
     password?: string[];
     crawler?: string;
   };
   message?: string;
-  data?: { gameIds: GameId[] };
 };
 
 const participateRoomSchema = z.object({
@@ -38,6 +37,7 @@ export async function getGameId(
 
   if (!validatedFields.success) {
     return {
+      ok: false,
       errors: validatedFields.error.flatten().fieldErrors,
       message: "입력한 정보를 다시 확인해주세요",
     };
@@ -70,6 +70,8 @@ export async function getGameId(
         lastLoginDate: id.latestLoginDate === "-" ? null : id.latestLoginDate,
       })),
     });
+
+    return { ok: true };
   } catch (e) {
     let errorMsg: string;
     if (e instanceof HTTPError) {
@@ -80,8 +82,10 @@ export async function getGameId(
       errorMsg = (e as Error).message;
     }
 
-    return { errors: { crawler: errorMsg }, message: "실패했습니다" };
+    return {
+      ok: false,
+      errors: { crawler: errorMsg },
+      message: "실패했습니다",
+    };
   }
-
-  redirect("/crawling");
 }
