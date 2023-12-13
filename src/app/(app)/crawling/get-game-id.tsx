@@ -6,23 +6,22 @@ import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 export type GetGameIdProps = {
-  onLoaded?: () => void | Promise<void>;
+  onSuccess?: () => void | Promise<void>;
 };
 
-export default function GetGameIdForm({ onLoaded }: GetGameIdProps) {
+export default function GetGameId({ onSuccess }: GetGameIdProps) {
   const initialState = {
+    ok: false,
     errors: undefined,
     message: undefined,
-    data: undefined,
   };
   const [state, action] = useFormState(getGameId, initialState);
 
   useEffect(() => {
-    // success
-    if (state?.data?.gameIds) {
-      onLoaded?.();
+    if (state?.ok) {
+      onSuccess?.();
     }
-  }, [state?.data?.gameIds]);
+  }, [state?.ok, onSuccess]);
 
   return (
     <form
