@@ -1,7 +1,8 @@
 import fs from "fs";
 import os from "os";
 
-console.log();
+console.log("tmpDir", os.tmpdir());
+console.log("process.env", process.env.NODE_ENV);
 
 // nextjs dev server reloads files on page navigation, so new Prisma Clients were being spawned everytime
 export function createCertificate() {
