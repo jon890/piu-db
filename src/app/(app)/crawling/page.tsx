@@ -9,14 +9,16 @@ import GetRecentlyPlayed from "./get-recently-played";
 type State = {
   step: number;
   selectedProfile?: PiuProfile;
+  email?: string;
+  password?: string;
 };
 
 export default function CrawlingPage() {
   const [state, setState] = useState<State>({ step: 0 });
 
-  const handlLoginSuccess = () => {
+  const handlLoginSuccess = (email: string, password: string) => {
     console.log("login success");
-    setState((prev) => ({ ...prev, step: 1 }));
+    setState((prev) => ({ ...prev, step: 1, email, password }));
   };
 
   const handleSelectProfile = (profile: PiuProfile) => {
@@ -25,7 +27,7 @@ export default function CrawlingPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full space-y-10">
+    <div className="flex flex-col items-center justify-start h-full gap-10 w-[calc(100vw-20rem)]">
       {state.step === 0 && (
         <>
           <h1 className="text-3xl mt-10">Step1. 펌프잇업 로그인</h1>
@@ -43,7 +45,11 @@ export default function CrawlingPage() {
       {state.step === 2 && state.selectedProfile && (
         <>
           <h1 className="text-3xl mt-10">Step3. 최근 기록 불러오기</h1>
-          <GetRecentlyPlayed profile={state.selectedProfile} />
+          <GetRecentlyPlayed
+            profile={state.selectedProfile}
+            email={state.email ?? ""}
+            password={state.password ?? ""}
+          />
         </>
       )}
     </div>

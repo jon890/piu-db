@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === "production") {
   createCertificate();
 }
 
-console.log("db connection", process.env.POSTGRES_PRISMA_URL);
+// console.log("db connection", process.env.POSTGRES_PRISMA_URL);
 
 const prisma = new PrismaClient({
   log: [

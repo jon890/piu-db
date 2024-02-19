@@ -2,11 +2,11 @@
 
 import InputWithLabel from "@/components/InputWithLabel";
 import { getGameId } from "@/server/action/get-game-id";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 export type GetGameIdProps = {
-  onSuccess?: () => void | Promise<void>;
+  onSuccess?: (email: string, password: string) => void | Promise<void>;
 };
 
 export default function GetGameId({ onSuccess }: GetGameIdProps) {
@@ -16,12 +16,14 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
     message: undefined,
   };
   const [state, action] = useFormState(getGameId, initialState);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (state?.ok) {
-      onSuccess?.();
+    if (state?.ok && emailRef.current && passwordRef.current) {
+      onSuccess?.(emailRef.current.value, passwordRef.current.value);
     }
-  }, [state?.ok, onSuccess]);
+  }, [state?.ok, onSuccess, emailRef.current, passwordRef.current]);
 
   return (
     <form
@@ -33,6 +35,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
         placeholder="아이디를 입력해주세요"
         name="email"
         errors={state?.errors?.email}
+        inputRef={emailRef}
       />
 
       <InputWithLabel
@@ -41,6 +44,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
         placeholder="비밀번호를 입력해주세요"
         name="password"
         errors={state?.errors?.password}
+        inputRef={passwordRef}
       />
 
       <SubmitButton />

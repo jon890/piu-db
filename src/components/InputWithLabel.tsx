@@ -7,7 +7,6 @@ type InputWithLabelProps = {
   placeholder?: string;
   errors?: string[];
   inputRef?: RefObject<HTMLInputElement>;
-
   [key: string]: unknown;
 };
 
