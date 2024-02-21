@@ -2,10 +2,9 @@ import { PrismaClient } from "@prisma/client";
 import { createCertificate } from "../utils/create-certificate";
 
 if (process.env.NODE_ENV === "production") {
+  console.log("createCertificate start");
   createCertificate();
 }
-
-// console.log("db connection", process.env.POSTGRES_PRISMA_URL);
 
 const prisma = new PrismaClient({
   log: [
