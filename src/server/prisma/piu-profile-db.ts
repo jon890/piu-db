@@ -6,6 +6,8 @@ async function getPiuProfiles(userSeq: number) {
   });
 }
 
-export default {
+const index = {
   getPiuProfiles,
 };
+
+export default index;

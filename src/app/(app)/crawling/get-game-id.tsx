@@ -23,7 +23,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
     if (state?.ok && emailRef.current && passwordRef.current) {
       onSuccess?.(emailRef.current.value, passwordRef.current.value);
     }
-  }, [state?.ok, onSuccess, emailRef.current, passwordRef.current]);
+  }, [state?.ok, onSuccess]);
 
   return (
     <form

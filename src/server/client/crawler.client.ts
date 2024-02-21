@@ -24,7 +24,9 @@ function getRecentlyPlayed(email: string, password: string, nickname: string) {
   });
 }
 
-export default {
+const index = {
   getGameIds,
   getRecentlyPlayed,
 };
+
+export default index;

@@ -28,7 +28,7 @@ export default function GetRecentlyPlayed({
 
   useEffect(() => {
     formRef.current?.submit();
-  }, [formRef.current]);
+  }, []);
 
   return (
     <form action={action}>
@@ -75,7 +75,7 @@ export default function GetRecentlyPlayed({
           </thead>
           <tbody>
             {state?.data?.map((record, index) => (
-              <tr>
+              <tr key={record.playedTime}>
                 <td>{index + 1}</td>
                 <td>{record.type}</td>
                 <td>{record.level}</td>
