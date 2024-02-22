@@ -1,7 +1,7 @@
 "use client";
 
 import InputWithLabel from "@/components/InputWithLabel";
-import { getGameId } from "@/server/action/get-game-id";
+import { getGameIdAction } from "@/server/action/get-game-id.action";
 import { useEffect, useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
@@ -15,7 +15,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
     errors: undefined,
     message: undefined,
   };
-  const [state, action] = useFormState(getGameId, initialState);
+  const [state, action] = useFormState(getGameIdAction, initialState);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -24,6 +24,8 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
       onSuccess?.(emailRef.current.value, passwordRef.current.value);
     }
   }, [state?.ok, onSuccess]);
+
+  console.log(state);
 
   return (
     <form

@@ -27,7 +27,7 @@ export default function CrawlingPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-start h-full gap-10 flex-1">
+    <div className="flex flex-col items-center justify-start h-full gap-10 w-[calc(100vw-20rem)] flex-1">
       {state.step === 0 && (
         <>
           <h1 className="text-3xl mt-10">Step1. 펌프잇업 로그인</h1>

@@ -1,9 +1,9 @@
 "use client";
 
-import { getRecentlyPlayed } from "@/server/action/get-recently-played";
+import { getRecentlyPlayedAction } from "@/server/action/get-recently-played.action";
 import { PiuProfile } from "@prisma/client";
-import { useEffect, useRef } from "react";
-import { useFormState } from "react-dom";
+import { useEffect, useRef, useState } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 
 type GetRecentlyPlayedProps = {
   profile: PiuProfile;
@@ -21,40 +21,37 @@ export default function GetRecentlyPlayed({
     errors: undefined,
     message: undefined,
   };
-  const [state, action] = useFormState(getRecentlyPlayed, initialState);
+  const [state, action] = useFormState(getRecentlyPlayedAction, initialState);
+  const [loaded, setLoaded] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
-  console.log(state);
-
   useEffect(() => {
-    formRef.current?.submit();
-  }, []);
+    if (state.data?.length) {
+      setLoaded(true);
+    }
+  }, [state.data]);
 
   return (
-    <form action={action}>
+    <form
+      action={action}
+      className="flex flex-col gap-10 justify-center items-center w-full"
+    >
       <input type="hidden" name="email" value={email} />
       <input type="hidden" name="password" value={password} />
       <input type="hidden" name="nickname" value={profile.gameId} />
 
-      <h1>선택한 프로필</h1>
       <div className="card w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{profile.gameId}</h2>
           <p>{profile.lastPlayedCenter}</p>
           {profile.lastLoginDate && <p>{profile.lastLoginDate}</p>}
-
-          <div className="card-actions justify-end">
-            <button type="button" className="btn btn-primary">
-              선택
-            </button>
-          </div>
         </div>
       </div>
 
-      <button className="btn btn-primary">불러오기</button>
+      <SubmitButton disabled={loaded} />
 
       <div className="overflow-x-auto w-full">
-        <table className="table">
+        <table className="table table-xs">
           <thead>
             <tr>
               <th></th>
@@ -75,7 +72,7 @@ export default function GetRecentlyPlayed({
           </thead>
           <tbody>
             {state?.data?.map((record, index) => (
-              <tr key={record.playedTime}>
+              <tr key={record.playedTime} className="hover">
                 <td>{index + 1}</td>
                 <td>{record.type}</td>
                 <td>{record.level}</td>
@@ -96,5 +93,22 @@ export default function GetRecentlyPlayed({
         </table>
       </div>
     </form>
+  );
+}
+
+function SubmitButton({ disabled }: { disabled: boolean }) {
+  const { pending } = useFormStatus();
+
+  return (
+    <button
+      className="btn btn-primary w-full max-w-md mt-5"
+      type="submit"
+      aria-disabled={pending || disabled}
+      disabled={pending || disabled}
+    >
+      {pending
+        ? "최근기록을 불러오고 있습니다.. 잠시만 기다려 주세요"
+        : "최근기록 불러오기"}
+    </button>
   );
 }

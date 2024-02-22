@@ -1,13 +1,12 @@
 "use server";
 
-import type { GameId } from "@/types/game-id";
 import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
-import prisma from "@/server/prisma/client";
+import { RecentlyPlayed } from "@/types/recently-played";
 import { HTTPError } from "ky";
 import { z } from "zod";
 
-export type GameIdFormState = {
+export type RecentlyPlayedFormState = {
   ok: boolean;
   errors?: {
     email?: string[];
@@ -15,22 +14,24 @@ export type GameIdFormState = {
     crawler?: string;
   };
   message?: string;
+  data?: RecentlyPlayed[];
 };
 
-const participateRoomSchema = z.object({
+const getRecentlyPlayedSchema = z.object({
   email: z.string().min(1, "아이디를 입력해주세요"),
   password: z.string().min(1, "비밀번호를 입력해주세요"),
+  nickname: z.string().min(1, "닉네임을 입력해주세요"),
   userSeq: z.coerce.number().gt(0, "유저 정보가 잘못되었습니다"),
 });
 
-export async function getGameId(
-  prevState: GameIdFormState,
+export async function getRecentlyPlayedAction(
+  prevState: RecentlyPlayedFormState,
   formData: FormData
-): Promise<GameIdFormState> {
+): Promise<RecentlyPlayedFormState> {
   const session = await auth();
   const maybeUserSeq = session?.user?.email;
 
-  const validatedFields = participateRoomSchema.safeParse({
+  const validatedFields = getRecentlyPlayedSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
     userSeq: maybeUserSeq,
   });
@@ -43,35 +44,24 @@ export async function getGameId(
     };
   }
 
-  const { email, password, userSeq } = validatedFields.data;
+  const { email, password, userSeq, nickname } = validatedFields.data;
 
   try {
     const res = await crawlerClient
-      .getGameIds(email, password)
-      .json<{ gameIds: GameId[] }>();
+      .getRecentlyPlayed(email, password, nickname)
+      .json<{ recentlyPlayed: RecentlyPlayed[] }>();
 
-    const piuProfiles = await prisma.piuProfile.findMany({
-      where: {
-        gameId: {
-          in: res.gameIds.map((id) => id.nickname),
-        },
-      },
-    });
+    // const profile = await prisma.piuProfile.findMany({
+    //   where: {
+    //     gameId: nickname,
+    //   },
+    // });
 
-    const notExistIds = res.gameIds.filter(
-      (id) => !piuProfiles.find((profile) => profile.gameId === id.nickname)
-    );
+    // if (!profile) {
+    //   throw new Error("프로파일이 존재하지 않습니다");
+    // }
 
-    await prisma.piuProfile.createMany({
-      data: notExistIds.map((id) => ({
-        userSeq,
-        gameId: id.nickname,
-        lastPlayedCenter: id.latestGameCenter,
-        lastLoginDate: id.latestLoginDate === "-" ? null : id.latestLoginDate,
-      })),
-    });
-
-    return { ok: true };
+    return { ok: true, data: res.recentlyPlayed };
   } catch (e) {
     let errorMsg: string;
     if (e instanceof HTTPError) {

@@ -2,11 +2,12 @@
 
 import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
-import { RecentlyPlayed } from "@/types/recently-played";
+import prisma from "@/server/prisma/client";
+import type { GameId } from "@/types/game-id";
 import { HTTPError } from "ky";
 import { z } from "zod";
 
-export type RecentlyPlayedFormState = {
+export type GameIdFormState = {
   ok: boolean;
   errors?: {
     email?: string[];
@@ -14,24 +15,22 @@ export type RecentlyPlayedFormState = {
     crawler?: string;
   };
   message?: string;
-  data?: RecentlyPlayed[];
 };
 
-const getRecentlyPlayedSchema = z.object({
+const participateRoomSchema = z.object({
   email: z.string().min(1, "아이디를 입력해주세요"),
   password: z.string().min(1, "비밀번호를 입력해주세요"),
-  nickname: z.string().min(1, "닉네임을 입력해주세요"),
   userSeq: z.coerce.number().gt(0, "유저 정보가 잘못되었습니다"),
 });
 
-export async function getRecentlyPlayed(
-  prevState: RecentlyPlayedFormState,
+export async function getGameIdAction(
+  prevState: GameIdFormState,
   formData: FormData
-): Promise<RecentlyPlayedFormState> {
+): Promise<GameIdFormState> {
   const session = await auth();
   const maybeUserSeq = session?.user?.email;
 
-  const validatedFields = getRecentlyPlayedSchema.safeParse({
+  const validatedFields = participateRoomSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
     userSeq: maybeUserSeq,
   });
@@ -44,33 +43,46 @@ export async function getRecentlyPlayed(
     };
   }
 
-  const { email, password, userSeq, nickname } = validatedFields.data;
+  const { email, password, userSeq } = validatedFields.data;
 
   try {
     const res = await crawlerClient
-      .getRecentlyPlayed(email, password, nickname)
-      .json<{ recentlyPlayed: RecentlyPlayed[] }>();
+      .getGameIds(email, password)
+      .json<{ gameIds: GameId[] }>();
 
-    // const profile = await prisma.piuProfile.findMany({
-    //   where: {
-    //     gameId: nickname,
-    //   },
-    // });
+    const piuProfiles = await prisma.piuProfile.findMany({
+      where: {
+        gameId: {
+          in: res.gameIds.map((id) => id.nickname),
+        },
+      },
+    });
 
-    // if (!profile) {
-    //   throw new Error("프로파일이 존재하지 않습니다");
-    // }
+    const notExistIds = res.gameIds.filter(
+      (id) => !piuProfiles.find((profile) => profile.gameId === id.nickname)
+    );
 
-    return { ok: true, data: res.recentlyPlayed };
+    await prisma.piuProfile.createMany({
+      data: notExistIds.map((id) => ({
+        userSeq,
+        gameId: id.nickname,
+        lastPlayedCenter: id.latestGameCenter,
+        lastLoginDate: id.latestLoginDate === "-" ? null : id.latestLoginDate,
+      })),
+    });
+
+    return { ok: true };
   } catch (e) {
     let errorMsg: string;
     if (e instanceof HTTPError) {
       const errorBody = await e.response.json();
-      errorMsg = errorBody;
+      // todo crawler 에러 추상화
+      errorMsg = (errorBody as any).error;
     } else {
-      console.log(e);
       errorMsg = (e as Error).message;
     }
+
+    // console.log(errorMsg);
 
     return {
       ok: false,
