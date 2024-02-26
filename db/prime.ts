@@ -1,6 +1,6 @@
 import { SongData } from "./song-type";
 
-export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
+export const PRIME_SONGS: SongData[] = [
   {
     // 1
     name: "네메시스",
@@ -816,7 +816,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 46
-    name: "실루엣 이펙트 - SHORT CUt",
+    name: "실루엣 이펙트 - SHORT CUT",
     artist: "나토",
     bpm: "167",
     version: "PRIME",

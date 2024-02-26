@@ -1,9 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { FIRST_ZERO_SONGS } from "./first-to-zero";
-import { PHOENIX_SONGS } from "./phoenix";
-import { SongData } from "./song-type";
-import { NX_NXA_SONGS } from "./nx-to-nxa";
 import { FIESTA_TO_FIESTA2_SONGS } from "./fiesta-to-fiesta2";
+import { FIRST_ZERO_SONGS } from "./first-to-zero";
+import { NX_NXA_SONGS } from "./nx-to-nxa";
+import { PHOENIX_SONGS } from "./phoenix";
+import { PRIME_SONGS } from "./prime";
+import { SongData } from "./song-type";
 
 const prisma = new PrismaClient({
   log: [
@@ -53,6 +54,7 @@ async function main() {
   await initSongAndCharts(FIRST_ZERO_SONGS);
   await initSongAndCharts(NX_NXA_SONGS);
   await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
+  await initSongAndCharts(PRIME_SONGS);
   await initSongAndCharts(PHOENIX_SONGS);
 }
 
