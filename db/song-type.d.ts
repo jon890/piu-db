@@ -7,4 +7,7 @@ export type SongData = {
   version: PiuVersion;
   songType: SongType;
   charts: { level: number; chartType: ChartType }[];
+
+  // Phenoix Only
+  isPremium?: boolean;
 };
