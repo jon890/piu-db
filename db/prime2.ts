@@ -1,6 +1,6 @@
 import { SongData } from "./song-type";
 
-export const PRIME22_SONGS: SongData[] = [
+export const PRIME2_SONGS: SongData[] = [
   {
     // 1
     name: "체이스 미",

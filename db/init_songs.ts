@@ -4,6 +4,7 @@ import { FIRST_ZERO_SONGS } from "./first-to-zero";
 import { NX_NXA_SONGS } from "./nx-to-nxa";
 import { PHOENIX_SONGS } from "./phoenix";
 import { PRIME_SONGS } from "./prime";
+import { PRIME2_SONGS } from "./prime2";
 import { SongData } from "./song-type";
 
 const prisma = new PrismaClient({
@@ -55,6 +56,7 @@ async function main() {
   await initSongAndCharts(NX_NXA_SONGS);
   await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
   await initSongAndCharts(PRIME_SONGS);
+  await initSongAndCharts(PRIME2_SONGS);
   await initSongAndCharts(PHOENIX_SONGS);
 }
 
