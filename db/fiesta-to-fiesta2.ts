@@ -1002,7 +1002,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
     // 59
     name: "반야 프로덕션 클래식 리믹스",
     artist: "반야 프로덕션",
-    bpm: "1164",
+    bpm: "164",
     version: "FIESTA_FIESTA2",
     songType: "REMIX",
     charts: [

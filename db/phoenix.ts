@@ -1035,7 +1035,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "유포리아닉 - SHORT CUT -",
+    name: "유포리아닉 - SHORT CUT",
     artist: "SHK",
     bpm: "140",
     version: "PHOENIX",
