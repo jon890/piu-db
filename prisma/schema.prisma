@@ -85,6 +85,7 @@ model Chart {
   updatedAt  DateTime     @updatedAt @map("updated_at")
   Assignment Assignment[]
 
+  @@unique([songSeq, chartType, level])
   @@map("td_chart")
 }
 

@@ -1640,7 +1640,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
   {
     // 102
     name: "인터퍼런스",
-    artist: " 도인",
+    artist: "도인",
     bpm: "180.54",
     version: "FIESTA_FIESTA2",
     songType: "ARCADE",
