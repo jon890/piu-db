@@ -7,7 +7,10 @@ interface FormButtonProps {
   loadingText?: string;
 }
 
-export default function FormButton({ text, loadingText }: FormButtonProps) {
+export default function FormButton({
+  text,
+  loadingText = "잠시만 기다려주세요...",
+}: FormButtonProps) {
   const { pending } = useFormStatus();
 
   return (
