@@ -6,8 +6,24 @@ async function getPiuProfiles(userSeq: number) {
   });
 }
 
+async function createIfNotExist(userSeq: number, gameId: string) {
+  const profile = await prisma.piuProfile.upsert({
+    create: {
+      gameId,
+      userSeq,
+    },
+    update: {},
+    where: {
+      gameId,
+    },
+  });
+
+  return profile;
+}
+
 const index = {
   getPiuProfiles,
+  createIfNotExist,
 };
 
 export default index;

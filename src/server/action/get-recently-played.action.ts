@@ -5,6 +5,9 @@ import crawlerClient from "@/server/client/crawler.client";
 import { RecentlyPlayed } from "@/types/recently-played";
 import { HTTPError } from "ky";
 import { z } from "zod";
+import prisma from "@/server/prisma/client";
+import piuProfileDb from "@/server/prisma/piu-profile-db";
+import SongDB from "../prisma/song-db";
 
 export type RecentlyPlayedFormState = {
   ok: boolean;
@@ -47,21 +50,22 @@ export async function getRecentlyPlayedAction(
   const { email, password, userSeq, nickname } = validatedFields.data;
 
   try {
-    const res = await crawlerClient
+    const resBody = await crawlerClient
       .getRecentlyPlayed(email, password, nickname)
       .json<{ recentlyPlayed: RecentlyPlayed[] }>();
 
-    // const profile = await prisma.piuProfile.findMany({
-    //   where: {
-    //     gameId: nickname,
-    //   },
-    // });
+    const profile = await piuProfileDb.createIfNotExist(userSeq, nickname);
 
-    // if (!profile) {
-    //   throw new Error("프로파일이 존재하지 않습니다");
-    // }
+    const songNames = resBody.recentlyPlayed.map((record) => record.songName);
+    const songs = await SongDB.getSongsByName(songNames);
+    resBody.recentlyPlayed.filter((record) => {
+      const song = songs.find((song) => song.name === record.songName);
+      return Boolean(song);
+    }).map(record => {
+      
+    })
 
-    return { ok: true, data: res.recentlyPlayed };
+    return { ok: true, data: resBody.recentlyPlayed };
   } catch (e) {
     let errorMsg: string;
     if (e instanceof HTTPError) {

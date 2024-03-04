@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
 
 export async function authenticate(
   prevState: string | undefined,
@@ -9,9 +10,14 @@ export async function authenticate(
   try {
     await signIn("credentials", Object.fromEntries(formData));
   } catch (error) {
-    if ((error as Error).message.includes("CredentialsSignin")) {
-      return "CredentialSignin";
+    if (error instanceof AuthError) {
+      if (error.type === "CredentialsSignin") {
+        return "CredentialSignin";
+      } else {
+        throw error;
+      }
     }
+
     throw error;
   }
 }

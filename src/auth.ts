@@ -1,20 +1,9 @@
 import { authConfig } from "@/auth.config";
-import prisma from "@/server/prisma/client";
-import { User } from "@prisma/client";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
-
-async function getUser(name: string): Promise<User | null> {
-  try {
-    const user = await prisma.user.findUnique({ where: { name } });
-    return user;
-  } catch (error) {
-    console.log("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
-  }
-}
+import UserDB from "./server/prisma/user.db";
 
 /**
  * Next.js Middleware에서
@@ -33,7 +22,8 @@ export const { auth, signIn, signOut } = NextAuth({
 
         if (parsedCredentials.success) {
           const { name, password } = parsedCredentials.data;
-          const user = await getUser(name);
+          const user = await UserDB.getUser(name);
+          console.log("auth", "getUser", user);
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);

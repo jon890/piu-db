@@ -1,13 +1,13 @@
 "use client";
 
+import { authenticate } from "@/app/auth/login/action";
+import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/InputWithLabel";
-import { authenticate } from "@/server/action/authenticate";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 
 export default function LoginPage() {
   const [code, action] = useFormState(authenticate, undefined);
-  const { pending } = useFormStatus();
 
   return (
     <main className="w-full">
@@ -48,13 +48,7 @@ export default function LoginPage() {
             placeholder="비밀번호를 입력해주세요"
             name="password"
           />
-          <button
-            className="btn btn-primary w-full max-w-md mt-5"
-            aria-disabled={pending}
-            disabled={pending}
-          >
-            {pending ? "잠시만 기다려주세요" : "로그인"}
-          </button>
+          <FormButton text={"로그인"} loadingText="잠시만 기다려주세요" />
         </form>
         <div className="flex h-8 items-end space-x-1">
           {code === "CredentialSignin" && (
