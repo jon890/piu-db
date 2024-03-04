@@ -18,7 +18,7 @@ export default function RecordPage(props: Props) {
     <div className="flex flex-col items-center justify-start w-full h-full space-y-10">
       <h1 className="text-3xl mt-10">내 기록</h1>
 
-      <Suspense fallback={<p>방 목록을 읽고 있습니다...</p>}>
+      <Suspense fallback={<p>기록을 읽고 있습니다...</p>}>
         <MyRecords page={props.searchParams.page ?? "1"} />
       </Suspense>
     </div>
