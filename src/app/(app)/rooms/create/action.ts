@@ -7,11 +7,6 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 export type State = {
-  errors?: {
-    name?: string[];
-    description?: string[];
-    bannerIamge?: string[];
-  };
   message?: string;
 };
 
@@ -22,10 +17,7 @@ const createRoomSchema = z.object({
   bannerImage: z.string(),
 });
 
-export async function createRoom(
-  prevState: State,
-  formData: FormData
-): Promise<State> {
+export async function createRoom(prevState: State | null, formData: FormData) {
   const session = await auth();
   const userSeq = session?.user?.email;
 
@@ -36,7 +28,7 @@ export async function createRoom(
 
   if (!validatedFields.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      errors: validatedFields.error.flatten(),
       message: "Missing Fields. Failed to Create Room.",
     };
   }

@@ -6,7 +6,7 @@ async function getUser(name: string): Promise<User | null> {
     const user = await prisma.user.findUnique({ where: { name } });
     return user;
   } catch (error) {
-    console.log("Failed to fetch user:", error);
+    // console.log("Failed to fetch user:", error);
     throw new Error("Failed to fetch user.");
   }
 }

@@ -16,8 +16,6 @@ export default function ParticipateForm({ room }: ParticipateFormProps) {
   const [state, action] = useFormState(participateRoom, initialState);
   const { pending } = useFormStatus();
 
-  console.log(state);
-
   return (
     <form action={action}>
       <input type="hidden" name="roomSeq" defaultValue={room.seq} />
