@@ -2,10 +2,11 @@
 
 import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
-import piuProfileDb from "@/server/prisma/piu-profile.db";
-import SongDB from "@/server/prisma/song-db";
+import ChartDB from "@/server/prisma/chart.db";
+import PiuProfileDB from "@/server/prisma/piu-profile.db";
+import RecordDB from "@/server/prisma/record.db";
+import SongDB from "@/server/prisma/song.db";
 import { RecentlyPlayed } from "@/types/recently-played";
-import { HTTPError } from "ky";
 import { GetRecentlyPlayedSchema } from "./schema";
 
 export type RecentlyPlayedFormState = {
@@ -36,37 +37,32 @@ export async function getRecentlyPlayedAction(
 
   const { email, password, userSeq, nickname } = validatedFields.data;
 
-  try {
-    const resBody = await crawlerClient
-      .getRecentlyPlayed(email, password, nickname)
-      .json<{ recentlyPlayed: RecentlyPlayed[] }>();
+  const crawlingRes = await crawlerClient.getRecentlyPlayed(
+    email,
+    password,
+    nickname
+  );
 
-    const profile = await piuProfileDb.createIfNotExist(userSeq, nickname);
-
-    const songNames = resBody.recentlyPlayed.map((record) => record.songName);
-    const songs = await SongDB.getSongsByName(songNames);
-    resBody.recentlyPlayed
-      .filter((record) => {
-        const song = songs.find((song) => song.name === record.songName);
-        return Boolean(song);
-      })
-      .map((record) => {});
-
-    return { ok: true, data: resBody.recentlyPlayed };
-  } catch (e) {
-    let errorMsg: string;
-    if (e instanceof HTTPError) {
-      const errorBody = await e.response.json();
-      errorMsg = errorBody;
-    } else {
-      console.log(e);
-      errorMsg = (e as Error).message;
-    }
-
+  if (!crawlingRes.ok) {
     return {
       ok: false,
-      errors: errorMsg,
-      message: "실패했습니다",
+      errors: crawlingRes.error,
     };
   }
+
+  // 기록 저장
+  const profile = await PiuProfileDB.createIfNotExist(userSeq, nickname);
+
+  // cache enable
+  await SongDB.findAll();
+  await ChartDB.findAll();
+
+  for (const record of crawlingRes.data) {
+    await RecordDB.saveRecentRecord(profile.seq, record);
+  }
+
+  return {
+    ok: true,
+    data: crawlingRes.data,
+  };
 }

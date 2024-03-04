@@ -257,7 +257,6 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 3, chartType: "SINGLE" },
       { level: 5, chartType: "SINGLE" },
       { level: 8, chartType: "SINGLE" },
-      { level: 8, chartType: "SINGLE" },
       { level: 17, chartType: "SINGLE" },
       { level: 18, chartType: "SINGLE" },
       { level: 50, chartType: "CO_OP" },

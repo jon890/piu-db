@@ -1075,7 +1075,6 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 17, chartType: "SINGLE" },
       { level: 21, chartType: "SINGLE" },
-      { level: 18, chartType: "DOUBLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },

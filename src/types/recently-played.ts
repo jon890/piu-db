@@ -1,4 +1,4 @@
-export type Type = "Single" | "Double" | "Unknown";
+export type Type = "SINGLE" | "DOUBLE" | "Unknown";
 
 export type Grade =
   | "SSS_PLUS"
@@ -26,8 +26,7 @@ export type Plate =
   | "SUPERB_GAME"
   | "EXTREME_GAME"
   | "ULTIMATE_GAME"
-  | "PERFECT_GAME"
-  | null;
+  | "PERFECT_GAME";
 
 export type RecentlyPlayed = {
   type: Type;

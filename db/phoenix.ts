@@ -82,7 +82,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "아모르파티",
+    name: "아모르 파티",
     artist: "김연자",
     bpm: "135",
     version: "PHOENIX",
@@ -582,7 +582,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "SINGLE" },
       { level: 14, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
-      { level: 20, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
   },
@@ -906,7 +906,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "R.I.P.",
+    name: "R.I.P",
     artist: "eicateve",
     bpm: "192",
     version: "PHOENIX",

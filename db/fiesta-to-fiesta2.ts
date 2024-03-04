@@ -1568,145 +1568,159 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
   {
     // 97
     name: "슈샤",
-    artist: "반야 & DM Ashura",
-    bpm: "220",
+    artist: "Smiley",
+    bpm: "160",
     version: "FIESTA_FIESTA2",
-    songType: "SHORT_CUT",
+    songType: "ARCADE",
     charts: [
-      { level: 21, chartType: "SINGLE" },
-      { level: 21, chartType: "DOUBLE" },
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 12, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
   },
 
   {
     // 98
-    name: "에프 에프 에프 - SHORT CUT",
-    artist: "도인",
-    bpm: "200",
+    name: "스타 커맨드",
+    artist: "Zircon",
+    bpm: "155",
     version: "FIESTA_FIESTA2",
-    songType: "SHORT_CUT",
+    songType: "ARCADE",
     charts: [
-      { level: 18, chartType: "SINGLE" },
-      { level: 21, chartType: "DOUBLE" },
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
     ],
   },
 
   {
     // 99
-    name: "유니크 - SHORT CUT",
-    artist: "SHK",
-    bpm: "145",
+    name: "왓 해픈드",
+    artist: "Throwdown",
+    bpm: "130",
     version: "FIESTA_FIESTA2",
-    songType: "SHORT_CUT",
+    songType: "ARCADE",
     charts: [
-      { level: 18, chartType: "SINGLE" },
-      { level: 16, chartType: "DOUBLE" },
+      { level: 3, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
     ],
   },
 
   {
     // 100
-    name: "유 갓 미 락킹 - SHORT CUT",
-    artist: "맥스",
-    bpm: "128",
-    version: "FIESTA_FIESTA2",
-    songType: "SHORT_CUT",
-    charts: [
-      { level: 17, chartType: "SINGLE" },
-      { level: 17, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 101
-    name: "클리너",
-    artist: "도인",
-    bpm: "203",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 21, chartType: "SINGLE" },
-      { level: 23, chartType: "SINGLE" },
-      { level: 20, chartType: "DOUBLE" },
-      { level: 25, chartType: "DOUBLE" },
-      { level: 26, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 102
-    name: "인터퍼런스",
-    artist: "도인",
-    bpm: "180.54",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 12, chartType: "SINGLE" },
-      { level: 18, chartType: "SINGLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 19, chartType: "DOUBLE" },
-      { level: 22, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 103
-    name: "리얼리티",
-    artist: "SHK",
-    bpm: "135",
-    version: "FIESTA_FIESTA2",
-    songType: "ARCADE",
-    charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 15, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 6, chartType: "DOUBLE" },
-      { level: 15, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // 104
-    name: "테이크 아웃",
-    artist: "SHK",
-    bpm: "170",
+    name: "가고일",
+    artist: "Sanxion7",
+    bpm: "150",
     version: "FIESTA_FIESTA2",
     songType: "ARCADE",
     charts: [
       { level: 4, chartType: "SINGLE" },
       { level: 7, chartType: "SINGLE" },
       { level: 11, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 20, chartType: "SINGLE" },
-      { level: 13, chartType: "DOUBLE" },
-      { level: 19, chartType: "DOUBLE" },
-      { level: 22, chartType: "DOUBLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
+    ],
+  },
+
+  {
+    // 101
+    name: "알레그로 콘 뿌오코",
+    artist: "DM Ashura",
+    bpm: "156",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 5, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 102
+    name: "엑스 레이브",
+    artist: "DM Ashura",
+    bpm: "147",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 6, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 103
+    name: "스멜스 라이크 어 초콜릿",
+    artist: "Vospi",
+    bpm: "175.9",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 6, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 12, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+    ],
+  },
+
+  {
+    // 104
+    name: "네크로맨시",
+    artist: "Zircon",
+    bpm: "173",
+    version: "FIESTA_FIESTA2",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
     ],
   },
 
   {
     // 105
-    name: "버터플라이",
-    artist: "맥스 & 로리체슬",
-    bpm: "128",
+    name: "엑스 레이브 - SHORT CUT",
+    artist: "DM Ashura",
+    bpm: "147",
     version: "FIESTA_FIESTA2",
     songType: "ARCADE",
     charts: [
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
       { level: 16, chartType: "SINGLE" },
-      { level: 8, chartType: "DOUBLE" },
-      { level: 17, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
     ],
   },
 ];

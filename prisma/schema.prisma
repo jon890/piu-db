@@ -19,7 +19,6 @@ model User {
   createdAt                  DateTime                     @default(now()) @map("created_at")
   updatedAt                  DateTime                     @updatedAt @map("updated_at")
   piuProfiles                PiuProfile[]
-  records                    Record[]
   assignmentRooms            AssignmentRoom[]
   assignmentRoomParticipants AssignmentRoomParticipants[]
   assignmentRecords          AssigmentRecord[]
@@ -35,7 +34,7 @@ model PiuProfile {
   records          Record[]
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
-  User             User     @relation(fields: [userSeq], references: [seq])
+  user             User     @relation(fields: [userSeq], references: [seq])
   userSeq          Int      @map("user_seq")
 
   @@unique([gameId])
@@ -50,7 +49,6 @@ model Song {
   version   PiuVersion
   songType  SongType   @map("song_type")
   charts    Chart[]
-  records   Record[]
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAt DateTime   @updatedAt @map("updated_at")
 
@@ -98,12 +96,8 @@ enum ChartType {
 
 model Record {
   seq             Int               @id @default(autoincrement())
-  song            Song              @relation(fields: [songSeq], references: [seq])
-  songSeq         Int               @map("song_seq")
   chart           Chart             @relation(fields: [chartSeq], references: [seq])
   chartSeq        Int               @map("chart_seq")
-  user            User              @relation(fields: [userSeq], references: [seq])
-  userSeq         Int               @map("user_seq")
   piuProfile      PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
   piuProfileSeq   Int               @map("piu_profile_seq")
   score           Int
@@ -115,14 +109,16 @@ model Record {
   maxCombo        Int               @map("max_combo")
   grade           RecordGrade
   plate           RecordPlate
+  playedAt        DateTime          @map("played_at")
   createdAt       DateTime          @default(now()) @map("created_at")
   updatedAt       DateTime          @updatedAt @map("updated_at")
   AssigmentRecord AssigmentRecord[]
 
+  @@unique([chartSeq, piuProfileSeq, playedAt])
   @@map("td_record")
 }
 
-enum RecordGrade {
+enum RecordPlate {
   ROUGH_GAME
   FAIR_GAME
   TALENTED_GAME
@@ -133,7 +129,7 @@ enum RecordGrade {
   PERFECT_GAME
 }
 
-enum RecordPlate {
+enum RecordGrade {
   SSS_PLUS
   SSS
   SS_PLUS
