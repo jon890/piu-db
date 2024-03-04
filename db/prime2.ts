@@ -1111,7 +1111,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 62
-    name: "아스테리오스 -리엔트리",
+    name: "아스테리오스 -리엔트리-",
     artist: "ATAS",
     bpm: "148",
     version: "PRIME2",

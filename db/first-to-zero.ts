@@ -472,7 +472,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 28
-    name: "겟 업!",
+    name: "겟 업",
     artist: "반야",
     bpm: "180",
     version: "FIRST_ZERO",

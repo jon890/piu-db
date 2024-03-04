@@ -1611,7 +1611,7 @@ export const XX_SONGS: SongData[] = [
 
   {
     // 85
-    name: "Re : 엔드 오브 어 드림",
+    name: "Re：엔드 오브 어 드림",
     artist: "uma vs. Morimori Atsushi",
     bpm: "212",
     version: "XX",

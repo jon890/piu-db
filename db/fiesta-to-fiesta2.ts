@@ -1284,7 +1284,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 80
-    name: "데스티네이션 - SHORT CUT",
+    name: "데스티네이션 - SHORT CUT -",
     artist: "SHK",
     bpm: "150",
     version: "FIESTA_FIESTA2",

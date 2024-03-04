@@ -712,7 +712,7 @@ export const PRIME_SONGS: SongData[] = [
 
   {
     // 39
-    name: "라이크미",
+    name: "라이크 미",
     artist: "SHK",
     bpm: "155",
     version: "PRIME",
