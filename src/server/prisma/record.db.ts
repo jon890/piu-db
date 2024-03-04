@@ -1,6 +1,13 @@
 import prisma from "@/server/prisma/client";
 import { RecentlyPlayed } from "@/types/recently-played";
-import { RecordGrade, RecordPlate } from "@prisma/client";
+import {
+  Chart,
+  Record,
+  RecordGrade,
+  RecordPlate,
+  Song,
+  SongType,
+} from "@prisma/client";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
 
@@ -68,8 +75,57 @@ async function saveRecentRecord(profileSeq: number, record: RecentlyPlayed) {
   });
 }
 
+async function getRecords(userSeq: number, page: number) {
+  const PAGE_UNIT = 50;
+
+  const profileSeqs = await prisma.piuProfile.findMany({
+    select: {
+      seq: true,
+    },
+    where: {
+      userSeq,
+    },
+  });
+
+  const records = await prisma.record.findMany({
+    where: {
+      piuProfileSeq: {
+        in: profileSeqs.map((it) => it.seq),
+      },
+    },
+    include: {
+      piuProfile: {
+        select: {
+          gameId: true,
+        },
+      },
+    },
+    skip: (page - 1) * PAGE_UNIT,
+    take: PAGE_UNIT,
+  });
+
+  const recordsWithSong: (Record & {
+    chart: Chart | undefined | null;
+    song: Song | undefined | null;
+  })[] = [];
+
+  for (const record of records) {
+    const chart = await ChartDB.findChartBySeqInCache(record.chartSeq);
+    const song = chart?.seq ? await SongDB.findSongBySeq(chart?.songSeq) : null;
+
+    recordsWithSong.push({
+      ...record,
+      chart,
+      song,
+    });
+  }
+
+  return recordsWithSong;
+}
+
 const RecordDB = {
   saveRecentRecord,
+  getRecords,
 };
 
 export default RecordDB;

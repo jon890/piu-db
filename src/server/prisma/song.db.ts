@@ -44,9 +44,19 @@ async function findBySongName(songName: string) {
   }
 }
 
+async function findSongBySeq(seq: number) {
+  if (isCached()) {
+    const songs = await findAll();
+    return songs.find((it) => it.seq === seq);
+  }
+
+  return null;
+}
+
 const SongDB = {
   findAll,
   findBySongName,
+  findSongBySeq,
 };
 
 export default SongDB;

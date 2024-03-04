@@ -51,9 +51,19 @@ async function findChart(songSeq: number, level: number, chartType: ChartType) {
   }
 }
 
+async function findChartBySeqInCache(seq: number) {
+  if (isCached()) {
+    const charts = await findAll();
+    return charts.find((it) => it.seq === seq);
+  }
+
+  return null;
+}
+
 const ChartDB = {
   findAll,
   findChart,
+  findChartBySeqInCache,
 };
 
 export default ChartDB;
