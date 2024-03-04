@@ -1,21 +1,17 @@
 "use client";
 
+import { getGameIdAction } from "@/app/(app)/crawling/(get-game-id)/action";
+import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/InputWithLabel";
-import { getGameIdAction } from "@/server/action/get-game-id.action";
 import { useEffect, useRef } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 
 export type GetGameIdProps = {
   onSuccess?: (email: string, password: string) => void | Promise<void>;
 };
 
 export default function GetGameId({ onSuccess }: GetGameIdProps) {
-  const initialState = {
-    ok: false,
-    errors: undefined,
-    message: undefined,
-  };
-  const [state, action] = useFormState(getGameIdAction, initialState);
+  const [state, action] = useFormState(getGameIdAction, null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -24,8 +20,6 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
       onSuccess?.(emailRef.current.value, passwordRef.current.value);
     }
   }, [state?.ok, onSuccess]);
-
-  console.log(state);
 
   return (
     <form
@@ -36,7 +30,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
         topLeft="아이디"
         placeholder="아이디를 입력해주세요"
         name="email"
-        errors={state?.errors?.email}
+        errors={state?.paramErrors?.fieldErrors?.email}
         inputRef={emailRef}
       />
 
@@ -45,32 +39,16 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
         topLeft="비밀번호"
         placeholder="비밀번호를 입력해주세요"
         name="password"
-        errors={state?.errors?.password}
+        errors={state?.paramErrors?.fieldErrors?.password}
         inputRef={passwordRef}
       />
 
-      <SubmitButton />
+      <FormButton text="펌프잇업 로그인" />
 
       <div className="mt-6 text-sm text-red-500 font-bold">
         <p>{state?.message}</p>
-        {state?.errors?.crawler && <p>{state?.errors?.crawler}</p>}
+        {state?.error && <p>{state?.error}</p>}
       </div>
     </form>
-  );
-}
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      className="btn btn-primary w-full max-w-md mt-5"
-      type="submit"
-      aria-disabled={pending}
-      disabled={pending}
-    >
-      {pending
-        ? "로그인 중 입니다.. 잠시만 기다려 주세요"
-        : "펌프잇업에 로그인"}
-    </button>
   );
 }

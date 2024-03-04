@@ -21,9 +21,9 @@ async function createIfNotExist(userSeq: number, gameId: string) {
   return profile;
 }
 
-const index = {
+const PiuProfileDB = {
   getPiuProfiles,
   createIfNotExist,
 };
 
-export default index;
+export default PiuProfileDB;

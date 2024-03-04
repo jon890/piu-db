@@ -2,9 +2,9 @@
 
 import { PiuProfile } from "@prisma/client";
 import { useState } from "react";
-import GetGameId from "./get-game-id";
-import PiuProfileList from "./piu-profile-list";
-import GetRecentlyPlayed from "./get-recently-played";
+import GetGameId from "./(get-game-id)/form";
+import GetRecentlyPlayed from "./(get-recently-played)/form";
+import PiuProfileList from "./(profile-list)/form";
 
 type State = {
   step: number;

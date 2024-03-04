@@ -1,8 +1,8 @@
 "use server";
 
 import { auth } from "@/auth";
+import PiuProfileDB from "@/server/prisma/piu-profile.db";
 import { PiuProfile } from "@prisma/client";
-import piuProfileDb from "../prisma/piu-profile-db";
 
 type State = {
   profiles: PiuProfile[];
@@ -13,7 +13,7 @@ export async function getPiuProfiles() {
   const maybeUserSeq = session?.user?.email;
   if (!maybeUserSeq) return { profiles: [] };
 
-  const profiles = await piuProfileDb.getPiuProfiles(Number(maybeUserSeq));
+  const profiles = await PiuProfileDB.getPiuProfiles(Number(maybeUserSeq));
 
   return { profiles };
 }

@@ -1,8 +1,9 @@
 "use client";
 
-import { getRecentlyPlayedAction } from "@/server/action/get-recently-played.action";
+import { getRecentlyPlayedAction } from "@/app/(app)/crawling/(get-recently-played)/action";
+import FormButton from "@/components/FormButton";
 import { PiuProfile } from "@prisma/client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 type GetRecentlyPlayedProps = {
@@ -16,20 +17,14 @@ export default function GetRecentlyPlayed({
   email,
   password,
 }: GetRecentlyPlayedProps) {
-  const initialState = {
-    ok: false,
-    errors: undefined,
-    message: undefined,
-  };
-  const [state, action] = useFormState(getRecentlyPlayedAction, initialState);
+  const [state, action] = useFormState(getRecentlyPlayedAction, null);
   const [loaded, setLoaded] = useState(false);
-  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-    if (state.data?.length) {
+    if (state?.data?.length) {
       setLoaded(true);
     }
-  }, [state.data]);
+  }, [state?.data]);
 
   return (
     <form
@@ -48,7 +43,7 @@ export default function GetRecentlyPlayed({
         </div>
       </div>
 
-      <SubmitButton disabled={loaded} />
+      <FormButton text="최근기록 불러오기" />
 
       <div className="overflow-x-auto w-full">
         <table className="table table-xs">
@@ -93,22 +88,5 @@ export default function GetRecentlyPlayed({
         </table>
       </div>
     </form>
-  );
-}
-
-function SubmitButton({ disabled }: { disabled: boolean }) {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      className="btn btn-primary w-full max-w-md mt-5"
-      type="submit"
-      aria-disabled={pending || disabled}
-      disabled={pending || disabled}
-    >
-      {pending
-        ? "최근기록을 불러오고 있습니다.. 잠시만 기다려 주세요"
-        : "최근기록 불러오기"}
-    </button>
   );
 }

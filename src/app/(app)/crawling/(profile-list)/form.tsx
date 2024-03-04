@@ -1,6 +1,6 @@
 "use client";
 
-import { getPiuProfiles } from "@/server/action/get-piu-profiles";
+import { getPiuProfiles } from "@/app/(app)/crawling/(profile-list)/action";
 import { PiuProfile } from "@prisma/client";
 import { useEffect, useState } from "react";
 
@@ -27,12 +27,6 @@ export default function PiuProfileList({ onSelect }: PiuProfileListProps) {
       ) : (
         profiles.map((profile) => (
           <div className="card w-96 bg-base-100 shadow-xl" key={profile.seq}>
-            {/* <figure>
-              <img
-                src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                alt="Shoes"
-              />
-            </figure> */}
             <div className="card-body">
               <h2 className="card-title">{profile.gameId}</h2>
               <p>{profile.lastPlayedCenter}</p>

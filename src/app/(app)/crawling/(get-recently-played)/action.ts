@@ -2,39 +2,26 @@
 
 import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
+import piuProfileDb from "@/server/prisma/piu-profile.db";
+import SongDB from "@/server/prisma/song-db";
 import { RecentlyPlayed } from "@/types/recently-played";
 import { HTTPError } from "ky";
-import { z } from "zod";
-import prisma from "@/server/prisma/client";
-import piuProfileDb from "@/server/prisma/piu-profile-db";
-import SongDB from "../prisma/song-db";
+import { GetRecentlyPlayedSchema } from "./schema";
 
 export type RecentlyPlayedFormState = {
   ok: boolean;
-  errors?: {
-    email?: string[];
-    password?: string[];
-    crawler?: string;
-  };
   message?: string;
   data?: RecentlyPlayed[];
 };
 
-const getRecentlyPlayedSchema = z.object({
-  email: z.string().min(1, "아이디를 입력해주세요"),
-  password: z.string().min(1, "비밀번호를 입력해주세요"),
-  nickname: z.string().min(1, "닉네임을 입력해주세요"),
-  userSeq: z.coerce.number().gt(0, "유저 정보가 잘못되었습니다"),
-});
-
 export async function getRecentlyPlayedAction(
-  prevState: RecentlyPlayedFormState,
+  prevState: RecentlyPlayedFormState | null,
   formData: FormData
-): Promise<RecentlyPlayedFormState> {
+) {
   const session = await auth();
   const maybeUserSeq = session?.user?.email;
 
-  const validatedFields = getRecentlyPlayedSchema.safeParse({
+  const validatedFields = GetRecentlyPlayedSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
     userSeq: maybeUserSeq,
   });
@@ -42,7 +29,7 @@ export async function getRecentlyPlayedAction(
   if (!validatedFields.success) {
     return {
       ok: false,
-      errors: validatedFields.error.flatten().fieldErrors,
+      paramError: validatedFields.error.flatten(),
       message: "입력한 정보를 다시 확인해주세요",
     };
   }
@@ -58,12 +45,12 @@ export async function getRecentlyPlayedAction(
 
     const songNames = resBody.recentlyPlayed.map((record) => record.songName);
     const songs = await SongDB.getSongsByName(songNames);
-    resBody.recentlyPlayed.filter((record) => {
-      const song = songs.find((song) => song.name === record.songName);
-      return Boolean(song);
-    }).map(record => {
-      
-    })
+    resBody.recentlyPlayed
+      .filter((record) => {
+        const song = songs.find((song) => song.name === record.songName);
+        return Boolean(song);
+      })
+      .map((record) => {});
 
     return { ok: true, data: resBody.recentlyPlayed };
   } catch (e) {
@@ -78,7 +65,7 @@ export async function getRecentlyPlayedAction(
 
     return {
       ok: false,
-      errors: { crawler: errorMsg },
+      errors: errorMsg,
       message: "실패했습니다",
     };
   }
