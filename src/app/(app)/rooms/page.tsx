@@ -1,5 +1,5 @@
 import Room from "@/components/Room";
-import { getRooms } from "@/server/prisma/assignment-rooms";
+import RoomDB from "@/server/prisma/room.db";
 import Link from "next/link";
 import { Suspense } from "react";
 
@@ -19,12 +19,16 @@ export default function RoomListPage() {
 }
 
 async function RoomList() {
-  const rooms = await getRooms();
+  const rooms = await RoomDB.getRooms();
 
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5">
       {rooms.map((r) => (
-        <Room key={r.seq} room={r} />
+        <Room
+          key={r.seq}
+          room={r}
+          count={r._count.assignmentRoomParticipants}
+        />
       ))}
     </div>
   );

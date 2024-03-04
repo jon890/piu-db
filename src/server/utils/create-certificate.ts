@@ -1,5 +1,4 @@
 import fs from "fs";
-import os from "os";
 import { TMP_DIR } from "./tmpdir";
 
 // nextjs dev server reloads files on page navigation, so new Prisma Clients were being spawned everytime

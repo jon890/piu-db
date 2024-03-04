@@ -8,10 +8,15 @@ const ROOM_PAGING_UNIT = 10;
 /**
  * 방 목록
  */
-export async function getRooms(page: number = 0) {
+async function getRooms(page: number = 0) {
   return prisma.assignmentRoom.findMany({
     skip: page * ROOM_PAGING_UNIT,
     take: ROOM_PAGING_UNIT,
+    include: {
+      _count: {
+        select: { assignmentRoomParticipants: true },
+      },
+    },
   });
 }
 
@@ -43,3 +48,26 @@ export async function getRoomWithParticipants(seq: number) {
 
   return { room, participants };
 }
+
+async function participant(roomSeq: number, userSeq: number) {
+  return prisma.assignmentRoomParticipants.upsert({
+    where: {
+      assignmentRoomSeq_userSeq: {
+        assignmentRoomSeq: roomSeq,
+        userSeq,
+      },
+    },
+    create: {
+      assignmentRoomSeq: roomSeq,
+      userSeq,
+    },
+    update: {},
+  });
+}
+
+const RoomDB = {
+  getRooms,
+  participant,
+};
+
+export default RoomDB;

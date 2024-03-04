@@ -1,4 +1,4 @@
-import { getRoomWithParticipants } from "@/server/prisma/assignment-rooms";
+import { getRoomWithParticipants } from "@/server/prisma/room.db";
 import { notFound } from "next/navigation";
 import ParticipateForm from "./paritipate-form";
 

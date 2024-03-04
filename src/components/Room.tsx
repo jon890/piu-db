@@ -1,27 +1,17 @@
 import { AssignmentRoom } from "@prisma/client";
-import Image from "next/image";
 import Link from "next/link";
-import phoenixChannel from "../../public/images/channel_purple.png";
 
-export type RoomProps = { room: AssignmentRoom };
+export type RoomProps = { room: AssignmentRoom; count: number };
 
-export default function CardGlass({ room }: RoomProps) {
+export default function CardGlass({ room, count }: RoomProps) {
   return (
     <div className="card card-side w-96 glass">
-      {room.bannerImage && (
-        <figure>
-          <Image
-            src={phoenixChannel}
-            width={120}
-            height={120}
-            alt="card-image"
-          />
-        </figure>
-      )}
-
       <div className="card-body">
         {room.name && <h2 className="card-title">{room.name}</h2>}
-        {room.description && <p>{room.description}</p>}
+        {room.description && <p className="font-medium">{room.description}</p>}
+        <p className="text-end font-medium">
+          참여자 수 : <span className="font-bold">{count}</span>
+        </p>
 
         <div className="card-actions justify-end">
           <Link href={`/rooms/${room.seq}`}>
