@@ -8,8 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db-push:local": "dotenv -e .env.local -- npx prisma migrate dev --name $name",
-    "db-push:dev": "dotenv -e .env.development -- npx prisma migrate dev --name $name",
+    "db-pull:local": "dotenv -e .env.local -- prisma db pull",
+    "db-pull:dev": "dotenv -e .env.development -- prisma db pull",
+    "db-push:local": "dotenv -e .env.local -- prisma db push",
+    "db-push:dev": "dotenv -e .env.development -- prisma db push",
     "db:generate": "prisma generate",
     "db-init:local": "dotenv -e .env.local -- ts-node ./db/init_songs",
     "db-init:dev": "dotenv -e .env.development -- ts-node ./db/init_songs"
