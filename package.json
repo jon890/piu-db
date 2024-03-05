@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "studio:dev": "dotenv -e .env.development -- prisma studio",
     "db-pull:local": "dotenv -e .env.local -- prisma db pull",
     "db-pull:dev": "dotenv -e .env.development -- prisma db pull",
     "db-push:local": "dotenv -e .env.local -- prisma db push",

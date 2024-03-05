@@ -87,6 +87,15 @@ async function getRecords(userSeq: number, page: number) {
     },
   });
 
+  const totalRecords = await prisma.record.aggregate({
+    where: {
+      piuProfileSeq: {
+        in: profileSeqs.map((it) => it.seq),
+      },
+    },
+    _count: { seq: true },
+  });
+
   const records = await prisma.record.findMany({
     where: {
       piuProfileSeq: {
@@ -104,11 +113,7 @@ async function getRecords(userSeq: number, page: number) {
     take: PAGE_UNIT,
   });
 
-  const recordsWithSong: (Record & {
-    chart: Chart | undefined | null;
-    song: Song | undefined | null;
-  })[] = [];
-
+  const recordsWithSong = [];
   for (const record of records) {
     const chart = await ChartDB.findChartBySeqInCache(record.chartSeq);
     const song = chart?.seq ? await SongDB.findSongBySeq(chart?.songSeq) : null;
@@ -120,7 +125,11 @@ async function getRecords(userSeq: number, page: number) {
     });
   }
 
-  return recordsWithSong;
+  return {
+    records: recordsWithSong,
+    count: totalRecords?._count.seq,
+    unit: PAGE_UNIT,
+  };
 }
 
 const RecordDB = {
