@@ -3,21 +3,35 @@
 import { registerUser } from "@/app/auth/register/action";
 import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/InputWithLabel";
+import { ChangeEventHandler, useState } from "react";
 import { useFormState } from "react-dom";
 
 export default function RegisterForm() {
   const [state, action] = useFormState(registerUser, null);
+  const [name, setName] = useState<string>("");
+
+  const handleChangeName: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const replaced = e.target.value.replaceAll(
+      /[`~!@#$%^&*()_|+\-=?;:'"<>\{\}\[\]\\\/ ]/g,
+      ""
+    );
+    setName(replaced);
+  };
 
   return (
     <form
-      className="flex justify-center items-center w-1/2 flex-col"
+      className="flex justify-center items-center w-full flex-col max-w-md"
       action={action}
     >
       <InputWithLabel
         topLeft="아이디"
+        topRight="* 아이디는 특수문자를 입력할 수 없습니다."
+        topRightClass="text-red-500 font-semibold"
         placeholder="아이디를 입력해주세요"
         name="name"
         errors={state?.errors?.fieldErrors.name}
+        onChange={handleChangeName}
+        value={name}
       />
 
       <InputWithLabel

@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import UserDB from "./server/prisma/user.db";
+import { LoginSchema } from "./app/auth/login/schema";
 
 /**
  * Next.js Middleware에서
@@ -16,21 +17,15 @@ export const { auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       async authorize(credentials) {
-        const parsedCredentials = z
-          .object({ name: z.string(), password: z.string().min(6) })
-          .safeParse(credentials);
+        const parsedCredentials = LoginSchema.safeParse(credentials);
 
         if (parsedCredentials.success) {
           const { name, password } = parsedCredentials.data;
           const user = await UserDB.getUser(name);
-          // console.log("auth", "getUser", user);
+
           if (!user) return null;
 
           const passwordsMatch = await bcrypt.compare(password, user.password);
-          // console.log("passwordsMatch", passwordsMatch);
-
-          // TODO KBT : 리턴값이 custom 화 될 수 없는지?
-          // declare module 로 동작하지 않는듯..
           if (passwordsMatch) {
             return {
               id: user.seq.toString(),
@@ -40,7 +35,6 @@ export const { auth, signIn, signOut } = NextAuth({
           }
         }
 
-        // console.log("Invalid credentials");
         return null;
       },
     }),

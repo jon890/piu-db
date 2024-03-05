@@ -1,20 +1,19 @@
-import { RefObject } from "react";
+import classnames from "@/client/utils/classnames";
+import { InputHTMLAttributes, RefObject } from "react";
 
 type InputWithLabelProps = {
-  name?: string;
-  type?: "text" | "password";
   topLeft?: string;
-  placeholder?: string;
+  topRight?: string;
+  topRightClass?: string;
   errors?: string[];
   inputRef?: RefObject<HTMLInputElement>;
-  [key: string]: unknown;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export default function InputWithLabel({
   name,
-  type,
   topLeft,
-  placeholder,
+  topRight,
+  topRightClass,
   errors,
   inputRef,
   ...rest
@@ -22,15 +21,19 @@ export default function InputWithLabel({
   return (
     <div className="form-control w-full max-w-md">
       <label className="label">
-        {topLeft && <span className="label-text">{topLeft}</span>}
-        {/* <span className="label-text-alt">Top Right Label</span> */}
+        {(topLeft || topRight) && (
+          <span className="label-text">{topLeft ?? ""}</span>
+        )}
+        {topRight && (
+          <span className={classnames("label-text-alt", topRightClass ?? "")}>
+            {topRight}
+          </span>
+        )}
       </label>
       <input
-        type={type ?? "text"}
         name={name ?? ""}
-        placeholder={placeholder ?? ""}
         className="input input-bordered w-full max-w-md"
-        aria-describedby={`${name}-error`}
+        aria-describedby={`${name ?? ""}-error`}
         ref={inputRef}
         {...rest}
       />
@@ -40,7 +43,7 @@ export default function InputWithLabel({
       </label>
       {errors && (
         <div
-          id={`${name}-error`}
+          id={`${name ?? ""}-error`}
           aria-live="polite"
           className="text-sm text-red-500"
         >
