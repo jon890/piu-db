@@ -23,7 +23,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
 
   return (
     <form
-      className="flex justify-center items-center w-1/2 flex-col"
+      className="flex justify-center items-center w-full max-w-md flex-col"
       action={action}
     >
       <InputWithLabel
