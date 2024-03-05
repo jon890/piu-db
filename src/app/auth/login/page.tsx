@@ -43,11 +43,9 @@ export default function LoginPage() {
 
         <div className="flex h-8 items-end space-x-1">
           {state?.code !== "Success" && (
-            <>
-              <p aria-live="polite" className="text-sm text-red-500">
-                {state?.message}
-              </p>
-            </>
+            <p aria-live="polite" className="text-sm text-red-500">
+              {state?.message}
+            </p>
           )}
         </div>
       </section>

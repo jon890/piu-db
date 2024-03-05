@@ -3,6 +3,7 @@
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { LoginSchema } from "./schema";
+import { isRedirectError } from "next/dist/client/components/redirect";
 
 type State = {
   code: string;
@@ -29,9 +30,14 @@ export async function authenticate(
     await signIn("credentials", validatedFields.data);
     return { code: "Success", message: "로그인 되었습니다" };
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
+
     if (error instanceof AuthError) {
       return { code: error.type, message: error.name };
     } else {
+      console.error(error);
       return { code: "Unknown", message: "알 수 없는 오류가 발생했습니다." };
     }
   }
