@@ -5,3 +5,6 @@ steps:
     automapSubstitutions: true
 images:
   - "asia-northeast3-docker.pkg.dev/$PROJECT_ID/piudb-web:$COMMIT_SHA/$PROJECT_ID/piudb-web:$COMMIT_SHA"
+
+options:
+  logging: CLOUD_LOGGING_ONLY
