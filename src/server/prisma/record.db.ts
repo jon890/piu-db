@@ -1,16 +1,9 @@
 import prisma from "@/server/prisma/client";
 import { RecentlyPlayed } from "@/types/recently-played";
-import {
-  Chart,
-  Record,
-  RecordGrade,
-  RecordPlate,
-  Song,
-  SongType,
-} from "@prisma/client";
+import { RecordGrade, RecordPlate } from "@prisma/client";
+import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
-import TimeUtil from "../utils/time-util";
 
 function getRecentPlayToEntity(record: RecentlyPlayed) {
   return {
@@ -20,7 +13,7 @@ function getRecentPlayToEntity(record: RecentlyPlayed) {
     good: record.good,
     bad: record.bad,
     miss: record.miss,
-    playedAt: TimeUtil.convertUTC(record.playedTime),
+    playedAt: TimeUtil.convertUTC(record.playedTime).toDate(),
     maxCombo: 0,
     grade: RecordGrade[record.grade],
     plate: RecordPlate[record.plate],
