@@ -981,7 +981,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "비엘라의 악몽",
+    name: "비옐라의 악몽",
     artist: "Laur",
     bpm: "220",
     version: "PHOENIX",
