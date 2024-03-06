@@ -103,6 +103,9 @@ async function getRecords(userSeq: number, page: number) {
         },
       },
     },
+    orderBy: {
+      playedAt: "desc",
+    },
     skip: (page - 1) * PAGE_UNIT,
     take: PAGE_UNIT,
   });

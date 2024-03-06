@@ -43,7 +43,7 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
         inputRef={passwordRef}
       />
 
-      <FormButton text="펌프잇업 로그인" />
+      <FormButton text="펌프잇업 로그인" className="mt-5" />
 
       <div className="mt-6 text-sm text-red-500 font-bold">
         <p>{state?.message}</p>

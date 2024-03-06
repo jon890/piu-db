@@ -38,7 +38,11 @@ export default function LoginPage() {
             name="password"
             errors={state?.errors?.fieldErrors?.password}
           />
-          <FormButton text={"로그인"} loadingText="잠시만 기다려주세요" />
+          <FormButton
+            text={"로그인"}
+            loadingText="잠시만 기다려주세요"
+            className="mt-5"
+          />
         </form>
 
         <div className="flex h-8 items-end space-x-1">

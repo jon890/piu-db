@@ -43,7 +43,7 @@ export default function GetRecentlyPlayed({
         </div>
       </div>
 
-      <FormButton text="최근기록 불러오기" />
+      <FormButton text="최근기록 불러오기" className="mt-5" />
 
       <div className="overflow-x-auto w-full">
         <table className="table table-xs">

@@ -37,7 +37,7 @@ export default function CreateRoomForm() {
         errors={state?.errors.fieldErrors.bannerImage}
       />
 
-      <FormButton text="방 생성" />
+      <FormButton text="방 생성" className="mt-5" />
     </form>
   );
 }

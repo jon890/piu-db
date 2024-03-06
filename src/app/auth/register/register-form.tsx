@@ -54,7 +54,11 @@ export default function RegisterForm() {
         name="nickname"
         errors={state?.errors?.fieldErrors?.nickname}
       />
-      <FormButton text={"회원가입"} loadingText="잠시만 기다려주세요..." />
+      <FormButton
+        text={"회원가입"}
+        loadingText="잠시만 기다려주세요..."
+        className="mt-5"
+      />
 
       <div className="mt-6 text-sm text-red-500 font-bold">
         {state?.message}

@@ -3,6 +3,7 @@ import AuthUtil from "@/server/utils/auth-util";
 import dayjs from "dayjs";
 import { notFound } from "next/navigation";
 import ParticipateForm from "./paritipate-form";
+import Link from "next/link";
 
 export default async function RoomDetailPage({
   params,
@@ -29,7 +30,15 @@ export default async function RoomDetailPage({
         <h2 className="text-xl mt-5 font-semibold">{room.description}</h2>
       )}
 
-      <ParticipateForm room={room} isParticipated={isParticipated} />
+      <div className="flex flex-row items-center justify-center gap-4">
+        <ParticipateForm room={room} isParticipated={isParticipated} />
+        <Link
+          href={`/rooms/${room.seq}/assignment/create`}
+          className="btn btn-primary"
+        >
+          숙제 만들기
+        </Link>
+      </div>
 
       <div className="overflow-x-auto shadow-md p-4">
         <h3 className="text-center font-semibold p-2">참여자 목록</h3>

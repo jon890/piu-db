@@ -17,7 +17,7 @@ export default function ParticipateForm({
   const [state, action] = useFormState(participateRoom, null);
 
   return (
-    <form action={action}>
+    <form action={action} className="flex justify-center items-center">
       <input type="hidden" name="roomSeq" defaultValue={room.seq} />
       <FormButton
         text={isParticipated ? "참여 중 입니다" : "참여하기"}
