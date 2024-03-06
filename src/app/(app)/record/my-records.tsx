@@ -2,6 +2,7 @@ import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
 import { Paging } from "./paging";
 import dayjs from "dayjs";
+import TimeUtil from "@/server/utils/time-util";
 
 type MyRecordsProps = {
   page: number;
@@ -51,9 +52,11 @@ export default async function MyRecords({ page }: MyRecordsProps) {
                   <td>{record.miss}</td>
                   <td>{record.score}</td>
                   <td>
-                    <span>{dayjs(record.playedAt).format("YYYY-MM-DD")}</span>
+                    <span>
+                      {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
+                    </span>
                     <br />
-                    <span>{dayjs(record.playedAt).format("HH:mm:ss")}</span>
+                    <span>{TimeUtil.format(record.playedAt, "HH:mm:ss")}</span>
                   </td>
                 </tr>
               ))

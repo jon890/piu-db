@@ -1,4 +1,7 @@
 import classnames from "@/client/utils/classnames";
+import TimeUtil from "@/server/utils/time-util";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import Link from "next/link";
 
 export async function Paging({
@@ -12,7 +15,6 @@ export async function Paging({
   count: number;
   unit: number;
 }) {
-  console.log(page, count, unit);
   const totalPages = Math.ceil(count / unit);
 
   return (
