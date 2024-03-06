@@ -69,7 +69,10 @@ export default async function MyRecords({ page }: MyRecordsProps) {
                         record.grade === "SSS" || record.grade === "SSS_PLUS",
                     })}
                   >
-                    {record.grade}
+                    {record.grade.includes("_")
+                      ? record.grade.substring(0, record.grade.indexOf("_")) +
+                        "+"
+                      : record.grade}
                   </td>
                   <td
                     className={classnames("plate", {
