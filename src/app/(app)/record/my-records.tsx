@@ -3,6 +3,7 @@ import AuthUtil from "@/server/utils/auth-util";
 import { Paging } from "./paging";
 import dayjs from "dayjs";
 import TimeUtil from "@/server/utils/time-util";
+import classnames from "@/client/utils/classnames";
 
 type MyRecordsProps = {
   page: number;
@@ -43,8 +44,54 @@ export default async function MyRecords({ page }: MyRecordsProps) {
                   <td>{record.chart?.chartType}</td>
                   <td>{record.chart?.level}</td>
                   <td>{record.song?.name}</td>
-                  <td>{record.grade}</td>
-                  <td>{record.plate}</td>
+                  <td
+                    className={classnames("plate", {
+                      "text-rough":
+                        record.grade === "F" ||
+                        record.grade === "D" ||
+                        record.grade === "C" ||
+                        record.grade === "B" ||
+                        record.grade === "A" ||
+                        record.grade === "A_PLUS" ||
+                        record.grade === "AA" ||
+                        record.grade === "AA_PLUS",
+
+                      "text-talented":
+                        record.grade === "AAA" || record.grade === "AAA_PLUS",
+
+                      "text-superb":
+                        record.grade === "S" ||
+                        record.grade === "S_PLUS" ||
+                        record.grade === "SS" ||
+                        record.grade === "SS_PLUS",
+
+                      "text-ultimate":
+                        record.grade === "SSS" || record.grade === "SSS_PLUS",
+                    })}
+                  >
+                    {record.grade}
+                  </td>
+                  <td
+                    className={classnames("plate", {
+                      "text-rough":
+                        record.plate === "ROUGH_GAME" ||
+                        record.plate === "FAIR_GAME",
+
+                      "text-talented":
+                        record.plate === "TALENTED_GAME" ||
+                        record.plate === "MARVELOUS_GAME",
+
+                      "text-superb":
+                        record.plate === "SUPERB_GAME" ||
+                        record.plate === "EXTREME_GAME",
+
+                      "text-ultimate":
+                        record.plate === "ULTIMATE_GAME" ||
+                        record.plate === "PERFECT_GAME",
+                    })}
+                  >
+                    {record.plate}
+                  </td>
                   <td>{record.perfect}</td>
                   <td>{record.great}</td>
                   <td>{record.good}</td>

@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.plate {
+  text-shadow: #fc0 1px 0 10px;
+}

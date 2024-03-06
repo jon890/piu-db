@@ -6,6 +6,12 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    colors: {
+      rough: "#973d0c",
+      talented: "#e5e3e2",
+      superb: "#dcc78a",
+      ultimate: "#70d0fb",
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
