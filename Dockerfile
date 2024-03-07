@@ -26,8 +26,12 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+COPY ./prisma/cert/client-identity.p12 /tmp/client-identity.p12
+COPY ./prisma/cert/server-ca.pem /tmp/server-ca.pem
+
 RUN corepack enable
 RUN pnpm build
+
 
 # Production image, copy all the files and run next
 FROM base AS runner
@@ -44,14 +48,19 @@ COPY --from=builder /app/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
+# COPY --from=builder --chown=nextjs:nodejs /app/.env.docker.production /app/.env.production
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+COPY --from=builder --chown=nextjs:nodejs /tmp/client-identity.p12 /tmp/client-identity.p12
+COPY --from=builder --chown=nextjs:nodejs /tmp/server-ca.pem /tmp/server-ca.pem
+COPY --from=builder --chown=nextjs:nodejs /app/.env.docker.production /app/.env.production
 
 USER nextjs
 
 EXPOSE 3000
 
 ENV PORT 3000
-ENV HOSTNAME localhost
+# ENV HOSTNAME localhost
 
 CMD ["node", "server.js"]

@@ -1,34 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PIU DB
 
-## Getting Started
+## 우분투 도커 설치
 
-First, run the development server:
+```sh
+echo "uninstall all conflicting packages"
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+echo "set up docker's apt repository"
+
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+echo "install docker packages"
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 도커 빌드
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+docker build -t piudb-web --platform linux/amd64 .
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 도커 실행
 
-## Learn More
+```sh
+docker run -d -p 3000:3000 --name piudb-web piudb-web
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Artifact Registry 업로드
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 0. 저장소 인증
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+gcloud auth configure-docker REGION-docker.pkg.dev
+```
 
-## Deploy on Vercel
+### 0. 저장소 사용 설정 확인
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```sh
+gcloud artifacts repositories describe REPOSITORY \
+    --project=PROJECT_ID \
+    --location=REGION
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 1. 도커 로그인
+
+```sh
+cat KEY_FILE | docker login -u _json_key --password-stdin \
+https://REGION-docker.pkg.dev
+```
+
+### 2. 로컬 이미지 태깅
+
+```sh
+docker tag piudb-web REGION-docker.pkg.dev/PROJECT_ID/ARTIFACT_REGISTRY_ID/piudb-web
+```
+
+### 3. 푸시
+
+```sh
+docker push REGION-docker.pkg.dev/PROJECT_ID/ARTIFACT_REGISTRY_ID/piudb-web
+```
+
+### 4. 풀
+
+```sh
+docker pull REGION-docker.pkg.dev/PROJECT_ID/ARTIFACT_REGISTRY_ID/piudb-web
+```

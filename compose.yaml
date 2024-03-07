@@ -1,0 +1,6 @@
+services:
+  piudb-web:
+    image: piudb-web:latest
+    ports:
+      - "3001:3000"
+    restart: "always"
