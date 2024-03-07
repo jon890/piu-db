@@ -3,12 +3,15 @@ import { getRoomWithParticipants } from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import { redirect } from "next/navigation";
 import SelectSong from "./select-song";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 
 export default async function AssignmentCreatePage({
   params,
 }: {
   params: { id: string };
 }) {
+  const session = await auth();
   const userSeq = await AuthUtil.getUserSeqThrows();
 
   const songWithCharts = await ChartDB.findAllGroupBySong();

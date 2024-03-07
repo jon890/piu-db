@@ -2,9 +2,8 @@ import { authConfig } from "@/auth.config";
 import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { z } from "zod";
-import UserDB from "./server/prisma/user.db";
 import { LoginSchema } from "./app/auth/login/schema";
+import UserDB from "./server/prisma/user.db";
 
 /**
  * Next.js Middleware에서
