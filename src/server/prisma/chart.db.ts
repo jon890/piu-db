@@ -1,9 +1,10 @@
 import prisma from "@/server/prisma/client";
-import { Chart, ChartType, Song } from "@prisma/client";
+import { Chart, ChartType, Song, SongType } from "@prisma/client";
 import fsPromise from "node:fs/promises";
 import fs from "node:fs";
 import path from "node:path";
 import { TMP_DIR } from "../utils/tmpdir";
+import SongDB from "./song.db";
 
 const CACHE_FOLDER = path.resolve(TMP_DIR, "piudb_cache");
 const CACHE_FILE = path.resolve(CACHE_FOLDER, "charts.json");
@@ -28,6 +29,39 @@ async function findAll(): Promise<Chart[]> {
     await fsPromise.writeFile(CACHE_FILE, JSON.stringify(charts, null, 2));
     return charts;
   }
+}
+
+export type SongWithCharts = Song & { charts: Chart[] | undefined };
+async function findAllGroupBySong(): Promise<SongWithCharts[]> {
+  const songs = await SongDB.findAll();
+  const songMap = new Map<number, Song>();
+
+  for (const song of songs) {
+    songMap.set(song.seq, song);
+  }
+
+  const charts = await findAll();
+  const chartSongSeqMap = new Map<number, Chart[]>();
+
+  for (const chart of charts) {
+    const songSeq = chart.songSeq;
+    const song = songMap.get(songSeq);
+    if (!song) continue;
+
+    if (chartSongSeqMap.has(songSeq)) {
+      chartSongSeqMap.get(songSeq)?.push(chart);
+    } else {
+      chartSongSeqMap.set(songSeq, [chart]);
+    }
+  }
+
+  const songWithCharts: (Song & { charts: Chart[] | undefined })[] = [];
+  songMap.forEach((song, seq) => {
+    const charts = chartSongSeqMap.get(seq);
+    songWithCharts.push({ ...song, charts });
+  });
+
+  return songWithCharts;
 }
 
 async function findChart(songSeq: number, level: number, chartType: ChartType) {
@@ -62,6 +96,7 @@ async function findChartBySeqInCache(seq: number) {
 
 const ChartDB = {
   findAll,
+  findAllGroupBySong,
   findChart,
   findChartBySeqInCache,
 };

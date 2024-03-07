@@ -1,10 +1,8 @@
+import ChartDB from "@/server/prisma/chart.db";
 import { getRoomWithParticipants } from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
-import dayjs from "dayjs";
 import { redirect } from "next/navigation";
 import SelectSong from "./select-song";
-import SongDB from "@/server/prisma/song.db";
-import ChartDB from "@/server/prisma/chart.db";
 
 export default async function AssignmentCreatePage({
   params,
@@ -12,8 +10,8 @@ export default async function AssignmentCreatePage({
   params: { id: string };
 }) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const songs = await SongDB.findAll();
-  const charts = await ChartDB.findAll();
+
+  const songWithCharts = await ChartDB.findAllGroupBySong();
   const { room, participants } = await getRoomWithParticipants(
     Number(params.id)
   );
@@ -33,7 +31,7 @@ export default async function AssignmentCreatePage({
   return (
     <div className="flex flex-col items-center w-full h-full space-y-10">
       <h1 className="text-3xl mt-10 font-bold">숙제곡 선택</h1>
-      <SelectSong songs={songs} charts={charts} />
+      <SelectSong songWithCharts={songWithCharts} />
     </div>
   );
 }
