@@ -11,7 +11,7 @@ export default function LevelBall({ chart, onClick }: Props) {
     <button
       onClick={() => onClick?.(chart)}
       className={classnames(
-        "size-12 md:size-14 rounded-full",
+        "size-14 text-base rounded-full",
         "flex justify-center items-center",
         "ring-2 ring-offset-1 ring-black",
         "cursor-pointer hover:opacity-30 active:opacity-30 transition-opacity",

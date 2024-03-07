@@ -156,12 +156,12 @@ function SelectSongCard({
   return (
     <div className="card bg-base-100 shadow-xl">
       <div className="card-body">
-        <h2 className="card-title">
+        <h2 className="card-title text-lg sm:text-xl">
           {songWithChart.name}
           {/* <div className="badge badge-secondary">NEW</div> */}
         </h2>
 
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end *:text-xs">
           <div className="badge badge-outline">
             아티스트: {songWithChart.artist}
           </div>
@@ -172,7 +172,7 @@ function SelectSongCard({
           <div className="badge badge-outline">
             버전: {songWithChart.version}
           </div>
-          <div className="grid grid-cols-5 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 mt-10">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-3 mt-10">
             {songWithChart.charts?.map((chart) => (
               <LevelBall
                 key={chart.seq}
