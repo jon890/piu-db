@@ -4,10 +4,10 @@ steps:
       [
         "build",
         "-t",
-        "asia-northeast3-docker.pkg.dev/${PROJECT_ID}/piudb-web:${COMMIT_SHA}",
+        "gcr.io/${PROJECT_ID}/github.com/jon890/piu-db:${COMMIT_SHA}",
         ".",
       ]
 images:
-  - "asia-northeast3-docker.pkg.dev/$PROJECT_ID/piudb-web:$COMMIT_SHA/$PROJECT_ID/piudb-web:$COMMIT_SHA"
+  - "gcr.io/$PROJECT_ID/github.com/jon890/piu-db:$COMMIT_SHA"
 options:
   logging: CLOUD_LOGGING_ONLY
