@@ -12,6 +12,7 @@ const getCorsHeaders = () => {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   compress: true,
   swcMinify: true,
   productionBrowserSourceMaps: false,
