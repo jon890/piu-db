@@ -95,6 +95,7 @@ async function findChartBySeqInCache(seq: number) {
 }
 
 const ChartDB = {
+  CACHE_FILE,
   findAll,
   findAllGroupBySong,
   findChart,

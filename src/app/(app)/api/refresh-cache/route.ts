@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { initializeCache } from "@/server/prisma/init";
+import { refreshCache } from "@/server/prisma/init";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Not permitted" }, { status: 403 });
   }
 
-  await initializeCache();
+  await refreshCache();
   console.log("Cache refreshed!! by", id);
 
   return NextResponse.json({ message: "success" }, { status: 200 });

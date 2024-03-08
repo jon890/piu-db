@@ -54,6 +54,7 @@ async function findSongBySeq(seq: number) {
 }
 
 const SongDB = {
+  CACHE_FILE,
   findAll,
   findBySongName,
   findSongBySeq,
