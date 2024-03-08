@@ -18,6 +18,7 @@ model User {
   createdAt                  DateTime                     @default(now()) @map("created_at")
   updatedAt                  DateTime                     @updatedAt @map("updated_at")
   piuProfiles                PiuProfile[]
+  assignment                 Assignment[]
   assignmentRooms            AssignmentRoom[]
   assignmentRoomParticipants AssignmentRoomParticipants[]
   assignmentRecords          AssigmentRecord[]
@@ -178,16 +179,18 @@ model AssignmentRoomParticipants {
 }
 
 model Assignment {
-  seq       Int               @id @default(autoincrement())
-  room      AssignmentRoom    @relation(fields: [roomSeq], references: [seq])
-  roomSeq   Int               @map("room_seq")
-  startDate DateTime          @map("start_date")
-  endDate   DateTime          @map("end_date")
-  chart     Chart             @relation(fields: [chartSeq], references: [seq])
-  chartSeq  Int               @map("chart_seq")
-  records   AssigmentRecord[]
-  updatedAt DateTime          @updatedAt @map("updated_at")
-  createdAt DateTime          @default(now()) @map("created_at")
+  seq           Int               @id @default(autoincrement())
+  roomSeq       Int               @map("room_seq")
+  room          AssignmentRoom    @relation(fields: [roomSeq], references: [seq])
+  startDate     DateTime          @map("start_date")
+  endDate       DateTime          @map("end_date")
+  chart         Chart             @relation(fields: [chartSeq], references: [seq])
+  chartSeq      Int               @map("chart_seq")
+  records       AssigmentRecord[]
+  createUserSeq Int               @map("create_user_seq")
+  createUser    User              @relation(fields: [createUserSeq], references: [seq])
+  updatedAt     DateTime          @updatedAt @map("updated_at")
+  createdAt     DateTime          @default(now()) @map("created_at")
 
   @@map("td_assignment")
 }

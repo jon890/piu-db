@@ -65,10 +65,22 @@ async function participant(roomSeq: number, userSeq: number) {
   });
 }
 
+async function isParticipated(roomSeq: number, userSeq: number) {
+  const exist = await prisma.assignmentRoomParticipants.count({
+    where: {
+      assignmentRoomSeq: roomSeq,
+      userSeq: userSeq,
+    },
+  });
+
+  return exist > 0;
+}
+
 const RoomDB = {
   getRooms,
   participant,
   getRoomWithParticipants,
+  isParticipated,
 };
 
 export default RoomDB;

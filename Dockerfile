@@ -26,9 +26,6 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-COPY ./prisma/cert/client-identity.p12 /tmp/client-identity.p12
-COPY ./prisma/cert/server-ca.pem /tmp/server-ca.pem
-
 RUN corepack enable
 RUN pnpm build
 
@@ -52,8 +49,6 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-COPY --from=builder --chown=nextjs:nodejs /tmp/client-identity.p12 /tmp/client-identity.p12
-COPY --from=builder --chown=nextjs:nodejs /tmp/server-ca.pem /tmp/server-ca.pem
 COPY --from=builder --chown=nextjs:nodejs /app/.env.docker.production /app/.env.production
 
 USER nextjs

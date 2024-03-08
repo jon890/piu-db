@@ -10,11 +10,10 @@ export default async function AssignmentCreatePage({
   params: { id: string };
 }) {
   const userSeq = await AuthUtil.getUserSeqThrows();
+  const roomSeq = Number(params.id);
 
   const songWithCharts = await ChartDB.findAllGroupBySong();
-  const { room, participants } = await RoomDB.getRoomWithParticipants(
-    Number(params.id)
-  );
+  const { room, participants } = await RoomDB.getRoomWithParticipants(roomSeq);
 
   const isParticipated = Boolean(
     participants?.find((p) => p.userSeq === userSeq)
@@ -25,13 +24,13 @@ export default async function AssignmentCreatePage({
   }
 
   if (!isParticipated) {
-    redirect(`/rooms/${params.id}?message=FORBIDDEN`);
+    redirect(`/rooms/${roomSeq}?message=FORBIDDEN`);
   }
 
   return (
     <div className="flex flex-col items-center w-full h-full space-y-10">
       <h1 className="text-3xl mt-10 font-bold">숙제곡 선택</h1>
-      <SelectSong songWithCharts={songWithCharts} />
+      <SelectSong songWithCharts={songWithCharts} roomSeq={roomSeq} />
     </div>
   );
 }

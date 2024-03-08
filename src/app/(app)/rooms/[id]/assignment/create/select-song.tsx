@@ -1,18 +1,18 @@
 "use client";
 
-import InputWithLabel from "@/components/InputWithLabel";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { $Enums, Chart, ChartType, PiuVersion, SongType } from "@prisma/client";
 import { useEffect, useState } from "react";
+import AssignmentCreateForm from "./create-form";
 import DropDown from "./dropdown";
-import SelectedSongCard from "./selected-song";
 import SongCard from "./song-card";
 
 type Props = {
   songWithCharts: SongWithCharts[];
+  roomSeq: number;
 };
 
-export default function SelectSong({ songWithCharts }: Props) {
+export default function SelectSong({ songWithCharts, roomSeq }: Props) {
   const [searchCondition, setSearchCondition] = useState<{
     version?: PiuVersion;
     songType?: SongType;
@@ -23,19 +23,19 @@ export default function SelectSong({ songWithCharts }: Props) {
     ...songWithCharts,
   ]);
 
-  const [selectedSongs, setSelectedSongs] = useState<{
+  const [selectedSong, setSelectedSong] = useState<{
     song: SongWithCharts;
     chart: Chart;
   } | null>(null);
 
   function handleChartSelect(song: SongWithCharts, chart: Chart) {
-    setSelectedSongs({ song, chart });
+    setSelectedSong({ song, chart });
   }
 
   useEffect(() => {
-    console.log("change search condition", searchCondition);
+    // console.log("change search condition", searchCondition);
 
-    const { chartType, songType, version } = searchCondition;
+    const { songType, version } = searchCondition;
 
     const filtered = [...songWithCharts].filter((song) => {
       let filter = true;
@@ -51,7 +51,7 @@ export default function SelectSong({ songWithCharts }: Props) {
 
   return (
     <div className="flex gap-5 flex-col px-3 pb-10 w-full">
-      {!selectedSongs ? (
+      {!selectedSong ? (
         <>
           <div className="flex flex-row gap-3 w-full justify-start items-start">
             <DropDown
@@ -94,28 +94,11 @@ export default function SelectSong({ songWithCharts }: Props) {
         <>
           <button
             className="btn btn-primary"
-            onClick={() => setSelectedSongs(null)}
+            onClick={() => setSelectedSong(null)}
           >
             다시 선택하기
           </button>
-          <div className="card lg:card-side bg-base-100 shadow-xl">
-            <div className="card-body">
-              <h2 className="card-title gap-2">
-                선택한 곡을 확인하고 다음 내용을 입력해주세요
-              </h2>
-              <SelectedSongCard
-                songWithChart={selectedSongs.song}
-                chart={selectedSongs.chart}
-              />
-              <form>
-                <InputWithLabel topLeft="시작일" type="date" />
-                <InputWithLabel topLeft="종료일" type="date" />
-              </form>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">숙제곡 지정</button>
-              </div>
-            </div>
-          </div>
+          <AssignmentCreateForm selectedSong={selectedSong} roomSeq={roomSeq} />
         </>
       )}
     </div>

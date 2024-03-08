@@ -29,7 +29,7 @@ export default function SongCard({
       );
       setvisibleCharts(filtered);
 
-      console.log("visibleCharts", filtered, songWithChart.name);
+      // console.log("visibleCharts", filtered, songWithChart.name);
     }
   }, [chartType]);
 
