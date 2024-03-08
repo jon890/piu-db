@@ -28,7 +28,7 @@ export async function getRoom(seq: number) {
   });
 }
 
-export async function getRoomWithParticipants(seq: number) {
+async function getRoomWithParticipants(seq: number) {
   const room = await prisma.assignmentRoom.findUnique({
     where: {
       seq,
@@ -68,6 +68,7 @@ async function participant(roomSeq: number, userSeq: number) {
 const RoomDB = {
   getRooms,
   participant,
+  getRoomWithParticipants,
 };
 
 export default RoomDB;

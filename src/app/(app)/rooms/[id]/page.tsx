@@ -1,10 +1,11 @@
-import { getRoomWithParticipants } from "@/server/prisma/room.db";
+import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import dayjs from "dayjs";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import ParticipateForm from "./paritipate-form";
-import Link from "next/link";
 import Toast from "./toast";
+import TimeUtil from "@/server/utils/time-util";
 
 type Props = {
   params: { id: string };
@@ -15,7 +16,7 @@ type Props = {
 
 export default async function RoomDetailPage({ params, searchParams }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const { room, participants } = await getRoomWithParticipants(
+  const { room, participants } = await RoomDB.getRoomWithParticipants(
     Number(params.id)
   );
 
@@ -37,6 +38,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
 
         <div className="flex flex-row items-center justify-center gap-4">
           <ParticipateForm room={room} isParticipated={isParticipated} />
+
           <Link
             href={`/rooms/${room.seq}/assignment/create`}
             className="btn btn-primary"
@@ -60,7 +62,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                 <tr key={p.seq}>
                   <th>{p.seq}</th>
                   <th>{p.user.nickname}</th>
-                  <th>{dayjs(p.createdAt).format("YYYY-MM-DD HH:mm")}</th>
+                  <th>{TimeUtil.format(p.createdAt, "YYYY-MM-DD HH:mm")}</th>
                 </tr>
               ))}
             </tbody>
