@@ -30,7 +30,9 @@ const prisma = new PrismaClient({
 });
 
 async function initSongAndCharts(songs: SongData[]) {
-  for (const song of songs) {
+  const pacthedSongs = songs.filter((it) => it.patchVersion === "1.07");
+
+  for (const song of pacthedSongs) {
     await prisma.song.create({
       data: {
         name: song.name,
@@ -46,19 +48,13 @@ async function initSongAndCharts(songs: SongData[]) {
   }
 }
 
-async function deleteAll() {
-  await prisma.chart.deleteMany();
-  await prisma.song.deleteMany();
-}
-
 async function main() {
-  await deleteAll();
-  await initSongAndCharts(FIRST_ZERO_SONGS);
-  await initSongAndCharts(NX_NXA_SONGS);
-  await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
-  await initSongAndCharts(PRIME_SONGS);
-  await initSongAndCharts(PRIME2_SONGS);
-  await initSongAndCharts(XX_SONGS);
+  // await initSongAndCharts(FIRST_ZERO_SONGS);
+  // await initSongAndCharts(NX_NXA_SONGS);
+  // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
+  // await initSongAndCharts(PRIME_SONGS);
+  // await initSongAndCharts(PRIME2_SONGS);
+  // await initSongAndCharts(XX_SONGS);
   await initSongAndCharts(PHOENIX_SONGS);
 }
 

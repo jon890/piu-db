@@ -27,6 +27,11 @@ sudo apt-get update
 echo "install docker packages"
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+echo "docker permission"
+sudo /usr/sbin/groupadd -f docker
+sudo /usr/sbin/usermod -aG docker USER
+sudo chown root:docker /var/run/docker.sock
 ```
 
 ## 도커 빌드

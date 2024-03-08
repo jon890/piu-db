@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
-    "@prisma/client": "^5.7.0",
+    "@prisma/client": "^5.10.2",
     "autoprefixer": "10.4.17",
     "bcrypt": "^5.1.1",
     "dayjs": "^1.11.10",
