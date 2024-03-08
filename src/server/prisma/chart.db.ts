@@ -94,12 +94,28 @@ async function findChartBySeqInCache(seq: number) {
   return null;
 }
 
+async function findSongBySeqInCache(seq: number) {
+  if (isCached()) {
+    const charts = await findAll();
+    const chart = charts.find((it) => it.seq === seq);
+
+    const song = chart?.songSeq
+      ? await SongDB.findSongBySeq(chart?.songSeq)
+      : null;
+
+    return { chart, song };
+  }
+
+  return null;
+}
+
 const ChartDB = {
   CACHE_FILE,
   findAll,
   findAllGroupBySong,
   findChart,
   findChartBySeqInCache,
+  findSongBySeqInCache,
 };
 
 export default ChartDB;

@@ -13,7 +13,7 @@ export default async function AssignmentCreatePage({
   const roomSeq = Number(params.id);
 
   const songWithCharts = await ChartDB.findAllGroupBySong();
-  const { room, participants } = await RoomDB.getRoomWithParticipants(roomSeq);
+  const { room, participants } = await RoomDB.getRoomDetail(roomSeq);
 
   const isParticipated = Boolean(
     participants?.find((p) => p.userSeq === userSeq)
