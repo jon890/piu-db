@@ -30,7 +30,8 @@ const prisma = new PrismaClient({
 });
 
 async function initSongAndCharts(songs: SongData[]) {
-  const pacthedSongs = songs.filter((it) => it.patchVersion === "1.07");
+  // const pacthedSongs = songs.filter((it) => it.patchVersion === "1.07");
+  const pacthedSongs = songs.filter((it) => it.name === "스테이저");
 
   for (const song of pacthedSongs) {
     await prisma.song.create({
@@ -40,6 +41,8 @@ async function initSongAndCharts(songs: SongData[]) {
         bpm: song.bpm,
         version: song.version,
         songType: song.songType,
+        isPremium: song.isPremium,
+        patchVersion: song.patchVersion,
         charts: {
           create: [...song.charts],
         },

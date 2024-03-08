@@ -158,7 +158,7 @@ function SelectSongCard({
       <div className="card-body">
         <h2 className="card-title text-base sm:text-xl">
           {songWithChart.name}
-          {/* <div className="badge badge-secondary">NEW</div> */}
+          <div className="badge badge-secondary"></div>
         </h2>
 
         <div className="card-actions justify-end *:text-[9px] *:sm:text-xs">

@@ -1150,5 +1150,6 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.07",
   },
 ];
