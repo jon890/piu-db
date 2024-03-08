@@ -85,7 +85,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
           </table>
         </div>
 
-        <div className="overflow-x-auto shadow-md p-4">
+        <div className="overflow-x-auto w-full shadow-md p-4">
           <h3 className="text-center font-semibold p-2">숙제 목록</h3>
           <table className="table">
             <thead>
@@ -97,11 +97,15 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                 <th>시작일</th>
                 <th>종료일</th>
                 <th>상태</th>
+                <th>등록일</th>
               </tr>
             </thead>
             <tbody>
               {assignmentWithSong?.map(({ assignment, chart, song }, index) => (
-                <tr key={index}>
+                <tr
+                  key={index}
+                  className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2"
+                >
                   <th>{index + 1}</th>
                   <th>{song?.name}</th>
                   <th>{chart?.level}</th>

@@ -23,14 +23,15 @@ export default function SongCard({
   );
 
   useEffect(() => {
+    let filtered;
     if (chartType) {
-      const filtered = songWithChart.charts?.filter(
+      filtered = songWithChart.charts?.filter(
         (chart) => chart.chartType === chartType
       );
-      setvisibleCharts(filtered);
-
-      // console.log("visibleCharts", filtered, songWithChart.name);
+    } else {
+      filtered = songWithChart.charts;
     }
+    setvisibleCharts(filtered);
   }, [chartType]);
 
   return (
