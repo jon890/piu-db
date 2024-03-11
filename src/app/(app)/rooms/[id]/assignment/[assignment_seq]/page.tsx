@@ -10,6 +10,7 @@ import SongCard from "./song-card";
 import TimeUtil from "@/server/utils/time-util";
 import RecordGrade from "@/app/(app)/record/record-grade";
 import RecordPlate from "@/app/(app)/record/record-plate";
+import dayjs from "dayjs";
 
 export default async function AssignmentCreatePage({
   params,
@@ -73,27 +74,50 @@ export default async function AssignmentCreatePage({
             </tr>
           </thead>
           <tbody>
-            {records
-              .sort((a, b) => b.record.score - a.record.score)
-              .map(({ record, user }, index) => (
-                <tr
-                  key={index}
-                  className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
-                >
-                  <th>{index + 1}</th>
-                  <th>{record.score}</th>
-                  <th>
-                    <RecordGrade grade={record.grade} />
-                  </th>
-                  <th>
-                    <RecordPlate plate={record.plate} />
-                  </th>
-                  <th>
-                    {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
-                  </th>
-                  <th>{user.nickname}</th>
-                </tr>
-              ))}
+            {records.length ? (
+              records
+                .sort((a, b) => {
+                  if (b.record.score !== a.record.score) {
+                    return b.record.score - a.record.score;
+                  } else {
+                    const a_playedAt = dayjs(a.record.playedAt);
+                    const b_playedAt = dayjs(b.record.playedAt);
+                    if (a_playedAt.isBefore(b_playedAt)) {
+                      return 1;
+                    } else if (a_playedAt.isSame(b_playedAt)) {
+                      return 0;
+                    } else {
+                      return -1;
+                    }
+                  }
+                })
+                .map(({ record, user }, index) => (
+                  <tr
+                    key={index}
+                    className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
+                  >
+                    <th>{index + 1}</th>
+                    <th>{record.score}</th>
+                    <th>
+                      <RecordGrade grade={record.grade} />
+                    </th>
+                    <th>
+                      <RecordPlate plate={record.plate} />
+                    </th>
+                    <th>
+                      {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
+                    </th>
+                    <th>{user.nickname}</th>
+                  </tr>
+                ))
+            ) : (
+              <tr>
+                <td colSpan={6} className="text-center h-24">
+                  아직 플레이 기록이 없습니다! <br />
+                  플레이하고 기록을 등록해보세요
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
