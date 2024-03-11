@@ -98,15 +98,17 @@ export default async function AssignmentCreatePage({
                   >
                     <th className="flex flex-row gap-1 items-center">
                       <span>{index + 1}위</span>
-                      <span>
-                        <TrophyIcon
-                          className={classnames("size-6", {
-                            "text-[#ffd700]": index === 0,
-                            "text-[#C0C0C0]": index === 1,
-                            "text-[#CD7F32]": index === 2,
-                          })}
-                        />
-                      </span>
+                      {index < 3 && (
+                        <span>
+                          <TrophyIcon
+                            className={classnames("size-6", {
+                              "text-[#ffd700]": index === 0,
+                              "text-[#C0C0C0]": index === 1,
+                              "text-[#CD7F32]": index === 2,
+                            })}
+                          />
+                        </span>
+                      )}
                     </th>
                     <th>{record.score}</th>
                     <th>
