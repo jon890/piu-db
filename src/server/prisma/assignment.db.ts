@@ -55,9 +55,20 @@ async function getOngoingAssignments(roomSeq: number) {
   return assigments;
 }
 
+async function getAssignment(assignmentSeq: number) {
+  const assignment = await prisma.assignment.findUnique({
+    where: {
+      seq: assignmentSeq,
+    },
+  });
+
+  return assignment;
+}
+
 const AssignmentDB = {
   createAssignment,
   getOngoingAssignments,
+  getAssignment,
 };
 
 export default AssignmentDB;

@@ -29,9 +29,24 @@ async function submitAssignment({
   });
 }
 
+async function getRecordsByAssgimentSeq(assignmentSeq: number) {
+  return await prisma.assigmentRecord.findMany({
+    where: {
+      assignmentSeq,
+    },
+    select: {
+      user: {
+        select: { nickname: true },
+      },
+      record: true,
+    },
+  });
+}
+
 const AssignmentRecordDB = {
   getRecordsByUser,
   submitAssignment,
+  getRecordsByAssgimentSeq,
 };
 
 export default AssignmentRecordDB;

@@ -113,7 +113,13 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                   className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                 >
                   <th>{index + 1}</th>
-                  <th>{song?.name}</th>
+                  <th>
+                    <Link
+                      href={`/rooms/${room.seq}/assignment/${assignment.seq}`}
+                    >
+                      {song?.name}
+                    </Link>
+                  </th>
                   <th>{chart?.level}</th>
                   <th>{chart?.chartType}</th>
                   <th>
