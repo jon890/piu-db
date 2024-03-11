@@ -1,12 +1,13 @@
 import classnames from "@/client/utils/classnames";
 import { Chart } from "@prisma/client";
+import { ButtonHTMLAttributes } from "react";
 
 type Props = {
   chart: Chart;
   onClick?: (chart: Chart) => void;
-};
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function LevelBall({ chart, onClick }: Props) {
+export default function LevelBall({ chart, onClick, className }: Props) {
   return (
     <button
       onClick={() => onClick?.(chart)}
@@ -19,7 +20,8 @@ export default function LevelBall({ chart, onClick }: Props) {
           "bg-red-500": chart.chartType === "SINGLE",
           "bg-green-500": chart.chartType === "DOUBLE",
           "bg-yellow-500": chart.chartType === "CO_OP",
-        }
+        },
+        className ?? ""
       )}
     >
       {chart.level}

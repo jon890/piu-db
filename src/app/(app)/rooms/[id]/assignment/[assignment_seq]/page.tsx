@@ -50,6 +50,11 @@ export default async function AssignmentCreatePage({
     <div className="flex flex-col items-center w-full h-full gap-y-10">
       <h1 className="text-3xl mt-10 font-bold">숙제 상세</h1>
 
+      <h2 className="text-xl">
+        기간 : {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")} ~{" "}
+        {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
+      </h2>
+
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCard song={chartAndSongs.song} chart={chartAndSongs.chart} />
       )}
@@ -59,7 +64,7 @@ export default async function AssignmentCreatePage({
         <table className="table">
           <thead>
             <tr>
-              <th></th>
+              <th>등수</th>
               <th>점수</th>
               <th>그레이드</th>
               <th>플레이트</th>
