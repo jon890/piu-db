@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const MENUS = [
-  { text: "방 목록", href: "/rooms" },
+  { text: "숙제방 목록", href: "/rooms" },
   { text: "펌프잇업 기록 연동", href: "/crawling" },
-  { text: "내 기록", href: "/record" },
+  { text: "기록 목록", href: "/record" },
 ];
 
 export default function Menu() {

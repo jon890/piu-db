@@ -7,6 +7,7 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col">
         <NavBar />
+
         <div className="flex flex-row min-h-screen">
           <div className="hidden lg:block transition-all">
             <Menu />

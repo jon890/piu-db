@@ -10,7 +10,7 @@ export default async function NavBar() {
   }
 
   return (
-    <div className="w-full navbar bg-base-100">
+    <nav className="w-full navbar bg-base-100">
       <div className="flex-none lg:hidden">
         <label
           htmlFor="my-drawer-3"
@@ -58,6 +58,6 @@ export default async function NavBar() {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
   );
 }

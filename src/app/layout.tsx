@@ -24,9 +24,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={classnames(notoSansKR.className)}>
-        <div id="app" className={classnames("w-screen min-h-screen")}>
+        <main id="app" className={classnames("w-screen min-h-screen")}>
           {children}
-        </div>
+        </main>
       </body>
     </html>
   );
