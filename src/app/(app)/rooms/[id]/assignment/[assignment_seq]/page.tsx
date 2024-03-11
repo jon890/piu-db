@@ -1,16 +1,16 @@
+import RecordGrade from "@/app/(app)/record/record-grade";
+import RecordPlate from "@/app/(app)/record/record-plate";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
-import SongDB from "@/server/prisma/song.db";
 import AuthUtil from "@/server/utils/auth-util";
-import { redirect } from "next/navigation";
-import LevelBall from "../create/level-ball";
-import SongCard from "./song-card";
 import TimeUtil from "@/server/utils/time-util";
-import RecordGrade from "@/app/(app)/record/record-grade";
-import RecordPlate from "@/app/(app)/record/record-plate";
 import dayjs from "dayjs";
+import { redirect } from "next/navigation";
+import SongCard from "./song-card";
+import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
+import classnames from "@/client/utils/classnames";
 
 export default async function AssignmentCreatePage({
   params,
@@ -96,7 +96,18 @@ export default async function AssignmentCreatePage({
                     key={index}
                     className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                   >
-                    <th>{index + 1}</th>
+                    <th className="flex flex-row gap-1 items-center">
+                      <span>{index + 1}위</span>
+                      <span>
+                        <TrophyIcon
+                          className={classnames("size-6", {
+                            "text-[#ffd700]": index === 0,
+                            "text-[#C0C0C0]": index === 1,
+                            "text-[#CD7F32]": index === 2,
+                          })}
+                        />
+                      </span>
+                    </th>
                     <th>{record.score}</th>
                     <th>
                       <RecordGrade grade={record.grade} />
