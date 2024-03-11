@@ -1,6 +1,8 @@
 import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignment/create/create-schema";
 import prisma from "@/server/prisma/client";
+import dayjs from "dayjs";
 import { z } from "zod";
+import TimeUtil from "../utils/time-util";
 
 async function createAssignment(
   params: z.infer<typeof CreateAssignmentSchema>
@@ -35,8 +37,27 @@ async function createAssignment(
   };
 }
 
+async function getOngoingAssignments(roomSeq: number) {
+  const now = TimeUtil.now();
+
+  const assigments = await prisma.assignment.findMany({
+    where: {
+      roomSeq,
+      startDate: {
+        lte: now,
+      },
+      endDate: {
+        gte: now,
+      },
+    },
+  });
+
+  return assigments;
+}
+
 const AssignmentDB = {
   createAssignment,
+  getOngoingAssignments,
 };
 
 export default AssignmentDB;

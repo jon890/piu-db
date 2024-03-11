@@ -1,6 +1,6 @@
-import dayjs, { Dayjs } from "dayjs";
-import utc from "dayjs/plugin/utc";
+import dayjs from "dayjs";
 import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -23,9 +23,14 @@ function format(serverDate: Date, formatStr: string) {
   return dayjs.utc(serverDate).tz().format(formatStr);
 }
 
+function now() {
+  return dayjs.utc().toDate();
+}
+
 const TimeUtil = {
   convertUTC,
   format,
+  now,
 };
 
 export default TimeUtil;

@@ -9,7 +9,7 @@ const getUserSeqThrows = async () => {
   const userSeq = await getUserSeq();
 
   if (!userSeq) {
-    throw new Error("Authoirze error in getUserSeqThrows");
+    throw new Error("Authorize error in getUserSeqThrows");
   }
 
   return userSeq;

@@ -3,7 +3,7 @@
 import { auth } from "@/auth";
 import RoomDB from "@/server/prisma/room.db";
 import { redirect } from "next/navigation";
-import { ParticipantRoomSchema } from "./schema";
+import { ParticipantRoomSchema } from "./participate-schema";
 
 export type ParticipateRoomState = {
   message?: string;

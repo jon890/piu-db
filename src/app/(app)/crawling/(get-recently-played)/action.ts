@@ -58,7 +58,7 @@ export async function getRecentlyPlayedAction(
   await ChartDB.findAll();
 
   for (const record of crawlingRes.data) {
-    await RecordDB.saveRecentRecord(profile.seq, record);
+    await RecordDB.saveRecentRecord(userSeq, profile.seq, record);
   }
 
   return {

@@ -20,7 +20,11 @@ function getRecentPlayToEntity(record: RecentlyPlayed) {
   };
 }
 
-async function saveRecentRecord(profileSeq: number, record: RecentlyPlayed) {
+async function saveRecentRecord(
+  userSeq: number,
+  profileSeq: number,
+  record: RecentlyPlayed
+) {
   const song = await SongDB.findBySongName(record.songName);
 
   if (!song) {
@@ -54,6 +58,7 @@ async function saveRecentRecord(profileSeq: number, record: RecentlyPlayed) {
 
   return prisma.record.upsert({
     create: {
+      userSeq,
       piuProfileSeq: profileSeq,
       chartSeq: chart.seq,
       ...entity,
@@ -129,9 +134,35 @@ async function getRecords(userSeq: number, page: number) {
   };
 }
 
+async function getMaxRecordByUserAndChartDateBetween(props: {
+  userSeq: number;
+  chartSeq: number;
+  startDate: Date;
+  endDate: Date;
+}) {
+  const { chartSeq, endDate, startDate, userSeq } = props;
+  const maxRecord = await prisma.record.findFirst({
+    where: {
+      userSeq,
+      chartSeq,
+      playedAt: {
+        gte: startDate,
+        lte: endDate,
+      },
+    },
+    orderBy: {
+      score: "desc",
+    },
+    take: 1,
+  });
+
+  return maxRecord;
+}
+
 const RecordDB = {
   saveRecentRecord,
   getRecords,
+  getMaxRecordByUserAndChartDateBetween,
 };
 
 export default RecordDB;

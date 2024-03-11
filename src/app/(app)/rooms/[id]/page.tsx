@@ -1,12 +1,13 @@
+import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
+import TimeUtil from "@/server/utils/time-util";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ParticipateForm from "./paritipate-form";
+import ParticipateForm from "./participate-form";
+import RecordSyncForm from "./record-sync-form";
 import Toast from "./toast";
-import TimeUtil from "@/server/utils/time-util";
-import ChartDB from "@/server/prisma/chart.db";
 
 type Props = {
   params: { id: string };
@@ -55,12 +56,17 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
         <div className="flex flex-row items-center justify-center gap-4">
           <ParticipateForm room={room} isParticipated={isParticipated} />
 
-          <Link
-            href={`/rooms/${room.seq}/assignment/create`}
-            className="btn btn-primary"
-          >
-            숙제 만들기
-          </Link>
+          {isParticipated && (
+            <>
+              <Link
+                href={`/rooms/${room.seq}/assignment/create`}
+                className="btn btn-primary"
+              >
+                숙제 만들기
+              </Link>
+              <RecordSyncForm room={room} />
+            </>
+          )}
         </div>
 
         <div className="overflow-x-auto shadow-md p-4">
@@ -75,7 +81,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
             </thead>
             <tbody>
               {participants?.map((p) => (
-                <tr key={p.seq}>
+                <tr key={p.seq} className="hover">
                   <th>{p.seq}</th>
                   <th>{p.user.nickname}</th>
                   <th>{TimeUtil.format(p.createdAt, "YYYY-MM-DD HH:mm")}</th>
@@ -104,7 +110,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
               {assignmentWithSong?.map(({ assignment, chart, song }, index) => (
                 <tr
                   key={index}
-                  className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2"
+                  className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                 >
                   <th>{index + 1}</th>
                   <th>{song?.name}</th>

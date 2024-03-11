@@ -22,6 +22,7 @@ model User {
   assignmentRooms            AssignmentRoom[]
   assignmentRoomParticipants AssignmentRoomParticipants[]
   assignmentRecords          AssigmentRecord[]
+  records                    Record[]
 
   @@map("td_user")
 }
@@ -75,15 +76,16 @@ enum PiuVersion {
 }
 
 model Chart {
-  seq        Int          @id @default(autoincrement())
-  song       Song         @relation(fields: [songSeq], references: [seq])
-  songSeq    Int          @map("song_seq")
-  chartType  ChartType    @map("chart_type")
-  level      Int
-  records    Record[]
-  createdAt  DateTime     @default(now()) @map("created_at")
-  updatedAt  DateTime     @updatedAt @map("updated_at")
-  Assignment Assignment[]
+  seq             Int               @id @default(autoincrement())
+  song            Song              @relation(fields: [songSeq], references: [seq])
+  songSeq         Int               @map("song_seq")
+  chartType       ChartType         @map("chart_type")
+  level           Int
+  records         Record[]
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  Assignment      Assignment[]
+  AssigmentRecord AssigmentRecord[]
 
   @@unique([songSeq, chartType, level])
   @@map("td_chart")
@@ -100,6 +102,8 @@ model Record {
   seq             Int               @id @default(autoincrement())
   chart           Chart             @relation(fields: [chartSeq], references: [seq])
   chartSeq        Int               @map("chart_seq")
+  user            User              @relation(fields: [userSeq], references: [seq])
+  userSeq         Int               @map("user_seq")
   piuProfile      PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
   piuProfileSeq   Int               @map("piu_profile_seq")
   score           Int
@@ -201,10 +205,14 @@ model AssigmentRecord {
   assignmentSeq Int        @map("assignment_seq")
   user          User       @relation(fields: [userSeq], references: [seq])
   userSeq       Int        @map("user_seq")
+  chart         Chart      @relation(fields: [chartSeq], references: [seq])
+  chartSeq      Int        @map("chart_seq")
   record        Record     @relation(fields: [recordSeq], references: [seq])
   recordSeq     Int        @map("record_seq")
   updatedAt     DateTime   @updatedAt @map("updated_at")
   createdAt     DateTime   @default(now()) @map("created_at")
 
+  @@unique([assignmentSeq, recordSeq])
+  @@index([assignmentSeq, userSeq])
   @@map("td_assignment_record")
 }
