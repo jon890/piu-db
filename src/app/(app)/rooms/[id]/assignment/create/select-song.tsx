@@ -47,7 +47,7 @@ export default function SelectSong({ songWithCharts, roomSeq }: Props) {
     });
 
     setVisibleSongs(filtered);
-  }, [searchCondition]);
+  }, [songWithCharts, searchCondition]);
 
   return (
     <div className="flex gap-5 flex-col px-3 pb-10 w-full">

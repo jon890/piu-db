@@ -32,7 +32,7 @@ export default function SongCard({
       filtered = songWithChart.charts;
     }
     setvisibleCharts(filtered);
-  }, [chartType]);
+  }, [chartType, songWithChart.charts]);
 
   return (
     visibleCharts &&
