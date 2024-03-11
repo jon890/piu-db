@@ -62,7 +62,9 @@ export default function SongCard({
                 <LevelBall
                   key={chart.seq}
                   chart={chart}
-                  onClick={(chart) => handleChartSelect(songWithChart, chart)}
+                  handleSelect={(chart) =>
+                    handleChartSelect(songWithChart, chart)
+                  }
                 />
               ))}
             </div>

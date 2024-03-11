@@ -4,13 +4,13 @@ import { ButtonHTMLAttributes } from "react";
 
 type Props = {
   chart: Chart;
-  onClick?: (chart: Chart) => void;
+  handleSelect?: (chart: Chart) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function LevelBall({ chart, onClick, className }: Props) {
+export default function LevelBall({ chart, handleSelect, className }: Props) {
   return (
     <button
-      onClick={() => onClick?.(chart)}
+      onClick={() => handleSelect?.(chart)}
       className={classnames(
         "size-8 sm:size-14 text-sm sm:text-base rounded-full",
         "flex justify-center items-center",
