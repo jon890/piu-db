@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import ParticipateForm from "./participate-form";
 import RecordSyncForm from "./record-sync-form";
 import Toast from "./toast";
+import StarIcon from "@heroicons/react/24/solid/StarIcon";
 
 type Props = {
   params: { id: string };
@@ -80,10 +81,17 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
               </tr>
             </thead>
             <tbody>
-              {participants?.map((p) => (
+              {participants?.map((p, index) => (
                 <tr key={p.seq} className="hover">
-                  <th>{p.seq}</th>
-                  <th>{p.user.nickname}</th>
+                  <th>{index + 1}</th>
+                  <th className="space-x-2 flex flex-row items-center">
+                    <span>{p.user.nickname}</span>
+                    {room.adminUserSeq === p.user.seq && (
+                      <span>
+                        <StarIcon className="size-4 text-yellow-300" />
+                      </span>
+                    )}
+                  </th>
                   <th>{TimeUtil.format(p.createdAt, "YYYY-MM-DD HH:mm")}</th>
                 </tr>
               ))}

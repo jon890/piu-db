@@ -42,7 +42,15 @@ async function getRoomDetail(seq: number) {
         assignmentRoomSeq: room.seq,
       },
       include: {
-        user: true,
+        user: {
+          select: {
+            seq: true,
+            nickname: true,
+          },
+        },
+      },
+      orderBy: {
+        createdAt: "asc",
       },
     }));
 
