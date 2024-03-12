@@ -1,6 +1,6 @@
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart, ChartType } from "@prisma/client";
-import LevelBall from "./level-ball";
+import LevelBall from "@/components/level-ball.client";
 import { useEffect, useState } from "react";
 
 type Props = {

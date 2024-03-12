@@ -98,8 +98,7 @@ export default async function AssignmentCreatePage({
                     className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                   >
                     <td className="flex flex-row gap-1 items-center">
-                      <span>{index + 1}위</span>
-                      {index < 3 && (
+                      {index < 3 ? (
                         <span>
                           <TrophyIcon
                             className={classnames("size-6", {
@@ -109,6 +108,8 @@ export default async function AssignmentCreatePage({
                             })}
                           />
                         </span>
+                      ) : (
+                        <span>{index + 1}위</span>
                       )}
                     </td>
                     <td>{user.nickname}</td>

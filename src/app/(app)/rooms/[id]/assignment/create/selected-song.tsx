@@ -1,6 +1,6 @@
+import LevelBall from "@/components/level-ball.server";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
-import LevelBall from "./level-ball";
 
 type Props = {
   songWithChart: SongWithCharts;
@@ -30,7 +30,11 @@ export default function SelectedSongCard({ songWithChart, chart }: Props) {
             버전: {songWithChart.version}
           </div>
           <div className="block">
-            <LevelBall key={chart.seq} chart={chart} />
+            <LevelBall
+              key={chart.seq}
+              chart={chart}
+              className="size-8 sm:size-14"
+            />
           </div>
         </div>
       </div>

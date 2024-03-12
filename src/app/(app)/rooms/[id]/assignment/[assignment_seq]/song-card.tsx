@@ -1,7 +1,7 @@
 "use client";
 
 import type { Chart, Song } from "@prisma/client";
-import LevelBall from "../create/level-ball";
+import LevelBall from "@/components/level-ball.server";
 
 type Props = {
   song: Song;
@@ -26,7 +26,7 @@ export default function SongCard({ song, chart }: Props) {
           <div className="badge badge-outline">버전: {song.version}</div>
         </div>
 
-        <LevelBall chart={chart} />
+        <LevelBall chart={chart} className="size-8 sm:size-14" />
       </div>
     </div>
   );

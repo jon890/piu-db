@@ -9,6 +9,7 @@ import ParticipateForm from "./participate-form";
 import RecordSyncForm from "./record-sync-form";
 import Toast from "./toast";
 import ParticipantsTable from "./participants-table";
+import LevelBall from "@/components/level-ball.server";
 
 type Props = {
   params: { id: string };
@@ -81,8 +82,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
               <tr>
                 <th></th>
                 <th>곡이름</th>
-                <th>레벨</th>
-                <th>타입</th>
+                <th>레벨/SD</th>
                 <th>시작일</th>
                 <th>종료일</th>
                 <th>상태</th>
@@ -103,8 +103,11 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                       {song?.name}
                     </Link>
                   </td>
-                  <td>{chart?.level}</td>
-                  <td>{chart?.chartType}</td>
+                  <td>
+                    {chart?.chartType && (
+                      <LevelBall chart={chart} className="size-8" />
+                    )}
+                  </td>
                   <td>
                     {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm")}
                   </td>
@@ -113,7 +116,9 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                   </td>
                   <td>
                     {dayjs().isBefore(assignment.endDate) ? (
-                      <span className="text-blue-500">진행 중</span>
+                      <span className="text-blue-500 font-semibold">
+                        진행 중
+                      </span>
                     ) : (
                       <span className="text-gray-500">종료</span>
                     )}
