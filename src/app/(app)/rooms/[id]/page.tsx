@@ -93,7 +93,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
               {assignmentWithSong?.map(({ assignment, chart, song }, index) => (
                 <tr
                   key={index}
-                  className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
+                  className="*:text-xs *:px-2 *:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
                 >
                   <td>{index + 1}</td>
                   <td>
