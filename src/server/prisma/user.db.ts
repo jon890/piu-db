@@ -23,9 +23,22 @@ async function getUserBySeq(seq: number) {
   });
 }
 
+async function getUserByUID(uid: string) {
+  return prisma.user.findUnique({
+    where: { uid },
+    select: {
+      seq: true,
+      name: true,
+      uid: true,
+      nickname: true,
+    },
+  });
+}
+
 const UserDB = {
   getUser,
   getUserBySeq,
+  getUserByUID,
 };
 
 export default UserDB;

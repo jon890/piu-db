@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import ParticipateForm from "./participate-form";
 import RecordSyncForm from "./record-sync-form";
 import Toast from "./toast";
-import StarIcon from "@heroicons/react/24/solid/StarIcon";
+import ParticipantsTable from "./participants-table";
 
 type Props = {
   params: { id: string };
@@ -70,34 +70,9 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
           )}
         </div>
 
-        <div className="overflow-x-auto shadow-md p-4">
-          <h3 className="text-center font-semibold p-2">참여자 목록</h3>
-          <table className="table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>유저</th>
-                <th>참여일</th>
-              </tr>
-            </thead>
-            <tbody>
-              {participants?.map((p, index) => (
-                <tr key={p.seq} className="hover">
-                  <th>{index + 1}</th>
-                  <th className="space-x-2 flex flex-row items-center">
-                    <span>{p.user.nickname}</span>
-                    {room.adminUserSeq === p.user.seq && (
-                      <span>
-                        <StarIcon className="size-4 text-yellow-300" />
-                      </span>
-                    )}
-                  </th>
-                  <th>{TimeUtil.format(p.createdAt, "YYYY-MM-DD HH:mm")}</th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {participants && (
+          <ParticipantsTable room={room} participants={participants} />
+        )}
 
         <div className="overflow-x-auto w-full shadow-md p-4">
           <h3 className="text-center font-semibold p-2">숙제 목록</h3>

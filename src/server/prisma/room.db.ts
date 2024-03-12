@@ -46,6 +46,7 @@ async function getRoomDetail(seq: number) {
           select: {
             seq: true,
             nickname: true,
+            uid: true,
           },
         },
       },
