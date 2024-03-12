@@ -8,12 +8,12 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
       <div className="drawer-content flex flex-col">
         <NavBar />
 
-        <div className="flex flex-row min-h-screen">
+        <section className="flex flex-row min-h-screen">
           <div className="hidden lg:block transition-all">
             <Menu />
           </div>
           {children}
-        </div>
+        </section>
       </div>
 
       <div className="drawer-side">

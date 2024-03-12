@@ -37,10 +37,7 @@ export default function InputWithLabel({
         ref={inputRef}
         {...rest}
       />
-      <label className="label">
-        {/* <span className="label-text-alt">Bottom Left label</span>
-        <span className="label-text-alt">Bottom Left label</span> */}
-      </label>
+
       {errors && (
         <div
           id={`${name ?? ""}-error`}

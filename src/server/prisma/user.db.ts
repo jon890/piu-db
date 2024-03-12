@@ -11,8 +11,21 @@ async function getUser(name: string): Promise<User | null> {
   }
 }
 
+async function getUserBySeq(seq: number) {
+  return prisma.user.findUnique({
+    where: { seq },
+    select: {
+      seq: true,
+      name: true,
+      uid: true,
+      nickname: true,
+    },
+  });
+}
+
 const UserDB = {
   getUser,
+  getUserBySeq,
 };
 
 export default UserDB;
