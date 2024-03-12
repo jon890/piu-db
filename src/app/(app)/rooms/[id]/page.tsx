@@ -120,32 +120,32 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
                   key={index}
                   className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                 >
-                  <th>{index + 1}</th>
-                  <th>
+                  <td>{index + 1}</td>
+                  <td>
                     <Link
                       href={`/rooms/${room.seq}/assignment/${assignment.seq}`}
                     >
                       {song?.name}
                     </Link>
-                  </th>
-                  <th>{chart?.level}</th>
-                  <th>{chart?.chartType}</th>
-                  <th>
+                  </td>
+                  <td>{chart?.level}</td>
+                  <td>{chart?.chartType}</td>
+                  <td>
                     {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm")}
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm")}
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     {dayjs().isBefore(assignment.endDate) ? (
                       <span className="text-blue-500">진행 중</span>
                     ) : (
                       <span className="text-gray-500">종료</span>
                     )}
-                  </th>
-                  <th>
+                  </td>
+                  <td>
                     {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD HH:mm")}
-                  </th>
+                  </td>
                 </tr>
               ))}
             </tbody>

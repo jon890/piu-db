@@ -97,7 +97,7 @@ export default async function AssignmentCreatePage({
                     key={index}
                     className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                   >
-                    <th className="flex flex-row gap-1 items-center">
+                    <td className="flex flex-row gap-1 items-center">
                       <span>{index + 1}위</span>
                       {index < 3 && (
                         <span>
@@ -110,18 +110,18 @@ export default async function AssignmentCreatePage({
                           />
                         </span>
                       )}
-                    </th>
-                    <th>{user.nickname}</th>
-                    <th>{record.score}</th>
-                    <th>
+                    </td>
+                    <td>{user.nickname}</td>
+                    <td>{record.score}</td>
+                    <td>
                       <RecordGrade grade={record.grade} />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                       <RecordPlate plate={record.plate} />
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                       {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
-                    </th>
+                    </td>
                   </tr>
                 ))
             ) : (
