@@ -39,26 +39,25 @@ export async function getGameIdAction(
       .getGameIds(email, password)
       .json<{ gameIds: GameId[] }>();
 
-    const piuProfiles = await prisma.piuProfile.findMany({
-      where: {
-        gameId: {
-          in: res.gameIds.map((id) => id.nickname),
+    for (const profile of res.gameIds) {
+      await prisma.piuProfile.upsert({
+        where: {
+          gameId: profile.nickname,
         },
-      },
-    });
-
-    const notExistIds = res.gameIds.filter(
-      (id) => !piuProfiles.find((profile) => profile.gameId === id.nickname)
-    );
-
-    await prisma.piuProfile.createMany({
-      data: notExistIds.map((id) => ({
-        userSeq,
-        gameId: id.nickname,
-        lastPlayedCenter: id.latestGameCenter,
-        lastLoginDate: id.latestLoginDate === "-" ? null : id.latestLoginDate,
-      })),
-    });
+        update: {
+          lastPlayedCenter: profile.latestGameCenter,
+          lastLoginDate:
+            profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
+        },
+        create: {
+          userSeq,
+          gameId: profile.nickname,
+          lastPlayedCenter: profile.latestGameCenter,
+          lastLoginDate:
+            profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
+        },
+      });
+    }
 
     return { ok: true };
   } catch (e) {
