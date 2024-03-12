@@ -8,7 +8,7 @@ type Props = {
 export default function RecordPlate({ plate }: Props) {
   return (
     <span
-      className={classnames("plate", {
+      className={classnames("plate font-semibold", {
         "text-rough": plate === "ROUGH_GAME" || plate === "FAIR_GAME",
 
         "text-talented":

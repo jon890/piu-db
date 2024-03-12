@@ -8,7 +8,7 @@ type Props = {
 export default function RecordGrade({ grade }: Props) {
   return (
     <span
-      className={classnames("plate", {
+      className={classnames("plate font-semibold", {
         "text-rough":
           grade === "F" ||
           grade === "D" ||
