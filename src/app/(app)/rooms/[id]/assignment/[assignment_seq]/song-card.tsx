@@ -11,7 +11,7 @@ type Props = {
 export default function SongCard({ song, chart }: Props) {
   return (
     <div className="card bg-base-100 shadow-xl">
-      <div className="card-body gap-4">
+      <div className="card-body gap-2 px-6 py-8">
         <h2 className="card-title text-base sm:text-xl">
           {song.name}
           {song.patchVersion === "1.07" && (
@@ -19,7 +19,7 @@ export default function SongCard({ song, chart }: Props) {
           )}
         </h2>
 
-        <div className="card-actions justify-end *:text-[9px] *:sm:text-xs">
+        <div className="grid grid-cols-2 md:card-actions md:justify-end justify-items-end gap-2 *:text-[9px] *:sm:text-xs">
           <div className="badge badge-outline">아티스트: {song.artist}</div>
           <div className="badge badge-outline">타입: {song.songType}</div>
           <div className="badge badge-outline">BPM: {song.bpm}</div>

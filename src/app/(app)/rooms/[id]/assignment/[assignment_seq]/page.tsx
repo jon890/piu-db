@@ -48,12 +48,13 @@ export default async function AssignmentCreatePage({
   const chartAndSongs = await ChartDB.findSongBySeqInCache(assignment.chartSeq);
 
   return (
-    <div className="flex flex-col items-center w-full h-full gap-y-10">
+    <div className="flex flex-col items-center w-full h-full gap-10">
       <h1 className="text-3xl mt-10 font-bold">숙제 상세</h1>
 
-      <h2 className="text-xl">
-        기간 : {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")} ~{" "}
-        {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
+      <h2 className="text-md sm:text-xl">
+        시작일 : {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")}
+        <br />
+        종료일 : {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
       </h2>
 
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
@@ -66,11 +67,11 @@ export default async function AssignmentCreatePage({
           <thead>
             <tr>
               <th>등수</th>
+              <th>닉네임</th>
               <th>점수</th>
               <th>그레이드</th>
               <th>플레이트</th>
               <th>플레이시간</th>
-              <th>닉네임</th>
             </tr>
           </thead>
           <tbody>
@@ -110,6 +111,7 @@ export default async function AssignmentCreatePage({
                         </span>
                       )}
                     </th>
+                    <th>{user.nickname}</th>
                     <th>{record.score}</th>
                     <th>
                       <RecordGrade grade={record.grade} />
@@ -120,7 +122,6 @@ export default async function AssignmentCreatePage({
                     <th>
                       {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
                     </th>
-                    <th>{user.nickname}</th>
                   </tr>
                 ))
             ) : (
