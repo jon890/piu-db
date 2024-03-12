@@ -24,6 +24,8 @@ model User {
   assignmentRoomParticipants AssignmentRoomParticipants[]
   assignmentRecords          AssigmentRecord[]
   records                    Record[]
+  fromRival                  Rival[]                      @relation("fromRival")
+  toRival                    Rival[]                      @relation("toRival")
 
   @@map("td_user")
 }
@@ -216,4 +218,18 @@ model AssigmentRecord {
   @@unique([assignmentSeq, recordSeq])
   @@index([assignmentSeq, userSeq])
   @@map("td_assignment_record")
+}
+
+model Rival {
+  seq         Int      @id @default(autoincrement())
+  fromUser    User     @relation("fromRival", fields: [fromUserSeq], references: [seq])
+  fromUserSeq Int      @map("from_user_seq")
+  toUser      User     @relation("toRival", fields: [toUserSeq], references: [seq])
+  toUserSeq   Int      @map("to_user_seq")
+  // toUser의 동의 여부
+  isAccpeted  Boolean  @default(false) @map("is_accepted")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("td_rival")
 }
