@@ -5,8 +5,9 @@ import { $Enums, Chart, ChartType, PiuVersion, SongType } from "@prisma/client";
 import { useEffect, useState } from "react";
 import DropDown from "./dropdown";
 import SongCardCC from "./song-card.client";
+import InputWithLabel from "./InputWithLabel";
 
-type DropDown = "piuVersion" | "songType" | "chartType";
+export type DropDown = "piuVersion" | "songType" | "chartType";
 
 type Props = {
   songWithCharts: SongWithCharts[];
@@ -18,6 +19,7 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
     version?: PiuVersion;
     songType?: SongType;
     chartType?: ChartType;
+    keyword?: string;
   }>({});
 
   const [visibleSongs, setVisibleSongs] = useState<SongWithCharts[]>([
@@ -25,14 +27,19 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
   ]);
 
   useEffect(() => {
-    const { songType, version } = searchCondition;
+    const { songType, version, keyword } = searchCondition;
 
     const filtered = [...songWithCharts].filter((song) => {
       let filter = true;
 
       if (songType && song.songType !== songType) filter = false;
       if (version && song.version !== version) filter = false;
-
+      if (
+        keyword &&
+        !song.name.includes(keyword) &&
+        !song.artist.includes(keyword)
+      )
+        filter = false;
       return filter;
     });
 
@@ -77,8 +84,19 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
           }
         })}
       </div>
+      <InputWithLabel
+        name="이름"
+        topLeft="검색어 입력"
+        value={searchCondition?.keyword ?? ""}
+        onChange={(e) => {
+          setSearchCondition((prev) => ({
+            ...prev,
+            keyword: e.target.value,
+          }));
+        }}
+      />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
         {visibleSongs.map((song) => (
           <SongCardCC song={song} charts={song.charts ?? []} key={song.seq} />
         ))}

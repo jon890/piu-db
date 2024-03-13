@@ -60,6 +60,7 @@ export default function SongCard({
             <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2 sm:gap-3 mt-4 sm:mt-6">
               {visibleCharts?.map((chart) => (
                 <LevelBall
+                  className="size-8 sm:size-12"
                   key={chart.seq}
                   chart={chart}
                   handleSelect={(chart) =>

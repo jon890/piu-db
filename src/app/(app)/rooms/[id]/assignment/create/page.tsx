@@ -30,7 +30,8 @@ export default async function AssignmentCreatePage({
   return (
     <div className="flex flex-col items-center w-full h-full space-y-10">
       <h1 className="text-3xl mt-10 font-bold">숙제곡 선택</h1>
-      <SelectSong songWithCharts={songWithCharts} roomSeq={roomSeq} />
+      {/* <SelectSongWrapper songWithCharts={songWithCharts} roomSeq={room.seq}/> */}
+      <SelectSong songWithCharts={songWithCharts} roomSeq={room.seq} />
     </div>
   );
 }

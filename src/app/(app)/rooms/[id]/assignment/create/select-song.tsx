@@ -4,7 +4,7 @@ import { SongWithCharts } from "@/server/prisma/chart.db";
 import { $Enums, Chart, ChartType, PiuVersion, SongType } from "@prisma/client";
 import { useEffect, useState } from "react";
 import AssignmentCreateForm from "./create-form";
-import DropDown from "../../../../../../components/dropdown";
+import DropDown from "@/components/dropdown";
 import SongCard from "./song-card";
 
 type Props = {
