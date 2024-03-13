@@ -117,7 +117,7 @@ export default async function RecordTable({ records, paging }: Props) {
         page={paging.currentPage}
         count={paging.totalElements}
         unit={paging.unit}
-        basehref="/record"
+        basehref="/records/my"
       />
     </>
   );
