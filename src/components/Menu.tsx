@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 const MENUS = [
   { text: "숙제방 목록", href: "/rooms" },
   { text: "펌프잇업 기록 연동", href: "/crawling" },
-  { text: "기록 목록", href: "/record" },
+  { text: "전체 기록", href: "/records" },
+  { text: "내 기록 목록", href: "/records/my" },
   { text: "프로필", href: "/profile" },
 ];
 
@@ -27,7 +28,7 @@ function MenuLink({ href, text }: { href: string; text: string }) {
     <li>
       <Link
         href={href}
-        className={classnames(pathname.startsWith(href) ? "active" : "")}
+        className={classnames(pathname === href ? "active" : "")}
       >
         {text}
       </Link>
