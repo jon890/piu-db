@@ -34,17 +34,12 @@ async function findBySongName(songName: string) {
   if (isCached()) {
     const songs = await findAll();
     return songs.find((s) => s.name === songName);
-  } else {
-    const songs = await prisma.song.findMany({
-      where: {
-        name: songName,
-      },
-    });
-    return songs?.[0];
   }
+
+  return null;
 }
 
-async function findSongBySeq(seq: number) {
+async function findSongBySeqInCache(seq: number) {
   if (isCached()) {
     const songs = await findAll();
     return songs.find((it) => it.seq === seq);
@@ -57,7 +52,7 @@ const SongDB = {
   CACHE_FILE,
   findAll,
   findBySongName,
-  findSongBySeq,
+  findSongBySeqInCache,
 };
 
 export default SongDB;

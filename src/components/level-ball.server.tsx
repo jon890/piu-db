@@ -6,11 +6,16 @@ type Props = {
   chart: Chart;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function LevelBall({ chart, className }: Props) {
+/**
+ * 레벨 볼 서버 컴포넌트
+ * @param param0
+ * @returns
+ */
+export default function LevelBallSC({ chart, className }: Props) {
   return (
     <button
       className={classnames(
-        "text-sm sm:text-base rounded-full",
+        "text-xs sm:text-sm rounded-full",
         "flex justify-center items-center",
         "ring-2 ring-offset-1 ring-black",
         "cursor-pointer hover:opacity-30 active:opacity-30 transition-opacity",

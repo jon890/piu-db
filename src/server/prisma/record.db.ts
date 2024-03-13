@@ -5,6 +5,8 @@ import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
 
+const RECORD_PAGE_UNIT = 50;
+
 function getRecentPlayToEntity(record: RecentlyPlayed) {
   return {
     score: record.score,
@@ -75,8 +77,6 @@ async function saveRecentRecord(
 }
 
 async function getRecords(userSeq: number, page: number) {
-  const PAGE_UNIT = 50;
-
   const profileSeqs = await prisma.piuProfile.findMany({
     select: {
       seq: true,
@@ -86,10 +86,12 @@ async function getRecords(userSeq: number, page: number) {
     },
   });
 
+  const _profileSeqs = profileSeqs.map((it) => it.seq);
+
   const totalRecords = await prisma.record.aggregate({
     where: {
       piuProfileSeq: {
-        in: profileSeqs.map((it) => it.seq),
+        in: _profileSeqs,
       },
     },
     _count: { seq: true },
@@ -98,7 +100,7 @@ async function getRecords(userSeq: number, page: number) {
   const records = await prisma.record.findMany({
     where: {
       piuProfileSeq: {
-        in: profileSeqs.map((it) => it.seq),
+        in: _profileSeqs,
       },
     },
     include: {
@@ -111,26 +113,14 @@ async function getRecords(userSeq: number, page: number) {
     orderBy: {
       playedAt: "desc",
     },
-    skip: (page - 1) * PAGE_UNIT,
-    take: PAGE_UNIT,
+    skip: (page - 1) * RECORD_PAGE_UNIT,
+    take: RECORD_PAGE_UNIT,
   });
 
-  const recordsWithSong = [];
-  for (const record of records) {
-    const chart = await ChartDB.findChartBySeqInCache(record.chartSeq);
-    const song = chart?.seq ? await SongDB.findSongBySeq(chart?.songSeq) : null;
-
-    recordsWithSong.push({
-      ...record,
-      chart,
-      song,
-    });
-  }
-
   return {
-    records: recordsWithSong,
-    count: totalRecords?._count.seq,
-    unit: PAGE_UNIT,
+    records,
+    count: totalRecords._count.seq,
+    unit: RECORD_PAGE_UNIT,
   };
 }
 
@@ -159,9 +149,55 @@ async function getMaxRecordByUserAndChartDateBetween(props: {
   return maxRecord;
 }
 
+async function getRecordsBySongSeq(songSeq: number, page: number) {
+  const song = await SongDB.findSongBySeqInCache(songSeq);
+  if (!song) return null;
+
+  const charts = await ChartDB.findCharts(song.seq);
+  if (!charts) return null;
+
+  const chartSeqs = charts.map((it) => it.seq);
+
+  const totalRecords = await prisma.record.aggregate({
+    where: {
+      chartSeq: {
+        in: chartSeqs,
+      },
+    },
+    _count: { seq: true },
+  });
+
+  const records = await prisma.record.findMany({
+    where: {
+      chartSeq: {
+        in: chartSeqs,
+      },
+    },
+    include: {
+      piuProfile: {
+        select: {
+          gameId: true,
+        },
+      },
+    },
+    orderBy: {
+      playedAt: "desc",
+    },
+    skip: (page - 1) * RECORD_PAGE_UNIT,
+    take: RECORD_PAGE_UNIT,
+  });
+
+  return {
+    records,
+    count: totalRecords._count.seq,
+    unit: RECORD_PAGE_UNIT,
+  };
+}
+
 const RecordDB = {
   saveRecentRecord,
   getRecords,
+  getRecordsBySongSeq,
   getMaxRecordByUserAndChartDateBetween,
 };
 

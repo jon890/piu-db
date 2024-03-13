@@ -1,7 +1,7 @@
 import prisma from "@/server/prisma/client";
-import { Chart, ChartType, Song, SongType } from "@prisma/client";
-import fsPromise from "node:fs/promises";
+import { Chart, ChartType, Song } from "@prisma/client";
 import fs from "node:fs";
+import fsPromise from "node:fs/promises";
 import path from "node:path";
 import { TMP_DIR } from "../utils/tmpdir";
 import SongDB from "./song.db";
@@ -85,6 +85,15 @@ async function findChart(songSeq: number, level: number, chartType: ChartType) {
   }
 }
 
+async function findCharts(songSeq: number) {
+  if (isCached()) {
+    const charts = await findAll();
+    return charts.filter((c) => c.songSeq === songSeq);
+  }
+
+  return null;
+}
+
 async function findChartBySeqInCache(seq: number) {
   if (isCached()) {
     const charts = await findAll();
@@ -100,7 +109,7 @@ async function findSongBySeqInCache(seq: number) {
     const chart = charts.find((it) => it.seq === seq);
 
     const song = chart?.songSeq
-      ? await SongDB.findSongBySeq(chart?.songSeq)
+      ? await SongDB.findSongBySeqInCache(chart?.songSeq)
       : null;
 
     return { chart, song };
@@ -114,6 +123,7 @@ const ChartDB = {
   findAll,
   findAllGroupBySong,
   findChart,
+  findCharts,
   findChartBySeqInCache,
   findSongBySeqInCache,
 };
