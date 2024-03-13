@@ -1,5 +1,5 @@
 import RecordTable from "@/components/record-table";
-import SongCard from "@/components/song-card";
+import SongCardCC from "@/components/song-card.client";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import SongDB from "@/server/prisma/song.db";
@@ -10,12 +10,13 @@ type Props = {
   params: { song_seq: string };
   searchParams: {
     page?: string;
+    chartSeq?: string;
   };
 };
 
 export default async function SongDetailPage({
   params: { song_seq },
-  searchParams: { page },
+  searchParams: { page, chartSeq },
 }: Props) {
   const songSeq = Number(song_seq);
   const song = await SongDB.findSongBySeqInCache(songSeq);
@@ -30,17 +31,18 @@ export default async function SongDetailPage({
     redirect(`/songs/${songSeq}?page=1`);
   }
 
+  const searchChartSeq = Number(chartSeq);
   const currentPage = Number(page);
-  const recordsWithPage = await RecordDB.getRecordsBySongSeq(
-    songSeq,
-    currentPage
-  );
+
+  const recordsWithPage = !chartSeq
+    ? await RecordDB.getRecordsBySongSeq(songSeq, currentPage)
+    : await RecordDB.getRecordsByChartSeq(searchChartSeq, currentPage);
 
   return (
     <div className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
       <h1 className="text-3xl font-semibold">노래 상세</h1>
 
-      <SongCard song={song} charts={charts} />
+      <SongCardCC song={song} charts={charts} activeChartSeq={searchChartSeq} />
 
       <Suspense fallback={<p>기록을 읽고 있습니다...</p>}>
         <RecordTable

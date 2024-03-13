@@ -1,13 +1,34 @@
-import LevelBall from "@/components/level-ball.server";
+"use client";
+
 import { Chart, Song } from "@prisma/client";
 import Link from "next/link";
+import LevelBallCC from "./level-ball.client";
+import {
+  useParams,
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from "next/navigation";
+import classnames from "@/client/utils/classnames";
 
 type Props = {
   song: Song;
   charts: Chart[];
+  activeChartSeq?: number;
 };
 
-export default function SongCard({ song, charts }: Props) {
+export default function SongCardCC({ song, charts, activeChartSeq }: Props) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  function handleLevelBallClick(chart: Chart) {
+    const query = new URLSearchParams(searchParams.toString());
+    query.set("chartSeq", chart.seq.toString());
+
+    router.push(pathname + "?" + query.toString());
+  }
+
   return (
     <div className="card bg-base-100 shadow-xl">
       <div className="card-body">
@@ -27,10 +48,14 @@ export default function SongCard({ song, charts }: Props) {
           <div className="badge badge-outline">버전: {song.version}</div>
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4 gap-2 sm:gap-3 mt-4 sm:mt-6">
             {charts.map((chart) => (
-              <LevelBall
+              <LevelBallCC
                 key={chart.seq}
                 chart={chart}
-                className="size-8 sm:size-12"
+                className={classnames(
+                  "size-8 sm:size-12",
+                  activeChartSeq === chart.seq ? "opacity-30" : ""
+                )}
+                handleSelect={handleLevelBallClick}
               />
             ))}
           </div>

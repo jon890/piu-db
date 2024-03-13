@@ -194,10 +194,44 @@ async function getRecordsBySongSeq(songSeq: number, page: number) {
   };
 }
 
+async function getRecordsByChartSeq(chartSeq: number, page: number) {
+  const totalRecords = await prisma.record.aggregate({
+    where: {
+      chartSeq,
+    },
+    _count: { seq: true },
+  });
+
+  const records = await prisma.record.findMany({
+    where: {
+      chartSeq,
+    },
+    include: {
+      piuProfile: {
+        select: {
+          gameId: true,
+        },
+      },
+    },
+    orderBy: {
+      playedAt: "desc",
+    },
+    skip: (page - 1) * RECORD_PAGE_UNIT,
+    take: RECORD_PAGE_UNIT,
+  });
+
+  return {
+    records,
+    count: totalRecords._count.seq,
+    unit: RECORD_PAGE_UNIT,
+  };
+}
+
 const RecordDB = {
   saveRecentRecord,
   getRecords,
   getRecordsBySongSeq,
+  getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
 };
 

@@ -55,7 +55,6 @@ export default async function RecordTable({ records, paging }: Props) {
               <th>굿</th>
               <th>배드</th>
               <th>미스</th>
-
               <th>플레이시간</th>
             </tr>
           </thead>
@@ -104,8 +103,9 @@ export default async function RecordTable({ records, paging }: Props) {
               ))
             ) : (
               <tr>
-                <td colSpan={13} className="text-center text-xl font-semibold">
-                  데이터가 없습니다
+                <td colSpan={13} className="text-center h-24">
+                  아직 플레이 기록이 없습니다! <br />
+                  플레이하고 기록을 등록해보세요
                 </td>
               </tr>
             )}

@@ -1,16 +1,16 @@
+import classnames from "@/client/utils/classnames";
 import RecordGrade from "@/components/record-grade";
 import RecordPlate from "@/components/record-plate";
+import SongCardSC from "@/components/song-card.server";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
+import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
 import dayjs from "dayjs";
 import { redirect } from "next/navigation";
-import classnames from "@/client/utils/classnames";
-import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
-import SongCard from "@/components/song-card";
 
 export default async function AssignmentCreatePage({
   params,
@@ -58,7 +58,7 @@ export default async function AssignmentCreatePage({
       </h2>
 
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
-        <SongCard song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
+        <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
 
       <div className="overflow-x-auto w-full shadow-md p-4">

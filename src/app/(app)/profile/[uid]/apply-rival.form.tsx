@@ -20,7 +20,7 @@ export default function ApplyRivalForm(props: Props) {
     if (state?.ok) {
       router.refresh();
     }
-  }, [state?.ok]);
+  }, [state?.ok, router]);
 
   return props.rival ? (
     props.rival.isAccpeted ? null : (
