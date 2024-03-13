@@ -31,7 +31,7 @@ async function findAll(): Promise<Chart[]> {
   }
 }
 
-export type SongWithCharts = Song & { charts: Chart[] | undefined };
+export type SongWithCharts = Song & { charts?: Chart[] };
 async function findAllGroupBySong(): Promise<SongWithCharts[]> {
   const songs = await SongDB.findAll();
   const songMap = new Map<number, Song>();

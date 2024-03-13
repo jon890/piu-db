@@ -1,15 +1,10 @@
 "use client";
 
+import classnames from "@/client/utils/classnames";
 import { Chart, Song } from "@prisma/client";
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBallCC from "./level-ball.client";
-import {
-  useParams,
-  usePathname,
-  useRouter,
-  useSearchParams,
-} from "next/navigation";
-import classnames from "@/client/utils/classnames";
 
 type Props = {
   song: Song;
