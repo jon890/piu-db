@@ -1,9 +1,10 @@
 "use client";
 
-import SelectSong, { DropDown } from "@/components/select-song";
+import SelectSong from "@/components/select-song";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
 import { useState } from "react";
+import AssignmentCreateForm from "./create-form";
 
 type Props = {
   songWithCharts: SongWithCharts[];
@@ -20,10 +21,18 @@ export default function SelectSongWrapper({ songWithCharts, roomSeq }: Props) {
     setSelectedSong({ song, chart });
   }
 
-  return (
+  return !selectedSong ? (
     <SelectSong
       songWithCharts={songWithCharts}
+      onSelect={handleChartSelect}
       dropDowns={["piuVersion", "songType", "chartType"]}
     />
+  ) : (
+    <>
+      <button className="btn btn-primary" onClick={() => setSelectedSong(null)}>
+        다시 선택하기
+      </button>
+      <AssignmentCreateForm selectedSong={selectedSong} roomSeq={roomSeq} />
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { ButtonHTMLAttributes } from "react";
 
 type Props = {
   chart: Chart;
+  hasHover?: boolean;
   handleSelect?: (chart: Chart) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -12,24 +13,32 @@ type Props = {
  * @param param0
  * @returns
  */
-export default function LevelBallCC({ chart, handleSelect, className }: Props) {
+export default function LevelBallCC({
+  chart,
+  handleSelect,
+  hasHover,
+  className,
+}: Props) {
   return (
-    <button
+    <div
       onClick={() => handleSelect?.(chart)}
       className={classnames(
         "text-xs sm:text-sm rounded-full",
         "flex justify-center items-center",
         "ring-2 ring-offset-1 ring-black",
-        "cursor-pointer hover:opacity-30 active:opacity-30 transition-opacity",
+        "transition-opacity",
         {
           "bg-red-500": chart.chartType === "SINGLE",
           "bg-green-500": chart.chartType === "DOUBLE",
           "bg-yellow-500": chart.chartType === "CO_OP",
         },
+        {
+          "hover:opacity-30 active:opacity-30": Boolean(hasHover),
+        },
         className ?? ""
       )}
     >
       {chart.level}
-    </button>
+    </div>
   );
 }

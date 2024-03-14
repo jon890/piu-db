@@ -1,5 +1,6 @@
+import classnames from "@/client/utils/classnames";
 import LevelBall from "@/components/level-ball.server";
-import { Chart, Song } from "@prisma/client";
+import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";
 
 type Props = {
@@ -39,7 +40,16 @@ export default function SongCardSC({
           <div className="badge badge-outline">버전: {song.version}</div>
         </div>
 
-        <div className="flex flex-row items-end gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full">
+        <div
+          className={classnames(
+            "gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full",
+            {
+              "flex flex-row items-end": charts.length < 2,
+              "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4":
+                charts.length >= 2,
+            }
+          )}
+        >
           {charts.map((chart) => {
             return moveToChartDetail ? (
               <Link

@@ -1,7 +1,14 @@
 "use client";
 
 import { SongWithCharts } from "@/server/prisma/chart.db";
-import { $Enums, Chart, ChartType, PiuVersion, SongType } from "@prisma/client";
+import {
+  $Enums,
+  type Chart,
+  type ChartType,
+  type PiuVersion,
+  type Song,
+  type SongType,
+} from "@prisma/client";
 import { useEffect, useState } from "react";
 import DropDown from "./dropdown";
 import SongCardCC from "./song-card.client";
@@ -12,9 +19,14 @@ export type DropDown = "piuVersion" | "songType" | "chartType";
 type Props = {
   songWithCharts: SongWithCharts[];
   dropDowns: DropDown[];
+  onSelect?: (song: Song, chart: Chart) => void;
 };
 
-export default function SelectSong({ songWithCharts, dropDowns }: Props) {
+export default function SelectSong({
+  songWithCharts,
+  dropDowns,
+  onSelect,
+}: Props) {
   const [searchCondition, setSearchCondition] = useState<{
     version?: PiuVersion;
     songType?: SongType;
@@ -54,6 +66,7 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
             case "piuVersion":
               return (
                 <DropDown
+                  key={dropdown}
                   values={Object.values($Enums.PiuVersion)}
                   btnText="버전 선택"
                   onSelect={(version) =>
@@ -64,6 +77,7 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
             case "songType":
               return (
                 <DropDown
+                  key={dropdown}
                   values={Object.values($Enums.SongType)}
                   btnText="아케이드/리믹스/풀송/숏컷 선택"
                   onSelect={(songType) =>
@@ -74,6 +88,7 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
             case "chartType":
               return (
                 <DropDown
+                  key={dropdown}
                   values={Object.values($Enums.ChartType)}
                   btnText="싱글/더블/코옵 선택"
                   onSelect={(chartType) =>
@@ -98,7 +113,12 @@ export default function SelectSong({ songWithCharts, dropDowns }: Props) {
 
       <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
         {visibleSongs.map((song) => (
-          <SongCardCC song={song} charts={song.charts ?? []} key={song.seq} />
+          <SongCardCC
+            song={song}
+            charts={song.charts ?? []}
+            key={song.seq}
+            onSelect={(song, chart) => onSelect?.(song, chart)}
+          />
         ))}
       </div>
     </div>

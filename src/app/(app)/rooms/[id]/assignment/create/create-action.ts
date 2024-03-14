@@ -27,8 +27,6 @@ export async function createAssignment(
     };
   }
 
-  //   console.log("data", validatedFields.data);
-
   const ret = await AssignmentDB.createAssignment(validatedFields.data);
   if (!ret.ok) {
     return {
