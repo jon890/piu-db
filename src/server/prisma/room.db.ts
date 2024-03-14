@@ -20,15 +20,7 @@ async function getRooms(page: number = 0) {
   });
 }
 
-export async function getRoom(seq: number) {
-  return prisma.assignmentRoom.findUnique({
-    where: {
-      seq,
-    },
-  });
-}
-
-async function getRoomDetail(seq: number, userSeq: number) {
+async function getRoom(seq: number, userSeq: number) {
   const room = await prisma.assignmentRoom.findUnique({
     where: {
       seq,
@@ -40,18 +32,7 @@ async function getRoomDetail(seq: number, userSeq: number) {
     _isParticipated = await isParticipated(room.seq, userSeq);
   }
 
-  const assignments =
-    room &&
-    (await prisma.assignment.findMany({
-      where: {
-        roomSeq: room.seq,
-      },
-      orderBy: {
-        endDate: "asc",
-      },
-    }));
-
-  return { room, isParticipated: _isParticipated, assignments };
+  return { room, isParticipated: _isParticipated };
 }
 
 async function getParticipants(roomSeq: number) {
@@ -70,6 +51,17 @@ async function getParticipants(roomSeq: number) {
     },
     orderBy: {
       createdAt: "asc",
+    },
+  });
+}
+
+async function getAssignments(roomSeq: number) {
+  return prisma.assignment.findMany({
+    where: {
+      roomSeq: roomSeq,
+    },
+    orderBy: {
+      endDate: "asc",
     },
   });
 }
@@ -103,10 +95,11 @@ async function isParticipated(roomSeq: number, userSeq: number) {
 
 const RoomDB = {
   getRooms,
+  getRoom,
   getParticipants,
   participate,
-  getRoomDetail,
   isParticipated,
+  getAssignments,
 };
 
 export default RoomDB;
