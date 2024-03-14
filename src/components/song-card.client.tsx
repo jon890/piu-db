@@ -5,7 +5,6 @@ import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBallCC from "./level-ball.client";
-import { useEffect, useState } from "react";
 
 type Props = {
   song: Song;
@@ -31,6 +30,7 @@ export default function SongCardCC({
   const searchParams = useSearchParams();
 
   let visibleCharts = charts;
+  console.log(charts);
   if (chartType) {
     visibleCharts = charts.filter((c) => c.chartType === chartType);
   }
