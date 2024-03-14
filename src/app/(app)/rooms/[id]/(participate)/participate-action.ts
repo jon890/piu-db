@@ -1,10 +1,9 @@
 "use server";
 
-import { auth } from "@/auth";
 import RoomDB from "@/server/prisma/room.db";
+import AuthUtil from "@/server/utils/auth-util";
 import { redirect } from "next/navigation";
 import { ParticipantRoomSchema } from "./participate-schema";
-import AuthUtil from "@/server/utils/auth-util";
 
 export type ParticipateRoomState = {
   message?: string;
