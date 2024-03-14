@@ -4,30 +4,32 @@ import { ButtonHTMLAttributes } from "react";
 
 type Props = {
   chart: Chart;
+  hasHover?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 /**
  * 레벨 볼 서버 컴포넌트
- * @param param0
- * @returns
  */
-export default function LevelBallSC({ chart, className }: Props) {
+export default function LevelBallSC({ chart, hasHover, className }: Props) {
   return (
-    <button
+    <div
       className={classnames(
         "text-xs sm:text-sm rounded-full",
         "flex justify-center items-center",
         "ring-2 ring-offset-1 ring-black",
-        "cursor-pointer hover:opacity-30 active:opacity-30 transition-opacity",
+        "transition-opacity",
         {
           "bg-red-500": chart.chartType === "SINGLE",
           "bg-green-500": chart.chartType === "DOUBLE",
           "bg-yellow-500": chart.chartType === "CO_OP",
         },
+        {
+          "hover:opacity-30 active:opacity-30": Boolean(hasHover),
+        },
         className ?? ""
       )}
     >
       {chart.level}
-    </button>
+    </div>
   );
 }

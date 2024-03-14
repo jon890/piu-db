@@ -36,7 +36,7 @@ async function getRecordsByAssgimentSeq(assignmentSeq: number) {
     },
     select: {
       user: {
-        select: { nickname: true },
+        select: { seq: true, nickname: true, uid: true },
       },
       record: true,
     },

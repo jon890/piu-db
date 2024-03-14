@@ -51,7 +51,10 @@ export default async function AssignmentTable({ room }: Props) {
             >
               <td>{index + 1}</td>
               <td>
-                <Link href={`/rooms/${room.seq}/assignment/${assignment.seq}`}>
+                <Link
+                  href={`/rooms/${room.seq}/assignment/${assignment.seq}`}
+                  className="hover:text-gray-600 font-semibold"
+                >
                   {song?.name}
                 </Link>
               </td>
