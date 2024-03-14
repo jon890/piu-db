@@ -16,7 +16,7 @@ export default async function ParticipantsTable(props: Props) {
 
   return (
     <>
-      <div className="overflow-auto p-4 max-h-[350px] shadow-md rounded-md">
+      <div className="overflow-auto max-h-[300px] border p-4 rounded-md shadow-md">
         <h3 className="text-center font-semibold p-2">참여자 목록</h3>
         <table className="table">
           <thead>

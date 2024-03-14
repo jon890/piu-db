@@ -19,7 +19,7 @@ export default function RecordSyncForm({ room }: Props) {
     if (state?.message) {
       toast.createToast({ message: state?.message, type: "info" });
     }
-  }, [state?.message, toast]);
+  }, [state?.message]);
 
   return (
     <form action={action} className="flex justify-center items-center">

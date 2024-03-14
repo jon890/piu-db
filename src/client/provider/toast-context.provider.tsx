@@ -30,7 +30,7 @@ export default function ToastContextProvier({ children }: Props) {
         createPortal(
           <div className="toast toast-top toast-end z-[1000]">
             {toasts.map((toast, index) => (
-              <Toast key={toast.message} toast={toast} />
+              <Toast key={toast.key} toast={toast} />
             ))}
           </div>,
           container
