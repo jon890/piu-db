@@ -1,11 +1,11 @@
 "use client";
 
+import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
 import { AssignmentRoom } from "@prisma/client";
+import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { syncRecord } from "./record-sync-action";
-import { useEffect } from "react";
-import useToast from "@/client/hooks/use-toast";
 
 type Props = {
   room: AssignmentRoom;
@@ -19,7 +19,7 @@ export default function RecordSyncForm({ room }: Props) {
     if (state?.message) {
       toast.createToast({ message: state?.message, type: "info" });
     }
-  }, [state?.message]);
+  }, [state]);
 
   return (
     <form action={action} className="flex justify-center items-center">
