@@ -8,7 +8,7 @@ export default function Toast({ toast: { type, message } }: Props) {
   switch (type) {
     case "info":
       return (
-        <div role="alert" className="alert alert-info">
+        <div role="alert" className="alert alert-info text-xs sm:text-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -28,7 +28,7 @@ export default function Toast({ toast: { type, message } }: Props) {
 
     case "success":
       return (
-        <div role="alert" className="alert alert-success">
+        <div role="alert" className="alert alert-success text-xs sm:text-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="stroke-current shrink-0 h-6 w-6"
@@ -48,7 +48,7 @@ export default function Toast({ toast: { type, message } }: Props) {
 
     case "warning":
       return (
-        <div role="alert" className="alert alert-warning">
+        <div role="alert" className="alert alert-warning text-xs sm:text-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="stroke-current shrink-0 h-6 w-6"
@@ -67,7 +67,7 @@ export default function Toast({ toast: { type, message } }: Props) {
       );
 
     case "error":
-      <div role="alert" className="alert alert-error">
+      <div role="alert" className="alert alert-error text-xs sm:text-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="stroke-current shrink-0 h-6 w-6"

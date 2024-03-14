@@ -28,10 +28,10 @@ export default async function RoomDetailPage({ params }: Props) {
   }
 
   return (
-    <section className="flex flex-col items-center w-full h-full gap-10">
-      <h1 className="text-3xl mt-10 font-bold">{room.name}</h1>
+    <section className="flex flex-col items-center w-full h-full gap-5 sm:gap-10">
+      <h1 className="text-xl sm:text-2xl font-bold mt-10">{room.name}</h1>
       {room.description && (
-        <h2 className="text-xl mt-5 font-semibold">{room.description}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold">{room.description}</h2>
       )}
 
       <div className="flex flex-row items-center justify-center gap-4">
@@ -41,7 +41,7 @@ export default async function RoomDetailPage({ params }: Props) {
           <>
             <Link
               href={`/rooms/${room.seq}/assignment/create`}
-              className="btn btn-primary"
+              className="btn btn-primary text-xs sm:text-sm"
             >
               숙제 만들기
             </Link>

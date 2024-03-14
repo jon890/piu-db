@@ -22,6 +22,7 @@ export default function ParticipateForm({
       <FormButton
         text={isParticipated ? "참여 중 입니다" : "참여하기"}
         disabled={isParticipated}
+        className="text-xs sm:text-sm"
       />
     </form>
   );

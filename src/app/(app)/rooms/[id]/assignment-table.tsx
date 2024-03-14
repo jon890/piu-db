@@ -29,7 +29,7 @@ export default async function AssignmentTable({ room }: Props) {
   }
 
   return (
-    <div className="overflow-auto border p-4 rounded-md shadow-md">
+    <div className="overflow-auto border p-4 rounded-md shadow-md max-w-full">
       <h3 className="text-center font-semibold p-2">숙제 목록</h3>
       <table className="table">
         <thead>
