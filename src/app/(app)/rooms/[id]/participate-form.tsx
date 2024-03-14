@@ -1,7 +1,7 @@
 "use client";
 
-import FormButton from "@/components/FormButton";
 import { participateRoom } from "@/app/(app)/rooms/[id]/participate-action";
+import FormButton from "@/components/FormButton";
 import { AssignmentRoom } from "@prisma/client";
 import { useFormState } from "react-dom";
 

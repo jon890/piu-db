@@ -1,12 +1,10 @@
 "use server";
 
-import RoomDB from "@/server/prisma/room.db";
-import AuthUtil from "@/server/utils/auth-util";
-import { redirect } from "next/navigation";
-import { RecordSyncSchema } from "./record-sync-schema";
+import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RecordDB from "@/server/prisma/record.db";
-import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
+import AuthUtil from "@/server/utils/auth-util";
+import { RecordSyncSchema } from "./record-sync-schema";
 
 export type State = {
   message?: string;
@@ -57,5 +55,7 @@ export async function syncRecord(prevState: State | null, formData: FormData) {
     });
   }
 
-  return null;
+  return {
+    message: "숙제 동기화가 완료되었습니다.",
+  };
 }

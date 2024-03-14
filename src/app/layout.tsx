@@ -2,6 +2,7 @@ import classnames from "@/client/utils/classnames";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import ToastContextProvier from "@/client/provider/toast-context.provider";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -23,10 +24,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={classnames(notoSansKR.className)}>
-        <main id="app" className={classnames("w-screen min-h-screen")}>
-          {children}
-        </main>
+      <body
+        className={classnames(notoSansKR.className)}
+        suppressHydrationWarning={true}
+      >
+        <ToastContextProvier>
+          <main id="app" className={classnames("w-screen min-h-screen")}>
+            {children}
+          </main>
+          <div id="toast-container" />
+        </ToastContextProvier>
       </body>
     </html>
   );

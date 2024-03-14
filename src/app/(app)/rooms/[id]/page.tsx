@@ -1,3 +1,4 @@
+import LevelBall from "@/components/level-ball.server";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
@@ -5,11 +6,11 @@ import TimeUtil from "@/server/utils/time-util";
 import dayjs from "dayjs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
+import ParticipantsTable from "./participants-table";
 import ParticipateForm from "./participate-form";
 import RecordSyncForm from "./record-sync-form";
 import Toast from "./toast";
-import ParticipantsTable from "./participants-table";
-import LevelBall from "@/components/level-ball.server";
 
 type Props = {
   params: { id: string };
@@ -20,8 +21,9 @@ type Props = {
 
 export default async function RoomDetailPage({ params, searchParams }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const { room, participants, assignments } = await RoomDB.getRoomDetail(
-    Number(params.id)
+  const { room, isParticipated, assignments } = await RoomDB.getRoomDetail(
+    Number(params.id),
+    userSeq
   );
 
   let assignmentWithSong = [];
@@ -39,17 +41,13 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
     }
   }
 
-  const isParticipated = Boolean(
-    participants?.find((p) => p.userSeq === userSeq)
-  );
-
   if (!room) {
     return notFound();
   }
 
   return (
     <>
-      <div className="flex flex-col items-center w-full h-full space-y-10">
+      <section className="flex flex-col items-center w-full h-full gap-10">
         <h1 className="text-3xl mt-10 font-bold">{room.name}</h1>
         {room.description && (
           <h2 className="text-xl mt-5 font-semibold">{room.description}</h2>
@@ -71,9 +69,9 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
           )}
         </div>
 
-        {participants && (
-          <ParticipantsTable room={room} participants={participants} />
-        )}
+        <Suspense fallback={<p>참여자를 불러오고 있습니다...</p>}>
+          <ParticipantsTable room={room} />
+        </Suspense>
 
         <div className="overflow-x-auto w-full shadow-md p-4">
           <h3 className="text-center font-semibold p-2">숙제 목록</h3>
@@ -131,7 +129,7 @@ export default async function RoomDetailPage({ params, searchParams }: Props) {
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
 
       {searchParams?.message && <Toast message={searchParams.message} />}
     </>

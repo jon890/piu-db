@@ -28,32 +28,17 @@ export async function getRoom(seq: number) {
   });
 }
 
-async function getRoomDetail(seq: number) {
+async function getRoomDetail(seq: number, userSeq: number) {
   const room = await prisma.assignmentRoom.findUnique({
     where: {
       seq,
     },
   });
 
-  const participants =
-    room &&
-    (await prisma.assignmentRoomParticipants.findMany({
-      where: {
-        assignmentRoomSeq: room.seq,
-      },
-      include: {
-        user: {
-          select: {
-            seq: true,
-            nickname: true,
-            uid: true,
-          },
-        },
-      },
-      orderBy: {
-        createdAt: "asc",
-      },
-    }));
+  let _isParticipated = false;
+  if (room) {
+    _isParticipated = await isParticipated(room.seq, userSeq);
+  }
 
   const assignments =
     room &&
@@ -66,10 +51,30 @@ async function getRoomDetail(seq: number) {
       },
     }));
 
-  return { room, participants, assignments };
+  return { room, isParticipated: _isParticipated, assignments };
 }
 
-async function participant(roomSeq: number, userSeq: number) {
+async function getParticipants(roomSeq: number) {
+  return prisma.assignmentRoomParticipants.findMany({
+    where: {
+      assignmentRoomSeq: roomSeq,
+    },
+    include: {
+      user: {
+        select: {
+          seq: true,
+          nickname: true,
+          uid: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+}
+
+async function participate(roomSeq: number, userSeq: number) {
   return prisma.assignmentRoomParticipants.upsert({
     where: {
       assignmentRoomSeq_userSeq: {
@@ -98,7 +103,8 @@ async function isParticipated(roomSeq: number, userSeq: number) {
 
 const RoomDB = {
   getRooms,
-  participant,
+  getParticipants,
+  participate,
   getRoomDetail,
   isParticipated,
 };
