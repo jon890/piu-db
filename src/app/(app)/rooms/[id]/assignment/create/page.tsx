@@ -13,7 +13,7 @@ export default async function AssignmentCreatePage({
   const roomSeq = Number(params.id);
 
   const songWithCharts = await ChartDB.findAllGroupBySong();
-  const { room, isParticipated } = await RoomDB.getRoomDetail(roomSeq, userSeq);
+  const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
 
   if (!room) {
     redirect("/rooms");

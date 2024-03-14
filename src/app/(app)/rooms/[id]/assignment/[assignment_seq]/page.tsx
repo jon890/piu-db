@@ -21,7 +21,7 @@ export default async function AssignmentCreatePage({
   const roomSeq = Number(params.id);
   const assignmentSeq = Number(params.assignment_seq);
 
-  const { room, isParticipated } = await RoomDB.getRoomDetail(roomSeq, userSeq);
+  const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
 
   if (!room) {
     redirect("/rooms");
