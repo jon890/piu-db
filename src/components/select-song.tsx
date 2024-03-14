@@ -20,12 +20,16 @@ type Props = {
   songWithCharts: SongWithCharts[];
   dropDowns: DropDown[];
   onSelect?: (song: Song, chart: Chart) => void;
+  moveSongDetail?: boolean;
+  moveChartDetail?: boolean;
 };
 
 export default function SelectSong({
   songWithCharts,
   dropDowns,
   onSelect,
+  moveSongDetail,
+  moveChartDetail,
 }: Props) {
   const [searchCondition, setSearchCondition] = useState<{
     version?: PiuVersion;
@@ -118,6 +122,8 @@ export default function SelectSong({
             charts={song.charts ?? []}
             key={song.seq}
             onSelect={(song, chart) => onSelect?.(song, chart)}
+            moveToSongDetail={moveSongDetail}
+            moveToChartDetail={moveChartDetail}
           />
         ))}
       </div>

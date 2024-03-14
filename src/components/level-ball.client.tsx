@@ -33,7 +33,8 @@ export default function LevelBallCC({
           "bg-yellow-500": chart.chartType === "CO_OP",
         },
         {
-          "hover:opacity-30 active:opacity-30": Boolean(hasHover),
+          "hover:opacity-30 active:opacity-30 cursor-pointer":
+            Boolean(hasHover),
         },
         className ?? ""
       )}

@@ -24,8 +24,6 @@ export default function AssignmentCreateForm({
   const [state, dispatch] = useFormState(createAssignment, null);
 
   useEffect(() => {
-    console.log(state);
-
     if (state?.message) {
       toast.createToast({ message: state?.message, type: "info" });
     }

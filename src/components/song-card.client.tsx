@@ -39,8 +39,8 @@ export default function SongCardCC({
 
   return (
     <div className="card bg-base-100 shadow-xl">
-      <div className="card-body">
-        <h2 className="card-title text-base sm:text-2xl">
+      <div className="card-body p-4 sm:p-6 md:p-8">
+        <h2 className="card-title text-base sm:text-xl">
           {moveToSongDetail ? (
             <Link href={`/songs/${song.seq}`} className="hover:text-gray-600">
               {song.name}
@@ -53,11 +53,19 @@ export default function SongCardCC({
           )}
         </h2>
 
-        <div className="grid grid-cols-2 justify-items-end gap-2 *:text-[9px] *:sm:text-xs">
-          <div className="badge badge-outline">아티스트: {song.artist}</div>
-          <div className="badge badge-outline">타입: {song.songType}</div>
-          <div className="badge badge-outline">BPM: {song.bpm}</div>
-          <div className="badge badge-outline">버전: {song.version}</div>
+        <div className="grid grid-cols-2 justify-items-end gap-2">
+          <div className="badge badge-lg !text-[10px] badge-outline">
+            {song.artist}
+          </div>
+          <div className="badge badge-lg !text-[10px] badge-outline">
+            {song.songType}
+          </div>
+          <div className="badge badge-lg !text-[10px] badge-outline">
+            BPM {song.bpm}
+          </div>
+          <div className="badge badge-lg !text-[10px] badge-outline">
+            {song.version}
+          </div>
         </div>
 
         <div
@@ -79,6 +87,7 @@ export default function SongCardCC({
                 activeChartSeq === chart.seq ? "opacity-30" : ""
               )}
               handleSelect={handleLevelBallClick}
+              hasHover={moveToChartDetail}
             />
           ))}
         </div>
