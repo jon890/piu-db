@@ -3,8 +3,8 @@
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import {
   $Enums,
+  ChartType,
   type Chart,
-  type ChartType,
   type PiuVersion,
   type Song,
   type SongType,
@@ -56,6 +56,7 @@ export default function SelectSong({
         !song.artist.includes(keyword)
       )
         filter = false;
+
       return filter;
     });
 
@@ -124,6 +125,7 @@ export default function SelectSong({
             onSelect={(song, chart) => onSelect?.(song, chart)}
             moveToSongDetail={moveSongDetail}
             moveToChartDetail={moveChartDetail}
+            chartType={searchCondition?.chartType}
           />
         ))}
       </div>

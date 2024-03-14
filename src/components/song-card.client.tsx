@@ -1,10 +1,11 @@
 "use client";
 
 import classnames from "@/client/utils/classnames";
-import type { Chart, Song } from "@prisma/client";
+import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBallCC from "./level-ball.client";
+import { useEffect, useState } from "react";
 
 type Props = {
   song: Song;
@@ -13,6 +14,7 @@ type Props = {
   moveToSongDetail?: boolean;
   moveToChartDetail?: boolean;
   onSelect?: (song: Song, chart: Chart) => void;
+  chartType?: ChartType;
 };
 
 export default function SongCardCC({
@@ -22,10 +24,20 @@ export default function SongCardCC({
   moveToSongDetail,
   moveToChartDetail,
   onSelect,
+  chartType,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  let visibleCharts = charts;
+  if (chartType) {
+    visibleCharts = charts.filter((c) => c.chartType === chartType);
+  }
+
+  if (visibleCharts.length === 0) {
+    return null;
+  }
 
   function handleLevelBallClick(chart: Chart) {
     if (moveToChartDetail) {
@@ -78,7 +90,7 @@ export default function SongCardCC({
             }
           )}
         >
-          {charts.map((chart) => (
+          {visibleCharts.map((chart) => (
             <LevelBallCC
               key={chart.seq}
               chart={chart}
