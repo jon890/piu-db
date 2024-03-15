@@ -1,5 +1,5 @@
 import LevelBall from "@/components/level-ball.server";
-import { Paging } from "@/components/paging";
+import { Paging } from "@/components/common/paging";
 import RecordGrade from "@/components/record-grade";
 import RecordPlate from "@/components/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
@@ -117,7 +117,6 @@ export default async function RecordTable({ records, paging }: Props) {
         page={paging.currentPage}
         count={paging.totalElements}
         unit={paging.unit}
-        basehref="/records/my"
       />
     </>
   );
