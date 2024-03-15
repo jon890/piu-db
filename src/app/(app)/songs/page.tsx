@@ -1,6 +1,5 @@
 import SelectSong from "@/components/select-song";
 import ChartDB from "@/server/prisma/chart.db";
-import SongDB from "@/server/prisma/song.db";
 import { Suspense } from "react";
 
 export default async function AllSongs() {

@@ -2,7 +2,7 @@
 
 import { authenticate } from "@/app/auth/login/action";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import ArrowLeftIcon from "@heroicons/react/24/solid/ArrowLeftIcon";
 import Link from "next/link";
 import { useFormState } from "react-dom";

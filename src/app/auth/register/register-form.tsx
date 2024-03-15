@@ -2,7 +2,7 @@
 
 import { registerUser } from "@/app/auth/register/action";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import { ChangeEventHandler, useState } from "react";
 import { useFormState } from "react-dom";
 

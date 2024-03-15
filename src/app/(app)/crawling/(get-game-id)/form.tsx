@@ -2,7 +2,7 @@
 
 import { getGameIdAction } from "@/app/(app)/crawling/(get-game-id)/action";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 

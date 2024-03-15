@@ -1,4 +1,4 @@
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import UserDB from "@/server/prisma/user.db";
 import AuthUtil from "@/server/utils/auth-util";
 import CopyButton from "./copy-btn";

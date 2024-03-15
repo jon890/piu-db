@@ -1,6 +1,6 @@
 "use client";
 
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import { createRoom } from "@/app/(app)/rooms/create/action";
 import { useFormState } from "react-dom";
 import FormButton from "@/components/FormButton";

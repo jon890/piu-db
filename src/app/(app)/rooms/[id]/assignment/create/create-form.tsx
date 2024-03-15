@@ -1,6 +1,6 @@
 "use client";
 
-import InputWithLabel from "@/components/InputWithLabel";
+import InputWithLabel from "@/components/common/InputWithLabel";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
 import SelectedSongCard from "./selected-song";

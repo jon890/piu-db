@@ -1,12 +1,12 @@
 import classnames from "@/client/utils/classnames";
-import { InputHTMLAttributes, RefObject } from "react";
+import { InputHTMLAttributes, LegacyRef } from "react";
 
 type InputWithLabelProps = {
   topLeft?: string;
   topRight?: string;
   topRightClass?: string;
   errors?: string[];
-  inputRef?: RefObject<HTMLInputElement>;
+  inputRef?: LegacyRef<HTMLInputElement> | undefined;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function InputWithLabel({
