@@ -25,6 +25,7 @@ async function SelectSongHelper() {
       dropDowns={["piuVersion", "songType"]}
       moveSongDetail={true}
       moveChartDetail={true}
+      showOnlySongs={true}
     />
   );
 }

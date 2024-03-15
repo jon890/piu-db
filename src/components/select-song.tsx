@@ -22,6 +22,7 @@ type Props = {
   onSelect?: (song: Song, chart: Chart) => void;
   moveSongDetail?: boolean;
   moveChartDetail?: boolean;
+  showOnlySongs?: boolean;
 };
 
 export default function SelectSong({
@@ -30,6 +31,7 @@ export default function SelectSong({
   onSelect,
   moveSongDetail,
   moveChartDetail,
+  showOnlySongs,
 }: Props) {
   const [searchCondition, setSearchCondition] = useState<{
     version?: PiuVersion;
@@ -126,7 +128,7 @@ export default function SelectSong({
             moveToSongDetail={moveSongDetail}
             moveToChartDetail={moveChartDetail}
             chartType={searchCondition?.chartType}
-            showOnlySongs
+            showOnlySongs={showOnlySongs}
           />
         ))}
       </div>
