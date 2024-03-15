@@ -14,6 +14,7 @@ type Props = {
   moveToChartDetail?: boolean;
   onSelect?: (song: Song, chart: Chart) => void;
   chartType?: ChartType;
+  showOnlySongs?: boolean;
 };
 
 export default function SongCardCC({
@@ -24,18 +25,19 @@ export default function SongCardCC({
   moveToChartDetail,
   onSelect,
   chartType,
+  showOnlySongs,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
 
   let visibleCharts = charts;
-  console.log(charts);
+
   if (chartType) {
     visibleCharts = charts.filter((c) => c.chartType === chartType);
   }
 
-  if (visibleCharts.length === 0) {
+  if (!showOnlySongs && visibleCharts.length === 0) {
     return null;
   }
 
@@ -80,29 +82,31 @@ export default function SongCardCC({
           </div>
         </div>
 
-        <div
-          className={classnames(
-            "gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full",
-            {
-              "flex flex-row items-end": charts.length < 2,
-              "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4":
-                charts.length >= 2,
-            }
-          )}
-        >
-          {visibleCharts.map((chart) => (
-            <LevelBallCC
-              key={chart.seq}
-              chart={chart}
-              className={classnames(
-                "size-8 sm:size-12",
-                activeChartSeq === chart.seq ? "opacity-30" : ""
-              )}
-              handleSelect={handleLevelBallClick}
-              hasHover={moveToChartDetail}
-            />
-          ))}
-        </div>
+        {!showOnlySongs && (
+          <div
+            className={classnames(
+              "gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full",
+              {
+                "flex flex-row items-end": charts.length < 2,
+                "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4":
+                  charts.length >= 2,
+              }
+            )}
+          >
+            {visibleCharts.map((chart) => (
+              <LevelBallCC
+                key={chart.seq}
+                chart={chart}
+                className={classnames(
+                  "size-8 sm:size-12",
+                  activeChartSeq === chart.seq ? "opacity-30" : ""
+                )}
+                handleSelect={handleLevelBallClick}
+                hasHover={moveToChartDetail}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -126,6 +126,7 @@ export default function SelectSong({
             moveToSongDetail={moveSongDetail}
             moveToChartDetail={moveChartDetail}
             chartType={searchCondition?.chartType}
+            showOnlySongs
           />
         ))}
       </div>
