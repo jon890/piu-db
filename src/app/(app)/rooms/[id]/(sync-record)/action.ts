@@ -4,15 +4,14 @@ import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
-import { RecordSyncSchema } from "./record-sync-schema";
+import { RecordSyncSchema } from "./schema";
 
 export type State = {
   message?: string;
 };
 
-export async function syncRecord(prevState: State | null, formData: FormData) {
+export async function syncRecord() {
   const validatedFields = RecordSyncSchema.safeParse({
-    ...Object.fromEntries(formData.entries()),
     userSeq: await AuthUtil.getUserSeqThrows(),
   });
 

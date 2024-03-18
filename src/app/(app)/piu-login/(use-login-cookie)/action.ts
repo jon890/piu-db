@@ -5,6 +5,7 @@ import AuthUtil from "@/server/utils/auth-util";
 import { RecentlyPlayed } from "@/types/recently-played";
 import { cookies } from "next/headers";
 import { GetRecentlyPlayedSchema } from "./schema";
+import CookieUtil from "@/server/utils/cookie-util";
 
 export type State = {
   ok: boolean;
@@ -40,7 +41,7 @@ export async function useLoginCookieAction(
   const oneMonth = 30 * 24 * 60 * 60 * 1000;
   const domain =
     process.env.NODE_ENV === "production" ? "piudb.com" : "localhost";
-  cookies().set("_PUMPITUPAUTH", encrypted, {
+  cookies().set(CookieUtil.PIU_AUTH_COOKIE_NAME, encrypted, {
     domain,
     httpOnly: true,
     sameSite: "strict",

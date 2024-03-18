@@ -47,9 +47,9 @@ async function getRecentlyPlayed(
   }
 }
 
-const index = {
+const CrawlerClient = {
   getGameIds,
   getRecentlyPlayed,
 };
 
-export default index;
+export default CrawlerClient;

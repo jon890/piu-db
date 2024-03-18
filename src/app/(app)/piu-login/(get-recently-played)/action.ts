@@ -1,64 +1,41 @@
 "use server";
 
-import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
 import ChartDB from "@/server/prisma/chart.db";
 import PiuProfileDB from "@/server/prisma/piu-profile.db";
 import RecordDB from "@/server/prisma/record.db";
 import SongDB from "@/server/prisma/song.db";
-import { RecentlyPlayed } from "@/types/recently-played";
-import { GetRecentlyPlayedSchema } from "./schema";
+import { PiuAuth } from "@/types/piu-auth";
 
-export type RecentlyPlayedFormState = {
-  ok: boolean;
-  message?: string;
-  data?: RecentlyPlayed[];
-};
-
-export async function getRecentlyPlayedAction(
-  prevState: RecentlyPlayedFormState | null,
-  formData: FormData
+export async function getAndSaveRecentlyPlayedAction(
+  piuAuth: PiuAuth,
+  userSeq: number
 ) {
-  const session = await auth();
-  const maybeUserSeq = session?.user?.email;
+  const primaryProfile = await PiuProfileDB.getPrimary(userSeq);
 
-  const validatedFields = GetRecentlyPlayedSchema.safeParse({
-    ...Object.fromEntries(formData.entries()),
-    userSeq: maybeUserSeq,
-  });
-
-  if (!validatedFields.success) {
-    return {
-      ok: false,
-      paramError: validatedFields.error.flatten(),
-      message: "입력한 정보를 다시 확인해주세요",
-    };
+  if (!primaryProfile) {
+    return { ok: false, message: "주 계정정보가 없습니다" };
   }
 
-  const { email, password, userSeq, nickname } = validatedFields.data;
-
   const crawlingRes = await crawlerClient.getRecentlyPlayed(
-    email,
-    password,
-    nickname
+    piuAuth.email,
+    piuAuth.password,
+    primaryProfile.gameId
   );
 
   if (!crawlingRes.ok) {
     return {
       ok: false,
-      errors: crawlingRes.error,
+      message: crawlingRes.error,
     };
   }
-
-  // 기록 저장
-  const profile = await PiuProfileDB.createIfNotExist(userSeq, nickname);
 
   // cache enable
   await SongDB.findAll();
   await ChartDB.findAll();
 
   for (const record of crawlingRes.data) {
-    await RecordDB.saveRecentRecord(userSeq, profile.seq, record);
+    await RecordDB.saveRecentRecord(userSeq, primaryProfile.seq, record);
   }
 
   return {

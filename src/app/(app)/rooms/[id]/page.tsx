@@ -5,9 +5,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import ParticipateForm from "./(participate)/participate-form";
-import RecordSyncForm from "./(sync-record)/record-sync-form";
+import RecordSyncForm from "./(sync-record)/form";
 import AssignmentTable from "./assignment-table";
 import ParticipantsTable from "./participants-table";
+import CookieUtil from "@/server/utils/cookie-util";
 
 type Props = {
   params: { id: string };
@@ -22,6 +23,8 @@ export default async function RoomDetailPage({
 }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
   const { room, isParticipated } = await RoomDB.getRoom(Number(id), userSeq);
+
+  const piuAuthValue = await CookieUtil.getPiuAuthValue();
 
   if (!room) {
     return notFound();
@@ -48,7 +51,7 @@ export default async function RoomDetailPage({
               >
                 숙제 만들기
               </Link>
-              <RecordSyncForm room={room} />
+              <RecordSyncForm room={room} piuAuth={piuAuthValue} />
             </>
           )}
         </div>
