@@ -9,6 +9,8 @@ import RecordSyncForm from "./(sync-record)/form";
 import AssignmentTable from "./assignment-table";
 import ParticipantsTable from "./participants-table";
 import CookieUtil from "@/server/utils/cookie-util";
+import type { AssignmentRoom } from "@prisma/client";
+import AssignmentDB from "@/server/prisma/assignment.db";
 
 type Props = {
   params: { id: string };
@@ -46,7 +48,7 @@ export default async function RoomDetailPage({
           {isParticipated && (
             <>
               <Link
-                href={`/rooms/${room.seq}/assignment/create`}
+                href={`/rooms/${room.seq}/assignments/create`}
                 className="btn btn-primary text-xs sm:text-sm"
               >
                 숙제 만들기
@@ -61,7 +63,7 @@ export default async function RoomDetailPage({
         </Suspense>
 
         <Suspense fallback={<p>숙제를 불러오고 있습니다...</p>}>
-          <AssignmentTable room={room} />
+          <AssignmentTableHelper room={room} />
         </Suspense>
       </section>
 
@@ -72,4 +74,9 @@ export default async function RoomDetailPage({
       )}
     </>
   );
+}
+
+async function AssignmentTableHelper({ room }: { room: AssignmentRoom }) {
+  const assignments = await AssignmentDB.getOngoingAssignments(room.seq);
+  return <AssignmentTable room={room} assignments={assignments} onGoing />;
 }

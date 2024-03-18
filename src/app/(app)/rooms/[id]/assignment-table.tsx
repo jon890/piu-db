@@ -2,37 +2,46 @@ import LevelBallSC from "@/components/level-ball.server";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import TimeUtil from "@/server/utils/time-util";
-import { AssignmentRoom } from "@prisma/client";
+import type { Assignment, AssignmentRoom, User } from "@prisma/client";
 import dayjs from "dayjs";
 import Link from "next/link";
 
 type Props = {
   room: AssignmentRoom;
+  assignments: (Assignment & { createUser: { nickname: string } })[];
+  onGoing: boolean;
 };
 
-export default async function AssignmentTable({ room }: Props) {
-  const assignments = await AssignmentDB.getOngoingAssignments(room.seq);
-
+export default async function AssignmentTable({
+  room,
+  assignments,
+  onGoing,
+}: Props) {
   let assignmentWithSong = [];
-  if (assignments) {
-    for (const assignment of assignments) {
-      const songAndChart = await ChartDB.findSongBySeqInCache(
-        assignment.chartSeq
-      );
+  for (const assignment of assignments) {
+    const songAndChart = await ChartDB.findSongBySeqInCache(
+      assignment.chartSeq
+    );
 
-      assignmentWithSong.push({
-        assignment,
-        song: songAndChart?.song,
-        chart: songAndChart?.chart,
-      });
-    }
+    assignmentWithSong.push({
+      assignment,
+      song: songAndChart?.song,
+      chart: songAndChart?.chart,
+    });
   }
 
   return (
     <div className="overflow-auto border p-4 rounded-md shadow-md max-w-full">
       <div className="flex flex-row justify-center">
-        <h3 className="text-center font-semibold p-2">진행 중인 숙제 목록</h3>
-        <button className="btn btn-primary ml-auto">전체 보기</button>
+        <h3 className="text-center font-semibold p-2">
+          {onGoing ? "진행 중인 숙제 목록" : "전체 숙제 목록"}
+        </h3>
+
+        {onGoing && (
+          <Link href={`/rooms/${room.seq}/assignments`} className="ml-auto">
+            <button className="btn btn-primary ">전체 보기</button>
+          </Link>
+        )}
       </div>
 
       <table className="table">
@@ -57,7 +66,7 @@ export default async function AssignmentTable({ room }: Props) {
               <td>{index + 1}</td>
               <td>
                 <Link
-                  href={`/rooms/${room.seq}/assignment/${assignment.seq}`}
+                  href={`/rooms/${room.seq}/assignments/${assignment.seq}`}
                   className="hover:text-gray-600 font-semibold"
                 >
                   {song?.name}
