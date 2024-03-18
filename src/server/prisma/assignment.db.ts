@@ -25,7 +25,7 @@ async function createAssignment(
       roomSeq: params.room_seq,
       chartSeq: params.chart_seq,
       startDate: params.start_date,
-      endDate: params.end_date,
+      endDate: TimeUtil.setMaxTime(params.end_date),
       createUserSeq: params.user_seq,
     },
   });

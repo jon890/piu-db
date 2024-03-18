@@ -10,7 +10,7 @@ export type State = {
 };
 
 export async function createAssignment(
-  prevState: State | null | undefined,
+  _prevState: State | null | undefined,
   formData: FormData
 ) {
   const userSeq = await AuthUtil.getUserSeqThrows();

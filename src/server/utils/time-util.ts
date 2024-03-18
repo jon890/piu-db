@@ -27,10 +27,19 @@ function now() {
   return dayjs.utc().toDate();
 }
 
+function setMaxTime(date: Date) {
+  return dayjs(date)
+    .set("hour", 23)
+    .set("minute", 59)
+    .set("second", 59)
+    .toDate();
+}
+
 const TimeUtil = {
   convertUTC,
   format,
   now,
+  setMaxTime,
 };
 
 export default TimeUtil;
