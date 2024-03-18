@@ -19,7 +19,7 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
   );
 
   return (
-    <div className="overflow-x-auto shadow-md p-4">
+    <div className="overflow-x-auto shadow-md p-4 max-w-full">
       <h3 className="text-center font-semibold p-2">순위표</h3>
       <table className="table">
         <thead>
