@@ -47,7 +47,7 @@ export default async function AssignmentTable({
 
       <table className="table">
         <thead>
-          <tr>
+          <tr className="*:text-center">
             <th></th>
             <th>곡이름</th>
             <th>레벨/SD</th>
@@ -94,11 +94,11 @@ export default async function AssignmentTable({
 
                     {Math.floor(endDateDiff / 24) > 0 ? (
                       <span className="text-blue-500 font-semibold">
-                        {Math.floor(endDateDiff / 24)}일 남음
+                        ({Math.floor(endDateDiff / 24)}일 남음)
                       </span>
                     ) : (
                       <span className="text-orange-500 font-semibold">
-                        {endDateDiff}시간 남음
+                        ({endDateDiff}시간 남음)
                       </span>
                     )}
                   </td>
