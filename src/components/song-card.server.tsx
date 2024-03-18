@@ -59,7 +59,11 @@ export default function SongCardSC({
                 <LevelBall chart={chart} className="size-8 sm:size-12" />
               </Link>
             ) : (
-              <LevelBall chart={chart} className="size-8 sm:size-12" />
+              <LevelBall
+                key={chart.seq}
+                chart={chart}
+                className="size-8 sm:size-12"
+              />
             );
           })}
         </div>
