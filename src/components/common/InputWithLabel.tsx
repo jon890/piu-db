@@ -7,6 +7,7 @@ type InputWithLabelProps = {
   topRightClass?: string;
   errors?: string[];
   inputRef?: LegacyRef<HTMLInputElement> | undefined;
+  wrapperClassName?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function InputWithLabel({
@@ -16,10 +17,16 @@ export default function InputWithLabel({
   topRightClass,
   errors,
   inputRef,
+  wrapperClassName,
   ...rest
 }: InputWithLabelProps) {
   return (
-    <div className="form-control w-full max-w-md">
+    <div
+      className={classnames(
+        "form-control w-full max-w-md",
+        wrapperClassName ?? ""
+      )}
+    >
       <label className="label">
         {(topLeft || topRight) && (
           <span className="label-text">{topLeft ?? ""}</span>

@@ -1,12 +1,13 @@
 "use client";
 
 import { SongWithCharts } from "@/server/prisma/chart.db";
-import { $Enums, ChartType, type Chart, type Song } from "@prisma/client";
+import { $Enums, type ChartType, type Chart, type Song } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputWithLabel from "./common/InputWithLabel";
 import DropDown from "./dropdown";
 import SongCardCC from "./song-card.client";
+import SearchParamUtil from "@/client/utils/search-param.util";
 
 export type DropDown = "piuVersion" | "songType" | "chartType";
 
@@ -32,6 +33,8 @@ export default function SelectSong({
   const searchParams = useSearchParams();
 
   const keywordRef = useRef<HTMLInputElement>(null);
+  const levelRef = useRef<HTMLInputElement>(null);
+
   const [visibleSongs, setVisibleSongs] = useState<SongWithCharts[]>([
     ...songWithCharts,
   ]);
@@ -60,13 +63,26 @@ export default function SelectSong({
   }, [songWithCharts, searchParams]);
 
   function handleSearchClick() {
-    const newSearchParams = new URLSearchParams(searchParams.toString());
-    if (keywordRef?.current?.value) {
-      newSearchParams.set("keyword", keywordRef?.current?.value);
-    } else {
-      newSearchParams.delete("keyword");
-    }
-    router.push(pathname + "?" + newSearchParams.toString());
+    searchMultiple({
+      level: levelRef?.current?.value,
+      keyword: keywordRef?.current?.value,
+    });
+  }
+
+  function searchMultiple(condition: Record<string, string | undefined>) {
+    const param = SearchParamUtil.fromUseSearchParam(searchParams);
+
+    Object.entries(condition).forEach(([key, value]) => {
+      SearchParamUtil.replaceIfExistElseDelete(param, key, value);
+    });
+
+    router.push(pathname + "?" + param.toString());
+  }
+
+  function search(key: string, value?: string) {
+    const param = SearchParamUtil.fromUseSearchParam(searchParams);
+    SearchParamUtil.replaceIfExistElseDelete(param, key, value);
+    router.push(pathname + "?" + param.toString());
   }
 
   return (
@@ -80,19 +96,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.PiuVersion)}
                   btnText="버전 선택"
-                  onSelect={(version) => {
-                    const newSearchParams = new URLSearchParams(
-                      searchParams.toString()
-                    );
-                    if (version) {
-                      newSearchParams.set("version", version);
-                    } else {
-                      newSearchParams.delete("version");
-                    }
-
-                    console.log(version, newSearchParams.toString());
-                    router.push(pathname + "?" + newSearchParams.toString());
-                  }}
+                  onSelect={(version) => search("version", version)}
                 />
               );
             case "songType":
@@ -101,17 +105,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.SongType)}
                   btnText="아케이드/리믹스/풀송/숏컷 선택"
-                  onSelect={(songType) => {
-                    const newSearchParams = new URLSearchParams(
-                      searchParams.toString()
-                    );
-                    if (songType) {
-                      newSearchParams.set("songType", songType);
-                    } else {
-                      newSearchParams.delete("songType");
-                    }
-                    router.push(pathname + "?" + newSearchParams.toString());
-                  }}
+                  onSelect={(songType) => search("songType", songType)}
                 />
               );
             case "chartType":
@@ -120,17 +114,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.ChartType)}
                   btnText="싱글/더블/코옵 선택"
-                  onSelect={(chartType) => {
-                    const newSearchParams = new URLSearchParams(
-                      searchParams.toString()
-                    );
-                    if (chartType) {
-                      newSearchParams.set("chartType", chartType);
-                    } else {
-                      newSearchParams.delete("chartType");
-                    }
-                    router.push(pathname + "?" + newSearchParams.toString());
-                  }}
+                  onSelect={(chartType) => search("chartType", chartType)}
                 />
               );
           }
@@ -139,11 +123,12 @@ export default function SelectSong({
 
       <div className="flex flex-row gap-2 items-end">
         <InputWithLabel
-          name="이름"
-          topLeft="검색어 입력"
-          inputRef={keywordRef}
-          // value={searchParams?.get("keyword") ?? ""}
+          type="number"
+          topLeft="레벨"
+          inputRef={levelRef}
+          wrapperClassName="w-20"
         />
+        <InputWithLabel topLeft="검색어 입력" inputRef={keywordRef} />
         <button className="btn btn-primary" onClick={handleSearchClick}>
           검색
         </button>
@@ -160,6 +145,11 @@ export default function SelectSong({
             moveToChartDetail={moveChartDetail}
             chartType={
               (searchParams.get("chartType") as ChartType) ?? undefined
+            }
+            level={
+              searchParams.get("level")
+                ? Number(searchParams.get("level"))
+                : undefined
             }
             showOnlySongs={showOnlySongs}
           />

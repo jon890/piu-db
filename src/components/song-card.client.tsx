@@ -15,6 +15,7 @@ type Props = {
   onSelect?: (song: Song, chart: Chart) => void;
   chartType?: ChartType;
   showOnlySongs?: boolean;
+  level?: number;
 };
 
 export default function SongCardCC({
@@ -26,16 +27,18 @@ export default function SongCardCC({
   onSelect,
   chartType,
   showOnlySongs,
+  level,
 }: Props) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  let visibleCharts = charts;
-
-  if (chartType) {
-    visibleCharts = charts.filter((c) => c.chartType === chartType);
-  }
+  let visibleCharts = charts.filter((it) => {
+    let filter = true;
+    if (chartType && it.chartType !== chartType) filter = false;
+    if (level && it.level !== level) filter = false;
+    return filter;
+  });
 
   if (!showOnlySongs && visibleCharts.length === 0) {
     return null;

@@ -21,10 +21,9 @@ async function SelectSongHelper() {
   return (
     <SelectSong
       songWithCharts={allSongs}
-      dropDowns={["piuVersion", "songType"]}
+      dropDowns={["piuVersion", "songType", "chartType"]}
       moveSongDetail={true}
-      moveChartDetail={true}
-      showOnlySongs={true}
+      moveChartDetail={false}
     />
   );
 }
