@@ -54,7 +54,7 @@ export default async function AssignmentTable({
             {!onGoing && <th>시작일</th>}
             <th>종료일</th>
             {!onGoing && <th>상태</th>}
-            <th>등록일</th>
+            <th className="hidden sm:table-cell">등록일</th>
             <th>등록자</th>
           </tr>
         </thead>
@@ -82,14 +82,14 @@ export default async function AssignmentTable({
 
                 {!onGoing && (
                   <td>
-                    {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm")}
+                    {TimeUtil.format(assignment.startDate, "MM월 DD일 HH:mm")}
                   </td>
                 )}
 
                 {onGoing ? (
-                  <td className="space-x-2">
+                  <td className="*:block">
                     <span>
-                      {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm")}
+                      {TimeUtil.format(assignment.endDate, "MM월 DD일")}
                     </span>
 
                     {Math.floor(endDateDiff / 24) > 0 ? (
@@ -120,8 +120,8 @@ export default async function AssignmentTable({
                   </td>
                 )}
 
-                <td>
-                  {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD HH:mm")}
+                <td className="hidden sm:table-cell">
+                  {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD")}
                 </td>
                 <td>{assignment.createUser.nickname}</td>
               </tr>
