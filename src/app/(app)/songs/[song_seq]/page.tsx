@@ -1,3 +1,4 @@
+import ContentBox from "@/components/layout/content-box";
 import RecordTable from "@/components/record-table";
 import SongCardCC from "@/components/song-card.client";
 import ChartDB from "@/server/prisma/chart.db";
@@ -39,9 +40,7 @@ export default async function SongDetailPage({
     : await RecordDB.getRecordsByChartSeq(searchChartSeq, currentPage);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
-      <h1 className="text-3xl font-semibold">노래 상세</h1>
-
+    <ContentBox title="노래 상세">
       <SongCardCC
         song={song}
         charts={charts}
@@ -59,6 +58,6 @@ export default async function SongDetailPage({
           }}
         />
       </Suspense>
-    </div>
+    </ContentBox>
   );
 }

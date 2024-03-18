@@ -2,15 +2,14 @@ import InputWithLabel from "@/components/common/InputWithLabel";
 import UserDB from "@/server/prisma/user.db";
 import AuthUtil from "@/server/utils/auth-util";
 import CopyButton from "./copy-btn";
+import ContentBox from "@/components/layout/content-box";
 
 export default async function ProfilePage() {
   const userSeq = await AuthUtil.getUserSeqThrows();
   const user = await UserDB.getUserBySeq(userSeq);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
-      <h1 className="text-3xl font-semibold">프로필</h1>
-
+    <ContentBox title="프로필">
       <div className="flex flex-col justify-center items-center gap-4 w-full">
         <div className="size-20 rounded-full bg-green-500 flex items-center justify-center text-2xl text-white dark:text-black">
           {user?.nickname.charAt(0)}
@@ -28,6 +27,6 @@ export default async function ProfilePage() {
           <CopyButton text={user?.uid ?? ""} />
         </div>
       </div>
-    </div>
+    </ContentBox>
   );
 }

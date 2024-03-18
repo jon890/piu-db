@@ -1,3 +1,4 @@
+import ContentBox from "@/components/layout/content-box";
 import RecordTable from "@/components/record-table";
 import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
@@ -33,14 +34,14 @@ export default async function MyRecordPage({ searchParams: { page } }: Props) {
   }
 
   return (
-    <section className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
+    <ContentBox title="내 기록">
       <Suspense fallback={<p>기록을 읽고 있습니다...</p>}>
         <RecordTableWrapper
           userSeq={validated.data.userSeq}
           currentPage={validated.data.page}
         />
       </Suspense>
-    </section>
+    </ContentBox>
   );
 }
 

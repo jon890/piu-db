@@ -1,12 +1,12 @@
 import Room from "@/components/Room";
+import ContentBox from "@/components/layout/content-box";
 import RoomDB from "@/server/prisma/room.db";
 import Link from "next/link";
 import { Suspense } from "react";
 
 export default function RoomListPage() {
   return (
-    <div className="flex flex-col items-center justify-start w-full min-h-screen gap-y-10">
-      <h1 className="text-3xl mt-10">숙제방 목록</h1>
+    <ContentBox title={"숙제방 목록"}>
       <Link href="/rooms/create">
         <button className="btn btn-primary">방 생성</button>
       </Link>
@@ -14,7 +14,7 @@ export default function RoomListPage() {
       <Suspense fallback={<p>방 목록을 읽고 있습니다...</p>}>
         <RoomList />
       </Suspense>
-    </div>
+    </ContentBox>
   );
 }
 

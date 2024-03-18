@@ -11,6 +11,7 @@ import ParticipantsTable from "./participants-table";
 import CookieUtil from "@/server/utils/cookie-util";
 import type { AssignmentRoom } from "@prisma/client";
 import AssignmentDB from "@/server/prisma/assignment.db";
+import ContentBox from "@/components/layout/content-box";
 
 type Props = {
   params: { id: string };
@@ -34,8 +35,7 @@ export default async function RoomDetailPage({
 
   return (
     <>
-      <section className="flex flex-col items-center w-full h-full gap-5 sm:gap-10">
-        <h1 className="text-xl sm:text-2xl font-bold mt-10">{room.name}</h1>
+      <ContentBox title={room.name}>
         {room.description && (
           <h2 className="text-lg sm:text-xl font-semibold">
             {room.description}
@@ -65,7 +65,7 @@ export default async function RoomDetailPage({
         <Suspense fallback={<p>숙제를 불러오고 있습니다...</p>}>
           <AssignmentTableHelper room={room} />
         </Suspense>
-      </section>
+      </ContentBox>
 
       {message === "FORBIDDEN" && (
         <ServerToastHelper

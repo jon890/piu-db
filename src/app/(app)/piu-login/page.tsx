@@ -8,6 +8,7 @@ import GetGameId from "./(get-game-id)/form";
 import PiuProfileList from "./(profile-list)/form";
 import UseLoginCookie from "./(use-login-cookie)/form";
 import { setPrimary } from "./action";
+import ContentBox from "@/components/layout/content-box";
 
 type State = {
   step: number;
@@ -36,7 +37,7 @@ export default function CrawlingPage() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
+    <ContentBox>
       {state.step === 0 && (
         <>
           <h1 className="text-3xl mt-10">펌프잇업 로그인</h1>
@@ -77,6 +78,6 @@ export default function CrawlingPage() {
           <UseLoginCookie email={state.email} password={state.password} />
         </>
       )}
-    </section>
+    </ContentBox>
   );
 }

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import ApplyRivalForm from "./apply-rival.form";
 import RivalDB from "@/server/prisma/rival.db";
 import AuthUtil from "@/server/utils/auth-util";
+import ContentBox from "@/components/layout/content-box";
 
 type Props = {
   params: { uid: string };
@@ -21,9 +22,7 @@ export default async function ProfilePage(props: Props) {
   const rival = await RivalDB.getMyRivalByUID(userSeq, uid);
 
   return (
-    <div className="flex flex-col items-center justify-start w-full h-full gap-10 px-3 py-10">
-      <h1 className="text-3xl font-semibold">프로필</h1>
-
+    <ContentBox title="프로필">
       <div className="flex flex-col justify-center items-center gap-4 w-full">
         <div className="size-20 rounded-full bg-green-500 flex items-center justify-center text-2xl text-white dark:text-black">
           {user.nickname.charAt(0)}
@@ -43,6 +42,6 @@ export default async function ProfilePage(props: Props) {
           <ApplyRivalForm uid={user.uid} rival={rival} />
         )}
       </div>
-    </div>
+    </ContentBox>
   );
 }

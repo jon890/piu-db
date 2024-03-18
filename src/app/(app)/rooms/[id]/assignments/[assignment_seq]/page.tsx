@@ -7,6 +7,7 @@ import TimeUtil from "@/server/utils/time-util";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import AssignmentRecordTable from "./assignment-record-table";
+import ContentBox from "@/components/layout/content-box";
 
 export default async function AssignmentCreatePage({
   params,
@@ -28,9 +29,7 @@ export default async function AssignmentCreatePage({
   const chartAndSongs = await ChartDB.findSongBySeqInCache(assignment.chartSeq);
 
   return (
-    <section className="flex flex-col items-center w-full h-full gap-10">
-      <h1 className="text-xl sm:text-2xl font-bold mt-10">숙제 상세</h1>
-
+    <ContentBox title="숙제 상세">
       <h2 className="text-lg sm:text-xl font-medium">
         시작일 : {TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")}
         <br />
@@ -44,6 +43,6 @@ export default async function AssignmentCreatePage({
       <Suspense fallback={<p>기록을 불러오고 있습니다...</p>}>
         <AssignmentRecordTable assignmentSeq={assignment.seq} />
       </Suspense>
-    </section>
+    </ContentBox>
   );
 }
