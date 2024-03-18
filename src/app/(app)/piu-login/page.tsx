@@ -7,6 +7,7 @@ import { useState } from "react";
 import GetGameId from "./(get-game-id)/form";
 import PiuProfileList from "./(profile-list)/form";
 import UseLoginCookie from "./(use-login-cookie)/form";
+import { setPrimary } from "./action";
 
 type State = {
   step: number;
@@ -24,22 +25,14 @@ export default function CrawlingPage() {
     setState((prev) => ({ ...prev, step: 1, email, password }));
   };
 
-  const handleSelectProfile = (profile: PiuProfile) => {
+  const handleSelectProfile = async (profile: PiuProfile) => {
     setState((prev) => ({ ...prev, step: 2, selectedProfile: profile }));
     toast.createToast({
       type: "success",
       message: `${profile.gameId}를 주 계정으로 설정했습니다`,
     });
-  };
 
-  const handleUseLoginCookie = () => {
-    if (!state.email || !state.password) {
-      toast.createToast({
-        type: "error",
-        message: "알 수 없는 오류로 실패했습니다.",
-      });
-      return;
-    }
+    await setPrimary(profile.gameId);
   };
 
   return (

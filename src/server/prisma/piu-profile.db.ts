@@ -6,6 +6,27 @@ async function getPiuProfiles(userSeq: number) {
   });
 }
 
+async function setPrimary(userSeq: number, gameId: string) {
+  await prisma.piuProfile.updateMany({
+    data: {
+      isPrimary: false,
+    },
+    where: {
+      userSeq,
+    },
+  });
+
+  await prisma.piuProfile.update({
+    data: {
+      isPrimary: true,
+    },
+    where: {
+      gameId,
+      userSeq,
+    },
+  });
+}
+
 async function createIfNotExist(userSeq: number, gameId: string) {
   const profile = await prisma.piuProfile.upsert({
     create: {
@@ -24,6 +45,7 @@ async function createIfNotExist(userSeq: number, gameId: string) {
 const PiuProfileDB = {
   getPiuProfiles,
   createIfNotExist,
+  setPrimary,
 };
 
 export default PiuProfileDB;

@@ -1,8 +1,8 @@
 "use client";
 
-import { getPiuProfiles } from "@/app/(app)/piu-login/(profile-list)/action";
 import { PiuProfile } from "@prisma/client";
 import { useEffect, useState } from "react";
+import { getPiuProfiles } from "./action";
 
 type PiuProfileListProps = {
   onSelect?: (profile: PiuProfile) => void | Promise<void>;

@@ -1,16 +1,10 @@
 "use server";
 
-import { auth } from "@/auth";
-import crawlerClient from "@/server/client/crawler.client";
-import ChartDB from "@/server/prisma/chart.db";
-import PiuProfileDB from "@/server/prisma/piu-profile.db";
-import RecordDB from "@/server/prisma/record.db";
-import SongDB from "@/server/prisma/song.db";
-import { RecentlyPlayed } from "@/types/recently-played";
-import { GetRecentlyPlayedSchema } from "./schema";
-import AuthUtil from "@/server/utils/auth-util";
-import { cookies } from "next/headers";
 import CryptService from "@/server/crypt/crypt.service";
+import AuthUtil from "@/server/utils/auth-util";
+import { RecentlyPlayed } from "@/types/recently-played";
+import { cookies } from "next/headers";
+import { GetRecentlyPlayedSchema } from "./schema";
 
 export type State = {
   ok: boolean;
@@ -35,7 +29,7 @@ export async function useLoginCookieAction(
     };
   }
 
-  const { email, password, userSeq } = validatedFields.data;
+  const { email, password } = validatedFields.data;
 
   const login = JSON.stringify({
     email,

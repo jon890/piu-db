@@ -32,16 +32,16 @@ model User {
 
 model PiuProfile {
   seq              Int      @id @default(autoincrement())
-  gameId           String   @map("game_id")
+  gameId           String   @unique @map("game_id")
   lastLoginDate    String?  @map("last_login_date")
   lastPlayedCenter String?  @map("last_played_center")
+  user             User     @relation(fields: [userSeq], references: [seq])
+  userSeq          Int      @map("user_seq")
+  isPrimary        Boolean  @default(false) @map("is_primary")
   records          Record[]
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
-  user             User     @relation(fields: [userSeq], references: [seq])
-  userSeq          Int      @map("user_seq")
 
-  @@unique([gameId])
   @@map("td_piu_profile")
 }
 
