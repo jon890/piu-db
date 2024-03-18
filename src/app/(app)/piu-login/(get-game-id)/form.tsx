@@ -1,17 +1,19 @@
 "use client";
 
-import { getGameIdAction } from "@/app/(app)/crawling/(get-game-id)/action";
+import { getGameIdAction } from "@/app/(app)/piu-login/(get-game-id)/action";
+import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/common/InputWithLabel";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";
 
-export type GetGameIdProps = {
+type Props = {
   onSuccess?: (email: string, password: string) => void | Promise<void>;
 };
 
-export default function GetGameId({ onSuccess }: GetGameIdProps) {
+export default function GetGameId({ onSuccess }: Props) {
   const [state, action] = useFormState(getGameIdAction, null);
+  const toast = useToast();
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -21,13 +23,24 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
     }
   }, [state?.ok, onSuccess]);
 
+  useEffect(() => {
+    if (state?.ok === false) {
+      toast.createToast({
+        message: state?.message ?? "오류가 발생했습니다",
+        type: "error",
+      });
+    }
+  }, [state?.message, state?.ok]);
+
   return (
     <form
-      className="flex justify-center items-center w-full max-w-md flex-col"
+      className="flex justify-center items-center w-full max-w-md flex-col gap-3"
       action={action}
     >
       <InputWithLabel
-        topLeft="아이디"
+        topLeft="펌프잇업 아이디"
+        topRight="* 공식 홈페이지 로그인 계정 정보를 입력해주세요"
+        topRightClass="text-red-500"
         placeholder="아이디를 입력해주세요"
         name="email"
         errors={state?.paramErrors?.fieldErrors?.email}
@@ -36,19 +49,18 @@ export default function GetGameId({ onSuccess }: GetGameIdProps) {
 
       <InputWithLabel
         type="password"
-        topLeft="비밀번호"
+        topLeft="펌프잇업 비밀번호"
         placeholder="비밀번호를 입력해주세요"
         name="password"
         errors={state?.paramErrors?.fieldErrors?.password}
         inputRef={passwordRef}
       />
 
-      <FormButton text="펌프잇업 로그인" className="mt-5" />
-
-      <div className="mt-6 text-sm text-red-500 font-bold">
-        <p>{state?.message}</p>
-        {state?.error && <p>{state?.error}</p>}
-      </div>
+      <FormButton
+        text="로그인"
+        className="mt-5"
+        loadingText="잠시만 기다려주세요... (최대 10초정도 소요됩니다..)"
+      />
     </form>
   );
 }

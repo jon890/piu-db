@@ -1,6 +1,6 @@
 "use client";
 
-import { getPiuProfiles } from "@/app/(app)/crawling/(profile-list)/action";
+import { getPiuProfiles } from "@/app/(app)/piu-login/(profile-list)/action";
 import { PiuProfile } from "@prisma/client";
 import { useEffect, useState } from "react";
 

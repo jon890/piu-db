@@ -1,22 +1,18 @@
 "use client";
 
-import { getRecentlyPlayedAction } from "@/app/(app)/crawling/(get-recently-played)/action";
+import { getRecentlyPlayedAction } from "@/app/(app)/piu-login/(get-recently-played)/action";
 import FormButton from "@/components/FormButton";
 import { PiuProfile } from "@prisma/client";
 import { useEffect, useState } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 
-type GetRecentlyPlayedProps = {
+type Props = {
   profile: PiuProfile;
   email: string;
   password: string;
 };
 
-export default function GetRecentlyPlayed({
-  profile,
-  email,
-  password,
-}: GetRecentlyPlayedProps) {
+export default function GetRecentlyPlayed({ profile, email, password }: Props) {
   const [state, action] = useFormState(getRecentlyPlayedAction, null);
   const [loaded, setLoaded] = useState(false);
 

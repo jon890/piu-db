@@ -6,6 +6,7 @@ import prisma from "@/server/prisma/client";
 import type { GameId } from "@/types/game-id";
 import { HTTPError } from "ky";
 import { GetGameIdSchema } from "./schema";
+import AuthUtil from "@/server/utils/auth-util";
 
 type GameIdFormState = {
   ok: boolean;
@@ -16,12 +17,9 @@ export async function getGameIdAction(
   prevState: GameIdFormState | null,
   formData: FormData
 ) {
-  const session = await auth();
-  const maybeUserSeq = session?.user?.email;
-
   const validatedFields = GetGameIdSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
-    userSeq: maybeUserSeq,
+    userSeq: await AuthUtil.getUserSeqThrows(),
   });
 
   if (!validatedFields.success) {
@@ -73,7 +71,7 @@ export async function getGameIdAction(
     return {
       ok: false,
       error: errorMsg,
-      message: "실패했습니다",
+      message: `로그인에 실패했습니다: ${errorMsg}`,
     };
   }
 }
