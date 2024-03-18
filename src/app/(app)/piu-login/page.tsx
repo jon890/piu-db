@@ -26,13 +26,13 @@ export default function CrawlingPage() {
   };
 
   const handleSelectProfile = async (profile: PiuProfile) => {
+    await setPrimary(profile.gameId);
+
     setState((prev) => ({ ...prev, step: 2, selectedProfile: profile }));
     toast.createToast({
       type: "success",
       message: `${profile.gameId}를 주 계정으로 설정했습니다`,
     });
-
-    await setPrimary(profile.gameId);
   };
 
   return (
