@@ -1,6 +1,5 @@
 import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignment/create/create-schema";
 import prisma from "@/server/prisma/client";
-import dayjs from "dayjs";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
 
@@ -48,6 +47,11 @@ async function getOngoingAssignments(roomSeq: number) {
       },
       endDate: {
         gte: now,
+      },
+    },
+    include: {
+      createUser: {
+        select: { nickname: true },
       },
     },
   });

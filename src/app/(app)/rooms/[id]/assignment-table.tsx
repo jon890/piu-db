@@ -1,6 +1,6 @@
 import LevelBallSC from "@/components/level-ball.server";
+import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
-import RoomDB from "@/server/prisma/room.db";
 import TimeUtil from "@/server/utils/time-util";
 import { AssignmentRoom } from "@prisma/client";
 import dayjs from "dayjs";
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default async function AssignmentTable({ room }: Props) {
-  const assignments = await RoomDB.getAssignments(room.seq);
+  const assignments = await AssignmentDB.getOngoingAssignments(room.seq);
 
   let assignmentWithSong = [];
   if (assignments) {
@@ -30,7 +30,11 @@ export default async function AssignmentTable({ room }: Props) {
 
   return (
     <div className="overflow-auto border p-4 rounded-md shadow-md max-w-full">
-      <h3 className="text-center font-semibold p-2">숙제 목록</h3>
+      <div className="flex flex-row justify-center">
+        <h3 className="text-center font-semibold p-2">진행 중인 숙제 목록</h3>
+        <button className="btn btn-primary ml-auto">전체 보기</button>
+      </div>
+
       <table className="table">
         <thead>
           <tr>
@@ -41,6 +45,7 @@ export default async function AssignmentTable({ room }: Props) {
             <th>종료일</th>
             <th>상태</th>
             <th>등록일</th>
+            <th>등록자</th>
           </tr>
         </thead>
         <tbody>
@@ -77,6 +82,7 @@ export default async function AssignmentTable({ room }: Props) {
               <td>
                 {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD HH:mm")}
               </td>
+              <td>{assignment.createUser.nickname}</td>
             </tr>
           ))}
         </tbody>

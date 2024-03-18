@@ -55,17 +55,6 @@ async function getParticipants(roomSeq: number) {
   });
 }
 
-async function getAssignments(roomSeq: number) {
-  return prisma.assignment.findMany({
-    where: {
-      roomSeq: roomSeq,
-    },
-    orderBy: {
-      endDate: "asc",
-    },
-  });
-}
-
 async function participate(roomSeq: number, userSeq: number) {
   return prisma.assignmentRoomParticipants.upsert({
     where: {
@@ -99,7 +88,6 @@ const RoomDB = {
   getParticipants,
   participate,
   isParticipated,
-  getAssignments,
 };
 
 export default RoomDB;
