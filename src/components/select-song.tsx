@@ -1,13 +1,20 @@
 "use client";
 
+import SearchParamUtil from "@/client/utils/search-param.util";
 import { SongWithCharts } from "@/server/prisma/chart.db";
-import { $Enums, type ChartType, type Chart, type Song } from "@prisma/client";
+import {
+  $Enums,
+  type Chart,
+  type ChartType,
+  type PiuVersion,
+  type Song,
+  type SongType,
+} from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import InputWithLabel from "./common/InputWithLabel";
 import DropDown from "./dropdown";
 import SongCardCC from "./song-card.client";
-import SearchParamUtil from "@/client/utils/search-param.util";
 
 export type DropDown = "piuVersion" | "songType" | "chartType";
 
@@ -32,8 +39,13 @@ export default function SelectSong({
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const keywordRef = useRef<HTMLInputElement>(null);
-  const levelRef = useRef<HTMLInputElement>(null);
+  const [inputs, setInputs] = useState<{
+    level: string;
+    keyword: string;
+  }>({
+    level: searchParams.get("level") ?? "",
+    keyword: searchParams.get("keyword") ?? "",
+  });
 
   const [visibleSongs, setVisibleSongs] = useState<SongWithCharts[]>([
     ...songWithCharts,
@@ -63,10 +75,7 @@ export default function SelectSong({
   }, [songWithCharts, searchParams]);
 
   function handleSearchClick() {
-    searchMultiple({
-      level: levelRef?.current?.value,
-      keyword: keywordRef?.current?.value,
-    });
+    searchMultiple({ ...inputs });
   }
 
   function searchMultiple(condition: Record<string, string | undefined>) {
@@ -96,6 +105,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.PiuVersion)}
                   btnText="버전 선택"
+                  initialValue={searchParams.get("version") as PiuVersion}
                   onSelect={(version) => search("version", version)}
                 />
               );
@@ -105,6 +115,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.SongType)}
                   btnText="아케이드/리믹스/풀송/숏컷 선택"
+                  initialValue={searchParams.get("songType") as SongType}
                   onSelect={(songType) => search("songType", songType)}
                 />
               );
@@ -114,6 +125,7 @@ export default function SelectSong({
                   key={dropdown}
                   values={Object.values($Enums.ChartType)}
                   btnText="싱글/더블/코옵 선택"
+                  initialValue={searchParams.get("chartType") as ChartType}
                   onSelect={(chartType) => search("chartType", chartType)}
                 />
               );
@@ -125,10 +137,19 @@ export default function SelectSong({
         <InputWithLabel
           type="number"
           topLeft="레벨"
-          inputRef={levelRef}
-          wrapperClassName="w-20"
+          wrapperClassName="!w-20"
+          value={inputs.level}
+          onChange={(e) =>
+            setInputs((prev) => ({ ...prev, level: e.target.value }))
+          }
         />
-        <InputWithLabel topLeft="검색어 입력" inputRef={keywordRef} />
+        <InputWithLabel
+          topLeft="검색어 입력"
+          onChange={(e) =>
+            setInputs((prev) => ({ ...prev, keyword: e.target.value }))
+          }
+          value={inputs.keyword}
+        />
         <button className="btn btn-primary" onClick={handleSearchClick}>
           검색
         </button>

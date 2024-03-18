@@ -8,6 +8,7 @@ type InputWithLabelProps = {
   errors?: string[];
   inputRef?: LegacyRef<HTMLInputElement> | undefined;
   wrapperClassName?: string;
+  initialValue?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 export default function InputWithLabel({

@@ -7,15 +7,17 @@ type Props<T extends string> = {
   onSelect?: (value?: T) => void;
   resetBtnText?: string;
   btnText?: string;
+  initialValue?: T;
 };
 
 export default function DropDown<T extends string>({
   values,
   onSelect,
-  btnText,
   resetBtnText,
+  btnText,
+  initialValue,
 }: Props<T>) {
-  const [selected, setSelected] = useState<T | null>(null);
+  const [selected, setSelected] = useState<T | null>(initialValue ?? null);
 
   return (
     <div className="dropdown">
