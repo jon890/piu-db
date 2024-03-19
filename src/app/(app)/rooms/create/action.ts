@@ -1,47 +1,30 @@
 "use server";
 
-import { auth } from "@/auth";
-import prisma from "@/server/prisma/client";
+import RoomDB from "@/server/prisma/room.db";
+import AuthUtil from "@/server/utils/auth-util";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { z } from "zod";
+import { CreateRoomSchema } from "./schema";
 
-export type State = {
+type State = {
   message?: string;
 };
 
-const createRoomSchema = z.object({
-  name: z.string().min(1, "방 이름을 입력해주세요"),
-  description: z.string(),
-  adminUserSeq: z.number().gt(0),
-  bannerImage: z.string(),
-});
-
 export async function createRoom(prevState: State | null, formData: FormData) {
-  const session = await auth();
-  const userSeq = session?.user?.email;
-
-  const validatedFields = createRoomSchema.safeParse({
+  const validatedFields = CreateRoomSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
-    adminUserSeq: userSeq ? Number(userSeq) : null,
+    adminUserSeq: await AuthUtil.getUserSeqThrows(),
   });
 
   if (!validatedFields.success) {
     return {
+      ok: false,
       errors: validatedFields.error.flatten(),
       message: "Missing Fields. Failed to Create Room.",
     };
   }
 
-  const { adminUserSeq, bannerImage, description, name } = validatedFields.data;
-  const room = await prisma.assignmentRoom.create({
-    data: {
-      name,
-      adminUserSeq,
-      bannerImage,
-      description,
-    },
-  });
+  await RoomDB.create(validatedFields.data);
 
   revalidatePath("/rooms");
   redirect("/rooms");

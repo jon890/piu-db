@@ -1,16 +1,28 @@
 "use client";
 
-import InputWithLabel from "@/components/common/InputWithLabel";
 import { createRoom } from "@/app/(app)/rooms/create/action";
-import { useFormState } from "react-dom";
+import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
+import InputWithLabel from "@/components/common/InputWithLabel";
+import { useEffect } from "react";
+import { useFormState } from "react-dom";
 
 export default function CreateRoomForm() {
   const [state, action] = useFormState(createRoom, null);
+  const toast = useToast();
+
+  useEffect(() => {
+    if (state?.ok === false) {
+      toast.createToast({
+        type: "error",
+        message: state?.message ?? "오류가 발생했습니다",
+      });
+    }
+  }, [state]);
 
   return (
     <form
-      className="flex justify-center items-center w-1/2 flex-col"
+      className="flex justify-center items-center max-w-md w-full flex-col"
       action={action}
     >
       <InputWithLabel

@@ -40,7 +40,9 @@ export default function InputWithLabel({
       </label>
       <input
         name={name ?? ""}
-        className="input input-bordered w-full max-w-md"
+        className={classnames("input input-bordered w-full max-w-md", {
+          "border-red-500": errors != null && errors.length > 0,
+        })}
         aria-describedby={`${name ?? ""}-error`}
         ref={inputRef}
         {...rest}
@@ -50,7 +52,7 @@ export default function InputWithLabel({
         <div
           id={`${name ?? ""}-error`}
           aria-live="polite"
-          className="text-sm text-red-500"
+          className="text-sm text-red-500 font-semibold text-center mt-1"
         >
           {errors.map((error: string) => (
             <p key={error}>{error}</p>

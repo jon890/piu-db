@@ -1,4 +1,31 @@
+import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import prisma from "@/server/prisma/client";
+import { z } from "zod";
+
+async function create({
+  adminUserSeq,
+  name,
+  bannerImage,
+  description,
+}: z.infer<typeof CreateRoomSchema>) {
+  return prisma.$transaction(async (tx) => {
+    const room = await tx.assignmentRoom.create({
+      data: {
+        name,
+        adminUserSeq,
+        bannerImage,
+        description,
+      },
+    });
+
+    await tx.assignmentRoomParticipants.create({
+      data: {
+        assignmentRoomSeq: room.seq,
+        userSeq: adminUserSeq,
+      },
+    });
+  });
+}
 
 /**
  * 한 페이지에 보여줄 갯수
@@ -86,6 +113,7 @@ async function isParticipated(roomSeq: number, userSeq: number) {
 }
 
 const RoomDB = {
+  create,
   getRooms,
   getRoom,
   getParticipants,
