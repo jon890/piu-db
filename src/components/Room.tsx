@@ -5,15 +5,19 @@ export type RoomProps = { room: AssignmentRoom; count: number };
 
 export default function CardGlass({ room, count }: RoomProps) {
   return (
-    <div className="card card-side w-96 glass">
+    <div className="card card-side w-full glass">
       {room.bannerImage && (
-        <figure>
-          <img src={room.bannerImage} alt="banner" className="size-20" />
+        <figure className="ml-4">
+          <img
+            src={room.bannerImage}
+            alt="banner"
+            className="size-20 rounded-xl"
+          />
         </figure>
       )}
 
       <div className="card-body">
-        {room.name && <h2 className="card-title">{room.name}</h2>}
+        <h2 className="card-title">{room.name}</h2>
         {room.description && <p className="font-medium">{room.description}</p>}
         <p className="text-end font-medium">
           참여자 수 : <span className="font-bold">{count}</span>
