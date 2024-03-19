@@ -1,6 +1,6 @@
 "use server";
 
-import { getAndSaveRecentlyPlayedAction } from "@/app/(app)/piu-login/(get-recently-played)/action";
+import { getAndSaveRecentlyPlayedAction } from "@/server/action/get-and-save-recently-played.action";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RecordDB from "@/server/prisma/record.db";

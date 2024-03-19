@@ -19,18 +19,27 @@ async function submitAssignment({
   assignmentSeq: number;
   record: Record;
 }) {
-  await prisma.assigmentRecord.create({
-    data: {
-      assignmentSeq,
-      recordSeq: record.seq,
-      chartSeq: record.chartSeq,
-      userSeq: record.userSeq,
-    },
-  });
+  return prisma.$transaction([
+    prisma.assigmentRecord.deleteMany({
+      where: {
+        userSeq: record.userSeq,
+        assignmentSeq,
+      },
+    }),
+
+    prisma.assigmentRecord.create({
+      data: {
+        assignmentSeq,
+        recordSeq: record.seq,
+        chartSeq: record.chartSeq,
+        userSeq: record.userSeq,
+      },
+    }),
+  ]);
 }
 
 async function getRecordsByAssgimentSeq(assignmentSeq: number) {
-  return await prisma.assigmentRecord.findMany({
+  return prisma.assigmentRecord.findMany({
     where: {
       assignmentSeq,
     },
