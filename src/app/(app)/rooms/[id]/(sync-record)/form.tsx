@@ -1,9 +1,9 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
+import { syncRecordWithAuthAction } from "@/server/action/sync-record-with-auth.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useState } from "react";
-import { syncRecordWithAuthAction } from "./sync-record-with-auth";
 
 type Props = {
   room: AssignmentRoom;
