@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const MENUS = [
+  { text: "소개", href: "/introduce" },
   { text: "숙제방 목록", href: "/rooms" },
   { text: "펌프잇업 로그인", href: "/piu-login" },
   { text: "전체 노래 목록", href: "/songs" },

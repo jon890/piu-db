@@ -1,7 +1,7 @@
 type Props = {
   title?: string | null;
   subTitle?: string | null;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export default function ContentBox({ children, title, subTitle }: Props) {
