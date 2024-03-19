@@ -42,7 +42,7 @@ export default async function RoomDetailPage({
           </h2>
         )}
 
-        <div className="flex flex-row items-center justify-center gap-4 w-full flex-wrap">
+        <div className="flex flex-row items-center justify-center gap-4 max-w-screen-sm flex-wrap">
           <ParticipateForm room={room} isParticipated={isParticipated} />
 
           {isParticipated && (
@@ -55,6 +55,15 @@ export default async function RoomDetailPage({
               </Link>
               <RecordSyncForm room={room} piuAuth={piuAuthValue} />
             </>
+          )}
+
+          {room.adminUserSeq === userSeq && (
+            <Link
+              href={`/rooms/${room.seq}/settings`}
+              className="btn btn-primary text-xs sm:text-sm"
+            >
+              방 설정 변경
+            </Link>
           )}
         </div>
 

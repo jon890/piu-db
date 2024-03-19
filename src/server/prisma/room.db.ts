@@ -13,6 +13,9 @@ async function getRooms(page: number = 0) {
     skip: page * ROOM_PAGING_UNIT,
     take: ROOM_PAGING_UNIT,
     include: {
+      admin: {
+        select: { nickname: true },
+      },
       _count: {
         select: { assignmentRoomParticipants: true },
       },

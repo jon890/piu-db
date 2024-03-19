@@ -1,9 +1,12 @@
 import { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
 
-export type RoomProps = { room: AssignmentRoom; count: number };
+export type RoomProps = {
+  room: AssignmentRoom & { admin: { nickname: string } };
+  count: number;
+};
 
-export default function CardGlass({ room, count }: RoomProps) {
+export default function Room({ room, count }: RoomProps) {
   return (
     <div className="card card-side w-full glass">
       {room.bannerImage && (
@@ -20,12 +23,21 @@ export default function CardGlass({ room, count }: RoomProps) {
         <h2 className="card-title">{room.name}</h2>
         {room.description && <p className="font-medium">{room.description}</p>}
         <p className="text-end font-medium">
-          참여자 수 : <span className="font-bold">{count}</span>
+          방장 :{" "}
+          <span className="font-semibold bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
+            {room.admin.nickname}
+          </span>
+        </p>
+        <p className="text-end font-medium">
+          참여자 수 : <span className="font-semibold">{count}</span>
         </p>
 
         <div className="card-actions justify-end">
-          <Link href={`/rooms/${room.seq}`}>
-            <button className="btn btn-primary">상세 보기</button>
+          <Link
+            href={`/rooms/${room.seq}`}
+            className="btn btn-primary text-xs sm:text-sm"
+          >
+            상세 보기
           </Link>
         </div>
       </div>
