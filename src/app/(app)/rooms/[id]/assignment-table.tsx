@@ -50,7 +50,7 @@ export default async function AssignmentTable({
           <tr className="*:text-center">
             <th></th>
             <th>곡이름</th>
-            <th>레벨/SD</th>
+            <th>레벨</th>
             {!onGoing && <th>시작일</th>}
             <th>종료일</th>
             {!onGoing && <th>상태</th>}
@@ -76,7 +76,7 @@ export default async function AssignmentTable({
                 </td>
                 <td>
                   {chart?.chartType && (
-                    <LevelBallSC chart={chart} className="size-8" />
+                    <LevelBallSC chart={chart} className="size-6 sm:size-8" />
                   )}
                 </td>
 
@@ -123,7 +123,12 @@ export default async function AssignmentTable({
                 <td className="hidden sm:table-cell">
                   {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD")}
                 </td>
-                <td>{assignment.createUser.nickname}</td>
+
+                <td>
+                  <p className="w-12 sm:w-auto text-ellipsis whitespace-nowrap overflow-hidden">
+                    {assignment.createUser.nickname}
+                  </p>
+                </td>
               </tr>
             )
           )}
