@@ -6,6 +6,12 @@ export type RoomProps = { room: AssignmentRoom; count: number };
 export default function CardGlass({ room, count }: RoomProps) {
   return (
     <div className="card card-side w-96 glass">
+      {room.bannerImage && (
+        <figure>
+          <img src={room.bannerImage} alt="banner" className="size-20" />
+        </figure>
+      )}
+
       <div className="card-body">
         {room.name && <h2 className="card-title">{room.name}</h2>}
         {room.description && <p className="font-medium">{room.description}</p>}
