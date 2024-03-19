@@ -1,3 +1,4 @@
+import { ChangeRoomSettingsSchema } from "@/app/(app)/rooms/[id]/settings/schema";
 import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
@@ -25,6 +26,43 @@ async function create({
       },
     });
   });
+}
+
+async function changeSettings(
+  userSeq: number,
+  {
+    room_seq,
+    bannerImage,
+    description,
+    name,
+  }: z.infer<typeof ChangeRoomSettingsSchema>
+) {
+  const room = await prisma.assignmentRoom.findUnique({
+    select: {
+      adminUserSeq: true,
+    },
+    where: {
+      seq: room_seq,
+    },
+  });
+
+  if (!room) {
+    return { ok: false, message: "존재하지 않는 방입니다" };
+  }
+
+  if (room.adminUserSeq !== userSeq) {
+    return { ok: false, message: "방장이 아닙니다" };
+  }
+
+  await prisma.assignmentRoom.update({
+    data: {
+      ...(bannerImage && { bannerImage }),
+      ...(description && { description }),
+      ...(name && { name }),
+    },
+    where: { seq: room_seq },
+  });
+  return { ok: true, message: "설정을 변경했습니다" };
 }
 
 /**
@@ -114,6 +152,7 @@ async function isParticipated(roomSeq: number, userSeq: number) {
 
 const RoomDB = {
   create,
+  changeSettings,
   getRooms,
   getRoom,
   getParticipants,
