@@ -1,12 +1,12 @@
 import { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
 
-export type RoomProps = {
+type Props = {
   room: AssignmentRoom & { admin: { nickname: string } };
   count: number;
 };
 
-export default function Room({ room, count }: RoomProps) {
+export default function Room({ room, count }: Props) {
   return (
     <div className="card card-side w-full glass">
       {room.bannerImage && (
