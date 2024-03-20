@@ -164,10 +164,11 @@ model AssignmentRoom {
   bannerImage                String?                      @map("banner_image")
   admin                      User                         @relation(fields: [adminUserSeq], references: [seq])
   adminUserSeq               Int                          @map("admin_user_seq")
-  assignments                Assignment[]
-  assignmentRoomParticipants AssignmentRoomParticipants[]
+  stopParticipating          Boolean                      @default(false) @map("stop_participating")
   updatedAt                  DateTime                     @updatedAt @map("updated_at")
   createdAt                  DateTime                     @default(now()) @map("created_at")
+  assignments                Assignment[]
+  assignmentRoomParticipants AssignmentRoomParticipants[]
 
   @@map("td_assignment_room")
 }

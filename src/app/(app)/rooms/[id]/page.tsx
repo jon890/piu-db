@@ -1,17 +1,17 @@
+import ContentBox from "@/components/layout/content-box";
 import ServerToastHelper from "@/components/server-toast-helper";
+import AssignmentDB from "@/server/prisma/assignment.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
+import CookieUtil from "@/server/utils/cookie-util";
+import type { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import ParticipateForm from "./(participate)/participate-form";
+import ParticipateButton from "./(participate)/button";
 import RecordSyncForm from "./(sync-record)/form";
 import AssignmentTable from "./assignment-table";
 import ParticipantsTable from "./participants-table";
-import CookieUtil from "@/server/utils/cookie-util";
-import type { AssignmentRoom } from "@prisma/client";
-import AssignmentDB from "@/server/prisma/assignment.db";
-import ContentBox from "@/components/layout/content-box";
 
 type Props = {
   params: { id: string };
@@ -43,7 +43,7 @@ export default async function RoomDetailPage({
         )}
 
         <div className="flex flex-row items-center justify-center gap-4 max-w-screen-sm flex-wrap">
-          <ParticipateForm room={room} isParticipated={isParticipated} />
+          <ParticipateButton room={room} isParticipated={isParticipated} />
 
           {isParticipated && (
             <>

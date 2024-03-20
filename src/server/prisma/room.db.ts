@@ -1,6 +1,7 @@
 import { ChangeRoomSettingsSchema } from "@/app/(app)/rooms/[id]/settings/schema";
 import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import prisma from "@/server/prisma/client";
+import { AssignmentRoom } from "@prisma/client";
 import { z } from "zod";
 
 async function create({
@@ -35,6 +36,7 @@ async function changeSettings(
     bannerImage,
     description,
     name,
+    stopParticipating,
   }: z.infer<typeof ChangeRoomSettingsSchema>
 ) {
   const room = await prisma.assignmentRoom.findUnique({
@@ -56,9 +58,10 @@ async function changeSettings(
 
   await prisma.assignmentRoom.update({
     data: {
-      ...(bannerImage && { bannerImage }),
-      ...(description && { description }),
-      ...(name && { name }),
+      bannerImage,
+      description,
+      name,
+      stopParticipating: stopParticipating === "on",
     },
     where: { seq: room_seq },
   });
@@ -124,18 +127,36 @@ async function getParticipants(roomSeq: number) {
 }
 
 async function participate(roomSeq: number, userSeq: number) {
-  return prisma.assignmentRoomParticipants.upsert({
-    where: {
-      assignmentRoomSeq_userSeq: {
+  return prisma.$transaction(async (tx) => {
+    const room = await prisma.assignmentRoom.findUnique({
+      where: {
+        seq: roomSeq,
+      },
+    });
+
+    if (!room) {
+      return { ok: false, message: "방이 존재하지 않습니다" };
+    }
+
+    if (room.stopParticipating) {
+      return { ok: false, message: "해당 방의 참여가 제한되어있습니다" };
+    }
+
+    await prisma.assignmentRoomParticipants.upsert({
+      where: {
+        assignmentRoomSeq_userSeq: {
+          assignmentRoomSeq: roomSeq,
+          userSeq,
+        },
+      },
+      create: {
         assignmentRoomSeq: roomSeq,
         userSeq,
       },
-    },
-    create: {
-      assignmentRoomSeq: roomSeq,
-      userSeq,
-    },
-    update: {},
+      update: {},
+    });
+
+    return { ok: true, message: "방에 참여되었습니다" };
   });
 }
 

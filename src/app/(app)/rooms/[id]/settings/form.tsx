@@ -27,7 +27,7 @@ export default function RoomSettingsForm({ room }: Props) {
 
   return (
     <form
-      className="flex justify-center items-center max-w-md w-full flex-col"
+      className="flex justify-center items-center max-w-md w-full flex-col gap-3"
       action={action}
     >
       <input type="hidden" name="room_seq" value={room.seq} />
@@ -57,6 +57,31 @@ export default function RoomSettingsForm({ room }: Props) {
         errors={state?.paramErrors?.fieldErrors.bannerImage}
         defaultValue={room.bannerImage ?? ""}
       />
+
+      <div className="form-control w-full max-w-md">
+        <label className="label cursor-pointer">
+          <span className="label-text">다른 유저 참여 제한</span>
+          <input
+            type="checkbox"
+            name="stopParticipating"
+            defaultChecked={room.stopParticipating}
+            className="checkbox checkbox-primary"
+          />
+        </label>
+        {state?.paramErrors?.fieldErrors?.stopParticipating && (
+          <div
+            id={`${"stopParticipating"}-error`}
+            aria-live="polite"
+            className="text-sm text-red-500 font-semibold text-center mt-1"
+          >
+            {state?.paramErrors?.fieldErrors?.stopParticipating.map(
+              (error: string) => (
+                <p key={error}>{error}</p>
+              )
+            )}
+          </div>
+        )}
+      </div>
 
       <FormButton text="변경" className="mt-5" />
     </form>

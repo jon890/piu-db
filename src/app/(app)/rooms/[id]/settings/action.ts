@@ -19,6 +19,8 @@ export async function changeRoomSettings(
     ...Object.fromEntries(formData.entries()),
   });
 
+  console.log(Object.fromEntries(formData.entries()));
+
   if (!validatedFields.success) {
     return {
       ok: false,
