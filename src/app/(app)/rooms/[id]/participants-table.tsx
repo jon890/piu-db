@@ -16,7 +16,7 @@ export default async function ParticipantsTable(props: Props) {
 
   return (
     <>
-      <div className="overflow-auto max-h-[300px] border p-4 rounded-md shadow-md">
+      <div className="overflow-auto max-h-[300px] border p-4 rounded-2xl shadow-xl">
         <h3 className="text-center font-semibold p-2">참여자 목록</h3>
         <table className="table">
           <thead>
@@ -27,17 +27,17 @@ export default async function ParticipantsTable(props: Props) {
             </tr>
           </thead>
           <tbody>
-            {participants?.map((p, index) => (
+            {participants.map((p, index) => (
               <tr key={p.seq} className="hover">
                 <th>{index + 1}</th>
-                <th className="space-x-2 flex flex-row items-center">
+                <th>
                   <Link
                     href={
                       p.user.seq === userSeq
                         ? "/profile"
                         : `/profile/${p.user.uid}`
                     }
-                    className="hover:text-gray-600"
+                    className="hover:text-gray-600 space-x-1 flex flex-row items-center"
                   >
                     <span>{p.user.nickname}</span>
                     {room.adminUserSeq === p.user.seq && (
