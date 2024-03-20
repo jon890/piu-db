@@ -49,11 +49,19 @@ export default function AssignmentCreateForm({
             name="start_date"
             errors={state?.errors?.fieldErrors?.start_date}
           />
+
           <InputWithLabel
             topLeft="종료일"
             type="date"
             name="end_date"
             errors={state?.errors?.fieldErrors?.end_date}
+          />
+
+          <InputWithLabel
+            topLeft="메모 (선택)"
+            type="text"
+            name="memo"
+            errors={state?.errors?.fieldErrors?.memo}
           />
 
           <div className="card-actions mt-5">

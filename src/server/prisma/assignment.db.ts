@@ -27,6 +27,7 @@ async function createAssignment(
       startDate: params.start_date,
       endDate: TimeUtil.setMaxTime(params.end_date),
       createUserSeq: params.user_seq,
+      memo: params.memo,
     },
   });
 

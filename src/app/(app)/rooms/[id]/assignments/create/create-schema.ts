@@ -10,6 +10,7 @@ export const CreateAssignmentSchema = z
     chart_seq: z.coerce.number().gt(0, "노래 정보가 잘못되었습니다"),
     start_date: z.coerce.date({ required_error: "시작일을 입력해주세요" }),
     end_date: z.coerce.date({ required_error: "종료일을 입력해주세요" }),
+    memo: z.string().optional(),
   })
   .refine(
     ({ end_date }) => {
