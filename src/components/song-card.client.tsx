@@ -1,10 +1,11 @@
 "use client";
 
-import classnames, { SONG_BADGE } from "@/client/utils/classnames";
+import classnames from "@/client/utils/classnames";
 import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBallCC from "./level-ball.client";
+import SongBadges from "./song-badges";
 
 type Props = {
   song: Song;
@@ -70,12 +71,7 @@ export default function SongCardCC({
           )}
         </h2>
 
-        <div className="flex flex-row flex-wrap justify-end gap-2">
-          <div className={classnames(SONG_BADGE)}>아티스트: {song.artist}</div>
-          <div className={classnames(SONG_BADGE)}>타입: {song.songType}</div>
-          <div className={classnames(SONG_BADGE)}>BPM: {song.bpm}</div>
-          <div className={classnames(SONG_BADGE)}>버전: {song.version}</div>
-        </div>
+        <SongBadges song={song} />
 
         {!showOnlySongs && (
           <div

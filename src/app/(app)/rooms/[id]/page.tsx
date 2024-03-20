@@ -42,7 +42,7 @@ export default async function RoomDetailPage({
           </h2>
         )}
 
-        <div className="flex flex-row items-center justify-center gap-4 max-w-screen-sm flex-wrap">
+        <div className="flex flex-row items-center justify-center gap-4 flex-wrap">
           <ParticipateButton room={room} isParticipated={isParticipated} />
 
           {isParticipated && (

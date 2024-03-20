@@ -16,7 +16,7 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
         </section>
       </div>
 
-      <div className="drawer-side">
+      <div className="drawer-side !w-screen">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"

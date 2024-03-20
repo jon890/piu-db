@@ -31,7 +31,7 @@ export default async function AssignmentTable({
   }
 
   return (
-    <div className="overflow-auto border p-4 rounded-2xl shadow-xl max-w-full">
+    <div className="overflow-auto border p-4 rounded-2xl shadow-xl max-w-[calc(100%-20px)]">
       <div className="flex flex-row justify-center">
         <h3 className="text-center font-semibold p-2">
           {onGoing ? "진행 중인 숙제 목록" : "전체 숙제 목록"}
