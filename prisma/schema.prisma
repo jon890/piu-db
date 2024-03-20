@@ -194,11 +194,12 @@ model Assignment {
   endDate       DateTime          @map("end_date")
   chart         Chart             @relation(fields: [chartSeq], references: [seq])
   chartSeq      Int               @map("chart_seq")
-  records       AssigmentRecord[]
   createUserSeq Int               @map("create_user_seq")
   createUser    User              @relation(fields: [createUserSeq], references: [seq])
+  memo          String?
   updatedAt     DateTime          @updatedAt @map("updated_at")
   createdAt     DateTime          @default(now()) @map("created_at")
+  records       AssigmentRecord[]
 
   @@index([roomSeq, startDate, endDate])
   @@map("td_assignment")

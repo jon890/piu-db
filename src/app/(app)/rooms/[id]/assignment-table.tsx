@@ -1,8 +1,7 @@
 import LevelBallSC from "@/components/level-ball.server";
-import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import TimeUtil from "@/server/utils/time-util";
-import type { Assignment, AssignmentRoom, User } from "@prisma/client";
+import type { Assignment, AssignmentRoom } from "@prisma/client";
 import dayjs from "dayjs";
 import Link from "next/link";
 
@@ -54,6 +53,7 @@ export default async function AssignmentTable({
             {!onGoing && <th>시작일</th>}
             <th>종료일</th>
             {!onGoing && <th>상태</th>}
+            <th>메모</th>
             <th className="hidden sm:table-cell">등록일</th>
             <th>등록자</th>
           </tr>
@@ -119,6 +119,8 @@ export default async function AssignmentTable({
                     )}
                   </td>
                 )}
+
+                <td>{assignment.memo ?? ""}</td>
 
                 <td className="hidden sm:table-cell">
                   {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD")}
