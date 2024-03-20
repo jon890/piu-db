@@ -18,23 +18,20 @@ export const { auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         const parsedCredentials = LoginSchema.safeParse(credentials);
 
-        if (parsedCredentials.success) {
-          const { name, password } = parsedCredentials.data;
-          const user = await UserDB.getUser(name);
+        if (!parsedCredentials.success) return null;
 
-          if (!user) return null;
+        const { name, password } = parsedCredentials.data;
+        const user = await UserDB.getUser(name);
+        if (!user) return null;
 
-          const passwordsMatch = await bcrypt.compare(password, user.password);
-          if (passwordsMatch) {
-            return {
-              id: user.seq.toString(),
-              name: user.name,
-              email: user.seq.toString(),
-            };
-          }
-        }
+        const passwordsMatch = await bcrypt.compare(password, user.password);
+        if (!passwordsMatch) return null;
 
-        return null;
+        return {
+          id: user.seq.toString(),
+          name: user.name,
+          email: user.seq.toString(),
+        };
       },
     }),
   ],

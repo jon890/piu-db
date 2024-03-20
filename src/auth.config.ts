@@ -32,6 +32,10 @@ export const authConfig = {
       }
     },
   },
+  session: {
+    maxAge: 86400 * 7,
+    updateAge: 86400,
+  },
 } satisfies NextAuthConfig;
 
 // TODO satisfies 연구
