@@ -46,9 +46,7 @@ export default function ParticipateButton({
 
   return isParticipated ? null : (
     <button
-      onClick={() => {
-        participate;
-      }}
+      onClick={participate}
       className="btn btn-primary text-xs sm:text-sm"
       disabled={loading}
       aria-disabled={loading}
