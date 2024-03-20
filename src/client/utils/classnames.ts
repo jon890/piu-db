@@ -24,3 +24,9 @@ export default function classnames(
 
   return v;
 }
+
+export const TEXT_ELLIPISIS = "overflow-hidden text-ellipsis whitespace-nowrap";
+export const SONG_BADGE = classnames(
+  "badge badge-xs sm:badge-sm md:badge-md lg:badge-lg badge-outline max-w-full justify-start !text-[10px]",
+  TEXT_ELLIPISIS
+);

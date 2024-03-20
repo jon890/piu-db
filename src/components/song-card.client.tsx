@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames, { SONG_BADGE } from "@/client/utils/classnames";
 import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -70,19 +70,11 @@ export default function SongCardCC({
           )}
         </h2>
 
-        <div className="grid grid-cols-2 justify-items-end gap-2">
-          <div className="badge badge-lg !text-[10px] badge-outline">
-            {song.artist}
-          </div>
-          <div className="badge badge-lg !text-[10px] badge-outline">
-            {song.songType}
-          </div>
-          <div className="badge badge-lg !text-[10px] badge-outline">
-            BPM {song.bpm}
-          </div>
-          <div className="badge badge-lg !text-[10px] badge-outline">
-            {song.version}
-          </div>
+        <div className="flex flex-row flex-wrap justify-end gap-2">
+          <div className={classnames(SONG_BADGE)}>아티스트: {song.artist}</div>
+          <div className={classnames(SONG_BADGE)}>타입: {song.songType}</div>
+          <div className={classnames(SONG_BADGE)}>BPM: {song.bpm}</div>
+          <div className={classnames(SONG_BADGE)}>버전: {song.version}</div>
         </div>
 
         {!showOnlySongs && (
