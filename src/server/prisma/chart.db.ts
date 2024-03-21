@@ -5,6 +5,7 @@ import fsPromise from "node:fs/promises";
 import path from "node:path";
 import { TMP_DIR } from "../utils/tmpdir";
 import SongDB from "./song.db";
+import { cache } from "react";
 
 const CACHE_FOLDER = path.resolve(TMP_DIR, "piudb_cache");
 const CACHE_FILE = path.resolve(CACHE_FOLDER, "charts.json");
@@ -13,9 +14,10 @@ function isCached() {
   return fs.existsSync(CACHE_FILE);
 }
 
-async function findAll(): Promise<Chart[]> {
+async function _findAll(): Promise<Chart[]> {
   // from cache
   if (isCached()) {
+    console.log("...Parse Chart JSON file...");
     const cached = await fsPromise.readFile(CACHE_FILE, {
       encoding: "utf-8",
     });
@@ -30,6 +32,8 @@ async function findAll(): Promise<Chart[]> {
     return charts;
   }
 }
+
+const findAll = cache(_findAll);
 
 export type SongWithCharts = Song & { charts?: Chart[] };
 async function findAllGroupBySong(): Promise<SongWithCharts[]> {
