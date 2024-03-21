@@ -47,9 +47,9 @@ export default async function AssignmentTable({
       <table className="table">
         <thead>
           <tr className="*:text-center">
-            <th></th>
-            <th>곡이름</th>
-            <th>레벨</th>
+            <th className="hidden sm:table-cell"></th>
+            <th>곡명</th>
+            <th>LV</th>
             {!onGoing && <th>시작일</th>}
             <th>종료일</th>
             {!onGoing && <th>상태</th>}
@@ -63,9 +63,9 @@ export default async function AssignmentTable({
             ({ assignment, chart, song, endDateDiff }, index) => (
               <tr
                 key={index}
-                className="*:text-xs *:px-2 *:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
+                className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
               >
-                <td>{index + 1}</td>
+                <td className="hidden sm:table-cell">{index + 1}</td>
                 <td>
                   <Link
                     href={`/rooms/${room.seq}/assignments/${assignment.seq}`}
