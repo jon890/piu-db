@@ -32,7 +32,7 @@ export default async function SkillAttackTable({ records }: Props) {
     <>
       <h2 className="text-xl font-semibold">스킬 어택 대상곡 목록</h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto max-w-full">
         <table className="table table-xs">
           <thead>
             <tr>
