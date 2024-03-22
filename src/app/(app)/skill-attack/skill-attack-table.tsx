@@ -19,7 +19,12 @@ export default async function SkillAttackTable({ records }: Props) {
         ? await SongDB.findBySeq(chart.songSeq)
         : null;
 
-      return { ...record, chart, song };
+      return {
+        ...record,
+        chart,
+        song,
+        skillPoint: chart ? getSkillPoint(record.score, chart) : "0",
+      };
     })
   );
 
@@ -42,36 +47,39 @@ export default async function SkillAttackTable({ records }: Props) {
           </thead>
           <tbody>
             {recordWithSong.length > 0 ? (
-              recordWithSong.map((record, index) => (
-                <tr key={record.seq} className="hover">
-                  <td>{index + 1}</td>
-                  <td>
-                    {record.song && (
-                      <Link
-                        href={`/songs/${record.song.seq}`}
-                        className="hover:text-gray-600"
-                      >
-                        {record.song.name}
-                      </Link>
-                    )}
-                  </td>
-                  <td>
-                    {record.chart && (
-                      <LevelBall className="size-6" chart={record.chart} />
-                    )}
-                  </td>
-                  <td>{record.score}</td>
-                  <td>
-                    {record.chart && getSkillPoint(record.score, record.chart)}
-                  </td>
-                  <td>
-                    <RecordGrade grade={record.grade} />
-                  </td>
-                  <td>
-                    <RecordPlate plate={record.plate} />
-                  </td>
-                </tr>
-              ))
+              recordWithSong
+                .sort((a, b) => Number(b.skillPoint) - Number(a.skillPoint))
+                .map((record, index) => (
+                  <tr key={record.seq} className="hover">
+                    <td>{index + 1}</td>
+                    <td>
+                      {record.song && (
+                        <Link
+                          href={`/songs/${record.song.seq}`}
+                          className="hover:text-gray-600"
+                        >
+                          {record.song.name}
+                        </Link>
+                      )}
+                    </td>
+                    <td>
+                      {record.chart && (
+                        <LevelBall className="size-6" chart={record.chart} />
+                      )}
+                    </td>
+                    <td>{record.score}</td>
+                    <td>
+                      {record.chart &&
+                        getSkillPoint(record.score, record.chart)}
+                    </td>
+                    <td>
+                      <RecordGrade grade={record.grade} />
+                    </td>
+                    <td>
+                      <RecordPlate plate={record.plate} />
+                    </td>
+                  </tr>
+                ))
             ) : (
               <tr>
                 <td colSpan={13} className="text-center h-24">
