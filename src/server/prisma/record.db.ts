@@ -77,31 +77,16 @@ async function saveRecentRecord(
 }
 
 async function getRecords(userSeq: number, page: number) {
-  const profileSeqs = await prisma.piuProfile.findMany({
-    select: {
-      seq: true,
-    },
-    where: {
-      userSeq,
-    },
-  });
-
-  const _profileSeqs = profileSeqs.map((it) => it.seq);
-
   const totalRecords = await prisma.record.aggregate({
     where: {
-      piuProfileSeq: {
-        in: _profileSeqs,
-      },
+      userSeq,
     },
     _count: { seq: true },
   });
 
   const records = await prisma.record.findMany({
     where: {
-      piuProfileSeq: {
-        in: _profileSeqs,
-      },
+      userSeq,
     },
     include: {
       piuProfile: {
@@ -150,7 +135,7 @@ async function getMaxRecordByUserAndChartDateBetween(props: {
 }
 
 async function getRecordsBySongSeq(songSeq: number, page: number) {
-  const song = await SongDB.findSongBySeqInCache(songSeq);
+  const song = await SongDB.findBySeq(songSeq);
   if (!song) return null;
 
   const charts = await ChartDB.findCharts(song.seq);

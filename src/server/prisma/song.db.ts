@@ -43,20 +43,16 @@ async function findBySongName(songName: string) {
   return null;
 }
 
-async function findSongBySeqInCache(seq: number) {
-  if (isCached()) {
-    const songs = await findAll();
-    return songs.find((it) => it.seq === seq);
-  }
-
-  return null;
+async function findBySeq(seq: number) {
+  const songs = await findAll();
+  return songs.find((it) => it.seq === seq);
 }
 
 const SongDB = {
   CACHE_FILE,
   findAll,
   findBySongName,
-  findSongBySeqInCache,
+  findBySeq,
 };
 
 export default SongDB;

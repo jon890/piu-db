@@ -15,16 +15,16 @@ type Paging = {
 };
 
 type Props = {
-  records: (Record & { piuProfile?: { gameId: string } })[];
+  records: (Record & { piuProfile: { gameId: string } })[];
   paging: Paging;
 };
 
 export default async function RecordTable({ records, paging }: Props) {
   const recordWithSong = await Promise.all(
     records.map(async (record) => {
-      const chart = await ChartDB.findChartBySeqInCache(record.chartSeq);
+      const chart = await ChartDB.findBySeq(record.chartSeq);
       const song = chart?.songSeq
-        ? await SongDB.findSongBySeqInCache(chart.songSeq)
+        ? await SongDB.findBySeq(chart.songSeq)
         : null;
 
       return { ...record, chart, song };
@@ -45,7 +45,7 @@ export default async function RecordTable({ records, paging }: Props) {
             <tr>
               <th></th>
               <th>게임 ID</th>
-              <th>레벨/타입</th>
+              <th>레벨</th>
               <th>곡명</th>
               <th>점수</th>
               <th>그레이드</th>
@@ -63,19 +63,19 @@ export default async function RecordTable({ records, paging }: Props) {
               recordWithSong.map((record, index) => (
                 <tr key={record.seq} className="hover">
                   <td>{(paging.currentPage - 1) * paging.unit + index + 1}</td>
-                  <td>{record.piuProfile?.gameId}</td>
+                  <td>{record.piuProfile.gameId}</td>
                   <td>
                     {record.chart && (
                       <LevelBall className="size-6" chart={record.chart} />
                     )}
                   </td>
                   <td>
-                    {record.song?.name && record.song?.seq && (
+                    {record.song && (
                       <Link
                         href={`/songs/${record.song.seq}`}
                         className="hover:text-gray-600"
                       >
-                        {record.song?.name}
+                        {record.song.name}
                       </Link>
                     )}
                   </td>
@@ -91,7 +91,6 @@ export default async function RecordTable({ records, paging }: Props) {
                   <td>{record.good}</td>
                   <td>{record.bad}</td>
                   <td>{record.miss}</td>
-
                   <td>
                     <span>
                       {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}

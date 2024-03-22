@@ -98,13 +98,9 @@ async function findCharts(songSeq: number) {
   return null;
 }
 
-async function findChartBySeqInCache(seq: number) {
-  if (isCached()) {
-    const charts = await findAll();
-    return charts.find((it) => it.seq === seq);
-  }
-
-  return null;
+async function findBySeq(seq: number) {
+  const charts = await findAll();
+  return charts.find((it) => it.seq === seq);
 }
 
 async function findSongBySeqInCache(seq: number) {
@@ -112,9 +108,7 @@ async function findSongBySeqInCache(seq: number) {
     const charts = await findAll();
     const chart = charts.find((it) => it.seq === seq);
 
-    const song = chart?.songSeq
-      ? await SongDB.findSongBySeqInCache(chart?.songSeq)
-      : null;
+    const song = chart?.songSeq ? await SongDB.findBySeq(chart?.songSeq) : null;
 
     return { chart, song };
   }
@@ -128,7 +122,7 @@ const ChartDB = {
   findAllGroupBySong,
   findChart,
   findCharts,
-  findChartBySeqInCache,
+  findBySeq,
   findSongBySeqInCache,
 };
 

@@ -20,7 +20,7 @@ export default async function SongDetailPage({
   searchParams: { page, chartSeq },
 }: Props) {
   const songSeq = Number(song_seq);
-  const song = await SongDB.findSongBySeqInCache(songSeq);
+  const song = await SongDB.findBySeq(songSeq);
 
   if (!song) {
     notFound();
