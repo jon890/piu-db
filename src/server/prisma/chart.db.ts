@@ -103,6 +103,11 @@ async function findBySeq(seq: number) {
   return charts.find((it) => it.seq === seq);
 }
 
+async function findBySeqIn(seqs: number[]) {
+  const charts = await findAll();
+  return charts.filter((it) => seqs.includes(it.seq));
+}
+
 async function findSongBySeqInCache(seq: number) {
   if (isCached()) {
     const charts = await findAll();
@@ -123,6 +128,7 @@ const ChartDB = {
   findChart,
   findCharts,
   findBySeq,
+  findBySeqIn,
   findSongBySeqInCache,
 };
 

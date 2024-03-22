@@ -212,12 +212,38 @@ async function getRecordsByChartSeq(chartSeq: number, page: number) {
   };
 }
 
+async function findAllMaxRecordsGroupByChart(userSeq: number) {
+  const records = await prisma.record.groupBy({
+    where: {
+      userSeq,
+    },
+    by: ["seq", "chartSeq"],
+    _max: {
+      score: true,
+    },
+  });
+
+  return records;
+}
+
+async function findBySeqIn(seqs: number[]) {
+  return prisma.record.findMany({
+    where: {
+      seq: {
+        in: seqs,
+      },
+    },
+  });
+}
+
 const RecordDB = {
   saveRecentRecord,
   getRecords,
   getRecordsBySongSeq,
   getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
+  findAllMaxRecordsGroupByChart,
+  findBySeqIn,
 };
 
 export default RecordDB;
