@@ -11,7 +11,7 @@ export default async function SkillAttackPage() {
   const records = skillAttack
     ? await RecordDB.findBySeqIn(skillAttack.recordSeqs as number[])
     : [];
-  console.log(skillAttack);
+  // console.log(skillAttack);
 
   return (
     <ContentBox title="스킬 어택">

@@ -7,6 +7,7 @@ import Decimal from "decimal.js";
 import type { Chart } from "@prisma/client";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import { getSkillPoint } from "./skill-point.util";
+import { redirect } from "next/navigation";
 
 export async function skillAttackAction() {
   const userSeq = await AuthUtil.getUserSeqThrows();
@@ -20,7 +21,7 @@ export async function skillAttackAction() {
   // 점수 계산
   // 0 ~ 100점으로 계산
   const skills = records
-    .map(({ _max: { score }, chartSeq, seq }) => {
+    .map(({ chartSeq, score, seq }) => {
       const chart = chartMap.get(chartSeq);
       if (!chart) {
         console.warn("Cannot find chart with", chartSeq);
@@ -59,10 +60,7 @@ export async function skillAttackAction() {
     recordSeqs: targetRecords,
   });
 
-  return {
-    ok: true,
-    message: ".",
-  };
+  redirect("/skill-attack");
 }
 
 function getChartSeqMap(charts: Chart[]) {

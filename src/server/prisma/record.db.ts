@@ -213,17 +213,36 @@ async function getRecordsByChartSeq(chartSeq: number, page: number) {
 }
 
 async function findAllMaxRecordsGroupByChart(userSeq: number) {
-  const records = await prisma.record.groupBy({
+  // 해당 유저가 등록한 차트 seq 번호
+  const charts = await prisma.record.findMany({
     where: {
       userSeq,
     },
-    by: ["seq", "chartSeq"],
-    _max: {
-      score: true,
-    },
+    distinct: "chartSeq",
+    select: { chartSeq: true },
   });
 
-  return records;
+  const maxRecords = [];
+  for (const chart of charts) {
+    const maxRecord = await prisma.record.findFirst({
+      where: {
+        userSeq,
+        chartSeq: chart.chartSeq,
+      },
+      orderBy: {
+        score: "desc",
+      },
+      select: {
+        score: true,
+        seq: true,
+        chartSeq: true,
+      },
+    });
+
+    if (maxRecord) maxRecords.push(maxRecord);
+  }
+
+  return maxRecords;
 }
 
 async function findBySeqIn(seqs: number[]) {
