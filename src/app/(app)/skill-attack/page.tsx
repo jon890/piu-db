@@ -18,11 +18,22 @@ export default async function SkillAttackPage() {
 
   return (
     <ContentBox title="스킬 어택">
-      <h2 className="text-center">
-        * 스킬어택은 최근 플레이 기록을 통해서만 반영 되고 있습니다.
+      <h2 className="text-center font-medium">
+        * 스킬어택은 최근 플레이 기록을 통해서만 반영되고 있습니다.
         <br />
         자주 플레이하고, 점수를 갱신해보세요!
       </h2>
+      <h3 className="text-sm font-light">
+        점수는 다음과 같이 집계됩니다
+        <br />
+        점수 / 1,000,000 * 레벨
+        <br />
+        [예시] 24레벨 95만점 = 950,000 / 1,000,000 = 22.8
+        <br />
+        (소수점 3자리까지 반영, 나머지 버림처리)
+        <br />
+        점수가 높은 순서대로 50곡을 선별하여 총 점을 계산합니다.
+      </h3>
       <SkillAttackButton piuAuth={piuAuthValue} />
 
       {skillAttack ? (
