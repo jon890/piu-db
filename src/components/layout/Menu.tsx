@@ -9,7 +9,7 @@ const MENUS = [
   { text: "숙제방 목록", href: "/rooms" },
   { text: "펌프잇업 로그인", href: "/piu-login" },
   { text: "전체 노래 목록", href: "/songs" },
-  { text: "내 기록 목록", href: "/records/my" },
+  { text: "내 기록 목록", href: "/records" },
   { text: "프로필", href: "/profile" },
 ];
 

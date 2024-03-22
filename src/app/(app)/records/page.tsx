@@ -1,5 +1,5 @@
 import ContentBox from "@/components/layout/content-box";
-import RecordTable from "@/components/record-table";
+import RecordTable from "@/components/record/record-table";
 import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
 import { notFound, redirect } from "next/navigation";
@@ -17,12 +17,10 @@ const ParamSchema = z.object({
   userSeq: z.coerce.number().min(1),
 });
 
-export default async function MyRecordPage({ searchParams: { page } }: Props) {
-  const userSeq = await AuthUtil.getUserSeqThrows();
-
+export default async function RecordPage({ searchParams: { page } }: Props) {
   const validated = ParamSchema.safeParse({
     page,
-    userSeq,
+    userSeq: await AuthUtil.getUserSeq(),
   });
 
   if (!validated.success) {
@@ -30,7 +28,7 @@ export default async function MyRecordPage({ searchParams: { page } }: Props) {
   }
 
   if (!validated.data.page) {
-    redirect("/records/my?page=1");
+    redirect("/records?page=1");
   }
 
   return (

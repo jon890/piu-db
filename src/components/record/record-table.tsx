@@ -1,7 +1,7 @@
 import LevelBall from "@/components/level-ball.server";
 import { Paging } from "@/components/common/paging";
-import RecordGrade from "@/components/record-grade";
-import RecordPlate from "@/components/record-plate";
+import RecordGrade from "@/components/record/record-grade";
+import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import SongDB from "@/server/prisma/song.db";
 import TimeUtil from "@/server/utils/time-util";

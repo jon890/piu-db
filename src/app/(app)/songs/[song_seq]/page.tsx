@@ -1,5 +1,5 @@
 import ContentBox from "@/components/layout/content-box";
-import RecordTable from "@/components/record-table";
+import RecordTable from "@/components/record/record-table";
 import SongCardCC from "@/components/song-card.client";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
