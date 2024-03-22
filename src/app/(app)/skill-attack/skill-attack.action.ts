@@ -1,16 +1,24 @@
 "use server";
 
+import { getAndSaveRecentlyPlayedAction } from "@/server/action/get-and-save-recently-played.action";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
-import AuthUtil from "@/server/utils/auth-util";
-import Decimal from "decimal.js";
-import type { Chart } from "@prisma/client";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
-import { getSkillPoint } from "./skill-point.util";
+import AuthUtil from "@/server/utils/auth-util";
+import type { PiuAuth } from "@/types/piu-auth";
+import type { Chart } from "@prisma/client";
+import Decimal from "decimal.js";
 import { redirect } from "next/navigation";
+import { getSkillPoint } from "./skill-point.util";
 
-export async function skillAttackAction() {
+export async function skillAttackAction(piuAuth: PiuAuth) {
   const userSeq = await AuthUtil.getUserSeqThrows();
+
+  const crawlingRes = await getAndSaveRecentlyPlayedAction(piuAuth, userSeq);
+  if (!crawlingRes.ok) {
+    console.log("Crawling Error", crawlingRes);
+    return { ok: false, message: crawlingRes.message };
+  }
 
   const records = await RecordDB.findAllMaxRecordsGroupByChart(userSeq);
 
