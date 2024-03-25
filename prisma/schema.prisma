@@ -117,12 +117,10 @@ model Record {
   good            Int
   bad             Int
   miss            Int
-  maxCombo        Int               @map("max_combo")
   grade           RecordGrade
-  plate           RecordPlate
+  plate           RecordPlate?
   playedAt        DateTime          @map("played_at")
   createdAt       DateTime          @default(now()) @map("created_at")
-  updatedAt       DateTime          @updatedAt @map("updated_at")
   AssigmentRecord AssigmentRecord[]
 
   @@unique([chartSeq, piuProfileSeq, playedAt])
