@@ -8,6 +8,10 @@ export default async function NavBar() {
   const userSeq = await AuthUtil.getUserSeqThrows();
   const user = await UserDB.getUserBySeq(userSeq);
 
+  if (!user) {
+    await signOut();
+  }
+
   return (
     <nav className="w-full navbar bg-base-100">
       <div className="flex-none lg:hidden">
