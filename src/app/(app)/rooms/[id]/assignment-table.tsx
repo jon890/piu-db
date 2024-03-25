@@ -31,17 +31,23 @@ export default async function AssignmentTable({
   }
 
   return (
-    <div className="overflow-auto border p-4 rounded-2xl shadow-xl max-w-[calc(100%-20px)]">
-      <div className="flex flex-row justify-center">
-        <h3 className="text-center font-semibold p-2">
-          {onGoing ? "진행 중인 숙제 목록" : "전체 숙제 목록"}
-        </h3>
+    <div className="overflow-auto border p-4 rounded-2xl shadow-xl max-w-full">
+      <div className="flex flex-col gap-1">
+        <div className="flex flex-row justify-center">
+          <h3 className="text-center font-semibold p-2">
+            {onGoing ? "진행 중인 숙제 목록" : "전체 숙제 목록"}
+          </h3>
 
-        {onGoing && (
-          <Link href={`/rooms/${room.seq}/assignments`} className="ml-auto">
-            <button className="btn btn-primary ">전체 보기</button>
-          </Link>
-        )}
+          {onGoing && (
+            <Link href={`/rooms/${room.seq}/assignments`} className="ml-auto">
+              <button className="btn btn-primary ">전체 보기</button>
+            </Link>
+          )}
+        </div>
+
+        <p className="text-xs text-gray-500">
+          * 곡 이름 클릭 시 상세 페이지로 이동합니다
+        </p>
       </div>
 
       <table className="table">
@@ -54,7 +60,7 @@ export default async function AssignmentTable({
             <th>종료일</th>
             {!onGoing && <th>상태</th>}
             <th>메모</th>
-            <th className="hidden sm:table-cell">등록일</th>
+            {!onGoing && <th className="hidden sm:table-cell">등록일</th>}
             <th>등록자</th>
           </tr>
         </thead>
@@ -104,7 +110,7 @@ export default async function AssignmentTable({
                   </td>
                 ) : (
                   <td>
-                    {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm")}
+                    {TimeUtil.format(assignment.endDate, "MM월 DD일 HH:mm")}
                   </td>
                 )}
 
@@ -122,9 +128,11 @@ export default async function AssignmentTable({
 
                 <td>{assignment.memo ?? ""}</td>
 
-                <td className="hidden sm:table-cell">
-                  {TimeUtil.format(assignment.createdAt, "YYYY-MM-DD")}
-                </td>
+                {!onGoing && (
+                  <td className="hidden sm:table-cell">
+                    {TimeUtil.format(assignment.createdAt, "MM월 DD일 HH:mm")}
+                  </td>
+                )}
 
                 <td>
                   <p className="w-12 sm:w-auto text-ellipsis whitespace-nowrap overflow-hidden">

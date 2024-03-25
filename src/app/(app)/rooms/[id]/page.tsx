@@ -72,7 +72,7 @@ export default async function RoomDetailPage({
         </Suspense>
 
         <Suspense fallback={<p>숙제를 불러오고 있습니다...</p>}>
-          <AssignmentTableHelper room={room} />
+          <AssignmentTableWrapper room={room} />
         </Suspense>
       </ContentBox>
 
@@ -85,7 +85,7 @@ export default async function RoomDetailPage({
   );
 }
 
-async function AssignmentTableHelper({ room }: { room: AssignmentRoom }) {
+async function AssignmentTableWrapper({ room }: { room: AssignmentRoom }) {
   const assignments = await AssignmentDB.getOngoingAssignments(room.seq);
   return <AssignmentTable room={room} assignments={assignments} onGoing />;
 }

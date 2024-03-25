@@ -27,8 +27,8 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
             <th>등수</th>
             <th>닉네임</th>
             <th>점수</th>
-            <th>그레이드</th>
-            <th>플레이트</th>
+            <th></th>
+            <th></th>
             <th>플레이시간</th>
           </tr>
         </thead>
@@ -92,8 +92,10 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                   <td>
                     {record.plate && <RecordPlate plate={record.plate} />}
                   </td>
-                  <td>
-                    {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
+                  <td className="text-center">
+                    {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
+                    <br />
+                    {TimeUtil.format(record.playedAt, "HH:mm:ss")}
                   </td>
                 </tr>
               ))

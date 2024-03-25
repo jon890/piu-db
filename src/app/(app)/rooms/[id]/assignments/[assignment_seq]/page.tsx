@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import AssignmentRecordTable from "./assignment-record-table";
 import ContentBox from "@/components/layout/content-box";
 
-export default async function AssignmentCreatePage({
+export default async function AssignmentDetailPage({
   params,
 }: {
   params: { id: string; assignment_seq: string };
@@ -35,11 +35,10 @@ export default async function AssignmentCreatePage({
         <br />
         종료일 : {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
       </h2>
-
+      <p>메모 : {assignment.memo}</p>
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
-
       <Suspense fallback={<p>기록을 불러오고 있습니다...</p>}>
         <AssignmentRecordTable assignmentSeq={assignment.seq} />
       </Suspense>
