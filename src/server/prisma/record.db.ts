@@ -25,54 +25,63 @@ function getRecentPlayToEntity(record: RecentlyPlayed) {
 async function saveRecentRecord(
   userSeq: number,
   profileSeq: number,
-  record: RecentlyPlayed
+  records: RecentlyPlayed[]
 ) {
-  const song = await SongDB.findBySongName(record.songName);
+  return prisma.$transaction(async (tx) => {
+    for (const record of records) {
+      const song = await SongDB.findBySongName(record.songName);
+      if (!song) {
+        console.warn("Target songs not founded", record.songName);
+        continue;
+      }
+      if (record.type === "Unknown") {
+        console.warn("Target song type is not single and double", record.type);
+        continue;
+      }
 
-  if (!song) {
-    console.warn("Target songs not founded", record.songName);
-    return;
-  }
-  if (record.type === "Unknown") {
-    console.warn("Target song type is not single and double", record.type);
-    return;
-  }
+      const chart = await ChartDB.findChart(
+        song.seq,
+        Number(record.level),
+        record.type
+      );
+      if (!chart) {
+        console.warn(
+          "Target chart not founded",
+          " name",
+          record.songName,
+          ", level",
+          record.level,
+          ", type",
+          record.type
+        );
+        continue;
+      }
 
-  const chart = await ChartDB.findChart(
-    song.seq,
-    Number(record.level),
-    record.type
-  );
-  if (!chart) {
-    console.warn(
-      "Target chart not founded",
-      " name",
-      record.songName,
-      ", level",
-      record.level,
-      ", type",
-      record.type
-    );
-    return;
-  }
+      const entity = getRecentPlayToEntity(record);
 
-  const entity = getRecentPlayToEntity(record);
+      const exist = await tx.record.findUnique({
+        where: {
+          chartSeq_piuProfileSeq_playedAt: {
+            piuProfileSeq: profileSeq,
+            chartSeq: chart.seq,
+            playedAt: entity.playedAt,
+          },
+        },
+      });
 
-  return prisma.record.upsert({
-    create: {
-      userSeq,
-      piuProfileSeq: profileSeq,
-      chartSeq: chart.seq,
-      ...entity,
-    },
-    update: {},
-    where: {
-      chartSeq_piuProfileSeq_playedAt: {
-        piuProfileSeq: profileSeq,
-        chartSeq: chart.seq,
-        playedAt: entity.playedAt,
-      },
-    },
+      if (!exist) {
+        await tx.record.create({
+          data: {
+            userSeq,
+            piuProfileSeq: profileSeq,
+            chartSeq: chart.seq,
+            ...entity,
+          },
+        });
+      } else {
+        break;
+      }
+    }
   });
 }
 

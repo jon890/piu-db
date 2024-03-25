@@ -35,12 +35,8 @@ async function _findAll(): Promise<Song[]> {
 const findAll = cache(_findAll);
 
 async function findBySongName(songName: string) {
-  if (isCached()) {
-    const songs = await findAll();
-    return songs.find((s) => s.name === songName);
-  }
-
-  return null;
+  const songs = await findAll();
+  return songs.find((s) => s.name === songName);
 }
 
 async function findBySeq(seq: number) {

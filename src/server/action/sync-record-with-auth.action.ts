@@ -1,6 +1,6 @@
 "use server";
 
-import { getAndSaveRecentlyPlayedAction } from "@/server/action/get-and-save-recently-played.action";
+import { syncRecentlyPlayedAction } from "@/server/action/sync-recently-played.action";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RecordDB from "@/server/prisma/record.db";
@@ -13,7 +13,7 @@ export async function syncRecordWithAuthAction(
 ) {
   const userSeq = await AuthUtil.getUserSeqThrows();
 
-  const crawlingRes = await getAndSaveRecentlyPlayedAction(piuAuth, userSeq);
+  const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
   if (!crawlingRes.ok) {
     return { ok: false, message: crawlingRes.message };
   }

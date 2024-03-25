@@ -1,6 +1,6 @@
 "use server";
 
-import { getAndSaveRecentlyPlayedAction } from "@/server/action/get-and-save-recently-played.action";
+import { syncRecentlyPlayedAction } from "@/server/action/sync-recently-played.action";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
@@ -14,7 +14,7 @@ import { getSkillPoint } from "./skill-point.util";
 export async function skillAttackAction(piuAuth: PiuAuth) {
   const userSeq = await AuthUtil.getUserSeqThrows();
 
-  const crawlingRes = await getAndSaveRecentlyPlayedAction(piuAuth, userSeq);
+  const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
   if (!crawlingRes.ok) {
     console.log("Crawling Error", crawlingRes);
     return { ok: false, message: crawlingRes.message };
