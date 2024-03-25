@@ -7,10 +7,14 @@ import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
 import type { PiuAuth } from "@/types/piu-auth";
 
-export async function syncRecordWithAuthAction(
-  roomSeq: number,
-  piuAuth: PiuAuth
-) {
+/**
+ * 숙제를 동기화하는
+ * 서버 액션
+ * @param roomSeq
+ * @param piuAuth
+ * @returns
+ */
+export async function syncAssignmentAction(roomSeq: number, piuAuth: PiuAuth) {
   const userSeq = await AuthUtil.getUserSeqThrows();
 
   const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
@@ -19,9 +23,8 @@ export async function syncRecordWithAuthAction(
   }
 
   const assignments = await AssignmentDB.getOngoingAssignments(roomSeq);
-
   for (const assignment of assignments) {
-    const prevSubmitted = await AssignmentRecordDB.getRecordsByUser(
+    const prevSubmitted = await AssignmentRecordDB.getRecordByUser(
       assignment.seq,
       userSeq
     );
@@ -38,7 +41,7 @@ export async function syncRecordWithAuthAction(
       continue;
     }
 
-    const already = prevSubmitted.find((it) => it.recordSeq === maxRecord?.seq);
+    const already = prevSubmitted?.recordSeq === maxRecord.seq;
     if (already) {
       continue;
     }

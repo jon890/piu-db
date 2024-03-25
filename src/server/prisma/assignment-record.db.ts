@@ -1,15 +1,13 @@
 import { Record } from "@prisma/client";
 import prisma from "./client";
 
-async function getRecordsByUser(assignmentSeq: number, userSeq: number) {
-  const records = await prisma.assigmentRecord.findMany({
+async function getRecordByUser(assignmentSeq: number, userSeq: number) {
+  return prisma.assigmentRecord.findFirst({
     where: {
       assignmentSeq,
       userSeq,
     },
   });
-
-  return records;
 }
 
 async function submitAssignment({
@@ -53,7 +51,7 @@ async function getRecordsByAssgimentSeq(assignmentSeq: number) {
 }
 
 const AssignmentRecordDB = {
-  getRecordsByUser,
+  getRecordByUser,
   submitAssignment,
   getRecordsByAssgimentSeq,
 };

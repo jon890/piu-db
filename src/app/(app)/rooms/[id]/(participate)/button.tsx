@@ -3,17 +3,16 @@
 import useToast from "@/client/hooks/use-toast";
 import { participateRoom } from "@/server/action/participate.action";
 import { AssignmentRoom } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-interface ParticipateFormProps {
+type Props = {
   room: AssignmentRoom;
   isParticipated: boolean;
-}
+};
 
-export default function ParticipateButton({
-  room,
-  isParticipated,
-}: ParticipateFormProps) {
+export default function ParticipateButton({ room, isParticipated }: Props) {
+  const router = useRouter();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -28,6 +27,8 @@ export default function ParticipateButton({
     });
 
     setLoading(false);
+
+    router.refresh();
   }
 
   if (isParticipated) return null;

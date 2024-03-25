@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import { syncRecordWithAuthAction } from "@/server/action/sync-record-with-auth.action";
+import { syncAssignmentAction } from "@/server/action/sync-assignment.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useState } from "react";
 
@@ -17,7 +17,7 @@ export default function RecordSyncForm({ room, piuAuth }: Props) {
   async function syncRecordWithAuth() {
     setLoading(true);
 
-    const res = await syncRecordWithAuthAction(room.seq, piuAuth);
+    const res = await syncAssignmentAction(room.seq, piuAuth);
 
     toast.createToast({
       type: res.ok ? "success" : "error",
