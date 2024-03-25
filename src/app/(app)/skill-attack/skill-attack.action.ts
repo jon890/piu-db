@@ -8,7 +8,6 @@ import AuthUtil from "@/server/utils/auth-util";
 import type { PiuAuth } from "@/types/piu-auth";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
-import { redirect } from "next/navigation";
 import { getSkillPoint } from "./skill-point.util";
 
 export async function skillAttackAction(piuAuth: PiuAuth) {
@@ -16,11 +15,14 @@ export async function skillAttackAction(piuAuth: PiuAuth) {
 
   const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
   if (!crawlingRes.ok) {
-    console.log("Crawling Error", crawlingRes);
     return { ok: false, message: crawlingRes.message };
   }
 
-  const records = await RecordDB.findAllMaxRecordsGroupByChart(userSeq);
+  const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);
+  const records = await RecordDB.findAllMaxRecordsGroupByChart(
+    userSeq,
+    prevSkillAttack?.createdAt
+  );
 
   const chartSeqs = records.map((it) => it.chartSeq);
   const charts = await ChartDB.findBySeqIn(chartSeqs);
@@ -68,7 +70,7 @@ export async function skillAttackAction(piuAuth: PiuAuth) {
     recordSeqs: targetRecords,
   });
 
-  redirect("/skill-attack");
+  return { ok: true, message: "스킬 어택 갱신이 완료되었습니다" };
 }
 
 function getChartSeqMap(charts: Chart[]) {

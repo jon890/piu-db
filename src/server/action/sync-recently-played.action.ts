@@ -24,7 +24,7 @@ export async function syncRecentlyPlayedAction(
   const latestSyncRecord = await ActionLogDB.getLatestSyncRecord({ userSeq });
   if (
     latestSyncRecord &&
-    dayjs.utc(latestSyncRecord.createdAt).diff(TimeUtil.now(), "minute") < 10
+    dayjs().utc().diff(latestSyncRecord.createdAt, "minute") < 10
   ) {
     return {
       ok: true,

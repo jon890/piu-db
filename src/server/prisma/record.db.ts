@@ -221,11 +221,16 @@ async function getRecordsByChartSeq(chartSeq: number, page: number) {
   };
 }
 
-async function findAllMaxRecordsGroupByChart(userSeq: number) {
+async function findAllMaxRecordsGroupByChart(userSeq: number, after?: Date) {
   // 해당 유저가 등록한 차트 seq 번호
   const charts = await prisma.record.findMany({
     where: {
       userSeq,
+      ...(after && {
+        createdAt: {
+          gte: after,
+        },
+      }),
     },
     distinct: "chartSeq",
     select: { chartSeq: true },
