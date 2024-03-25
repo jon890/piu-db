@@ -3,9 +3,10 @@ import type { RecordGrade as RecordGradeDataType } from "@prisma/client";
 
 type Props = {
   grade: RecordGradeDataType;
+  isBreakOff: boolean;
 };
 
-export default function RecordGrade({ grade }: Props) {
+export default function RecordGrade({ grade, isBreakOff }: Props) {
   return (
     <span
       className={classnames("plate font-semibold", {
@@ -28,6 +29,8 @@ export default function RecordGrade({ grade }: Props) {
           grade === "SS_PLUS",
 
         "text-ultimate": grade === "SSS" || grade === "SSS_PLUS",
+
+        "!text-gray-500": isBreakOff,
       })}
     >
       {grade.includes("_")

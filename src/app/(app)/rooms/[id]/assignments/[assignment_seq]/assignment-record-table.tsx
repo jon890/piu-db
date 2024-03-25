@@ -55,9 +55,9 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                   key={index}
                   className="*:text-xs *:px-2 *:py-1 *:sm:text-sm *:sm:px-4 *:sm:py-2 hover"
                 >
-                  <td className="flex flex-row gap-1 items-center">
+                  <td>
                     {index < 3 ? (
-                      <span>
+                      <div className="flex items-center">
                         <TrophyIcon
                           className={classnames("size-6", {
                             "text-[#ffd700]": index === 0,
@@ -65,9 +65,9 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                             "text-[#CD7F32]": index === 2,
                           })}
                         />
-                      </span>
+                      </div>
                     ) : (
-                      <span>{index + 1}위</span>
+                      <div className="flex items-center">{index + 1}위</div>
                     )}
                   </td>
                   <td>
@@ -84,7 +84,10 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                   </td>
                   <td>{record.score}</td>
                   <td>
-                    <RecordGrade grade={record.grade} />
+                    <RecordGrade
+                      grade={record.grade}
+                      isBreakOff={record.isBreakOff}
+                    />
                   </td>
                   <td>
                     {record.plate && <RecordPlate plate={record.plate} />}

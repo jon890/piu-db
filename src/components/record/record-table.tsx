@@ -81,7 +81,10 @@ export default async function RecordTable({ records, paging }: Props) {
                   </td>
                   <td>{record.score}</td>
                   <td>
-                    <RecordGrade grade={record.grade} />
+                    <RecordGrade
+                      grade={record.grade}
+                      isBreakOff={record.isBreakOff}
+                    />
                   </td>
                   <td>
                     {record.plate && <RecordPlate plate={record.plate} />}

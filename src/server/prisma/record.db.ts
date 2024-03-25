@@ -1,5 +1,5 @@
 import prisma from "@/server/prisma/client";
-import { RecentlyPlayed } from "@/types/recently-played";
+import type { RecentlyPlayed } from "@/types/recently-played";
 import { RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";

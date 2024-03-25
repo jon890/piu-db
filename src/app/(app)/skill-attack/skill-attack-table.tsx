@@ -73,7 +73,10 @@ export default async function SkillAttackTable({ records }: Props) {
                         getSkillPoint(record.score, record.chart)}
                     </td>
                     <td>
-                      <RecordGrade grade={record.grade} />
+                      <RecordGrade
+                        grade={record.grade}
+                        isBreakOff={record.isBreakOff}
+                      />
                     </td>
                     <td>
                       {record.plate && <RecordPlate plate={record.plate} />}
