@@ -255,7 +255,7 @@ model ActionLog {
   seq        Int        @id @default(autoincrement())
   userSeq    Int        @map("user_seq")
   user       User       @relation(fields: [userSeq], references: [seq])
-  actionType ActionType
+  actionType ActionType @map("action_type")
   createdAt  DateTime   @default(now()) @map("created_at")
 
   @@map("td_action_log")
