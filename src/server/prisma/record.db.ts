@@ -16,9 +16,8 @@ function getRecentPlayToEntity(record: RecentlyPlayed) {
     bad: record.bad,
     miss: record.miss,
     playedAt: TimeUtil.convertUTC(record.playedTime).toDate(),
-    maxCombo: 0,
     grade: RecordGrade[record.grade],
-    plate: RecordPlate[record.plate],
+    plate: record.plate ? RecordPlate[record.plate] : null,
   };
 }
 
@@ -76,6 +75,7 @@ async function saveRecentRecord(
             piuProfileSeq: profileSeq,
             chartSeq: chart.seq,
             ...entity,
+            isBreakOff: entity.plate == null,
           },
         });
       } else {

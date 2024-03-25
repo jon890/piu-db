@@ -119,6 +119,7 @@ model Record {
   miss            Int
   grade           RecordGrade
   plate           RecordPlate?
+  isBreakOff      Boolean           @default(false) @map("is_break_off")
   playedAt        DateTime          @map("played_at")
   createdAt       DateTime          @default(now()) @map("created_at")
   AssigmentRecord AssigmentRecord[]

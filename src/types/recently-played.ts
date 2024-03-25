@@ -32,7 +32,7 @@ export type RecentlyPlayed = {
   type: Type;
   level: string;
   grade: Grade;
-  plate: Plate;
+  plate?: Plate;
   isBreakOff: boolean;
   songName: string;
   score: number;

@@ -76,7 +76,7 @@ export default async function SkillAttackTable({ records }: Props) {
                       <RecordGrade grade={record.grade} />
                     </td>
                     <td>
-                      <RecordPlate plate={record.plate} />
+                      {record.plate && <RecordPlate plate={record.plate} />}
                     </td>
                   </tr>
                 ))

@@ -87,7 +87,7 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                     <RecordGrade grade={record.grade} />
                   </td>
                   <td>
-                    <RecordPlate plate={record.plate} />
+                    {record.plate && <RecordPlate plate={record.plate} />}
                   </td>
                   <td>
                     {TimeUtil.format(record.playedAt, "YYYY-MM-DD HH:mm:ss")}
