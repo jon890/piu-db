@@ -35,7 +35,7 @@ export default async function AssignmentDetailPage({
         <br />
         종료일 : {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
       </h2>
-      <p>메모 : {assignment.memo}</p>
+      {assignment.memo && <p>메모 : {assignment.memo}</p>}
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
