@@ -19,10 +19,15 @@ export async function skillAttackAction(piuAuth: PiuAuth) {
   }
 
   const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);
-  const records = await RecordDB.findAllMaxRecordsGroupByChart(
-    userSeq,
-    prevSkillAttack?.createdAt
-  );
+  const records = prevSkillAttack
+    ? [
+        ...(await RecordDB.findBySeqIn(prevSkillAttack.recordSeqs as number[])),
+        ...(await RecordDB.findAllMaxRecordsGroupByChart(
+          userSeq,
+          prevSkillAttack.createdAt
+        )),
+      ]
+    : await RecordDB.findAllMaxRecordsGroupByChart(userSeq);
 
   const chartSeqs = records.map((it) => it.chartSeq);
   const charts = await ChartDB.findBySeqIn(chartSeqs);
