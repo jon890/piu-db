@@ -11,6 +11,7 @@ export const CreateAssignmentSchema = z
     start_date: z.coerce.date({ required_error: "시작일을 입력해주세요" }),
     end_date: z.coerce.date({ required_error: "종료일을 입력해주세요" }),
     memo: z.string().optional(),
+    enable_break_off: z.literal("on").optional(),
   })
   .refine(
     ({ end_date }) => {

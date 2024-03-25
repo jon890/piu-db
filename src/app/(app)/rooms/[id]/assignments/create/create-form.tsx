@@ -64,6 +64,30 @@ export default function AssignmentCreateForm({
             errors={state?.errors?.fieldErrors?.memo}
           />
 
+          <div className="form-control w-full max-w-md">
+            <label className="label cursor-pointer">
+              <span className="label-text">브레이크 오프 기록 허용 여부</span>
+              <input
+                type="checkbox"
+                name="enable_break_off"
+                className="checkbox checkbox-primary"
+              />
+            </label>
+            {state?.errors?.fieldErrors?.enable_break_off && (
+              <div
+                id={`${"stopParticipating"}-error`}
+                aria-live="polite"
+                className="text-sm text-red-500 font-semibold text-center mt-1"
+              >
+                {state?.errors?.fieldErrors?.enable_break_off.map(
+                  (error: string) => (
+                    <p key={error}>{error}</p>
+                  )
+                )}
+              </div>
+            )}
+          </div>
+
           <div className="card-actions mt-5">
             <FormButton text="숙제곡 지정" />
           </div>

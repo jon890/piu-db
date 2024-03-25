@@ -31,6 +31,7 @@ export async function syncRecordWithAuthAction(
       chartSeq: assignment.chartSeq,
       startDate: assignment.startDate,
       endDate: assignment.endDate,
+      enableBreakOff: assignment.enableBreakOff,
     });
 
     if (!maxRecord) {

@@ -188,19 +188,21 @@ model AssignmentRoomParticipants {
 }
 
 model Assignment {
-  seq           Int               @id @default(autoincrement())
-  roomSeq       Int               @map("room_seq")
-  room          AssignmentRoom    @relation(fields: [roomSeq], references: [seq])
-  startDate     DateTime          @map("start_date")
-  endDate       DateTime          @map("end_date")
-  chart         Chart             @relation(fields: [chartSeq], references: [seq])
-  chartSeq      Int               @map("chart_seq")
-  createUserSeq Int               @map("create_user_seq")
-  createUser    User              @relation(fields: [createUserSeq], references: [seq])
-  memo          String?
-  updatedAt     DateTime          @updatedAt @map("updated_at")
-  createdAt     DateTime          @default(now()) @map("created_at")
-  records       AssigmentRecord[]
+  seq            Int               @id @default(autoincrement())
+  roomSeq        Int               @map("room_seq")
+  room           AssignmentRoom    @relation(fields: [roomSeq], references: [seq])
+  startDate      DateTime          @map("start_date")
+  endDate        DateTime          @map("end_date")
+  chart          Chart             @relation(fields: [chartSeq], references: [seq])
+  chartSeq       Int               @map("chart_seq")
+  createUserSeq  Int               @map("create_user_seq")
+  createUser     User              @relation(fields: [createUserSeq], references: [seq])
+  memo           String?
+  // 브레이크오프 허용 여부
+  enableBreakOff Boolean           @default(false) @map("enable_break_off")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+  createdAt      DateTime          @default(now()) @map("created_at")
+  records        AssigmentRecord[]
 
   @@index([roomSeq, startDate, endDate])
   @@map("td_assignment")

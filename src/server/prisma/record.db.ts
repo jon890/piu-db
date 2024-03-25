@@ -118,13 +118,19 @@ async function getRecords(userSeq: number, page: number) {
   };
 }
 
-async function getMaxRecordByUserAndChartDateBetween(props: {
+async function getMaxRecordByUserAndChartDateBetween({
+  chartSeq,
+  enableBreakOff,
+  endDate,
+  startDate,
+  userSeq,
+}: {
   userSeq: number;
   chartSeq: number;
   startDate: Date;
   endDate: Date;
+  enableBreakOff: boolean;
 }) {
-  const { chartSeq, endDate, startDate, userSeq } = props;
   const maxRecord = await prisma.record.findFirst({
     where: {
       userSeq,
@@ -133,6 +139,7 @@ async function getMaxRecordByUserAndChartDateBetween(props: {
         gte: startDate,
         lte: endDate,
       },
+      ...(!enableBreakOff && { isBreakOff: false }),
     },
     orderBy: {
       score: "desc",

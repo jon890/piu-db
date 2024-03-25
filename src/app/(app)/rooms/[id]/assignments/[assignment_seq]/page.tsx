@@ -36,6 +36,7 @@ export default async function AssignmentDetailPage({
         종료일 : {TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}
       </h2>
       {assignment.memo && <p>메모 : {assignment.memo}</p>}
+      {assignment.enableBreakOff && <p>브레이크 오프가 허용된 숙제입니다</p>}
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
