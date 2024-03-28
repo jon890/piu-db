@@ -116,7 +116,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 7
-    name: "위치닥터",
+    name: "위치 닥터",
     artist: "반야",
     bpm: "195",
     version: "FIRST_ZERO",
@@ -271,7 +271,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 16
-    name: "무혼",
+    name: "무혼 2",
     artist: "반야",
     bpm: "136",
     version: "FIRST_ZERO",
@@ -1062,7 +1062,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 62
-    name: "베트벤 바이러스",
+    name: "베토벤 바이러스",
     artist: "반야",
     bpm: "162",
     version: "FIRST_ZERO",

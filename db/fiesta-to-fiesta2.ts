@@ -327,7 +327,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 19
-    name: "유니크 - SHORT CUT",
+    name: "유니크 - SHORT CUT -",
     artist: "SHK",
     bpm: "145",
     version: "FIESTA_FIESTA2",
@@ -1090,7 +1090,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 66
-    name: "파이널 오디션 에피소드 2-X - SHORT CUT",
+    name: "파이널 오디션 에피소드 2-X - SHORT CUT -",
     artist: "이 얍",
     bpm: "170",
     version: "FIESTA_FIESTA2",
@@ -1117,7 +1117,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 68
-    name: "러브 이즈 어 데인저 존 pt.2 - SHORT CUT",
+    name: "러브 이즈 어 데인저 존 pt.2 - SHORT CUT -",
     artist: "반야",
     bpm: "162",
     version: "FIESTA_FIESTA2",

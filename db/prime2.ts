@@ -798,7 +798,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 45
-    name: "가고일 - FULL SONG",
+    name: "가고일 - FULL SONG -",
     artist: "Sanxion7",
     bpm: "150",
     version: "PRIME2",
