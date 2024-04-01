@@ -615,7 +615,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 36
-    name: "겟 유어 그르부 온",
+    name: "겟 유어 그루브 온",
     artist: "반야",
     bpm: "96",
     version: "FIRST_ZERO",
@@ -1359,7 +1359,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 80
-    name: "엑스트라 바간자",
+    name: "엑스트라바간자",
     artist: "반야",
     bpm: "195",
     version: "FIRST_ZERO",

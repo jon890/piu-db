@@ -1314,7 +1314,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 73
-    name: "히페리온 - SHORT CUT",
+    name: "히페리온 - SHORT CUT -",
     artist: "엠투유",
     bpm: "145",
     version: "PRIME2",

@@ -505,7 +505,7 @@ export const XX_SONGS: SongData[] = [
 
   {
     // 27
-    name: "마카롱데이",
+    name: "마카롱 데이",
     artist: "HyuN",
     bpm: "173",
     version: "XX",
@@ -781,7 +781,7 @@ export const XX_SONGS: SongData[] = [
 
   {
     // 41
-    name: "파파시토 (feat. KuTiNA)",
+    name: "파파시토 (feat.  KuTiNA)",
     artist: "Yakikaze & Cashew",
     bpm: "128",
     version: "XX",
@@ -1630,7 +1630,7 @@ export const XX_SONGS: SongData[] = [
 
   {
     // 86
-    name: "크로스레이",
+    name: "크로스 레이 (feat. 月下Lia)",
     artist: "HyuN",
     bpm: "176",
     version: "XX",

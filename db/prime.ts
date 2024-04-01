@@ -1037,7 +1037,7 @@ export const PRIME_SONGS: SongData[] = [
 
   {
     // 59
-    name: "꺄라위사따",
+    name: "까랴위사따",
     artist: "Vesuvia x REDSHiFT",
     bpm: "150-173",
     version: "PRIME",

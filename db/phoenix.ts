@@ -221,30 +221,6 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    // TODO 7
-    name: "뷰티풀라이어",
-    artist: "아이브",
-    bpm: "125",
-    version: "PHOENIX",
-    songType: "ARCADE",
-    charts: [
-      { level: 1, chartType: "SINGLE" },
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 15, chartType: "SINGLE" },
-      { level: 18, chartType: "SINGLE" },
-      { level: 7, chartType: "DOUBLE" },
-      { level: 15, chartType: "DOUBLE" },
-      { level: 17, chartType: "DOUBLE" },
-      { level: 20, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
-    ],
-  },
-
-  {
-    // TODO 7
     name: "판도라",
     artist: "메이브",
     bpm: "75",
@@ -259,29 +235,6 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 6, chartType: "DOUBLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
-    ],
-  },
-
-  {
-    // TODO 7
-    name: "스톰",
-    artist: "아이브",
-    bpm: "125",
-    version: "PHOENIX",
-    songType: "ARCADE",
-    charts: [
-      { level: 1, chartType: "SINGLE" },
-      { level: 4, chartType: "SINGLE" },
-      { level: 6, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 13, chartType: "SINGLE" },
-      { level: 15, chartType: "SINGLE" },
-      { level: 18, chartType: "SINGLE" },
-      { level: 7, chartType: "DOUBLE" },
-      { level: 15, chartType: "DOUBLE" },
-      { level: 17, chartType: "DOUBLE" },
-      { level: 20, chartType: "DOUBLE" },
-      { level: 50, chartType: "CO_OP" },
     ],
   },
 
@@ -324,7 +277,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "뷰티풀라이어",
+    name: "뷰티플라이어",
     artist: "몬스타엑스",
     bpm: "130",
     version: "PHOENIX",
@@ -455,7 +408,6 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    // 11
     name: "쥬핀",
     artist: "Sobrem",
     bpm: "173",
