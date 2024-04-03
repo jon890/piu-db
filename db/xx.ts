@@ -791,7 +791,7 @@ export const XX_SONGS: SongData[] = [
       { level: 13, chartType: "SINGLE" },
       { level: 15, chartType: "SINGLE" },
       { level: 16, chartType: "SINGLE" },
-      { level: 20, chartType: "DOUBLE" },
+      { level: 20, chartType: "SINGLE" },
       { level: 11, chartType: "DOUBLE" },
       { level: 14, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
@@ -1002,7 +1002,7 @@ export const XX_SONGS: SongData[] = [
 
   {
     // 52
-    name: "파파시토 - FULL SONG -",
+    name: "파파시토 (feat.  KuTiNA) - FULL SONG -",
     artist: "Yakikaze & Cashew",
     bpm: "128",
     version: "XX",
