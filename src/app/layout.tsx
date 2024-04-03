@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   title: "PIU DB",
   description: "Pump it up Record Management Safely",
   applicationName: "PIU DB",
-  authors: { name: "bifos", url: "https://github.com/jon890" },
+  authors: { name: "bifos" },
   creator: "bifos",
   generator: "Next.js",
   keywords: "Pump it up, Pump it up Database",
-  publisher: "Vercel",
+  publisher: "Google",
 };
 
 export default function RootLayout({
