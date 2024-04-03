@@ -6,6 +6,7 @@ import InputWithLabel from "@/components/common/InputWithLabel";
 import ArrowLeftIcon from "@heroicons/react/24/solid/ArrowLeftIcon";
 import Link from "next/link";
 import { useFormState } from "react-dom";
+import { LOGIN_CODE } from "./schema";
 
 export default function LoginPage() {
   const [state, action] = useFormState(authenticate, null);
@@ -46,9 +47,14 @@ export default function LoginPage() {
         </form>
 
         <div className="flex h-8 items-end space-x-1">
-          {state?.code !== "Success" && (
-            <p aria-live="polite" className="text-sm text-red-500">
-              {state?.message}
+          {state?.code !== LOGIN_CODE.SUCCESS && (
+            <p
+              aria-live="polite"
+              className="text-sm text-red-500 font-semibold"
+            >
+              {state?.code === LOGIN_CODE.CredentialsSignin
+                ? "아이디와 비밀번호를 다시 확인해주세요"
+                : state?.message}
             </p>
           )}
         </div>
