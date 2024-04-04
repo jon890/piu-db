@@ -2,6 +2,7 @@ import classnames from "@/client/utils/classnames";
 import LevelBall from "@/components/level-ball.server";
 import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";
+import SongBadges from "./song-badges";
 
 type Props = {
   song: Song;
@@ -33,12 +34,7 @@ export default function SongCardSC({
           )}
         </h2>
 
-        <div className="grid grid-cols-2 justify-items-end gap-2 *:text-[9px] *:sm:text-xs">
-          <div className="badge badge-outline">아티스트: {song.artist}</div>
-          <div className="badge badge-outline">타입: {song.songType}</div>
-          <div className="badge badge-outline">BPM: {song.bpm}</div>
-          <div className="badge badge-outline">버전: {song.version}</div>
-        </div>
+        <SongBadges song={song} />
 
         <div
           className={classnames(
