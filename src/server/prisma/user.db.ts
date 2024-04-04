@@ -16,6 +16,20 @@ async function getUserBySeq(seq: number) {
   });
 }
 
+async function getUsersBy(userSeqs: number[]) {
+  return prisma.user.findMany({
+    where: {
+      seq: { in: userSeqs },
+    },
+    select: {
+      seq: true,
+      name: true,
+      nickname: true,
+      uid: true,
+    },
+  });
+}
+
 async function getUserByUID(uid: string) {
   return prisma.user.findUnique({
     where: { uid },
@@ -32,6 +46,7 @@ const UserDB = {
   getUser,
   getUserBySeq,
   getUserByUID,
+  getUsersBy,
 };
 
 export default UserDB;

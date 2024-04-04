@@ -5,6 +5,7 @@ import AuthUtil from "@/server/utils/auth-util";
 import SkillAttackButton from "./skill-attack-form";
 import SkillAttackTable from "./skill-attack-table";
 import CookieUtil from "@/server/utils/cookie-util";
+import Link from "next/link";
 
 export default async function SkillAttackPage() {
   const userSeq = await AuthUtil.getUserSeqThrows();
@@ -39,6 +40,10 @@ export default async function SkillAttackPage() {
         점수가 높은 순서대로 50곡을 선별하여 총 점을 계산합니다.
       </h3>
       <SkillAttackButton piuAuth={piuAuthValue} />
+
+      <Link href="/skill-attack/rank" className="btn btn-primary">
+        스킬 어택 랭킹 보러가기
+      </Link>
 
       {skillAttack ? (
         <p>
