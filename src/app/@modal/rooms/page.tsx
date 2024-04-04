@@ -15,7 +15,7 @@ export default function HelpModal() {
             유저들간에 숙제를 등록하고 기록을 비교할 수 있는 시스템입니다.
           </p>
 
-          <h3 className="font-bold text-lg mt-16">
+          <h3 className="font-bold text-lg mt-10 sm:mt-16">
             펌프잇업 최근 플레이기록은 무엇인가요?
           </h3>
           <p className="py-10">
@@ -39,6 +39,28 @@ export default function HelpModal() {
             <Image
               src="/images/help_recently_played.png"
               alt="help_recently_played"
+              fill
+              className="object-contain aspect-square"
+            />
+          </div>
+
+          <h3 className="font-bold text-lg mt-10 sm:mt-16">숙제방 예시</h3>
+
+          <p className="py-10">숙제 목록</p>
+          <div className="w-full h-80 relative">
+            <Image
+              src="/images/help_assignments.png"
+              alt="help_assignments"
+              fill
+              className="object-contain aspect-square"
+            />
+          </div>
+
+          <p className="py-10 mt-10 sm:mt-16">숙제 기록</p>
+          <div className="w-full aspect-square relative">
+            <Image
+              src="/images/help_records.png"
+              alt="help_records"
               fill
               className="object-contain aspect-square"
             />
