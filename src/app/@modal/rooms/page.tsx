@@ -22,7 +22,7 @@ export default function HelpModal() {
             <Link
               href="https://www.piugame.com/my_page/recently_played.php"
               target="_blank"
-              className="link link-primary"
+              className="link link-primary break-all"
             >
               https://www.piugame.com/my_page/recently_played.php
             </Link>
