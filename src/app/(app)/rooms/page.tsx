@@ -11,7 +11,7 @@ export default async function RoomListPage() {
         숙제방 생성
       </Link>
 
-      <Suspense fallback={<RoomSkeleton />}>
+      <Suspense fallback={<RoomListSkeleton />}>
         <RoomList />
       </Suspense>
     </ContentBox>
@@ -34,7 +34,7 @@ async function RoomList() {
   );
 }
 
-function RoomSkeleton() {
+function RoomListSkeleton() {
   return (
     <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 w-full">
       {[...Array(10)].map((v, i) => (
