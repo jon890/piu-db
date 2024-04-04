@@ -1,24 +1,24 @@
 import ContentBox from "@/components/layout/content-box";
-import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
-import SkillAttackButton from "./skill-attack-form";
-import SkillAttackTable from "./skill-attack-table";
 import CookieUtil from "@/server/utils/cookie-util";
-import Link from "next/link";
+import SkillAttackButton from "./skill-attack-form";
+import SkillAttackTab from "./tab";
+import { Suspense } from "react";
 
-export default async function SkillAttackPage() {
+type Props = {
+  children: React.ReactNode;
+};
+
+export default async function SkillAttackLayout({ children }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-
   const skillAttack = await SkillAttackDB.findByUserLatest(userSeq);
-  const records = skillAttack
-    ? await RecordDB.findBySeqIn(skillAttack.recordSeqs as number[])
-    : [];
-
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
 
   return (
     <ContentBox title="스킬 어택">
+      <SkillAttackTab />
+
       <h2 className="text-center font-medium">
         * 스킬 어택은 최근 플레이 기록을 통해서만 반영되고 있습니다.
         <br />
@@ -41,10 +41,6 @@ export default async function SkillAttackPage() {
       </h3>
       <SkillAttackButton piuAuth={piuAuthValue} />
 
-      <Link href="/skill-attack/rank" className="btn btn-primary">
-        스킬 어택 랭킹 보러가기
-      </Link>
-
       {skillAttack ? (
         <p>
           Your Skill Points
@@ -56,7 +52,9 @@ export default async function SkillAttackPage() {
         <p>위 버튼을 눌러 스킬 어택을 동기화 해주세요</p>
       )}
 
-      {records.length > 0 && <SkillAttackTable records={records} />}
+      <Suspense fallback={<p>데이터를 불러오고 있습니다...</p>}>
+        {children}
+      </Suspense>
     </ContentBox>
   );
 }

@@ -23,7 +23,7 @@ export default async function SkillAttackRankingTable({}: Props) {
           </thead>
           <tbody>
             {ranking.map((it, index) => (
-              <tr>
+              <tr key={index}>
                 <td>
                   {index < 3 ? (
                     <div className="flex items-center">
