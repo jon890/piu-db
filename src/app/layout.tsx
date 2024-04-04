@@ -17,11 +17,13 @@ export const metadata: Metadata = {
   publisher: "Google",
 };
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+  modal: React.ReactNode;
+};
+
+export default function RootLayout({ children, modal }: Props) {
+  console.log(modal);
   return (
     <html lang="ko">
       <body
@@ -31,6 +33,7 @@ export default function RootLayout({
         <ToastContextProvier>
           <main id="app">{children}</main>
           <div id="toast-container" />
+          {modal}
         </ToastContextProvier>
       </body>
     </html>

@@ -3,13 +3,21 @@ import RoomDB from "@/server/prisma/room.db";
 import Link from "next/link";
 import Room from "./room";
 import { Suspense } from "react";
+import HelpButton from "./help-button";
 
 export default async function RoomListPage() {
   return (
     <ContentBox title="숙제방 목록">
-      <Link href="/rooms/create" className="btn btn-primary text-xs sm:text-sm">
-        숙제방 생성
-      </Link>
+      <div className="flex flex-row gap-3">
+        <Link
+          href="/rooms/create"
+          className="btn btn-primary text-xs sm:text-sm"
+        >
+          숙제방 생성
+        </Link>
+
+        <HelpButton />
+      </div>
 
       <Suspense fallback={<RoomListSkeleton />}>
         <RoomList />

@@ -1,5 +1,9 @@
 import Drawer from "@/components/layout/Drawer";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+};
+
+export default function AppLayout({ children }: Props) {
   return <Drawer>{children}</Drawer>;
 }
