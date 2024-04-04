@@ -7,8 +7,6 @@ import AuthTopBar from "@/components/layout/auth-top-bar";
 import { ChangeEventHandler, useState } from "react";
 import { useFormState } from "react-dom";
 
-export const title = "회원가입";
-
 export default function RegisterPage() {
   const [state, action] = useFormState(registerUser, null);
   const [name, setName] = useState<string>("");
