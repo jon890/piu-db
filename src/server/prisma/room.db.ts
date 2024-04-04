@@ -1,8 +1,8 @@
 import { ChangeRoomSettingsSchema } from "@/app/(app)/rooms/[id]/settings/schema";
 import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import prisma from "@/server/prisma/client";
-import { AssignmentRoom } from "@prisma/client";
 import { z } from "zod";
+import { ROOM_PAGING_UNIT } from "./const";
 
 async function create({
   adminUserSeq,
@@ -67,11 +67,6 @@ async function changeSettings(
   });
   return { ok: true, message: "설정을 변경했습니다" };
 }
-
-/**
- * 한 페이지에 보여줄 갯수
- */
-const ROOM_PAGING_UNIT = 10;
 
 /**
  * 방 목록
