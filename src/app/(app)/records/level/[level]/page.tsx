@@ -146,7 +146,7 @@ export default async function LevelRecordPage({
                       <RecordGrade
                         className="text-[8px] sm:text-xs"
                         grade={chart.record.grade}
-                        isBreakOff={false}
+                        isBreakOff={true}
                       />
                     )}
                   </div>
