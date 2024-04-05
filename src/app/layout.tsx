@@ -23,7 +23,6 @@ type Props = {
 };
 
 export default function RootLayout({ children, modal }: Props) {
-  console.log(modal);
   return (
     <html lang="ko">
       <body

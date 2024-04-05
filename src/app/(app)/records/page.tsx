@@ -1,10 +1,15 @@
+import classnames from "@/client/utils/classnames";
+import DropDown from "@/components/common/dropdown";
 import ContentBox from "@/components/layout/content-box";
 import RecordTable from "@/components/record/record-table";
+import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
 import { z } from "zod";
+import SelectLevel from "./selet-level";
 
 type Props = {
   searchParams: {
@@ -18,47 +23,26 @@ const ParamSchema = z.object({
 });
 
 export default async function RecordPage({ searchParams: { page } }: Props) {
-  const validated = ParamSchema.safeParse({
-    page,
-    userSeq: await AuthUtil.getUserSeq(),
-  });
+  // const validated = ParamSchema.safeParse({
+  //   page,
+  //   userSeq: await AuthUtil.getUserSeq(),
+  // });
 
-  if (!validated.success) {
-    notFound();
-  }
+  // if (!validated.success) {
+  //   notFound();
+  // }
 
-  if (!validated.data.page) {
-    redirect("/records?page=1");
-  }
+  // if (!validated.data.page) {
+  //   redirect("/records?page=1");
+  // }
+
+  const allSongs = ChartDB.findAllGroupBySong();
 
   return (
     <ContentBox title="내 기록">
-      <Suspense fallback={<p>기록을 읽고 있습니다...</p>}>
-        <RecordTableWrapper
-          userSeq={validated.data.userSeq}
-          currentPage={validated.data.page}
-        />
-      </Suspense>
+      <div className="flex flex-row justify-center items-center gap-3 flex-wrap">
+        <SelectLevel />
+      </div>
     </ContentBox>
-  );
-}
-
-async function RecordTableWrapper({
-  userSeq,
-  currentPage,
-}: {
-  userSeq: number;
-  currentPage: number;
-}) {
-  const { count, records, unit } = await RecordDB.getRecords(
-    userSeq,
-    currentPage
-  );
-
-  return (
-    <RecordTable
-      records={records}
-      paging={{ currentPage, totalElements: count, unit }}
-    />
   );
 }

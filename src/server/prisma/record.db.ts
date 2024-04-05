@@ -1,6 +1,6 @@
 import prisma from "@/server/prisma/client";
-import type { RecentlyPlayed } from "@/types/recently-played";
-import { RecordGrade, RecordPlate } from "@prisma/client";
+import type { Grade, Plate, RecentlyPlayed } from "@/types/recently-played";
+import { Prisma, Record, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
@@ -276,6 +276,37 @@ async function findBySeqIn(seqs: number[]) {
   });
 }
 
+export type MaxRecord = {
+  seq: number;
+  chart_seq: number;
+  score: number;
+  grade: Grade;
+  plate: Plate;
+  is_break_off: number;
+  played_at: Date;
+};
+async function getMaxRecordsBy(userSeq: number, chartSeqs: number[]) {
+  return prisma.$queryRaw<MaxRecord[]>`
+  SELECT 
+    rec.seq, 
+    rec.chart_seq,
+    rec.score, 
+    rec.plate, 
+    rec.is_break_off, 
+    rec.played_at, 
+    rec.grade
+  FROM td_record rec,
+     (SELECT user_seq, chart_seq, max(score) as score
+      FROM td_record
+      WHERE user_seq = ${userSeq}
+        AND chart_seq IN (${Prisma.join(chartSeqs)})
+      GROUP BY user_seq, chart_seq) AS max
+  WHERE rec.user_seq = max.user_seq
+    AND rec.chart_seq = max.chart_seq
+    AND rec.score = max.score
+  `;
+}
+
 const RecordDB = {
   saveRecentRecord,
   getRecords,
@@ -284,6 +315,7 @@ const RecordDB = {
   getMaxRecordByUserAndChartDateBetween,
   findAllMaxRecordsGroupByChart,
   findBySeqIn,
+  getMaxRecordsBy,
 };
 
 export default RecordDB;

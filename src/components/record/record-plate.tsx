@@ -3,12 +3,13 @@ import type { RecordPlate as RecordPlateDataType } from "@prisma/client";
 
 type Props = {
   plate: RecordPlateDataType;
+  className?: string;
 };
 
-export default function RecordPlate({ plate }: Props) {
+export default function RecordPlate({ plate, className }: Props) {
   return (
     <span
-      className={classnames("plate font-semibold", {
+      className={classnames("plate font-semibold", className ?? "", {
         "text-rough": plate === "ROUGH_GAME" || plate === "FAIR_GAME",
 
         "text-talented":

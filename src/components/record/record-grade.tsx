@@ -4,12 +4,13 @@ import type { RecordGrade as RecordGradeDataType } from "@prisma/client";
 type Props = {
   grade: RecordGradeDataType;
   isBreakOff: boolean;
+  className?: string;
 };
 
-export default function RecordGrade({ grade, isBreakOff }: Props) {
+export default function RecordGrade({ grade, isBreakOff, className }: Props) {
   return (
     <span
-      className={classnames("plate font-semibold", {
+      className={classnames("plate font-semibold", className ?? "", {
         "text-rough":
           grade === "F" ||
           grade === "D" ||

@@ -11,9 +11,9 @@ import {
   type SongType,
 } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import InputWithLabel from "./common/InputWithLabel";
-import DropDown from "./dropdown";
+import DropDown from "./common/dropdown";
 import SongCardCC from "./song-card.client";
 
 export type DropDown = "piuVersion" | "songType" | "chartType";
