@@ -67,26 +67,31 @@ export default async function LevelRecordPage({
           <div
             key={song.seq}
             className={classnames(
-              "flex size-32 rounded-md bg-base-200 justify-center items-center flex-col",
+              "flex size-14 sm:size-20 md:size-24 ounded-md bg-base-200 justify-center items-center flex-col",
               "hover:bg-gray-500 active:bg-gray-500 transition-colors"
             )}
           >
-            <span className="text-center text-xs">{song.name}</span>
+            <span className="text-center text-[8px] sm:text-xs max-w-full text-ellipsis overflow-hidden whitespace-nowrap">
+              {song.name}
+            </span>
             {song.charts?.map((chart) => (
               <div
                 key={chart.seq}
-                className="text-center flex flex-col justify-center items-center gap-1"
+                className="text-center text-[10px] sm:text-base flex flex-col justify-center items-center gap-1"
               >
                 <span>{recordMap.get(chart.seq)?.score}</span>
                 {chart.record?.grade && (
                   <RecordGrade
-                    className="text-xs"
+                    className="text-[10px] sm:text-xs"
                     grade={chart.record.grade}
                     isBreakOff={false}
                   />
                 )}
                 {chart.record?.plate && (
-                  <RecordPlate className="text-xs" plate={chart.record.plate} />
+                  <RecordPlate
+                    className="text-[10px] sm:text-xs"
+                    plate={chart.record.plate}
+                  />
                 )}
               </div>
             ))}
