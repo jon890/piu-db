@@ -84,7 +84,7 @@ export default async function LevelRecordPage({
 }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
   const targetLevel = Number(_level);
-  if (isNaN(targetLevel)) {
+  if (isNaN(targetLevel) || targetLevel < 1 || targetLevel > 28) {
     notFound();
   }
 
