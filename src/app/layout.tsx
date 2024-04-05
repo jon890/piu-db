@@ -3,6 +3,7 @@ import classnames from "@/client/utils/classnames";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -35,6 +36,7 @@ export default function RootLayout({ children, modal }: Props) {
           {modal}
         </ToastContextProvier>
       </body>
+      <GoogleTagManager gtmId="GTM-5SFSJWM6" />
     </html>
   );
 }
