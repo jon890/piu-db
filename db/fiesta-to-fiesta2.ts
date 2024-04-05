@@ -1103,7 +1103,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 67
-    name: "러브 이즈 어 데인저 존 - SHORT CUT",
+    name: "러브 이즈 어 데인저 존 - SHORT CUT -",
     artist: "반야",
     bpm: "140",
     version: "FIESTA_FIESTA2",
@@ -1228,7 +1228,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 76
-    name: "NX 오프닝 - SHORT CUT",
+    name: "NX 오프닝 - SHORT CUT -",
     artist: "이 얍",
     bpm: "133",
     version: "FIESTA_FIESTA2",

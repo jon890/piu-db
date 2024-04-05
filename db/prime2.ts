@@ -1297,7 +1297,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 72
-    name: "사월 - SHORT CUT",
+    name: "사월 - SHORT CUT -",
     artist: "SHK",
     bpm: "160",
     version: "PRIME2",
