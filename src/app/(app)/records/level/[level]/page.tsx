@@ -142,11 +142,11 @@ export default async function LevelRecordPage({
                       </span>
                     )}
 
-                    {chart.record?.grade && (
+                    {chart.record && (
                       <RecordGrade
                         className="text-[8px] sm:text-xs"
                         grade={chart.record.grade}
-                        isBreakOff={true}
+                        isBreakOff={Boolean(chart.record.is_break_off)}
                       />
                     )}
                   </div>
