@@ -40,6 +40,11 @@ async function getRecord(
   const chartSeqs = targetSongs
     .map((song) => song.charts?.map((chart) => chart.seq) ?? [])
     .flat();
+
+  if (chartSeqs.length === 0) {
+    return [];
+  }
+
   const records = await RecordDB.getMaxRecordsBy(userSeq, chartSeqs);
   const recordMap = new Map<number, MaxRecord>();
   for (const r of records) {
