@@ -1,16 +1,17 @@
 import classnames from "@/client/utils/classnames";
 import ContentBox from "@/components/layout/content-box";
+import LevelBallSC from "@/components/level-ball.server";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB, { type MaxRecord } from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
+import { ChartType } from "@prisma/client";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import SelectLevel from "../../selet-level";
-import LevelBallSC from "@/components/level-ball.server";
-import Link from "next/link";
-import { ChartType } from "@prisma/client";
-import { get } from "http";
+import CookieUtil from "@/server/utils/cookie-util";
+import SyncRecordButton from "../../sync-record.button";
 
 async function getRecord(
   userSeq: number,
@@ -88,9 +89,11 @@ export default async function LevelRecordPage({
   }
 
   const records = await getRecord(userSeq, targetLevel, CHART_TYPE);
+  const piuAuthValue = await CookieUtil.getPiuAuthValue();
 
   return (
     <ContentBox title="내 기록">
+      <SyncRecordButton piuAuth={piuAuthValue} />
       <SelectLevel targetLevel={targetLevel} />
 
       <div className="flex flex-row gap-4">
