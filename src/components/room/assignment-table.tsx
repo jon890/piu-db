@@ -18,9 +18,7 @@ export default async function AssignmentTable({
 }: Props) {
   let assignmentWithSong = [];
   for (const assignment of assignments) {
-    const songAndChart = await ChartDB.findSongBySeqInCache(
-      assignment.chartSeq
-    );
+    const songAndChart = await ChartDB.findSongBySeq(assignment.chartSeq);
 
     assignmentWithSong.push({
       assignment,

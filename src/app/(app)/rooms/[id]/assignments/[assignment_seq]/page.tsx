@@ -30,7 +30,7 @@ export default async function AssignmentDetailPage({
   const assignment = await AssignmentDB.getAssignment(assignmentSeq);
   if (!assignment) redirect(`/rooms/${roomSeq}`);
 
-  const chartAndSongs = await ChartDB.findSongBySeqInCache(assignment.chartSeq);
+  const chartAndSongs = await ChartDB.findSongBySeq(assignment.chartSeq);
 
   return (
     <ContentBox title="숙제 상세">
@@ -41,6 +41,7 @@ export default async function AssignmentDetailPage({
       </h2>
       {assignment.memo && <p>메모 : {assignment.memo}</p>}
       {assignment.enableBreakOff && <p>브레이크 오프가 허용된 숙제입니다</p>}
+
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}

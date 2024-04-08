@@ -108,17 +108,17 @@ async function findBySeqIn(seqs: number[]) {
   return charts.filter((it) => seqs.includes(it.seq));
 }
 
-async function findSongBySeqInCache(seq: number) {
-  if (isCached()) {
-    const charts = await findAll();
-    const chart = charts.find((it) => it.seq === seq);
-
-    const song = chart?.songSeq ? await SongDB.findBySeq(chart?.songSeq) : null;
-
-    return { chart, song };
-  }
-
-  return null;
+/**
+ * chart seq로
+ * 노래와, 차트 객체를 찾는다
+ * @param chartSeq
+ * @returns
+ */
+async function findSongBySeq(chartSeq: number) {
+  const charts = await findAll();
+  const chart = charts.find((it) => it.seq === chartSeq);
+  const song = chart?.songSeq ? await SongDB.findBySeq(chart?.songSeq) : null;
+  return { chart, song };
 }
 
 const ChartDB = {
@@ -129,7 +129,7 @@ const ChartDB = {
   findCharts,
   findBySeq,
   findBySeqIn,
-  findSongBySeqInCache,
+  findSongBySeq,
 };
 
 export default ChartDB;
