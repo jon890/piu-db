@@ -29,6 +29,7 @@ model User {
   skillAttacks               SkillAttack[]
   actionLogs                 ActionLog[]
   notices                    Notice[]
+  replies                    Reply[]
 
   @@map("td_user")
 }
@@ -274,6 +275,25 @@ model Notice {
   user      User     @relation(fields: [userSeq], references: [seq])
   updatedAt DateTime @updatedAt @map("updated_at")
   createdAt DateTime @default(now()) @map("created_at")
+  Reply     Reply[]
 
   @@map("td_notice")
+}
+
+model Reply {
+  seq       Int       @id @default(autoincrement())
+  type      ReplyType
+  contents  String
+  userSeq   Int       @map("user_seq")
+  user      User      @relation(fields: [userSeq], references: [seq])
+  noticeSeq Int?      @map("notice_seq")
+  notice    Notice?   @relation(fields: [noticeSeq], references: [seq])
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  @@map("td_reply")
+}
+
+enum ReplyType {
+  NOTICE
 }

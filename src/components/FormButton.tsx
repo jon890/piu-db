@@ -1,7 +1,7 @@
 "use client";
 
 import classnames from "@/client/utils/classnames";
-import { ButtonHTMLAttributes, InputHTMLAttributes } from "react";
+import { ButtonHTMLAttributes } from "react";
 import { useFormStatus } from "react-dom";
 
 type FormButtonProps = {
