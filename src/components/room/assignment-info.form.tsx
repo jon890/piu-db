@@ -33,7 +33,10 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
         toast.createToast({ message: "삭제되었습니다", type: "success" });
         router.replace(`/roooms/${assignment.roomSeq}`);
       }
-      toast.createToast({ message: "오류가 발생했습니다", type: "error" });
+      toast.createToast({
+        message: res?.message ?? "오류가 발생했습니다",
+        type: "error",
+      });
     }
   }
 
