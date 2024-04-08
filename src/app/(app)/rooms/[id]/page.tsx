@@ -1,4 +1,6 @@
 import ContentBox from "@/components/layout/content-box";
+import AssignmentTable from "@/components/room/assignment-table";
+import ParticipantsTable from "@/components/room/participants-table";
 import ServerToastHelper from "@/components/server-toast-helper";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RoomDB from "@/server/prisma/room.db";
@@ -10,8 +12,6 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import ParticipateButton from "./(participate)/button";
 import RecordSyncForm from "./(sync-record)/form";
-import AssignmentTable from "./assignment-table";
-import ParticipantsTable from "./participants-table";
 
 type Props = {
   params: { id: string };

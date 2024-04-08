@@ -1,13 +1,13 @@
+import ContentBox from "@/components/layout/content-box";
+import AssignmentRecordTable from "@/components/room/assignment-record-table";
 import SongCardSC from "@/components/song-card.server";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
-import AssignmentRecordTable from "./assignment-record-table";
-import ContentBox from "@/components/layout/content-box";
 
 export default async function AssignmentDetailPage({
   params,
@@ -18,13 +18,17 @@ export default async function AssignmentDetailPage({
   const roomSeq = Number(params.id);
   const assignmentSeq = Number(params.assignment_seq);
 
+  if (isNaN(roomSeq) || isNaN(assignmentSeq)) {
+    notFound();
+  }
+
   const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
 
   if (!room) redirect("/rooms");
   if (!isParticipated) redirect(`/rooms/${roomSeq}?message=FORBIDDEN`);
 
   const assignment = await AssignmentDB.getAssignment(assignmentSeq);
-  if (!assignment) redirect(`/room/${roomSeq}`);
+  if (!assignment) redirect(`/rooms/${roomSeq}`);
 
   const chartAndSongs = await ChartDB.findSongBySeqInCache(assignment.chartSeq);
 

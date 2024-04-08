@@ -3,6 +3,15 @@ import prisma from "@/server/prisma/client";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
 
+/**
+ * 과제곡 생성 유저에서 join해서 불러올 필드 정의
+ */
+const AssignmentCreateUserPayload = {
+  createUser: {
+    select: { nickname: true },
+  },
+};
+
 async function createAssignment(
   params: z.infer<typeof CreateAssignmentSchema>
 ) {
@@ -38,6 +47,7 @@ async function createAssignment(
   };
 }
 
+// TODO : 과제곡이 많아졌을 때 페이징 처리
 async function getAssignments(roomSeq: number) {
   return prisma.assignment.findMany({
     where: {
@@ -45,9 +55,7 @@ async function getAssignments(roomSeq: number) {
     },
     orderBy: [{ endDate: "asc" }],
     include: {
-      createUser: {
-        select: { nickname: true },
-      },
+      ...AssignmentCreateUserPayload,
     },
   });
 }
@@ -66,9 +74,7 @@ async function getOngoingAssignments(roomSeq: number) {
       },
     },
     include: {
-      createUser: {
-        select: { nickname: true },
-      },
+      ...AssignmentCreateUserPayload,
     },
   });
 

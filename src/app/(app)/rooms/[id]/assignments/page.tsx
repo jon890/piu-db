@@ -1,11 +1,11 @@
+import ContentBox from "@/components/layout/content-box";
+import AssignmentTable from "@/components/room/assignment-table";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import type { AssignmentRoom } from "@prisma/client";
 import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
-import AssignmentTable from "../assignment-table";
-import ContentBox from "@/components/layout/content-box";
 
 type Props = {
   params: { id: string };

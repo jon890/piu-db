@@ -9,9 +9,13 @@ type Props = {
   room: AssignmentRoom;
 };
 
-export default async function ParticipantsTable(props: Props) {
+/**
+ * 참여자 목록 테이블
+ * @param props
+ * @returns
+ */
+export default async function ParticipantsTable({ room }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const { room } = props;
   const participants = await RoomDB.getParticipants(room.seq);
 
   return (

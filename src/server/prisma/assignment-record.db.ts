@@ -47,6 +47,18 @@ async function getRecordsByAssgimentSeq(assignmentSeq: number) {
       },
       record: true,
     },
+    orderBy: [
+      {
+        record: {
+          score: "desc",
+        },
+      },
+      {
+        record: {
+          playedAt: "asc",
+        },
+      },
+    ],
   });
 }
 
