@@ -50,6 +50,7 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
         name="start_date"
         topLeft="시작일"
         topRight={`한국시간 : ${TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")}`}
+        defaultValue={TimeUtil.formatUTC(assignment.startDate, "YYYY-MM-DD")}
         disabled={disabled}
       />
       <InputWithLabel
