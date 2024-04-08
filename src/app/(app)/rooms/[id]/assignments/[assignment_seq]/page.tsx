@@ -1,4 +1,5 @@
 import ContentBox from "@/components/layout/content-box";
+import AssignmentInfoForm from "@/components/room/assignment-info.form";
 import AssignmentRecordTable from "@/components/room/assignment-record-table";
 import SongCardSC from "@/components/song-card.server";
 import AssignmentDB from "@/server/prisma/assignment.db";
@@ -9,7 +10,6 @@ import TimeUtil from "@/server/utils/time-util";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
-import AssignmentInfoForm from "./assignment-info.form";
 
 // TODO detail, update 페이지에서 레이아웃 공유
 // 공통 로직 분리

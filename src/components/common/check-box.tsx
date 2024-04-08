@@ -1,3 +1,4 @@
+import classnames from "@/client/utils/classnames";
 import { InputHTMLAttributes } from "react";
 
 type Props = {
@@ -14,7 +15,7 @@ export default function CheckBox({
 }: Props) {
   return (
     <div className="form-control w-full max-w-md">
-      <label className="label cursor-pointer">
+      <label className={classnames("label", !disabled ? "cursor-pointer" : "")}>
         {topLeft && <span className="label-text">{topLeft}</span>}
 
         <input

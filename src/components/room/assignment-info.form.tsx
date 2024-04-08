@@ -1,5 +1,7 @@
 "use client";
 
+import { deleteAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/delete.action";
+import { updateAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.action";
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/common/InputWithLabel";
@@ -8,8 +10,6 @@ import TimeUtil from "@/server/utils/time-util";
 import type { Assignment } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
-import { deleteAssignmentAction } from "./update/delete.action";
-import { updateAssignmentAction } from "./update/update.action";
 
 type Props = {
   assignment: Assignment;
@@ -46,13 +46,14 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
         type="date"
         name="start_date"
         topLeft="시작일"
-        defaultValue={TimeUtil.formatUTC(assignment.startDate, "YYYY-MM-DD")}
+        topRight={`한국시간 : ${TimeUtil.format(assignment.startDate, "YYYY-MM-DD HH:mm:ss")}`}
         disabled={disabled}
       />
       <InputWithLabel
         type="date"
         name="end_date"
         topLeft="종료일"
+        topRight={`한국시간 : ${TimeUtil.format(assignment.endDate, "YYYY-MM-DD HH:mm:ss")}`}
         defaultValue={TimeUtil.formatUTC(assignment.endDate, "YYYY-MM-DD")}
         disabled={disabled}
       />
