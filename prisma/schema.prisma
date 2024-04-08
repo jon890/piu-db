@@ -26,8 +26,9 @@ model User {
   records                    Record[]
   fromRival                  Rival[]                      @relation("fromRival")
   toRival                    Rival[]                      @relation("toRival")
-  SkillAttack                SkillAttack[]
-  ActionLog                  ActionLog[]
+  skillAttacks               SkillAttack[]
+  actionLogs                 ActionLog[]
+  notices                    Notice[]
 
   @@map("td_user")
 }
@@ -263,4 +264,16 @@ model ActionLog {
 
 enum ActionType {
   SYNC_RECORD
+}
+
+model Notice {
+  seq       Int      @id @default(autoincrement())
+  title     String
+  contents  String   @db.Text
+  userSeq   Int      @map("user_seq")
+  user      User     @relation(fields: [userSeq], references: [seq])
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("td_notice")
 }
