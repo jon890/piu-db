@@ -1,15 +1,14 @@
 "use client";
 
+import useToast from "@/client/hooks/use-toast";
+import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/common/InputWithLabel";
+import SongCardCC from "@/components/song-card.client";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
-import SelectedSongCard from "./selected-song";
-import { useFormState } from "react-dom";
-import FormButton from "@/components/FormButton";
-import { createAssignment } from "./create-action";
 import { useEffect } from "react";
-import useToast from "@/client/hooks/use-toast";
-import SongCardCC from "@/components/song-card.client";
+import { useFormState } from "react-dom";
+import { createAssignment } from "./create-action";
 
 type Props = {
   selectedSong: { song: SongWithCharts; chart: Chart };
@@ -80,9 +79,7 @@ export default function AssignmentCreateForm({
                 className="text-sm text-red-500 font-semibold text-center mt-1"
               >
                 {state?.errors?.fieldErrors?.enable_break_off.map(
-                  (error: string) => (
-                    <p key={error}>{error}</p>
-                  )
+                  (error: string) => <p key={error}>{error}</p>
                 )}
               </div>
             )}

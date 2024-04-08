@@ -1,19 +1,14 @@
 import ContentBox from "@/components/layout/content-box";
-import AssignmentRecordTable from "@/components/room/assignment-record-table";
 import SongCardSC from "@/components/song-card.server";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
-import TimeUtil from "@/server/utils/time-util";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { Suspense } from "react";
-import AssignmentInfoForm from "./assignment-info.form";
+import AssignmentInfoForm from "../assignment-info.form";
+import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 
-// TODO detail, update 페이지에서 레이아웃 공유
-// 공통 로직 분리
-export default async function AssignmentDetailPage({
+export default async function AssignmentUpdatePage({
   params,
 }: {
   params: { id: string; assignment_seq: string };
@@ -33,30 +28,26 @@ export default async function AssignmentDetailPage({
 
   const assignment = await AssignmentDB.getAssignment(assignmentSeq);
   if (!assignment) redirect(`/rooms/${roomSeq}`);
+  if (assignment.createUserSeq !== userSeq)
+    redirect(`/rooms/${roomSeq}?message=FORBIDDEN`);
+  const recordsCount =
+    await AssignmentRecordDB.getCountByAssignmentSeq(assignmentSeq);
 
   const chartAndSongs = await ChartDB.findSongBySeq(assignment.chartSeq);
 
   return (
-    <ContentBox title="숙제 상세">
+    <ContentBox title="숙제 변경">
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
 
-      <AssignmentInfoForm assignment={assignment} disabled />
+      {recordsCount > 0 && (
+        <p className="text-red-500 font-semibold">
+          숙제 기록이 등록되어 수정이 불가능합니다.
+        </p>
+      )}
 
-      {assignment.createUserSeq === userSeq &&
-        TimeUtil.isBetween(assignment.startDate, assignment.endDate) && (
-          <Link
-            href={`/rooms/${roomSeq}/assignments/${assignmentSeq}/update`}
-            className="btn btn-primary"
-          >
-            숙제 정보 변경
-          </Link>
-        )}
-
-      <Suspense fallback={<p>기록을 불러오고 있습니다...</p>}>
-        <AssignmentRecordTable assignmentSeq={assignment.seq} />
-      </Suspense>
+      <AssignmentInfoForm assignment={assignment} disabled={recordsCount > 0} />
     </ContentBox>
   );
 }

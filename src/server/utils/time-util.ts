@@ -35,11 +35,17 @@ function setMaxTime(date: Date) {
     .toDate();
 }
 
+function isBetween(startDate: Date, endDate: Date) {
+  const now = dayjs.utc();
+  return now.isAfter(startDate) && now.isBefore(endDate);
+}
+
 const TimeUtil = {
   convertUTC,
   format,
   now,
   setMaxTime,
+  isBetween,
 };
 
 export default TimeUtil;

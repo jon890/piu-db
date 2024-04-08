@@ -62,10 +62,19 @@ async function getRecordsByAssgimentSeq(assignmentSeq: number) {
   });
 }
 
+async function getCountByAssignmentSeq(assignmentSeq: number) {
+  return prisma.assigmentRecord.count({
+    where: {
+      assignmentSeq,
+    },
+  });
+}
+
 const AssignmentRecordDB = {
   getRecordByUser,
   submitAssignment,
   getRecordsByAssgimentSeq,
+  getCountByAssignmentSeq,
 };
 
 export default AssignmentRecordDB;

@@ -1,4 +1,5 @@
 import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/create/create-schema";
+import { UpdateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.schema";
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
@@ -91,11 +92,45 @@ async function getAssignment(assignmentSeq: number) {
   return assignment;
 }
 
+async function deleteAssignment(userSeq: number, assignmentSeq: number) {
+  return prisma.assignment.delete({
+    where: {
+      seq: assignmentSeq,
+      createUserSeq: userSeq,
+    },
+  });
+}
+
+async function updateAssignment({
+  assignment_seq,
+  end_date,
+  start_date,
+  user_seq,
+  enable_break_off,
+  memo,
+}: z.infer<typeof UpdateAssignmentSchema>) {
+  return prisma.assignment.update({
+    data: {
+      startDate: start_date,
+      endDate: TimeUtil.setMaxTime(end_date),
+
+      memo: memo,
+      enableBreakOff: enable_break_off === "on",
+    },
+    where: {
+      seq: assignment_seq,
+      createUserSeq: user_seq,
+    },
+  });
+}
+
 const AssignmentDB = {
   createAssignment,
   getOngoingAssignments,
   getAssignments,
   getAssignment,
+  deleteAssignment,
+  updateAssignment,
 };
 
 export default AssignmentDB;
