@@ -1,12 +1,14 @@
 "use client";
 
+import useToast from "@/client/hooks/use-toast";
+import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/common/InputWithLabel";
 import CheckBox from "@/components/common/check-box";
 import TimeUtil from "@/server/utils/time-util";
 import type { Assignment } from "@prisma/client";
-import { deleteAssignmentAction } from "./update/delete.action";
-import useToast from "@/client/hooks/use-toast";
+import { useRouter } from "next/navigation";
 import { useFormState } from "react-dom";
+import { deleteAssignmentAction } from "./update/delete.action";
 import { updateAssignmentAction } from "./update/update.action";
 
 type Props = {
@@ -16,6 +18,7 @@ type Props = {
 
 export default function AssignmentInfoForm({ assignment, disabled }: Props) {
   const toast = useToast();
+  const router = useRouter();
   const [updateState, updateAction] = useFormState(
     updateAssignmentAction,
     null
@@ -28,6 +31,7 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
       const res = await deleteAssignmentAction(assignment.seq);
       if (res.ok) {
         toast.createToast({ message: "삭제되었습니다", type: "success" });
+        router.replace(`/roooms/${assignment.roomSeq}`);
       }
       toast.createToast({ message: "오류가 발생했습니다", type: "error" });
     }
@@ -42,14 +46,14 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
         type="date"
         name="start_date"
         topLeft="시작일"
-        defaultValue={TimeUtil.format(assignment.startDate, "YYYY-MM-DD")}
+        defaultValue={TimeUtil.formatUTC(assignment.startDate, "YYYY-MM-DD")}
         disabled={disabled}
       />
       <InputWithLabel
         type="date"
         name="end_date"
         topLeft="종료일"
-        defaultValue={TimeUtil.format(assignment.endDate, "YYYY-MM-DD")}
+        defaultValue={TimeUtil.formatUTC(assignment.endDate, "YYYY-MM-DD")}
         disabled={disabled}
       />
       <InputWithLabel
@@ -70,13 +74,13 @@ export default function AssignmentInfoForm({ assignment, disabled }: Props) {
       {!disabled && (
         <div className="flex flex-row gap-2 w-full">
           <button
-            className="flex-1 btn btn-primary"
+            className="flex-1 btn btn-error"
             onClick={handleDelete}
             type="button"
           >
             삭제
           </button>
-          <button className="flex-1 btn btn-error">변경</button>
+          <FormButton text="변경" className="flex-1" />
         </div>
       )}
     </form>

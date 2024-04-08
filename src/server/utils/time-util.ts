@@ -23,6 +23,10 @@ function format(serverDate: Date, formatStr: string) {
   return dayjs.utc(serverDate).tz().format(formatStr);
 }
 
+function formatUTC(serverDate: Date, formatStr: string) {
+  return dayjs.utc(serverDate).format(formatStr);
+}
+
 function now() {
   return dayjs.utc().toDate();
 }
@@ -43,6 +47,7 @@ function isBetween(startDate: Date, endDate: Date) {
 const TimeUtil = {
   convertUTC,
   format,
+  formatUTC,
   now,
   setMaxTime,
   isBetween,
