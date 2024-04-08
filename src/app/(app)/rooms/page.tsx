@@ -1,11 +1,11 @@
 import CommonInView from "@/components/common/common-inview";
 import ContentBox from "@/components/layout/content-box";
-import RoomDB from "@/server/prisma/room.db";
+import RoomHelpButton from "@/components/room/room-help-button";
+import RoomList from "@/components/room/room-list";
+import RoomListSkeleton from "@/components/room/room-list-skeleton";
 import CookieUtil from "@/server/utils/cookie-util";
 import Link from "next/link";
 import { Suspense } from "react";
-import HelpButton from "./help-button";
-import Room from "./room";
 
 export default async function RoomListPage() {
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
@@ -31,38 +31,12 @@ export default async function RoomListPage() {
           숙제방 생성
         </Link>
 
-        <HelpButton />
+        <RoomHelpButton />
       </div>
 
       <Suspense fallback={<RoomListSkeleton />}>
         <RoomList />
       </Suspense>
     </ContentBox>
-  );
-}
-
-async function RoomList() {
-  const rooms = await RoomDB.getRooms();
-
-  return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 w-full">
-      {rooms.map((r) => (
-        <Room
-          key={r.seq}
-          room={r}
-          count={r._count.assignmentRoomParticipants}
-        />
-      ))}
-    </div>
-  );
-}
-
-function RoomListSkeleton() {
-  return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 w-full">
-      {[...Array(10)].map((v, i) => (
-        <div className="skeleton w-full h-48" key={i}></div>
-      ))}
-    </div>
   );
 }

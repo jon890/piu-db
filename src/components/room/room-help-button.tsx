@@ -1,6 +1,6 @@
 "use client";
 
-export default function HelpButton() {
+export default function RoomHelpButton() {
   return (
     <button
       className="btn btn-info text-xs sm:text-sm"

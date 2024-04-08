@@ -14,7 +14,7 @@ export default function Room({ room, count }: Props) {
           <img
             src={room.bannerImage}
             alt="banner"
-            className="size-20 rounded-xl"
+            className="size-20 rounded-xl object-cover"
           />
         </figure>
       )}
