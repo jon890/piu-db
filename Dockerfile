@@ -10,7 +10,7 @@ WORKDIR /app
 COPY package.json package-lock.json* pnpm-lock.yaml* ./
 COPY prisma ./
 RUN \
-  if [ -f pnpm-lock.yaml ]; then corepack enable && pnpm i --frozen-lockfile; \
+  if [ -f pnpm-lock.yaml ]; then corepack enable && pnpm i --config.platform=linux --config.architecture=x64 --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
 
