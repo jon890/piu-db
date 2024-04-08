@@ -14,9 +14,9 @@ export default function Reply({ reply }: Props) {
           {reply.user.nickname.charAt(0)}
         </div>
       </div>
-      <div className="chat-bubble flex flex-row gap-3 items-center">
+      <div className="chat-bubble flex flex-col sm:flex-row gap-0 sm:gap-3 items-center">
         <span>{reply.contents}</span>
-        <span className="text-xs">
+        <span className="text-[10px] sm:text-xs">
           {TimeUtil.format(reply.updatedAt, "YYYY-MM-DD HH:mm:ss")}
         </span>
       </div>

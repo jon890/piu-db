@@ -1,4 +1,3 @@
-import { CreateNoticeReplySchema } from "@/app/(app)/notice/(create-reply)/schema";
 import { CreateNoticeSchema } from "@/app/(app)/notice/create/schema";
 import { z } from "zod";
 import prisma from "./client";
