@@ -8,7 +8,7 @@ import AuthUtil from "@/server/utils/auth-util";
 import type { PiuAuth } from "@/types/piu-auth";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
-import { getSkillPoint } from "./skill-point.util";
+import { getSkillPoint } from "../../../utils/skill-point.util";
 
 export async function skillAttackAction(piuAuth: PiuAuth) {
   const userSeq = await AuthUtil.getUserSeqThrows();

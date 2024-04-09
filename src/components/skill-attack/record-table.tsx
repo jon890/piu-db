@@ -5,13 +5,13 @@ import ChartDB from "@/server/prisma/chart.db";
 import SongDB from "@/server/prisma/song.db";
 import { Record } from "@prisma/client";
 import Link from "next/link";
-import { getSkillPoint } from "./skill-point.util";
+import { getSkillPoint } from "@/utils/skill-point.util";
 
 type Props = {
   records: Record[];
 };
 
-export default async function SkillAttackTable({ records }: Props) {
+export default async function SkillAttackRecordTable({ records }: Props) {
   const recordWithSong = await Promise.all(
     records.map(async (record) => {
       const chart = await ChartDB.findBySeq(record.chartSeq);

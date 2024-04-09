@@ -10,7 +10,12 @@ type Props = {
   piuAuth: PiuAuth;
 };
 
-export default function SkillAttackButton({ piuAuth }: Props) {
+/**
+ * 스킬 어택 동기화 버튼
+ * @param param0
+ * @returns
+ */
+export default function SkillAttackSyncButton({ piuAuth }: Props) {
   const router = useRouter();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
@@ -39,8 +44,8 @@ export default function SkillAttackButton({ piuAuth }: Props) {
       aria-disabled={loading}
     >
       {loading
-        ? "잠시만 기다려주세요... (최대 10초 정도 소요됩니다)"
-        : "기록 불러오기 및 스킬 어택 동기화"}
+        ? "페이지를 이동하지 마세요... (최대 15초 정도 소요됩니다)"
+        : "스킬 어택 동기화"}
     </button>
   ) : (
     <button className="btn btn-disabled">
