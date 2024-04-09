@@ -2,9 +2,9 @@
 
 import useToast from "@/client/hooks/use-toast";
 import type { PiuAuth } from "@/types/piu-auth";
-import { useState } from "react";
-import { skillAttackAction } from "./skill-attack.action";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { syncSkillAttackAction } from "@/server/action/sync-skill-attack.action";
 
 type Props = {
   piuAuth: PiuAuth;
@@ -23,7 +23,7 @@ export default function SkillAttackSyncButton({ piuAuth }: Props) {
   async function run() {
     setLoading(true);
 
-    const res = await skillAttackAction(piuAuth);
+    const res = await syncSkillAttackAction(piuAuth);
     toast.createToast({
       type: res.ok ? "success" : "error",
       message: res.message ?? "",
