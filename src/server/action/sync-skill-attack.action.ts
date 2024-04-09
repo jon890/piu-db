@@ -6,18 +6,20 @@ import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
 import type { PiuAuth } from "@/types/piu-auth";
+import { getSkillPoint } from "@/utils/skill-point.util";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
-import { getSkillPoint } from "./skill-point.util";
 
-export async function skillAttackAction(piuAuth: PiuAuth) {
+export async function syncSkillAttackAction(piuAuth: PiuAuth) {
   const userSeq = await AuthUtil.getUserSeqThrows();
 
+  // 기록 동기화
   const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
   if (!crawlingRes.ok) {
     return { ok: false, message: crawlingRes.message };
   }
 
+  // 이전 스킬어택 기록과, 그 이후 새로 등록된 기록을 모두 가져온다
   const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);
   const records = prevSkillAttack
     ? [
@@ -33,8 +35,7 @@ export async function skillAttackAction(piuAuth: PiuAuth) {
   const charts = await ChartDB.findBySeqIn(chartSeqs);
   const chartMap = getChartSeqMap(charts);
 
-  // 점수 계산
-  // 0 ~ 100점으로 계산
+  // 스킬 점수 계산
   const skills = records
     .map(({ chartSeq, score, seq }) => {
       const chart = chartMap.get(chartSeq);
@@ -60,19 +61,34 @@ export async function skillAttackAction(piuAuth: PiuAuth) {
     .filter((it) => it != null)
     .sort((a, b) => (b?.skillPoint ?? 0) - (a?.skillPoint ?? 0));
 
-  const targetRecords = [];
+  // 50개만 다시 분류하여 계산하기
+  // 같은 차트 중복 제거
+  const targetRecords: { recordSeq: number; chartSeq: number }[] = [];
   let skillPoints = new Decimal(0);
-  for (let i = 0; i < Math.min(50, skills.length); i++) {
-    const skill = skills[i];
-    if (!skill) continue;
-    targetRecords.push(skill.recordSeq);
+  let index = 0;
+  while (true) {
+    if (targetRecords.length === 50) break;
+
+    const skill = skills[index];
+    if (!skill) break;
+
+    const exist = targetRecords.find((it) => it.chartSeq === skill.chartSeq);
+    if (exist) {
+      index++;
+      continue;
+    }
+
+    targetRecords.push({
+      recordSeq: skill.recordSeq,
+      chartSeq: skill.chartSeq,
+    });
     skillPoints = skillPoints.add(skill.skillPoint);
   }
 
   await SkillAttackDB.create({
     userSeq,
     skillPoints: skillPoints.toNumber(),
-    recordSeqs: targetRecords,
+    recordSeqs: targetRecords.map((it) => it.recordSeq),
   });
 
   return { ok: true, message: "스킬 어택 갱신이 완료되었습니다" };

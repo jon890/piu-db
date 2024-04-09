@@ -2,15 +2,20 @@
 
 import useToast from "@/client/hooks/use-toast";
 import type { PiuAuth } from "@/types/piu-auth";
-import { useState } from "react";
-import { skillAttackAction } from "./skill-attack.action";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { syncSkillAttackAction } from "@/server/action/sync-skill-attack.action";
 
 type Props = {
   piuAuth: PiuAuth;
 };
 
-export default function SkillAttackButton({ piuAuth }: Props) {
+/**
+ * 스킬 어택 동기화 버튼
+ * @param param0
+ * @returns
+ */
+export default function SkillAttackSyncButton({ piuAuth }: Props) {
   const router = useRouter();
   const toast = useToast();
   const [loading, setLoading] = useState(false);
@@ -18,7 +23,7 @@ export default function SkillAttackButton({ piuAuth }: Props) {
   async function run() {
     setLoading(true);
 
-    const res = await skillAttackAction(piuAuth);
+    const res = await syncSkillAttackAction(piuAuth);
     toast.createToast({
       type: res.ok ? "success" : "error",
       message: res.message ?? "",
@@ -39,8 +44,8 @@ export default function SkillAttackButton({ piuAuth }: Props) {
       aria-disabled={loading}
     >
       {loading
-        ? "잠시만 기다려주세요... (최대 10초 정도 소요됩니다)"
-        : "기록 불러오기 및 스킬 어택 동기화"}
+        ? "페이지를 이동하지 마세요... (최대 15초 정도 소요됩니다)"
+        : "스킬 어택 동기화"}
     </button>
   ) : (
     <button className="btn btn-disabled">

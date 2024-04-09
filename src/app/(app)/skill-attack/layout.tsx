@@ -1,10 +1,10 @@
 import ContentBox from "@/components/layout/content-box";
+import SkillAttackTab from "@/components/skill-attack/tab";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
-import SkillAttackButton from "./skill-attack-form";
-import SkillAttackTab from "./tab";
 import { Suspense } from "react";
+import SkillAttackSyncButton from "./sync-button";
 
 type Props = {
   children: React.ReactNode;
@@ -39,7 +39,7 @@ export default async function SkillAttackLayout({ children }: Props) {
         <br />
         점수가 높은 순서대로 50곡을 선별하여 총 점을 계산합니다.
       </h3>
-      <SkillAttackButton piuAuth={piuAuthValue} />
+      <SkillAttackSyncButton piuAuth={piuAuthValue} />
 
       {skillAttack ? (
         <p>

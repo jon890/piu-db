@@ -16,7 +16,6 @@ export default async function SkillAttackRankingTable({}: Props) {
           <thead>
             <tr>
               <th></th>
-
               <th>스킬포인트</th>
               <th>닉네임</th>
             </tr>
