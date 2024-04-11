@@ -17,6 +17,7 @@ async function create({
         adminUserSeq,
         bannerImage,
         description,
+        selectSongAuthorityUsers: JSON.stringify([adminUserSeq]),
       },
     });
 

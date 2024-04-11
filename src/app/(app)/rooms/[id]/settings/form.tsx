@@ -2,7 +2,7 @@
 
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/common/InputWithLabel";
+import InputWithLabel from "@/components/common/input-with-label";
 import type { AssignmentRoom } from "@prisma/client";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
@@ -75,9 +75,7 @@ export default function RoomSettingsForm({ room }: Props) {
             className="text-sm text-red-500 font-semibold text-center mt-1"
           >
             {state?.paramErrors?.fieldErrors?.stopParticipating.map(
-              (error: string) => (
-                <p key={error}>{error}</p>
-              )
+              (error: string) => <p key={error}>{error}</p>
             )}
           </div>
         )}

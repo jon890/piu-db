@@ -2,7 +2,7 @@
 
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/common/InputWithLabel";
+import InputWithLabel from "@/components/common/input-with-label";
 import SongCardCC from "@/components/song-card.client";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";

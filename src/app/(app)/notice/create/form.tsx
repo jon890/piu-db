@@ -2,7 +2,7 @@
 
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/common/InputWithLabel";
+import InputWithLabel from "@/components/common/input-with-label";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { createNotice } from "./action";
