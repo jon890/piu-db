@@ -7,7 +7,7 @@ export const MENUS = [
     text: "내 기록 목록",
     href: "/records",
   },
-  { text: "스킬 어택", href: "/skill-attack/my" },
+  { text: "스킬 어택", href: "/skill-attack" },
   { text: "프로필", href: "/profile" },
 ] as const;
 

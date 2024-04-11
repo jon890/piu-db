@@ -52,7 +52,18 @@ export default async function SkillAttackRankingTable({}: Props) {
                     </div>
                   )}
                 </td>
-                <td>{rank.skill_points.toFixed(3)}</td>
+                <td>
+                  <Link
+                    className="hover:text-gray-500"
+                    href={
+                      rank.user_seq === userSeq
+                        ? `/skill-attack`
+                        : `/skill-attack/${rank.uid}`
+                    }
+                  >
+                    {rank.skill_points.toFixed(3)}
+                  </Link>
+                </td>
                 <td className="text-center">
                   <Link
                     className="hover:text-gray-500"

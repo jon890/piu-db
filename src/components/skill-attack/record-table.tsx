@@ -54,7 +54,10 @@ export default async function SkillAttackRecordTable({ records }: Props) {
               recordWithSong
                 .sort((a, b) => Number(b.skillPoint) - Number(a.skillPoint))
                 .map((record, index) => (
-                  <tr key={record.seq} className="hover">
+                  <tr
+                    key={record.seq}
+                    className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
+                  >
                     <td>{index + 1}</td>
                     <td>
                       {record.song && record.chart && (
