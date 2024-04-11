@@ -3,6 +3,7 @@ import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
 import { ROOM_PAGING_UNIT } from "./const";
+import { Prisma } from "@prisma/client";
 
 async function create({
   adminUserSeq,
@@ -38,6 +39,7 @@ async function changeSettings(
     description,
     name,
     stopParticipating,
+    selectSongAuthorityUsers,
   }: z.infer<typeof ChangeRoomSettingsSchema>
 ) {
   const room = await prisma.assignmentRoom.findUnique({
@@ -63,9 +65,11 @@ async function changeSettings(
       description,
       name,
       stopParticipating: stopParticipating === "on",
+      selectSongAuthorityUsers,
     },
     where: { seq: room_seq },
   });
+
   return { ok: true, message: "설정을 변경했습니다" };
 }
 
@@ -102,6 +106,7 @@ async function getRoom(seq: number, userSeq: number) {
   return { room, isParticipated: _isParticipated };
 }
 
+export type RoomParticipants = Prisma.PromiseReturnType<typeof getParticipants>;
 async function getParticipants(roomSeq: number) {
   return prisma.assignmentRoomParticipants.findMany({
     where: {
