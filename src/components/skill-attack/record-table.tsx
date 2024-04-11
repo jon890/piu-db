@@ -56,14 +56,14 @@ export default async function SkillAttackRecordTable({ records }: Props) {
                 .map((record, index) => (
                   <tr
                     key={record.seq}
-                    className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
+                    className="*:text-xs *:px-1 *:py-1 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
                   >
                     <td>{index + 1}</td>
                     <td>
                       {record.song && record.chart && (
                         <Link
                           href={`/songs/${record.song.seq}?page=1&chartSeq=${record.chartSeq}`}
-                          className="hover:text-gray-600"
+                          className="hover:text-gray-600 max-w-20 sm:max-w-32 block text-ellipsis whitespace-nowrap overflow-hidden"
                         >
                           {record.song.name}
                         </Link>

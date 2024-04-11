@@ -30,7 +30,7 @@ export default async function MySkillAttackPage({ params: { uid } }: Props) {
     <>
       <p>
         {user.nickname} Skill Points
-        <strong className="ml-4 mt-32 bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-5xl font-bold text-transparent">
+        <strong className="ml-4 mt-32 bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-3xl sm:text-5xl font-bold text-transparent">
           {skillAttack.skillPoints.toFixed(3)}
         </strong>
       </p>
