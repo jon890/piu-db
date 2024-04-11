@@ -1,6 +1,7 @@
 import { Prisma, User } from "@prisma/client";
 import prisma from "./client";
 import UserDB from "./user.db";
+import Decimal from "decimal.js";
 
 async function create({
   userSeq,
@@ -44,28 +45,37 @@ async function findByUserLatest(userSeq: number) {
   return skillAttack;
 }
 
+/**
+ * 각 유저의 최신 기록을 불러온다
+ * @param page
+ * @returns
+ */
+type SkillAttackRanking = {
+  sp_seq: number;
+  user_seq: number;
+  nickname: string;
+  uid: string;
+  skill_points: Decimal;
+  created_at: Date;
+};
 async function getRanking(page: number) {
-  const ranking = await prisma.skillAttack.groupBy({
-    _max: { skillPoints: true },
-    by: ["userSeq"],
-    orderBy: { _max: { skillPoints: "desc" } },
-    skip: 100 * page,
-    take: 100,
-  });
-
-  const users = await UserDB.getUsersBy(ranking.map((it) => it.userSeq));
-  const userMap = new Map<
-    number,
-    { seq: number; name: string; nickname: string; uid: string }
-  >();
-  for (const user of users) {
-    userMap.set(user.seq, user);
-  }
-
-  return ranking.map((it) => ({
-    skillPoint: it._max.skillPoints,
-    user: userMap.get(it.userSeq),
-  }));
+  return prisma.$queryRaw<SkillAttackRanking[]>`
+  select 
+    sp.seq sp_seq,
+    user.seq user_seq ,
+    user.nickname ,
+    user.uid , 
+    max_sp.skill_points, sp.created_at
+  from td_user user,
+     (select user_seq, max(skill_points) skill_points
+      from td_skill_attack
+      group by user_seq
+      order by max(skill_points) desc) max_sp,
+     td_skill_attack sp
+  where user.seq = max_sp.user_seq
+    and sp.user_seq = max_sp.user_seq
+    and sp.skill_points = max_sp.skill_points;
+  `;
 }
 
 const SkillAttackDB = {

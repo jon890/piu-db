@@ -1,11 +1,15 @@
 import classnames from "@/client/utils/classnames";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
+import AuthUtil from "@/server/utils/auth-util";
+import TimeUtil from "@/server/utils/time-util";
 import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
+import Link from "next/link";
 
 type Props = {};
 
 export default async function SkillAttackRankingTable({}: Props) {
-  const ranking = await SkillAttackDB.getRanking(0);
+  const userSeq = await AuthUtil.getUserSeqThrows();
+  const rankings = await SkillAttackDB.getRanking(0);
 
   return (
     <>
@@ -17,11 +21,12 @@ export default async function SkillAttackRankingTable({}: Props) {
             <tr>
               <th></th>
               <th>스킬포인트</th>
-              <th>닉네임</th>
+              <th className="text-center">닉네임</th>
+              <th>업데이트 시간</th>
             </tr>
           </thead>
           <tbody>
-            {ranking.map((it, index) => (
+            {rankings.map((rank, index) => (
               <tr key={index}>
                 <td>
                   {index < 3 ? (
@@ -35,11 +40,30 @@ export default async function SkillAttackRankingTable({}: Props) {
                       />
                     </div>
                   ) : (
-                    <div className="flex items-center">{index + 1}위</div>
+                    <div className="flex items-center justify-center">
+                      {index + 1}위
+                    </div>
                   )}
                 </td>
-                <td>{it.skillPoint?.toFixed(3)}</td>
-                <td>{it.user?.nickname}</td>
+                <td>{rank.skill_points.toFixed(3)}</td>
+                <td className="text-center">
+                  <Link
+                    className="hover:text-gray-500"
+                    href={
+                      rank.user_seq === userSeq
+                        ? `/profile`
+                        : `/profile/${rank.uid}`
+                    }
+                  >
+                    {rank.nickname}
+                  </Link>
+                </td>
+                <td>
+                  <div className="text-center">
+                    <p>{TimeUtil.format(rank.created_at, "YYYY-MM-DD")}</p>
+                    <p>{TimeUtil.format(rank.created_at, "HH:mm:ss")}</p>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
