@@ -1,5 +1,7 @@
-import { AssignmentRoom } from "@prisma/client";
+import type { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
+import LockClosedIcon from "@heroicons/react/24/solid/LockClosedIcon";
+import Tooltip from "../common/tooltip";
 
 type Props = {
   room: AssignmentRoom & { admin: { nickname: string } };
@@ -20,7 +22,14 @@ export default function Room({ room, count }: Props) {
       )}
 
       <div className="card-body">
-        <h2 className="card-title">{room.name}</h2>
+        <h2 className="card-title">
+          <span>{room.name}</span>
+          {room.stopParticipating && (
+            <Tooltip text="일시적으로 참여가 제한되어있습니다">
+              <LockClosedIcon className="size-6 text-superb" />
+            </Tooltip>
+          )}
+        </h2>
         {room.description && <p className="font-medium">{room.description}</p>}
         <p className="text-end font-medium">
           방장 :{" "}
@@ -32,7 +41,7 @@ export default function Room({ room, count }: Props) {
           참여자 수 : <span className="font-semibold">{count}</span>
         </p>
 
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end items-center gap-6">
           <Link
             href={`/rooms/${room.seq}`}
             className="btn btn-primary text-xs sm:text-sm"
