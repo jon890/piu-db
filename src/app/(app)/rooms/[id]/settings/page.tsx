@@ -8,17 +8,25 @@ type Props = {
   params: { id: string };
 };
 
-export default async function RoomSettingsPage({ params: { id } }: Props) {
+export default async function RoomSettingsPage({ params: { id: _id } }: Props) {
+  // validate params
+  const roomSeq = Number(_id);
+  if (isNaN(roomSeq)) {
+    notFound();
+  }
+
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const { room, isParticipated: _ } = await RoomDB.getRoom(Number(id), userSeq);
+  const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
+  const participatns = await RoomDB.getParticipants(roomSeq);
 
   if (!room) return notFound();
+  if (!isParticipated) redirect(`/rooms/${room.seq}?message=FORBIDDEN`);
   if (room.adminUserSeq !== userSeq)
     redirect(`/rooms/${room.seq}?message=FORBIDDEN`);
 
   return (
     <ContentBox title="방 설정 변경">
-      <RoomSettingsForm room={room} />
+      <RoomSettingsForm room={room} participants={participatns} />
     </ContentBox>
   );
 }

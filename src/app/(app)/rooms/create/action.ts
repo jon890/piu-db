@@ -10,7 +10,10 @@ type State = {
   message?: string;
 };
 
-export async function createRoom(prevState: State | null, formData: FormData) {
+export async function createRoomAction(
+  _prevState: State | null,
+  formData: FormData
+) {
   const validatedFields = CreateRoomSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
     adminUserSeq: await AuthUtil.getUserSeqThrows(),
@@ -24,7 +27,7 @@ export async function createRoom(prevState: State | null, formData: FormData) {
     };
   }
 
-  await RoomDB.create(validatedFields.data);
+  const room = await RoomDB.create(validatedFields.data);
 
   revalidatePath("/rooms");
   redirect("/rooms");

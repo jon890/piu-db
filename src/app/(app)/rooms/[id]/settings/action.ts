@@ -17,13 +17,14 @@ export async function changeRoomSettings(
   const userSeq = await AuthUtil.getUserSeqThrows();
   const validatedFields = ChangeRoomSettingsSchema.safeParse({
     ...Object.fromEntries(formData.entries()),
+    selectSongAuthorityUsers: formData.getAll("selectSongAuthorityUsers"),
   });
 
   if (!validatedFields.success) {
     return {
       ok: false,
       paramErrors: validatedFields.error.flatten(),
-      message: "Missing Fields. Failed to Create Room.",
+      message: "방 설정 변경에 실패했습니다.",
     };
   }
 

@@ -4,7 +4,7 @@ import { deleteAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assi
 import { updateAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.action";
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/common/InputWithLabel";
+import InputWithLabel from "@/components/common/input-with-label";
 import CheckBox from "@/components/common/check-box";
 import TimeUtil from "@/server/utils/time-util";
 import type { Assignment } from "@prisma/client";

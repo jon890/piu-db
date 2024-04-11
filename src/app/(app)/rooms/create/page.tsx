@@ -1,10 +1,6 @@
 import ContentBox from "@/components/layout/content-box";
 import CreateRoomForm from "./form";
 
-/**
- * 숙제방 생성 페이지
- * @returns
- */
 export default function CreateRoomPage() {
   return (
     <ContentBox title="숙제방 생성">

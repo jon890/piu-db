@@ -6,4 +6,5 @@ export const ChangeRoomSettingsSchema = z.object({
   description: z.string(),
   bannerImage: z.string(),
   stopParticipating: z.literal("on").optional(),
+  selectSongAuthorityUsers: z.coerce.number().gt(0).array(),
 });

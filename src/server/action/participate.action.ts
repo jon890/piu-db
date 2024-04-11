@@ -7,7 +7,7 @@ type State = {
   message?: string;
 };
 
-export async function participateRoom(roomSeq: number) {
+export async function participateRoomAction(roomSeq: number) {
   const userSeq = await AuthUtil.getUserSeqThrows();
   return RoomDB.participate(roomSeq, userSeq);
 }

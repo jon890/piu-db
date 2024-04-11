@@ -12,7 +12,7 @@ import {
 } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import InputWithLabel from "./common/InputWithLabel";
+import InputWithLabel from "./common/input-with-label";
 import DropDown from "./common/dropdown";
 import SongCardCC from "./song-card.client";
 

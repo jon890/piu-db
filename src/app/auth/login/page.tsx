@@ -2,7 +2,7 @@
 
 import { authenticate } from "@/app/auth/login/action";
 import FormButton from "@/components/FormButton";
-import InputWithLabel from "@/components/common/InputWithLabel";
+import InputWithLabel from "@/components/common/input-with-label";
 import { useFormState } from "react-dom";
 import { LOGIN_CODE } from "./schema";
 import AuthTopBar from "@/components/layout/auth-top-bar";

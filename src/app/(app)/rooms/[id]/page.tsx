@@ -28,6 +28,9 @@ export default async function RoomDetailPage({
   const { room, isParticipated } = await RoomDB.getRoom(Number(id), userSeq);
 
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
+  const assignmentAuthority =
+    !Boolean(room?.selectSongAuthorityUsers) ||
+    (room?.selectSongAuthorityUsers as number[]).includes(userSeq);
 
   if (!room) {
     return notFound();
@@ -45,17 +48,25 @@ export default async function RoomDetailPage({
         <div className="flex flex-row items-center justify-center gap-4 flex-wrap">
           <ParticipateButton room={room} isParticipated={isParticipated} />
 
-          {isParticipated && (
-            <>
-              <Link
-                href={`/rooms/${room.seq}/assignments/create`}
-                className="btn btn-primary text-xs sm:text-sm"
-              >
-                숙제 만들기
-              </Link>
-              <RecordSyncForm room={room} piuAuth={piuAuthValue} />
-            </>
-          )}
+          {isParticipated &&
+            (!assignmentAuthority ? (
+              <>
+                <button className="btn btn-primary" disabled aria-disabled>
+                  숙제곡 선곡권한이 없습니다
+                </button>
+                <RecordSyncForm room={room} piuAuth={piuAuthValue} />
+              </>
+            ) : (
+              <>
+                <Link
+                  href={`/rooms/${room.seq}/assignments/create`}
+                  className="btn btn-primary text-xs sm:text-sm"
+                >
+                  숙제 만들기
+                </Link>
+                <RecordSyncForm room={room} piuAuth={piuAuthValue} />
+              </>
+            ))}
 
           {room.adminUserSeq === userSeq && (
             <Link

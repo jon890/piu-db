@@ -168,6 +168,7 @@ model AssignmentRoom {
   admin                      User                         @relation(fields: [adminUserSeq], references: [seq])
   adminUserSeq               Int                          @map("admin_user_seq")
   stopParticipating          Boolean                      @default(false) @map("stop_participating")
+  selectSongAuthorityUsers   Json?                        @map("select_song_authority_users")
   updatedAt                  DateTime                     @updatedAt @map("updated_at")
   createdAt                  DateTime                     @default(now()) @map("created_at")
   assignments                Assignment[]
