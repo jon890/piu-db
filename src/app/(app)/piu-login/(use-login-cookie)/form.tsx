@@ -30,7 +30,7 @@ export default function UseLoginCookie({ email, password }: Props) {
       <input type="hidden" name="email" value={email} />
       <input type="hidden" name="password" value={password} />
 
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row gap-4 flex-wrap">
         <button type="submit" className="btn btn-primary">
           해당 기능 사용하기
         </button>
@@ -40,7 +40,7 @@ export default function UseLoginCookie({ email, password }: Props) {
           className="btn btn-warning"
           // onClick={() => router.push("/rooms")}
         >
-          사용하지 않기 (후추 1회 로그인 지원예정입니다)
+          사용하지 않기 (추후 1회 로그인 지원예정입니다)
         </button>
       </div>
     </form>
