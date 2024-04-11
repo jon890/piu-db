@@ -1,5 +1,5 @@
-import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/create/create-schema";
 import { UpdateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.schema";
+import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/create/create-schema";
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
@@ -16,36 +16,61 @@ const AssignmentCreateUserPayload = {
 async function createAssignment(
   params: z.infer<typeof CreateAssignmentSchema>
 ) {
-  const ongoing = await prisma.assignment.count({
-    where: {
-      roomSeq: params.room_seq,
-      chartSeq: params.chart_seq,
-      endDate: {
-        gte: new Date(),
+  return prisma.$transaction(async (tx) => {
+    const room = await tx.assignmentRoom.findUnique({
+      where: {
+        seq: params.room_seq,
       },
-    },
+    });
+
+    if (!room) {
+      return { ok: false, message: "방이 존재하지 않습니다" };
+    }
+
+    const assignmentAuthorityUsers = room.selectSongAuthorityUsers as
+      | null
+      | number[];
+    if (
+      assignmentAuthorityUsers &&
+      !assignmentAuthorityUsers.includes(params.user_seq)
+    ) {
+      return { ok: false, message: "숙제곡 선곡 권한이 없습니다" };
+    }
+
+    const ongoing = await prisma.assignment.count({
+      where: {
+        roomSeq: params.room_seq,
+        chartSeq: params.chart_seq,
+        endDate: {
+          gte: new Date(),
+        },
+      },
+    });
+
+    if (ongoing > 0) {
+      return {
+        ok: false,
+        message: "해당 차트의 이미 진행중인 숙제가 있습니다",
+      };
+    }
+
+    const assignment = await prisma.assignment.create({
+      data: {
+        roomSeq: params.room_seq,
+        chartSeq: params.chart_seq,
+        startDate: params.start_date,
+        endDate: TimeUtil.setMaxTime(params.end_date),
+        createUserSeq: params.user_seq,
+        memo: params.memo,
+        enableBreakOff: params.enable_break_off === "on",
+      },
+    });
+
+    return {
+      ok: true,
+      assignment,
+    };
   });
-
-  if (ongoing > 0) {
-    return { ok: false, message: "해당 차트의 이미 진행중인 숙제가 있습니다" };
-  }
-
-  const assignment = await prisma.assignment.create({
-    data: {
-      roomSeq: params.room_seq,
-      chartSeq: params.chart_seq,
-      startDate: params.start_date,
-      endDate: TimeUtil.setMaxTime(params.end_date),
-      createUserSeq: params.user_seq,
-      memo: params.memo,
-      enableBreakOff: params.enable_break_off === "on",
-    },
-  });
-
-  return {
-    ok: true,
-    assignment,
-  };
 }
 
 // TODO : 과제곡이 많아졌을 때 페이징 처리

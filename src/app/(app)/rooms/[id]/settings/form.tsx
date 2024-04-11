@@ -77,7 +77,7 @@ export default function RoomSettingsForm({ room, participants }: Props) {
           </thead>
           <tbody>
             {participants.map((user, index) => (
-              <tr className="hover">
+              <tr className="hover" key={user.userSeq}>
                 <td>{index + 1}</td>
                 <td>{user.user.nickname}</td>
                 <td>
