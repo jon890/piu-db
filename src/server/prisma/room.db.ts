@@ -17,7 +17,7 @@ async function create({
         adminUserSeq,
         bannerImage,
         description,
-        selectSongAuthorityUsers: JSON.stringify([adminUserSeq]),
+        selectSongAuthorityUsers: [adminUserSeq],
       },
     });
 
@@ -124,7 +124,7 @@ async function getParticipants(roomSeq: number) {
 
 async function participate(roomSeq: number, userSeq: number) {
   return prisma.$transaction(async (tx) => {
-    const room = await prisma.assignmentRoom.findUnique({
+    const room = await tx.assignmentRoom.findUnique({
       where: {
         seq: roomSeq,
       },
@@ -138,7 +138,7 @@ async function participate(roomSeq: number, userSeq: number) {
       return { ok: false, message: "해당 방의 참여가 제한되어있습니다" };
     }
 
-    await prisma.assignmentRoomParticipants.upsert({
+    await tx.assignmentRoomParticipants.upsert({
       where: {
         assignmentRoomSeq_userSeq: {
           assignmentRoomSeq: roomSeq,
