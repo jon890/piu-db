@@ -16,18 +16,25 @@ export default async function SkillAttackRankingTable({}: Props) {
       <h2 className="text-xl font-semibold">스킬 어택 랭킹</h2>
 
       <div className="overflow-x-auto max-w-full">
+        <p className="text-xs text-gray-500 text-end mb-3">
+          * 점수를 클릭하면 해당 유저의 기록을 자세하게 볼 수 있습니다.
+        </p>
+
         <table className="table table-xs">
           <thead>
-            <tr>
+            <tr className="*:text-center *:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2">
               <th></th>
               <th>스킬포인트</th>
-              <th className="text-center">닉네임</th>
+              <th>닉네임</th>
               <th>업데이트 시간</th>
             </tr>
           </thead>
           <tbody>
             {rankings.map((rank, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
+              >
                 <td>
                   {index < 3 ? (
                     <div className="flex items-center">
