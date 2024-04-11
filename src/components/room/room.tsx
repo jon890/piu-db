@@ -25,7 +25,7 @@ export default function Room({ room, count }: Props) {
         <h2 className="card-title">
           <span>{room.name}</span>
           {room.stopParticipating && (
-            <Tooltip text="일시적으로 참여가 제한되어있습니다">
+            <Tooltip text="일시적으로 참여가 제한되어 있습니다">
               <LockClosedIcon className="size-6 text-superb" />
             </Tooltip>
           )}
