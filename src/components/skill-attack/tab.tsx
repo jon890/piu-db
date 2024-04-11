@@ -10,11 +10,11 @@ export default function SkillAttackTab() {
   return (
     <div role="tablist" className="tabs tabs-bordered">
       <Link
-        href="/skill-attack/my"
+        href="/skill-attack"
         role="tab"
         className={classnames(
           "tab",
-          pathname === "/skill-attack/my" ? "tab-active" : ""
+          pathname === "/skill-attack" ? "tab-active" : ""
         )}
       >
         내 기록

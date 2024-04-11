@@ -33,6 +33,10 @@ export default async function SkillAttackRecordTable({ records }: Props) {
       <h2 className="text-xl font-semibold">스킬 어택 대상곡 목록</h2>
 
       <div className="overflow-x-auto max-w-full">
+        <p className="text-xs text-gray-500 text-end mb-3">
+          * 곡 이름 클릭 시 상세 페이지로 이동합니다
+        </p>
+
         <table className="table table-xs">
           <thead>
             <tr>
@@ -50,12 +54,15 @@ export default async function SkillAttackRecordTable({ records }: Props) {
               recordWithSong
                 .sort((a, b) => Number(b.skillPoint) - Number(a.skillPoint))
                 .map((record, index) => (
-                  <tr key={record.seq} className="hover">
+                  <tr
+                    key={record.seq}
+                    className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
+                  >
                     <td>{index + 1}</td>
                     <td>
-                      {record.song && (
+                      {record.song && record.chart && (
                         <Link
-                          href={`/songs/${record.song.seq}`}
+                          href={`/songs/${record.song.seq}?page=1&chartSeq=${record.chartSeq}`}
                           className="hover:text-gray-600"
                         >
                           {record.song.name}
@@ -68,10 +75,7 @@ export default async function SkillAttackRecordTable({ records }: Props) {
                       )}
                     </td>
                     <td>{record.score}</td>
-                    <td>
-                      {record.chart &&
-                        getSkillPoint(record.score, record.chart)}
-                    </td>
+                    <td>{record.chart && record.skillPoint}</td>
                     <td>
                       <RecordGrade
                         grade={record.grade}
