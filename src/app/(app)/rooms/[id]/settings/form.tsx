@@ -63,6 +63,7 @@ export default function RoomSettingsForm({ room, participants }: Props) {
         topLeft="다른 유저 참여 제한"
         name="stopParticipating"
         errors={state?.paramErrors?.fieldErrors?.stopParticipating}
+        defaultChecked={room.stopParticipating}
       />
 
       <div className="overflow-x-auto w-full border rounded-md shadow-md p-3">
