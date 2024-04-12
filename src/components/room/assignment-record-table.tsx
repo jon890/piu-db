@@ -24,7 +24,7 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
       </p>
       <table className="table">
         <thead>
-          <tr>
+          <tr className="*:text-center">
             <th>등수</th>
             <th>닉네임</th>
             <th>점수</th>
