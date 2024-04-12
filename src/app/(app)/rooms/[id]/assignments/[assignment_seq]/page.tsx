@@ -55,7 +55,7 @@ export default async function AssignmentDetailPage({
         )}
 
       <Suspense fallback={<p>기록을 불러오고 있습니다...</p>}>
-        <AssignmentRecordTable assignmentSeq={assignment.seq} />
+        <AssignmentRecordTable room={room} assignmentSeq={assignment.seq} />
       </Suspense>
     </ContentBox>
   );

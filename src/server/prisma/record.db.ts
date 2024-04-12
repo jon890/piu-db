@@ -266,6 +266,14 @@ async function findAllMaxRecordsGroupByChart(userSeq: number, after?: Date) {
   return maxRecords;
 }
 
+async function findBySeq(seq: number) {
+  return prisma.record.findUnique({
+    where: {
+      seq,
+    },
+  });
+}
+
 async function findBySeqIn(seqs: number[]) {
   return prisma.record.findMany({
     where: {
@@ -314,6 +322,7 @@ const RecordDB = {
   getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
   findAllMaxRecordsGroupByChart,
+  findBySeq,
   findBySeqIn,
   getMaxRecordsBy,
 };
