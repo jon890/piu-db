@@ -1,7 +1,7 @@
 # PIU DB
 
-- SSL 떼버리자.. 어후 너무 까다롭다
-- 우분투 - openssl - nodejs - prisma 궁합이 하나라도 안맞으면 너무 골치아프다
+- Next.js 14, Server Action, Prisma, TailwindCSS, DayisUI를 통해 구현하는 펌프잇업 숙제관리 툴
+- 숙제방, 스킬어택, 레벨별 기록 열람의 기능을 포함합니다
 
 ## 로드맵
 
