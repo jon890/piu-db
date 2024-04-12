@@ -1,5 +1,16 @@
 const colors = require("tailwindcss/colors");
 
+const warningColors = [
+  "lightBlue",
+  "warmGray",
+  "trueGray",
+  "coolGray",
+  "blueGray",
+];
+const notWarningColors = Object.entries(colors).filter(([colorKey, value]) => {
+  return !warningColors.includes(colorKey);
+});
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -15,7 +26,7 @@ module.exports = {
       ultimate: "#70d0fb",
       transparent: "transparent",
       current: "currentColor",
-      ...colors,
+      ...Object.fromEntries(notWarningColors),
     },
     extend: {
       backgroundImage: {
