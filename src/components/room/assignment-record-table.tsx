@@ -5,13 +5,18 @@ import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
 import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
+import type { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
 
 type Props = {
+  room: AssignmentRoom;
   assignmentSeq: number;
 };
 
-export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
+export default async function AssignmentRecordTable({
+  room,
+  assignmentSeq,
+}: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
   const records =
     await AssignmentRecordDB.getRecordsByAssgimentSeq(assignmentSeq);
@@ -21,10 +26,11 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
       <h3 className="text-center font-semibold p-2">순위표</h3>
       <p className="text-xs text-gray-500 text-end">
         * 플레이트가 존재하지 않는 기록은 브레이크 오프기록 입니다.
+        <br />* 점수를 클릭하면 자세하게 볼 수 있습니다
       </p>
       <table className="table">
         <thead>
-          <tr>
+          <tr className="*:text-center">
             <th>등수</th>
             <th>닉네임</th>
             <th>점수</th>
@@ -65,7 +71,14 @@ export default async function AssignmentRecordTable({ assignmentSeq }: Props) {
                     {user.nickname}
                   </Link>
                 </td>
-                <td>{record.score}</td>
+                <td>
+                  <Link
+                    href={`/rooms/${room.seq}/assignments/${assignmentSeq}/records/${record.seq}`}
+                    className="hover:text-gray-500"
+                  >
+                    {record.score}
+                  </Link>
+                </td>
                 <td>
                   <RecordGrade
                     grade={record.grade}
