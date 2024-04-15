@@ -31,13 +31,21 @@ export default function SyncAssignmentButton({ room, piuAuth }: Props) {
   return piuAuth ? (
     <button
       onClick={syncRecordWithAuth}
-      className={classnames(loading ? "btn btn-disabled" : "")}
+      className={classnames(loading ? "btn btn-disabled h-auto py-1" : "")}
       disabled={loading}
       aria-disabled={loading}
     >
-      {loading
-        ? "동기화 중입니다... 페이지를 이동하지마세요... (최대 20초 정도 소요됩니다)"
-        : "숙제 기록 동기화"}
+      {loading ? (
+        <>
+          동기화 중입니다...
+          <br />
+          페이지를 이동하지마세요...
+          <br />
+          (최대 20초 정도 소요됩니다)
+        </>
+      ) : (
+        "숙제 기록 동기화"
+      )}
     </button>
   ) : (
     <button className="btn btn-disabled">펌프잇업 로그인이 필요합니다</button>
