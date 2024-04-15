@@ -1,19 +1,14 @@
 import ContentBox from "@/components/layout/content-box";
 import AssignmentTable from "@/components/room/assignment-table";
 import ParticipantsTable from "@/components/room/participants-table";
+import RoomMenu from "@/components/room/room-menu";
 import ServerToastHelper from "@/components/server-toast-helper";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
-import CookieUtil from "@/server/utils/cookie-util";
 import type { AssignmentRoom } from "@prisma/client";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import ParticipateButton from "./(participate)/button";
-import RecordSyncForm from "./(sync-assignment)/button";
-import EllipsisVerticalIcon from "@heroicons/react/24/solid/EllipsisVerticalIcon";
-import RoomMenu from "@/components/room/room-menu";
 
 type Props = {
   params: { id: string };
