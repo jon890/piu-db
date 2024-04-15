@@ -73,7 +73,7 @@ export default async function AssignmentRecordTable({
                 </td>
                 <td>
                   <Link
-                    href={`/rooms/${room.seq}/assignments/${assignmentSeq}/records/${record.seq}`}
+                    href={`/records/${record.seq}`}
                     className="hover:text-gray-500"
                   >
                     {record.score}
