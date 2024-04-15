@@ -11,7 +11,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import ParticipateButton from "./(participate)/button";
-import RecordSyncForm from "./(sync-record)/form";
+import RecordSyncForm from "./(sync-assignment)/button";
+import EllipsisVerticalIcon from "@heroicons/react/24/solid/EllipsisVerticalIcon";
+import RoomMenu from "@/components/room/room-menu";
 
 type Props = {
   params: { id: string };
@@ -24,13 +26,13 @@ export default async function RoomDetailPage({
   params: { id },
   searchParams: { message },
 }: Props) {
-  const userSeq = await AuthUtil.getUserSeqThrows();
-  const { room, isParticipated } = await RoomDB.getRoom(Number(id), userSeq);
+  const roomSeq = Number(id);
+  if (isNaN(roomSeq)) {
+    return notFound();
+  }
 
-  const piuAuthValue = await CookieUtil.getPiuAuthValue();
-  const assignmentAuthority =
-    !Boolean(room?.selectSongAuthorityUsers) ||
-    (room?.selectSongAuthorityUsers as number[]).includes(userSeq);
+  const userSeq = await AuthUtil.getUserSeqThrows();
+  const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
 
   if (!room) {
     return notFound();
@@ -38,45 +40,8 @@ export default async function RoomDetailPage({
 
   return (
     <>
-      <ContentBox title={room.name}>
-        {room.description && (
-          <h2 className="text-lg sm:text-xl font-semibold">
-            {room.description}
-          </h2>
-        )}
-
-        <div className="flex flex-row items-center justify-center gap-4 flex-wrap">
-          <ParticipateButton room={room} isParticipated={isParticipated} />
-
-          {isParticipated &&
-            (!assignmentAuthority ? (
-              <>
-                <button className="btn btn-primary" disabled aria-disabled>
-                  숙제곡 선곡권한이 없습니다
-                </button>
-                <RecordSyncForm room={room} piuAuth={piuAuthValue} />
-              </>
-            ) : (
-              <>
-                <Link
-                  href={`/rooms/${room.seq}/assignments/create`}
-                  className="btn btn-primary text-xs sm:text-sm"
-                >
-                  숙제 만들기
-                </Link>
-                <RecordSyncForm room={room} piuAuth={piuAuthValue} />
-              </>
-            ))}
-
-          {room.adminUserSeq === userSeq && (
-            <Link
-              href={`/rooms/${room.seq}/settings`}
-              className="btn btn-primary text-xs sm:text-sm"
-            >
-              방 설정 변경
-            </Link>
-          )}
-        </div>
+      <ContentBox title={room.name} subTitle={room.description}>
+        <RoomMenu room={room} isParticipated={isParticipated} />
 
         <Suspense fallback={<p>참여자를 불러오고 있습니다...</p>}>
           <ParticipantsTable room={room} />
