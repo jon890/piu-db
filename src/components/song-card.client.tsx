@@ -5,7 +5,7 @@ import { PATCHED_VERSION } from "@/constants/const";
 import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import LevelBallCC from "./level-ball.client";
+import LevelBall from "./level-ball";
 import SongBadges from "./song-badges";
 
 type Props = {
@@ -86,7 +86,7 @@ export default function SongCardCC({
             )}
           >
             {visibleCharts.map((chart) => (
-              <LevelBallCC
+              <LevelBall
                 key={chart.seq}
                 chart={chart}
                 className={classnames(
