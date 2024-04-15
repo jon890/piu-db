@@ -1,4 +1,5 @@
 import LevelBall from "@/components/level-ball.server";
+import { PATCHED_VERSION } from "@/constants/const";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
 
@@ -13,7 +14,7 @@ export default function SelectedSongCard({ songWithChart, chart }: Props) {
       <div className="card-body">
         <h2 className="card-title">
           {songWithChart.name}
-          {songWithChart.patchVersion === "1.07" && (
+          {songWithChart.patchVersion === PATCHED_VERSION && (
             <div className="badge badge-secondary">NEW</div>
           )}
         </h2>

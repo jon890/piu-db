@@ -3,6 +3,7 @@ import LevelBall from "@/components/level-ball.server";
 import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";
 import SongBadges from "./song-badges";
+import { PATCHED_VERSION } from "@/constants/const";
 
 type Props = {
   song: Song;
@@ -29,7 +30,7 @@ export default function SongCardSC({
             <span>{song.name}</span>
           )}
 
-          {song.patchVersion === "1.07" && (
+          {song.patchVersion === PATCHED_VERSION && (
             <div className="badge badge-secondary">NEW</div>
           )}
         </h2>
