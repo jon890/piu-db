@@ -1,6 +1,7 @@
 "use client";
 
 import classnames from "@/client/utils/classnames";
+import { PATCHED_VERSION } from "@/constants/const";
 import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -66,7 +67,7 @@ export default function SongCardCC({
           ) : (
             <span>{song.name}</span>
           )}
-          {song.patchVersion === "1.07" && (
+          {song.patchVersion === PATCHED_VERSION && (
             <div className="badge badge-secondary">NEW</div>
           )}
         </h2>

@@ -369,7 +369,6 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    // 10
     name: "유포리아닉",
     artist: "SHK",
     bpm: "140",
@@ -1103,5 +1102,99 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.07",
+  },
+
+  // 1.08
+  {
+    name: "솔페지에토",
+    artist: "Fiverwater",
+    bpm: "157",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "1.08",
+  },
+
+  {
+    name: "루시드 드림",
+    artist: "Cosmograph",
+    bpm: "173",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 8, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+    patchVersion: "1.08",
+  },
+
+  {
+    name: "디스트로0l어",
+    artist: "sakuzyo",
+    bpm: "90",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 7, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "1.08",
+  },
+
+  {
+    name: "피가로의 결혼 ~Celebrazione Remix~",
+    artist: "Sr. Lan Belmont",
+    bpm: "172",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+    patchVersion: "1.08",
+  },
+
+  {
+    name: "프ㄹi마 마테ㄹi아",
+    artist: "xi",
+    bpm: "187",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 14, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 24, chartType: "SINGLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+    patchVersion: "1.08",
   },
 ];
