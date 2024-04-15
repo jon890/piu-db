@@ -21,7 +21,11 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
 
   return (
     <details className="dropdown dropdown-top dropdown-end fixed bottom-0 right-0 z-10">
-      <summary className="m-1 size-16 rounded-full mr-10 bg-primary hover:bg-opacity-80 active:bg-opacity-80 transition-colors flex justify-center items-center">
+      <summary
+        className="size-16 rounded-full mr-10 bg-primary 
+      hover:bg-opacity-80 active:bg-opacity-80 transition-colors cursor-pointer
+      flex justify-center items-center"
+      >
         <EllipsisVerticalIcon className="size-9 text-white" />
       </summary>
       <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
