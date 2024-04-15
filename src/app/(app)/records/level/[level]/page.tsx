@@ -1,16 +1,16 @@
 import classnames from "@/client/utils/classnames";
 import ContentBox from "@/components/layout/content-box";
-import LevelBallSC from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB, { type MaxRecord } from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
+import CookieUtil from "@/server/utils/cookie-util";
 import { ChartType } from "@prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SelectLevel from "../../selet-level";
-import CookieUtil from "@/server/utils/cookie-util";
 import SyncRecordButton from "../../sync-record.button";
 
 async function getRecord(
@@ -98,7 +98,7 @@ export default async function LevelRecordPage({
 
       <div className="flex flex-row gap-4">
         <Link href={`/records/level/${targetLevel}?CHART_TYPE=SINGLE`}>
-          <LevelBallSC
+          <LevelBall
             className={classnames(
               "size-12 sm:size-20 cursor-pointer bg-red-500",
               CHART_TYPE === "SINGLE" ? "opacity-30" : ""
@@ -109,7 +109,7 @@ export default async function LevelRecordPage({
         </Link>
 
         <Link href={`/records/level/${targetLevel}?CHART_TYPE=DOUBLE`}>
-          <LevelBallSC
+          <LevelBall
             className={classnames(
               "size-12 sm:size-20 cursor-pointer bg-green-500",
               CHART_TYPE === "DOUBLE" ? "opacity-30" : ""

@@ -1,4 +1,4 @@
-import LevelBallSC from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import ChartDB from "@/server/prisma/chart.db";
 import TimeUtil from "@/server/utils/time-util";
 import type { Assignment, AssignmentRoom } from "@prisma/client";
@@ -80,7 +80,7 @@ export default async function AssignmentTable({
                 </td>
                 <td>
                   {chart?.chartType && (
-                    <LevelBallSC chart={chart} className="size-6 sm:size-8" />
+                    <LevelBall chart={chart} className="size-6 sm:size-8" />
                   )}
                 </td>
 

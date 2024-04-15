@@ -1,4 +1,4 @@
-import LevelBall from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import { Paging } from "@/components/common/paging";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";

@@ -1,4 +1,4 @@
-import LevelBall from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";

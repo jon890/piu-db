@@ -1,4 +1,4 @@
-import LevelBall from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import { PATCHED_VERSION } from "@/constants/const";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";

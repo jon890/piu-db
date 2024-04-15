@@ -1,10 +1,8 @@
-import LevelBallSC from "@/components/level-ball.server";
+import LevelBall from "@/components/level-ball";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
-import Image from "next/image";
-import Link from "next/link";
 
 type Props = {
   params: {
@@ -30,7 +28,7 @@ export default async function RecordModal({ params: { record_seq } }: Props) {
           </h3>
           <div className="flex flex-row justify-between px-16 items-center">
             {songWithChart && songWithChart.chart && (
-              <LevelBallSC chart={songWithChart?.chart} className="size-12" />
+              <LevelBall chart={songWithChart?.chart} className="size-12" />
             )}
             <div className="flex flex-col items-center">
               {record && (

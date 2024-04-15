@@ -1,24 +1,30 @@
+"use client";
+
 import classnames from "@/client/utils/classnames";
 import { Chart } from "@prisma/client";
-import { ButtonHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 
 type Props = {
-  chart?: Chart;
+  chart?: Chart; // 차트 값이 없으면 단순 text용
   hasHover?: boolean;
   text?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  handleSelect?: (chart: Chart) => void;
+} & HTMLAttributes<HTMLButtonElement>;
 
-/**
- * 레벨 볼 서버 컴포넌트
- */
-export default function LevelBallSC({
+export default function LevelBall({
   chart,
   hasHover,
   className,
   text,
+  handleSelect,
 }: Props) {
   return (
     <div
+      onClick={() => {
+        if (chart && handleSelect) {
+          handleSelect(chart);
+        }
+      }}
       className={classnames(
         "text-xs sm:text-sm rounded-full",
         "flex justify-center items-center",
