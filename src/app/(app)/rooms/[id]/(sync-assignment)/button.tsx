@@ -1,6 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
+import classnames from "@/client/utils/classnames";
 import { syncAssignmentAction } from "@/server/action/sync-assignment.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useState } from "react";
@@ -10,7 +11,7 @@ type Props = {
   piuAuth: { email: string; password: string };
 };
 
-export default function RecordSyncForm({ room, piuAuth }: Props) {
+export default function SyncAssignmentButton({ room, piuAuth }: Props) {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -30,17 +31,23 @@ export default function RecordSyncForm({ room, piuAuth }: Props) {
   return piuAuth ? (
     <button
       onClick={syncRecordWithAuth}
-      className="btn btn-primary text-xs sm:text-sm"
+      className={classnames(loading ? "btn btn-disabled h-auto py-1" : "")}
       disabled={loading}
       aria-disabled={loading}
     >
-      {loading
-        ? "잠시만 기다려주세요... (최대 10초 정도 소요됩니다)"
-        : "숙제 기록 동기화"}
+      {loading ? (
+        <>
+          동기화 중입니다...
+          <br />
+          페이지를 이동하지마세요...
+          <br />
+          (최대 20초 정도 소요됩니다)
+        </>
+      ) : (
+        "숙제 기록 동기화"
+      )}
     </button>
   ) : (
-    <button className="btn btn-disabled">
-      숙제 동기화를 하려면 먼저 펌프잇업 로그인을 이용하세요
-    </button>
+    <button className="btn btn-disabled">펌프잇업 로그인이 필요합니다</button>
   );
 }

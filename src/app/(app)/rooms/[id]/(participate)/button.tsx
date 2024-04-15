@@ -35,23 +35,14 @@ export default function ParticipateButton({ room, isParticipated }: Props) {
 
   if (room.stopParticipating) {
     return (
-      <button
-        className="btn btn-primary text-xs sm:text-sm"
-        disabled
-        aria-disabled
-      >
-        해당 방은 참여가 제한되어있습니다
+      <button disabled aria-disabled className="btn btn-disabled">
+        일시적으로 참여가 제한되어 있습니다
       </button>
     );
   }
 
   return isParticipated ? null : (
-    <button
-      onClick={participate}
-      className="btn btn-primary text-xs sm:text-sm"
-      disabled={loading}
-      aria-disabled={loading}
-    >
+    <button onClick={participate} disabled={loading} aria-disabled={loading}>
       {loading ? "잠시만 기다려주세요... " : "숙제방 참여"}
     </button>
   );
