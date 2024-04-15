@@ -34,7 +34,8 @@ export default async function SkillAttackRecordTable({ records }: Props) {
 
       <div className="overflow-x-auto max-w-full">
         <p className="text-xs text-gray-500 text-end mb-3">
-          * 곡 이름 클릭 시 상세 페이지로 이동합니다
+          * 곡 이름 클릭 시 상세 페이지로 이동합니다.
+          <br />* 점수 클릭 시 기록을 자세히 볼 수 있습니다.
         </p>
 
         <table className="table table-xs">
@@ -74,7 +75,14 @@ export default async function SkillAttackRecordTable({ records }: Props) {
                         <LevelBall className="size-6" chart={record.chart} />
                       )}
                     </td>
-                    <td>{record.score}</td>
+                    <td>
+                      <Link
+                        href={`/records/${record.seq}`}
+                        className="hover:text-gray-600"
+                      >
+                        {record.score}
+                      </Link>
+                    </td>
                     <td>{record.chart && record.skillPoint}</td>
                     <td>
                       <RecordGrade

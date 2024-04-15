@@ -6,8 +6,7 @@ import RecordDB from "@/server/prisma/record.db";
 
 type Props = {
   params: {
-    id: string;
-    assignment_seq: number;
+    uid: string;
     record_seq: number;
   };
 };

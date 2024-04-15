@@ -7,6 +7,7 @@ import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
+import ArrowLeftIcon from "@heroicons/react/24/solid/ArrowLeftIcon";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
@@ -37,7 +38,17 @@ export default async function AssignmentDetailPage({
   const chartAndSongs = await ChartDB.findSongBySeq(assignment.chartSeq);
 
   return (
-    <ContentBox title="숙제 상세">
+    <ContentBox>
+      <div className="flex flex-row justify-center items-center w-full max-w-md relative">
+        <Link
+          className="btn btn-ghost absolute left-0"
+          href={`/rooms/${roomSeq}`}
+        >
+          <ArrowLeftIcon className="size-6" />
+        </Link>
+        <h1 className="text-xl sm:text-2xl font-bold">숙제 상세</h1>
+      </div>
+
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
         <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
