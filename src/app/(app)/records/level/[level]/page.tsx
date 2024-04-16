@@ -10,6 +10,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import { getRecordsBy } from "./get-records";
+import SelectChartType from "@/components/records/select-chart-type";
 
 type Props = {
   params: {
@@ -39,30 +40,7 @@ export default async function LevelRecordPage({
     <ContentBox title="내 기록">
       <SyncRecordButton piuAuth={piuAuthValue} />
       <SelectLevel targetLevel={targetLevel} />
-
-      <div className="flex flex-row gap-4">
-        <Link href={`/records/level/${targetLevel}?CHART_TYPE=SINGLE`}>
-          <LevelBall
-            className={classnames(
-              "size-12 sm:size-20 cursor-pointer bg-red-500",
-              CHART_TYPE === "SINGLE" ? "opacity-30" : ""
-            )}
-            text="싱글"
-            hasHover
-          />
-        </Link>
-
-        <Link href={`/records/level/${targetLevel}?CHART_TYPE=DOUBLE`}>
-          <LevelBall
-            className={classnames(
-              "size-12 sm:size-20 cursor-pointer bg-green-500",
-              CHART_TYPE === "DOUBLE" ? "opacity-30" : ""
-            )}
-            text="더블"
-            hasHover
-          />
-        </Link>
-      </div>
+      <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
       {CHART_TYPE ? (
         <div className="flex flex-row justify-center items-center gap-1 flex-wrap">
