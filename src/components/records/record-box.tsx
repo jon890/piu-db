@@ -2,6 +2,7 @@ import classnames from "@/client/utils/classnames";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import type { MaxRecord } from "@/server/prisma/record.db";
+import NumberUtil from "@/utils/number.util";
 import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";
 
@@ -26,7 +27,7 @@ export default function RecordBox({ song }: Props) {
           <div className="flex flex-rowjustify-center items-center gap-1">
             {song.chart.record.score && (
               <span className="text-[10px] sm:text-xs">
-                {song.chart.record.score}
+                {NumberUtil.formatScore(song.chart.record.score)}
               </span>
             )}
 
