@@ -1,16 +1,13 @@
-import classnames from "@/client/utils/classnames";
 import ContentBox from "@/components/layout/content-box";
-import LevelBall from "@/components/level-ball";
 import RecordBox from "@/components/records/record-box";
+import SelectChartType from "@/components/records/select-chart-type";
 import SelectLevel from "@/components/records/selet-level";
 import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
 import { ChartType } from "@prisma/client";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import { getRecordsBy } from "./get-records";
-import SelectChartType from "@/components/records/select-chart-type";
 
 type Props = {
   params: {
