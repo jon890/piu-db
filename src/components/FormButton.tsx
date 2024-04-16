@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { ButtonHTMLAttributes } from "react";
 import { useFormStatus } from "react-dom";
 

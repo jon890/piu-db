@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { PATCHED_VERSION } from "@/constants/const";
 import type { Chart, ChartType, Song } from "@prisma/client";
 import Link from "next/link";

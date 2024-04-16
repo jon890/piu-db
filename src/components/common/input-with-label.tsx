@@ -1,4 +1,4 @@
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { InputHTMLAttributes, LegacyRef } from "react";
 
 type InputWithLabelProps = {

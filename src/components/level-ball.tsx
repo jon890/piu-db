@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { Chart } from "@prisma/client";
 import { HTMLAttributes } from "react";
 

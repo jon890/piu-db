@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { syncAssignmentAction } from "@/server/action/sync-assignment.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useState } from "react";

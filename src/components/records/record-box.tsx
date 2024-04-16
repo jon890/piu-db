@@ -1,4 +1,4 @@
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import type { MaxRecord } from "@/server/prisma/record.db";

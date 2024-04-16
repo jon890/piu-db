@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { ReactNode } from "react";
 import { InView } from "react-intersection-observer";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import SearchParamUtil from "@/client/utils/search-param.util";
+import SearchParamUtil from "@/utils/search-param.util";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import {
   $Enums,

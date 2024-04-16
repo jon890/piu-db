@@ -1,4 +1,4 @@
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import type { RecordPlate as RecordPlateDataType } from "@prisma/client";
 
 type Props = {

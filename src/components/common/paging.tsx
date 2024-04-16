@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function Paging({

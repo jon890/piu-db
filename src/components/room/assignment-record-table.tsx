@@ -1,4 +1,4 @@
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
