@@ -20,10 +20,10 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
     (room?.selectSongAuthorityUsers as number[]).includes(userSeq);
 
   return (
-    <details className="dropdown dropdown-top dropdown-end fixed bottom-0 right-0 z-10">
+    <details className="dropdown dropdown-top dropdown-end fixed bottom-10 right-10 z-10">
       <summary
-        className="size-16 rounded-full mr-10 bg-primary 
-      hover:bg-opacity-80 active:bg-opacity-80 transition-colors cursor-pointer
+        className="p-3 rounded-full bg-primary shadow-md shadow-black
+      hover:bg-opacity-80 active:bg-opacity-80 transition-colors cursor-pointer animate-bounce
       flex justify-center items-center"
       >
         <EllipsisVerticalIcon className="size-9 text-white" />
