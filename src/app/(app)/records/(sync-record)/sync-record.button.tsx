@@ -44,7 +44,7 @@ export default function SyncRecordButton({ piuAuth }: Props) {
     </button>
   ) : (
     <button className="btn btn-disabled">
-      스킬어택을 사용하려면 하려면 먼저 펌프잇업 로그인을 이용하세요
+      기록 동기화를 하려면 먼저 펌프잇업 로그인을 하세요
     </button>
   );
 }

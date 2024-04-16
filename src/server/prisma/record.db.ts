@@ -1,6 +1,6 @@
 import prisma from "@/server/prisma/client";
 import type { Grade, Plate, RecentlyPlayed } from "@/types/recently-played";
-import { Prisma, Record, RecordGrade, RecordPlate } from "@prisma/client";
+import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
@@ -21,6 +21,13 @@ function getRecentPlayToEntity(record: RecentlyPlayed) {
   };
 }
 
+/**
+ * 최근 플레이 저장
+ * @param userSeq
+ * @param profileSeq
+ * @param records
+ * @returns
+ */
 async function saveRecentRecord(
   userSeq: number,
   profileSeq: number,
@@ -85,39 +92,11 @@ async function saveRecentRecord(
   });
 }
 
-async function getRecords(userSeq: number, page: number) {
-  const totalRecords = await prisma.record.aggregate({
-    where: {
-      userSeq,
-    },
-    _count: { seq: true },
-  });
-
-  const records = await prisma.record.findMany({
-    where: {
-      userSeq,
-    },
-    include: {
-      piuProfile: {
-        select: {
-          gameId: true,
-        },
-      },
-    },
-    orderBy: {
-      playedAt: "desc",
-    },
-    skip: (page - 1) * RECORD_PAGE_UNIT,
-    take: RECORD_PAGE_UNIT,
-  });
-
-  return {
-    records,
-    count: totalRecords._count.seq,
-    unit: RECORD_PAGE_UNIT,
-  };
-}
-
+/**
+ * 해당 기간 내의 최대 기록을 찾는다
+ * @param param0
+ * @returns
+ */
 async function getMaxRecordByUserAndChartDateBetween({
   chartSeq,
   enableBreakOff,
@@ -150,6 +129,12 @@ async function getMaxRecordByUserAndChartDateBetween({
   return maxRecord;
 }
 
+/**
+ * 노래로 기록을 찾는다
+ * @param songSeq
+ * @param page
+ * @returns
+ */
 async function getRecordsBySongSeq(songSeq: number, page: number) {
   const song = await SongDB.findBySeq(songSeq);
   if (!song) return null;
@@ -195,6 +180,12 @@ async function getRecordsBySongSeq(songSeq: number, page: number) {
   };
 }
 
+/**
+ * 차트로 기록을 찾는다
+ * @param chartSeq
+ * @param page
+ * @returns
+ */
 async function getRecordsByChartSeq(chartSeq: number, page: number) {
   const totalRecords = await prisma.record.aggregate({
     where: {
@@ -228,6 +219,12 @@ async function getRecordsByChartSeq(chartSeq: number, page: number) {
   };
 }
 
+/**
+ * 해당 차트의 최대 기록을 찾는다
+ * @param userSeq
+ * @param after
+ * @returns
+ */
 async function findAllMaxRecordsGroupByChart(userSeq: number, after?: Date) {
   // 해당 유저가 등록한 차트 seq 번호
   const charts = await prisma.record.findMany({
@@ -317,7 +314,6 @@ async function getMaxRecordsBy(userSeq: number, chartSeqs: number[]) {
 
 const RecordDB = {
   saveRecentRecord,
-  getRecords,
   getRecordsBySongSeq,
   getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
