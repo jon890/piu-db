@@ -1,73 +1,15 @@
 import classnames from "@/client/utils/classnames";
 import ContentBox from "@/components/layout/content-box";
 import LevelBall from "@/components/level-ball";
-import RecordGrade from "@/components/record/record-grade";
-import RecordPlate from "@/components/record/record-plate";
-import ChartDB from "@/server/prisma/chart.db";
-import RecordDB, { type MaxRecord } from "@/server/prisma/record.db";
 import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
 import { ChartType } from "@prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import SelectLevel from "../../selet-level";
-import SyncRecordButton from "../../sync-record.button";
-
-async function getRecord(
-  userSeq: number,
-  level: number,
-  chartType?: ChartType
-) {
-  if (!chartType) return [];
-
-  const allSongs = await ChartDB.findAllGroupBySong();
-  const targetSongs = allSongs
-    .filter((song) =>
-      song.charts?.find((chart) => {
-        let filter = chart.level === level;
-        if (chartType && chart.chartType !== chartType) filter = false;
-        return filter;
-      })
-    )
-    .map((song) => ({
-      ...song,
-      charts: song.charts?.filter((chart) => {
-        let filter = chart.level === level;
-        if (chartType && chart.chartType !== chartType) filter = false;
-        return filter;
-      }),
-    }));
-
-  const chartSeqs = targetSongs
-    .map((song) => song.charts?.map((chart) => chart.seq) ?? [])
-    .flat();
-
-  if (chartSeqs.length === 0) {
-    return [];
-  }
-
-  const records = await RecordDB.getMaxRecordsBy(userSeq, chartSeqs);
-  const recordMap = new Map<number, MaxRecord>();
-  for (const r of records) {
-    recordMap.set(r.chart_seq, r);
-  }
-
-  const songWithRecord = targetSongs
-    .map((song) => ({
-      ...song,
-      charts: song.charts?.map((chart) => ({
-        ...chart,
-        record: recordMap.get(chart.seq),
-      })),
-    }))
-    .sort((a, b) => {
-      const aScore = a.charts?.[0].record?.score ?? 0;
-      const bScore = b.charts?.[0].record?.score ?? 0;
-      return bScore - aScore;
-    });
-
-  return songWithRecord;
-}
+import { getRecordsBy } from "./get-records";
+import RecordBox from "./record-box";
 
 type Props = {
   params: {
@@ -88,7 +30,9 @@ export default async function LevelRecordPage({
     notFound();
   }
 
-  const records = await getRecord(userSeq, targetLevel, CHART_TYPE);
+  const records = CHART_TYPE
+    ? await getRecordsBy(userSeq, targetLevel, CHART_TYPE)
+    : [];
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
 
   return (
@@ -123,46 +67,7 @@ export default async function LevelRecordPage({
       {CHART_TYPE ? (
         <div className="flex flex-row justify-center items-center gap-1 flex-wrap">
           {records.map((song) => (
-            <div
-              key={song.seq}
-              className={classnames(
-                "flex size-14 sm:size-20 md:size-24 ounded-md bg-base-200 justify-center items-center flex-col",
-                "hover:bg-gray-500 active:bg-gray-500 transition-colors px-1"
-              )}
-            >
-              <span className="text-center text-[8px] sm:text-xs max-w-full text-ellipsis overflow-hidden whitespace-nowrap">
-                {song.name}
-              </span>
-              {song.charts?.map((chart) => (
-                <div
-                  key={chart.seq}
-                  className="w-full text-center text-[10px] sm:text-base flex flex-col justify-center items-center gap-1"
-                >
-                  <div className="flex flex-rowjustify-center items-center gap-1">
-                    {chart.record?.score && (
-                      <span className="text-[10px] sm:text-xs">
-                        {chart.record.score}
-                      </span>
-                    )}
-
-                    {chart.record && (
-                      <RecordGrade
-                        className="text-[8px] sm:text-xs"
-                        grade={chart.record.grade}
-                        isBreakOff={Boolean(chart.record.is_break_off)}
-                      />
-                    )}
-                  </div>
-
-                  {chart.record?.plate && (
-                    <RecordPlate
-                      className="text-[10px] sm:text-xs max-w-full px-1 text-ellipsis overflow-hidden whitespace-nowrap"
-                      plate={chart.record.plate}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
+            <RecordBox song={song} key={song.seq} />
           ))}
         </div>
       ) : (
