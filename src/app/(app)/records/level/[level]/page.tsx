@@ -7,9 +7,9 @@ import { ChartType } from "@prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
-import SelectLevel from "../../selet-level";
+import SelectLevel from "../../../../../components/records/selet-level";
 import { getRecordsBy } from "./get-records";
-import RecordBox from "./record-box";
+import RecordBox from "../../../../../components/records/record-box";
 
 type Props = {
   params: {
