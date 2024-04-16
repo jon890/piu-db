@@ -40,6 +40,8 @@ export default async function LevelRecordPage({
     .map((it) => it.chart?.record)
     .filter(ArrayUtil.notEmpty);
 
+  const clearCounts = records.filter((it) => it.is_break_off != 0).length;
+
   const avgScores =
     records.length === 0
       ? 0
@@ -71,7 +73,7 @@ export default async function LevelRecordPage({
               <div className="card-body">
                 <h2 className="card-title">클리어</h2>
                 <p className="text-center">
-                  {records.length} / {songAndRecords.length}
+                  {clearCounts} / {songAndRecords.length}
                 </p>
               </div>
             </div>
