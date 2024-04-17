@@ -53,7 +53,10 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
             )}
 
             <li>
-              <Link href={`/rooms/${room.seq}/rank`}>숙제 랭킹</Link>
+              <Link href={`/rooms/${room.seq}/rank`}>
+                <span>숙제 랭킹</span>
+                <div className="badge badge-secondary">NEW</div>
+              </Link>
             </li>
           </>
         ) : (
