@@ -3,6 +3,7 @@ import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/creat
 import prisma from "@/server/prisma/client";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 /**
  * 과제곡 생성 유저에서 join해서 불러올 필드 정의
@@ -149,6 +150,39 @@ async function updateAssignment({
   });
 }
 
+async function readyRankProcess(
+  roomSeq: number,
+  txClient?: Prisma.TransactionClient
+) {
+  const now = TimeUtil.now();
+  const client = txClient ? txClient : prisma;
+
+  const assignments = await client.assignment.findMany({
+    where: {
+      roomSeq,
+      rankProcessed: false,
+      endDate: {
+        lte: now,
+      },
+    },
+  });
+
+  if (assignments.length === 0) return [];
+
+  await client.assignment.updateMany({
+    data: {
+      rankProcessed: true,
+    },
+    where: {
+      seq: {
+        in: assignments.map((it) => it.seq),
+      },
+    },
+  });
+
+  return assignments;
+}
+
 const AssignmentDB = {
   createAssignment,
   getOngoingAssignments,
@@ -156,6 +190,7 @@ const AssignmentDB = {
   getAssignment,
   deleteAssignment,
   updateAssignment,
+  readyRankProcess,
 };
 
 export default AssignmentDB;

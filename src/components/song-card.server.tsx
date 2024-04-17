@@ -1,4 +1,4 @@
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import LevelBall from "@/components/level-ball";
 import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";

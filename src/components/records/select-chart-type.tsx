@@ -1,7 +1,7 @@
 import type { ChartType } from "@prisma/client";
 import Link from "next/link";
 import LevelBall from "../level-ball";
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 
 type Props = {
   level: number;

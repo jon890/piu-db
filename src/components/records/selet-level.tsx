@@ -1,6 +1,6 @@
 "use client";
 
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 

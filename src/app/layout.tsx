@@ -1,5 +1,5 @@
 import ToastContextProvier from "@/client/provider/toast-context.provider";
-import classnames from "@/client/utils/classnames";
+import classnames from "@/utils/classnames";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";

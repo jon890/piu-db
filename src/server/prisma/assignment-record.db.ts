@@ -1,4 +1,4 @@
-import { Record } from "@prisma/client";
+import { Prisma, Record } from "@prisma/client";
 import prisma from "./client";
 
 async function getRecordByUser(assignmentSeq: number, userSeq: number) {
@@ -36,8 +36,12 @@ async function submitAssignment({
   ]);
 }
 
-async function getRecordsByAssgimentSeq(assignmentSeq: number) {
-  return prisma.assigmentRecord.findMany({
+async function getRecordsByAssgimentSeq(
+  assignmentSeq: number,
+  tx?: Prisma.TransactionClient
+) {
+  const client = tx ? tx : prisma;
+  return client.assigmentRecord.findMany({
     where: {
       assignmentSeq,
     },
