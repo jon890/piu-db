@@ -21,6 +21,18 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    safelist: [
+      // reponsive-table-body.tsx
+      "*:text-xs",
+      "*:px-1",
+      "*:py-0.5",
+      "*:sm:px-2",
+      "*:sm:py-1",
+      "*:md:text-sm",
+      "*:md:px-4",
+      "*:md:py-2",
+      "*:text-center",
+    ],
   },
   plugins: [require("daisyui")],
 };
