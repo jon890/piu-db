@@ -42,16 +42,23 @@ export default async function AssignmentsPage({ params: { id } }: Props) {
               <th>2위</th>
               <th>3위</th>
               <th>총점</th>
-              <th>불참</th>
+              <th className="text-red-500">불참</th>
             </tr>
           </thead>
           <tbody>
             {participants
               .sort((a, b) => b.totalScore - a.totalScore)
               .map((p, index) => (
-                <tr key={p.seq} className="hover">
+                <tr
+                  key={p.seq}
+                  className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 *:text-center hover"
+                >
                   <td>{index + 1}</td>
-                  <td>{p.user.nickname}</td>
+                  <td>
+                    <p className="w-12 sm:w-auto text-ellipsis whitespace-nowrap overflow-hidden">
+                      {p.user.nickname}
+                    </p>
+                  </td>
                   <td className="font-bold">
                     {(p.firstPlaceSeqs as number[] | null)?.length ?? 0}회
                   </td>
