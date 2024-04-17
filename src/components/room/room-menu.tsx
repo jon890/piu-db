@@ -53,7 +53,7 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
             )}
 
             <li>
-              <button className="btn btn-disabled">숙제 랭킹 (준비 중)</button>
+              <Link href={`/rooms/${room.seq}/rank`}>숙제 랭킹</Link>
             </li>
           </>
         ) : (

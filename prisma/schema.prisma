@@ -183,6 +183,11 @@ model AssignmentRoomParticipants {
   user              User           @relation(fields: [userSeq], references: [seq])
   assignmentRoomSeq Int            @map("room_seq")
   userSeq           Int            @map("user_seq")
+  firstPlaceSeqs    Json?          @map("first_place_seqs")
+  secondPlaceSeqs   Json?          @map("second_place_seqs")
+  thirdPlaceSeqs    Json?          @map("third_place_seqs")
+  notAttendCount    Int            @default(0) @map("not_attend_count")
+  totalScore        Int            @default(0) @map("total_score")
   updatedAt         DateTime       @updatedAt @map("updated_at")
   createdAt         DateTime       @default(now()) @map("created_at")
 
@@ -201,8 +206,8 @@ model Assignment {
   createUserSeq  Int               @map("create_user_seq")
   createUser     User              @relation(fields: [createUserSeq], references: [seq])
   memo           String?
-  // 브레이크오프 허용 여부
   enableBreakOff Boolean           @default(false) @map("enable_break_off")
+  rankProcessed  Boolean           @default(false) @map("rank_processed")
   updatedAt      DateTime          @updatedAt @map("updated_at")
   createdAt      DateTime          @default(now()) @map("created_at")
   records        AssigmentRecord[]
