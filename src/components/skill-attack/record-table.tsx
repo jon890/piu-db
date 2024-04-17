@@ -1,11 +1,12 @@
+import ResponsiveTableBody from "@/components/common/responsive-table-body";
 import LevelBall from "@/components/level-ball";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import SongDB from "@/server/prisma/song.db";
+import { getSkillPoint } from "@/utils/skill-point.util";
 import { Record } from "@prisma/client";
 import Link from "next/link";
-import { getSkillPoint } from "@/utils/skill-point.util";
 
 type Props = {
   records: Record[];
@@ -50,60 +51,60 @@ export default async function SkillAttackRecordTable({ records }: Props) {
               <th>플레이트</th>
             </tr>
           </thead>
-          <tbody>
-            {recordWithSong.length > 0 ? (
-              recordWithSong
-                .sort((a, b) => Number(b.skillPoint) - Number(a.skillPoint))
-                .map((record, index) => (
-                  <tr
-                    key={record.seq}
-                    className="*:text-xs *:px-1 *:py-1 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 hover"
-                  >
-                    <td>{index + 1}</td>
-                    <td>
-                      {record.song && record.chart && (
+
+          <ResponsiveTableBody>
+            {(classname) =>
+              recordWithSong.length > 0 ? (
+                recordWithSong
+                  .sort((a, b) => Number(b.skillPoint) - Number(a.skillPoint))
+                  .map((record, index) => (
+                    <tr key={record.seq} className={classname}>
+                      <td>{index + 1}</td>
+                      <td>
+                        {record.song && record.chart && (
+                          <Link
+                            href={`/songs/${record.song.seq}?page=1&chartSeq=${record.chartSeq}`}
+                            className="hover:text-gray-600 max-w-20 sm:max-w-32 block text-ellipsis whitespace-nowrap overflow-hidden"
+                          >
+                            {record.song.name}
+                          </Link>
+                        )}
+                      </td>
+                      <td>
+                        {record.chart && (
+                          <LevelBall className="size-6" chart={record.chart} />
+                        )}
+                      </td>
+                      <td>
                         <Link
-                          href={`/songs/${record.song.seq}?page=1&chartSeq=${record.chartSeq}`}
-                          className="hover:text-gray-600 max-w-20 sm:max-w-32 block text-ellipsis whitespace-nowrap overflow-hidden"
+                          href={`/records/${record.seq}`}
+                          className="hover:text-gray-600"
                         >
-                          {record.song.name}
+                          {record.score}
                         </Link>
-                      )}
-                    </td>
-                    <td>
-                      {record.chart && (
-                        <LevelBall className="size-6" chart={record.chart} />
-                      )}
-                    </td>
-                    <td>
-                      <Link
-                        href={`/records/${record.seq}`}
-                        className="hover:text-gray-600"
-                      >
-                        {record.score}
-                      </Link>
-                    </td>
-                    <td>{record.chart && record.skillPoint}</td>
-                    <td>
-                      <RecordGrade
-                        grade={record.grade}
-                        isBreakOff={record.isBreakOff}
-                      />
-                    </td>
-                    <td>
-                      {record.plate && <RecordPlate plate={record.plate} />}
-                    </td>
-                  </tr>
-                ))
-            ) : (
-              <tr>
-                <td colSpan={13} className="text-center h-24">
-                  아직 플레이 기록이 없습니다! <br />
-                  플레이하고 기록을 등록해보세요
-                </td>
-              </tr>
-            )}
-          </tbody>
+                      </td>
+                      <td>{record.chart && record.skillPoint}</td>
+                      <td>
+                        <RecordGrade
+                          grade={record.grade}
+                          isBreakOff={record.isBreakOff}
+                        />
+                      </td>
+                      <td>
+                        {record.plate && <RecordPlate plate={record.plate} />}
+                      </td>
+                    </tr>
+                  ))
+              ) : (
+                <tr>
+                  <td colSpan={13} className="text-center h-24">
+                    아직 플레이 기록이 없습니다! <br />
+                    플레이하고 기록을 등록해보세요
+                  </td>
+                </tr>
+              )
+            }
+          </ResponsiveTableBody>
         </table>
       </div>
     </>

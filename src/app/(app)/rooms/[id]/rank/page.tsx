@@ -1,9 +1,7 @@
 import ContentBox from "@/components/layout/content-box";
+import ResponsiveTableBody from "@/components/common/responsive-table-body";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
-import TimeUtil from "@/server/utils/time-util";
-import StarIcon from "@heroicons/react/24/solid/StarIcon";
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import SyncRoomRankButton from "./(sync)/button";
 
@@ -45,34 +43,33 @@ export default async function AssignmentsPage({ params: { id } }: Props) {
               <th className="text-red-500">불참</th>
             </tr>
           </thead>
-          <tbody>
-            {participants
-              .sort((a, b) => b.totalScore - a.totalScore)
-              .map((p, index) => (
-                <tr
-                  key={p.seq}
-                  className="*:text-xs *:px-1 *:py-0.5 *:sm:px-2 *:sm:py-1 *:md:text-sm *:md:px-4 *:md:py-2 *:text-center hover"
-                >
-                  <td>{index + 1}</td>
-                  <td>
-                    <p className="w-12 sm:w-auto text-ellipsis whitespace-nowrap overflow-hidden">
-                      {p.user.nickname}
-                    </p>
-                  </td>
-                  <td className="font-bold">
-                    {(p.firstPlaceSeqs as number[] | null)?.length ?? 0}회
-                  </td>
-                  <td className="text-[#C0C0C0] font-semibold">
-                    {(p.secondPlaceSeqs as number[] | null)?.length ?? 0}회
-                  </td>
-                  <td className="text-[#CD7F32] font-medium">
-                    {(p.thirdPlaceSeqs as number[] | null)?.length ?? 0}회
-                  </td>
-                  <td>{p.totalScore}점</td>
-                  <td>{p.notAttendCount}회</td>
-                </tr>
-              ))}
-          </tbody>
+          <ResponsiveTableBody>
+            {(classname) =>
+              participants
+                .sort((a, b) => b.totalScore - a.totalScore)
+                .map((p, index) => (
+                  <tr key={p.seq} className={classname}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <p className="w-12 sm:w-auto text-ellipsis whitespace-nowrap overflow-hidden">
+                        {p.user.nickname}
+                      </p>
+                    </td>
+                    <td className="font-bold">
+                      {(p.firstPlaceSeqs as number[] | null)?.length ?? 0}회
+                    </td>
+                    <td className="text-[#C0C0C0] font-semibold">
+                      {(p.secondPlaceSeqs as number[] | null)?.length ?? 0}회
+                    </td>
+                    <td className="text-[#CD7F32] font-medium">
+                      {(p.thirdPlaceSeqs as number[] | null)?.length ?? 0}회
+                    </td>
+                    <td>{p.totalScore}점</td>
+                    <td>{p.notAttendCount}회</td>
+                  </tr>
+                ))
+            }
+          </ResponsiveTableBody>
         </table>
       </div>
     </ContentBox>
