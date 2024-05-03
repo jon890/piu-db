@@ -51,7 +51,7 @@ model PiuProfile {
 
 model Song {
   seq          Int        @id @default(autoincrement())
-  name         String
+  name         String     @unique
   artist       String
   bpm          String
   version      PiuVersion
