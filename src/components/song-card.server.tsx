@@ -4,6 +4,7 @@ import type { Chart, Song } from "@prisma/client";
 import Link from "next/link";
 import SongBadges from "./song-badges";
 import { PATCHED_VERSION } from "@/constants/const";
+import Image from "next/image";
 
 type Props = {
   song: Song;
@@ -19,7 +20,17 @@ export default function SongCardSC({
   moveToChartDetail,
 }: Props) {
   return (
-    <div className="card bg-base-100 shadow-xl mx-4">
+    <div
+      className={classnames("card bg-base-100 shadow-xl", {
+        "image-full": Boolean(song.imageUrl),
+      })}
+    >
+      {song.imageUrl && (
+        <figure>
+          <Image src={song.imageUrl} alt={song.name} fill priority={false} />
+        </figure>
+      )}
+
       <div className="card-body">
         <h2 className="card-title text-base sm:text-2xl">
           {moveToSongDetail ? (
@@ -37,16 +48,7 @@ export default function SongCardSC({
 
         <SongBadges song={song} />
 
-        <div
-          className={classnames(
-            "gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full",
-            {
-              "flex flex-row items-end": charts.length < 2,
-              "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4":
-                charts.length >= 2,
-            }
-          )}
-        >
+        <div className="flex flex-row flex-wrap gap-2">
           {charts.map((chart) => {
             return moveToChartDetail ? (
               <Link

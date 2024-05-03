@@ -51,13 +51,14 @@ model PiuProfile {
 
 model Song {
   seq          Int        @id @default(autoincrement())
-  name         String
+  name         String     @unique
   artist       String
   bpm          String
   version      PiuVersion
   songType     SongType   @map("song_type")
   isPremium    Boolean?   @default(false) @map("is_premium")
   patchVersion String?    @map("patch_version")
+  imageUrl     String?    @map("image_url")
   createdAt    DateTime   @default(now()) @map("created_at")
   updatedAt    DateTime   @updatedAt @map("updated_at")
   charts       Chart[]

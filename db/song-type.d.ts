@@ -11,4 +11,7 @@ export type SongData = {
   // Phenoix Only
   isPremium?: boolean;
   patchVersion?: string;
+
+  // added
+  imageUrl?: string;
 };

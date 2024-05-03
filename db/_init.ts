@@ -31,8 +31,11 @@ const prisma = new PrismaClient({
 
 async function initSongAndCharts(songs: SongData[]) {
   for (const song of songs) {
-    await prisma.song.create({
-      data: {
+    await prisma.song.upsert({
+      where: {
+        name: song.name,
+      },
+      create: {
         name: song.name,
         artist: song.artist,
         bpm: song.bpm,
@@ -43,6 +46,16 @@ async function initSongAndCharts(songs: SongData[]) {
         charts: {
           create: [...song.charts],
         },
+      },
+      update: {
+        name: song.name,
+        artist: song.artist,
+        bpm: song.bpm,
+        version: song.version,
+        songType: song.songType,
+        isPremium: song.isPremium,
+        patchVersion: song.patchVersion,
+        imageUrl: song.imageUrl,
       },
     });
   }
@@ -55,9 +68,7 @@ async function main() {
   // await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS);
   // await initSongAndCharts(XX_SONGS);
-  await initSongAndCharts(
-    PHOENIX_SONGS.filter((it) => it.patchVersion === "1.08")
-  );
+  await initSongAndCharts(PHOENIX_SONGS);
 }
 
 main();

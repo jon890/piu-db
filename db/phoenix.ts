@@ -20,6 +20,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/eb5af940defb17449259e75e16926870.png",
   },
 
   {
@@ -40,6 +43,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7b6237f4583cab1dd1a1b1f85264eaa5.png",
   },
 
   {
@@ -60,6 +66,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5c0a9e5e699863547ef7fa8d6485fc4a.png",
   },
 
   {
@@ -79,6 +88,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f1bc02103c6dc2b47d08cef830176035.png",
   },
 
   {
@@ -98,6 +110,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/46f545d32d421f3b6d7bd7d67531173e.png",
   },
 
   {
@@ -120,6 +135,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ed7e43efd28eba896f90b94ff1ebc06f.png",
   },
 
   {
@@ -141,6 +159,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.04",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e0cf19dbb807e5d3f2efa3db5ca163a0.png",
   },
 
   {
@@ -160,6 +181,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a349e92cde3a219d72d082c9ed7deade.png",
   },
 
   {
@@ -179,6 +203,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ec342950e66150e76a00b09492dfda3c.png",
   },
 
   {
@@ -198,6 +225,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/821e012731725917d2365e1352ad028f.png",
   },
 
   {
@@ -218,6 +248,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d89b413ad14fae24007dfdd77a387d6c.png",
   },
 
   {
@@ -236,6 +269,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/45a186e942deff08bc88bf9141e2d1dd.png",
   },
 
   {
@@ -255,6 +291,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f47eb7519299f8c8e848d95c6cc74967.png",
   },
 
   {
@@ -274,6 +313,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/50c49e67d330d6bd6d84b04da8afaa2a.png",
   },
 
   {
@@ -293,6 +335,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fdcba58abc4ae2ed3ab20da10aec0fd0.png",
   },
 
   {
@@ -310,6 +355,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ab914c8ca7030b776ec3cd3ad7dad3e9.png",
   },
 
   {
@@ -328,6 +376,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/305329152cdd89f6229dec2a3074c18b.png",
   },
 
   {
@@ -347,6 +398,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7387703a9867124dd6159fd3ee0b8094.png",
   },
 
   {
@@ -366,6 +420,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9caa31f81ba859eb53adc2b47b6d93bc.png",
   },
 
   {
@@ -385,6 +442,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7e1af52be6d8b4e147d2a0ebbf54ef98.png",
   },
 
   {
@@ -404,6 +464,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6175376a00ff0d561bab24934e04b782.png",
   },
 
   {
@@ -423,6 +486,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9f561790e1f3df1f1174b87f0d78b9d6.png",
   },
 
   {
@@ -442,6 +508,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/711e60a1b06997e72dde2024731aebdf.png",
   },
 
   {
@@ -461,6 +530,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 27, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6b61fae3e35139975deb1199f1ad550a.png",
   },
 
   {
@@ -478,6 +550,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2eecbab75fb2d9f0f95971ff487fc934.png",
   },
 
   {
@@ -497,6 +572,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/584749a3cecd3f4b5714df28cd502d14.png",
   },
 
   {
@@ -516,8 +594,11 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 9, chartType: "DOUBLE" },
       { level: 15, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
-      { level: 222, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/56fbd3887c1f170ff0bab5fd5bac7320.png",
   },
 
   {
@@ -536,6 +617,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8eb8a3021756670ce067a3ef7cfb9f2a.png",
   },
 
   {
@@ -554,6 +638,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.04",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d24baf611d258d15c997afc26b6380fe.png",
   },
 
   {
@@ -573,6 +660,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1afce79a91b11aacedfadb6f8f0c360c.png",
   },
 
   {
@@ -593,6 +683,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/03b6b88c054909e454b57dd7b7dfb831.png",
   },
 
   {
@@ -610,6 +703,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/280eaf79c3414fcc25d52691f550a624.png",
   },
 
   {
@@ -629,6 +725,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 27, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.04",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/14cd5d7a3df1f12b82bccec2faea2705.png",
   },
 
   {
@@ -647,6 +746,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2cf6b048170d3446cbb27e722a1d805f.png",
   },
 
   {
@@ -667,6 +769,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 26, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/df2bb22858f58b4cf088ce1866854f2d.png",
   },
 
   {
@@ -687,6 +792,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f89ff0cf996937d690d7ebb7502e6c1e.png",
   },
 
   {
@@ -706,6 +814,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/08a55debe196a4c44b2041868a5c2070.png",
   },
 
   {
@@ -723,6 +834,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cb4ad7cf62655b7d2907ade4d781873f.png",
   },
 
   {
@@ -741,6 +855,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9a9a1a662444b7305346e031dad8be2e.png",
   },
 
   {
@@ -760,6 +877,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4f6cd22fb830dcc99d53fcd91066e255.png",
   },
 
   {
@@ -780,6 +900,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b41eaa298c4c19f0dedc11e75271e353.png",
   },
 
   {
@@ -794,6 +917,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3f60d49fc1d14e5cfa51e8c90eec847b.png",
   },
 
   {
@@ -816,6 +942,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3aed0157e26dfa040bf84ae1167a22d5.png",
   },
 
   {
@@ -835,6 +964,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/282c1e3e7427966fe98c2fb2accfa9d6.png",
   },
 
   {
@@ -854,6 +986,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    patchVersion: "1.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fb318d836ec65eca2c99728fee9f3dc9.png",
   },
 
   {
@@ -871,6 +1006,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1fdba3fa2fd7fc9c3fef0593fb67897d.png",
   },
 
   {
@@ -893,6 +1031,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/adf1054211294efcbfb92ac97a37ec75.png",
   },
 
   {
@@ -912,6 +1053,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.04",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/268d0e5526dc475ccf8ca90a60fcae68.png",
   },
 
   {
@@ -929,6 +1073,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.00",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/51fcd45896e9b9925e3e1f0a77556e24.png",
   },
 
   {
@@ -946,6 +1093,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.04",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/dde154d8a721c5d510b71c788d0b8673.png",
   },
 
   {
@@ -965,6 +1115,9 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
     ],
     isPremium: true,
+    patchVersion: "1.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/81c807da9ac1fd29e74ab8a510976789.png",
   },
 
   {
@@ -983,10 +1136,13 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.02",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/12452411f0fddba3caf2382c9bf033f4.png",
   },
 
   {
-    name: "유포리아닉 - SHORT CUT",
+    name: "유포리아닉 - SHORT CUT -",
     artist: "SHK",
     bpm: "140",
     version: "PHOENIX",
@@ -999,9 +1155,11 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    patchVersion: "1.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a69635c7e3a9ddd1e9a2e3a05ac07d48.png",
   },
 
-  // 1.07
   {
     name: "서든 어페어런스 이미지",
     artist: "Blacklolita",
@@ -1020,6 +1178,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
     ],
     patchVersion: "1.07",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b2bd709009f25a9ac3618390c7b9917e.png",
   },
 
   {
@@ -1039,6 +1199,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
     ],
     patchVersion: "1.07",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2e0daf0c0eb3b5a188a20eb0a7dd1581.png",
   },
 
   {
@@ -1059,6 +1221,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
     ],
     patchVersion: "1.07",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ecc05e7a2615a2a2770e4a8c5487eb4c.png",
   },
 
   {
@@ -1081,6 +1245,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.07",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d59295bf426a99e64848df63ced40717.png",
   },
 
   {
@@ -1102,6 +1268,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.07",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/07e7d5fd7daa31f830fea74250cc2186.png",
   },
 
   // 1.08
@@ -1124,6 +1292,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
     ],
     patchVersion: "1.08",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/89ad08817eede5a099583987e96d64b3.png",
   },
 
   {
@@ -1142,10 +1312,12 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
     ],
     patchVersion: "1.08",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bd82e2ff6db9c6e4ba585760cb5a94f7.png",
   },
 
   {
-    name: "디스트로0l어",
+    name: "디스트로0ㅣ어",
     artist: "sakuzyo",
     bpm: "90",
     version: "PHOENIX",
@@ -1160,6 +1332,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
     ],
     patchVersion: "1.08",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1cdf3c4a70abd903f51f0f9e969830ee.png",
   },
 
   {
@@ -1178,6 +1352,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
     ],
     patchVersion: "1.08",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8d28848f0527248cbfc7456233242c92.png",
   },
 
   {
@@ -1196,5 +1372,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 26, chartType: "DOUBLE" },
     ],
     patchVersion: "1.08",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d9ca9ba14be1f8d7bc007bfcae6f19a1.png",
   },
 ];
