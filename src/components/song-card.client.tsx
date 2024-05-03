@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBall from "./level-ball";
 import SongBadges from "./song-badges";
+import Image from "next/image";
 
 type Props = {
   song: Song;
@@ -57,7 +58,24 @@ export default function SongCardCC({
   }
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div
+      className={classnames("card bg-base-100 shadow-xl", {
+        "image-full": Boolean(song.imageUrl),
+      })}
+    >
+      {song.imageUrl && (
+        <figure>
+          <Image
+            src={song.imageUrl}
+            alt={song.name}
+            width={400}
+            height={400}
+            priority={false}
+            className="bg-clip-text"
+          />
+        </figure>
+      )}
+
       <div className="card-body p-4 sm:p-6 md:p-8">
         <h2 className="card-title text-base sm:text-xl">
           {moveToSongDetail ? (
@@ -75,16 +93,7 @@ export default function SongCardCC({
         <SongBadges song={song} />
 
         {!showOnlySongs && (
-          <div
-            className={classnames(
-              "gap-2 sm:gap-3 mt-4 sm:mt-6 justify-end w-full",
-              {
-                "flex flex-row items-end": charts.length < 2,
-                "grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-4":
-                  charts.length >= 2,
-              }
-            )}
-          >
+          <div className="flex flex-row flex-wrap gap-2">
             {visibleCharts.map((chart) => (
               <LevelBall
                 key={chart.seq}
