@@ -516,6 +516,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 26, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/29515cbcd2bb2db30c23ed5228cdf93d.png",
   },
 
   {

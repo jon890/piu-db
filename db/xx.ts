@@ -19,6 +19,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3adbc9e8d05b1d006a995cf3079330aa.png",
   },
 
   {
@@ -40,6 +42,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/992c331c091355947214279619c2a366.png",
   },
 
   {
@@ -59,6 +63,8 @@ export const XX_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8ab5981a8fb556f4c0ec89bbf6ea440b.png",
   },
 
   {
@@ -82,6 +88,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d35d8bf23ed86a5011b5f524fe9d6ed1.png",
   },
 
   {
@@ -104,6 +112,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/348076ff6d242d366c6d8240e538b454.png",
   },
 
   {
@@ -155,6 +165,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a916721935bb9c8c55800fbbe556ae90.png",
   },
 
   {
@@ -177,6 +189,8 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4581e710e822e320fddfda44814b61b1.png",
   },
 
   {
@@ -215,6 +229,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6ab64a47eb8f394982c46a09a416c160.png",
   },
 
   {
@@ -232,6 +248,8 @@ export const XX_SONGS: SongData[] = [
       { level: 26, chartType: "DOUBLE" },
       { level: 28, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/27b9c3cc4f8d3c476205f2d4e6bbd9a5.png",
   },
 
   {
@@ -310,6 +328,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9d407b174aada4561c5da22425bd6a57.png",
   },
 
   {
@@ -331,6 +351,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/212d24f35ebb3de53f5deb6cd6625d31.png",
   },
 
   {
@@ -351,6 +373,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3f02cf4ddbf100d3656ce0d334f63e6f.png",
   },
 
   {
@@ -372,6 +396,8 @@ export const XX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/21f8ea50ea39ae9649ef630448e5a2d4.png",
   },
 
   {
@@ -409,6 +435,8 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cfd902c46c5004527c92d5e229edcc42.png",
   },
 
   {
@@ -429,6 +457,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f31f845bdc8584adce799fe78a775fdb.png",
   },
 
   {
@@ -580,6 +610,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e50902f87a52e34280440a77fedd9de4.png",
   },
 
   {
@@ -601,6 +633,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f0fb91b69e6f6e88bd53b7a7a3826932.png",
   },
 
   {
@@ -620,6 +654,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1352c4fabaa9bb5e8df52ca0062f2e00.png",
   },
 
   {
@@ -675,6 +711,8 @@ export const XX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8a48c481d5d5b1e1a19b0a230b776a1c.png",
   },
 
   {
@@ -695,6 +733,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bacaf08069b985635db3eebb443d133e.png",
   },
 
   {
@@ -712,6 +752,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/85d653d9c6bc78e7513311a10d51dfce.png",
   },
 
   {
@@ -733,6 +775,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ba1cf709de84af438c6697c1587528b3.png",
   },
 
   {
@@ -756,6 +800,8 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0a5705bb58882d059fcdbd5aea9b9cce.png",
   },
 
   {
@@ -777,6 +823,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b18d5837f6ab966de0a951e2fb018478.png",
   },
 
   {
@@ -800,6 +848,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/72e2b928ef1c20c3f56c0ee931b0f8da.png",
   },
 
   {
@@ -839,6 +889,8 @@ export const XX_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2ac7c8a9c0c3f4d9039c5389a5909f1a.png",
   },
 
   {
@@ -862,6 +914,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/07eef7f1a5338abedaeb031a0d8ee876.png",
   },
 
   {
@@ -882,6 +936,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/18c413bbfa40cc13fdc9ea1e3b2aa3c6.png",
   },
 
   {
@@ -903,6 +959,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/93d5647e7b2b3cdb2b3a04d06f996851.png",
   },
 
   {
@@ -925,6 +983,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/59006ca78aee2254dd3fe1362c9864b6.png",
   },
 
   {
@@ -946,6 +1006,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d3bb74a1485528e8428315183eaa1544.png",
   },
 
   {
@@ -967,6 +1029,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7599c6b45fc18dacacbd7fa710e1fbbe.png",
   },
 
   {
@@ -1257,6 +1321,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/33f0fe34b6e0c8a57a9fe2c4581e2a7b.png",
   },
 
   {
@@ -1276,6 +1342,8 @@ export const XX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/517829f70e7dfddf25a974289134e8e5.png",
   },
 
   {
@@ -1296,6 +1364,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0b7657d770d540518fda905a6966e263.png",
   },
 
   {
@@ -1316,6 +1386,8 @@ export const XX_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b5dfaf6a7215c1593e1f8da621d26abb.png",
   },
 
   {
@@ -1337,6 +1409,8 @@ export const XX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ae21644e1e271575dfd9a423bb808eef.png",
   },
 
   {
@@ -1354,6 +1428,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5d936b10017adb5582723dec723351d5.png",
   },
 
   {
@@ -1373,6 +1449,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9a7a0e282cbd94c9c94f605979be9cc2.png",
   },
 
   {
@@ -1391,6 +1469,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/183930ddd25cd0fd1da322d1584a6291.png",
   },
 
   {
@@ -1410,6 +1490,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/79dd036b5c0341224e24dbf9bbfa96b0.png",
   },
 
   {
@@ -1448,6 +1530,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/341db42d98d602ee2e3da10c068cacda.png",
   },
 
   {
@@ -1468,6 +1552,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1234e492a6a6edd6278007705181d137.png",
   },
 
   {
@@ -1506,6 +1592,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/67d5f6eb534fb64e4488c0be06321192.png",
   },
 
   {
@@ -1523,6 +1611,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/acc3d98c6192919a0e6faa538606e518.png",
   },
 
   {
@@ -1546,6 +1636,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/dfc1225d137e799d048a3f5a9906e134.png",
   },
 
   {
@@ -1566,6 +1658,8 @@ export const XX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4fae4c49e72904be375f6e913a15a003.png",
   },
 
   {
@@ -1586,6 +1680,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/582c4b074703ed2e43d6e53030bdb8e6.png",
   },
 
   {
@@ -1607,6 +1703,8 @@ export const XX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f720e52b1bb6625bd869df634102c20b.png",
   },
 
   {
@@ -1626,6 +1724,8 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cc5d57d60b17c46dee91b575faecd855.png",
   },
 
   {
@@ -1646,6 +1746,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/dfba9d785e48104e3cf269d4aa594559.png",
   },
 
   {
@@ -1692,6 +1794,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/eb741a04f8157c320f930d95dceecd7b.png",
   },
 
   {
@@ -1725,6 +1829,8 @@ export const XX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 27, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/54a6474ee494e9b1748e1edd3affee0b.png",
   },
 
   {
@@ -1745,6 +1851,8 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e6f6dc0021c7ff7a8a5bfbbf1d1795f6.png",
   },
 
   {
@@ -1896,6 +2004,8 @@ export const XX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/50c4cc1811cead8b175df061b10e6307.png",
   },
 
   {
@@ -1955,6 +2065,8 @@ export const XX_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/31923a19e575c171125466bb5b1e1eb3.png",
   },
 
   {
@@ -1991,6 +2103,8 @@ export const XX_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8f60feb29c23dba166d882a86110b732.png",
   },
 
   {
@@ -2009,6 +2123,8 @@ export const XX_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fd482baf3748bc4b5e74b4d5cd800819.png",
   },
 
   {

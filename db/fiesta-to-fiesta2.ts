@@ -20,6 +20,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3a4e606d1e1b67c3937f1d7c617d852c.png",
   },
 
   {
@@ -40,11 +42,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/eceb8a4cdce908dd6ef8851eb74883bf.png",
   },
 
   {
     // 3
-    name: "러브 이즈 어 데인저 존 (Cranky 믹스)",
+    name: "러브 이즈 어 데인저 존(Cranky 믹스)",
     artist: "반야 & Cranky",
     bpm: "155",
     version: "FIESTA_FIESTA2",
@@ -61,6 +65,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/72a5b43b6f620b5a785a673f53e38e1c.png",
   },
 
   {
@@ -227,6 +233,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/340f287916ca311faff5b0d05b7fda93.png",
   },
 
   {
@@ -246,6 +254,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fb5850b7b105c2402744693afe418957.png",
   },
 
   {
@@ -264,6 +274,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 7, chartType: "DOUBLE" },
       { level: 10, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1fbb103bbc7d1a94d6e994b27c2e6b9a.png",
   },
 
   {
@@ -369,6 +381,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e6ac757c38d1d589c25b3461bb8438d5.png",
   },
 
   {
@@ -424,6 +438,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8eb6a7d9798400553892511bf913409a.png",
   },
 
   {
@@ -519,6 +535,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f10447d5fb8e319b1154f0e940c16358.png",
   },
 
   {
@@ -759,6 +777,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/52ba0f8236f1cc1be8533771c479b36a.png",
   },
 
   {
@@ -827,6 +847,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fe92678270d73a1a7aa2c68fc058ba3f.png",
   },
 
   {
@@ -1400,6 +1422,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/dbaa447e9e95f33d09686f71ee98141a.png",
   },
 
   {
@@ -1417,6 +1441,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/03117abfba4446abc16998e2a564c2d2.png",
   },
 
   {
@@ -1637,6 +1663,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/618150bb862eb2a3177d94ac387aae60.png",
   },
 
   {
@@ -1656,6 +1684,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ff186c5488121bb28e0e51eef7b6b2f2.png",
   },
 
   {
@@ -1709,6 +1739,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/79fbf23383fdf73812bf805d7580eb45.png",
   },
 
   {
