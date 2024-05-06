@@ -86,6 +86,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1f8ba439956cef0aecaa015e29c183c8.png",
   },
 
   {
@@ -104,6 +106,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bc8046f59a10309e3fba7b77672cf2d2.png",
   },
 
   {
@@ -123,6 +127,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/58403fabf329090e4d54d0116733d2e2.png",
   },
 
   {
@@ -140,6 +146,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/93ba37833bdfc219d57c11f2ed277a16.png",
   },
 
   {
@@ -158,6 +166,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/97895e217e9f9c638c21a0ca8fb89204.png",
   },
 
   {
@@ -176,6 +186,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 5, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/91fa9215b387af5e20b5384200c591b5.png",
   },
 
   {
@@ -196,6 +208,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6fe5afa657a81021fbf2da64981eb034.png",
   },
 
   {
@@ -214,6 +228,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a2af45f604f7e2fb5ace70132d0f784c.png",
   },
 
   {
@@ -296,6 +312,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1ebb047f3cf0901df3bdf4731a8db7d4.png",
   },
 
   {
@@ -309,11 +327,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2bbd39494e83dded1ca4340fbc9ed2ea.png",
   },
 
   {
     // 17
-    name: "이그니스 패터스(DM Ashura 믹스) - SHORT CUT",
+    name: "이그니스 패터스(DM Ashura 믹스) - SHORT CUT -",
     artist: "반야 & DM Ashura",
     bpm: "220",
     version: "FIESTA_FIESTA2",
@@ -322,11 +342,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3a7f7612993a0bc32c6768a09f3b7eaf.png",
   },
 
   {
     // 18
-    name: "에프 에프 에프 - SHORT CUT",
+    name: "에프 에프 에프 - SHORT CUT -",
     artist: "도인",
     bpm: "200",
     version: "FIESTA_FIESTA2",
@@ -335,6 +357,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fb007493003748d4b11dac538d3a7c8e.png",
   },
 
   {
@@ -348,11 +372,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/291e5277d6cbf01a19742bd687605c2b.png",
   },
 
   {
     // 20
-    name: "유 갓 미 락킹 - SHORT CUT",
+    name: "유 갓 미 락킹 - SHORT CUT -",
     artist: "맥스",
     bpm: "128",
     version: "FIESTA_FIESTA2",
@@ -361,6 +387,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/100bcca593d84e4be1bb43d5888c14f3.png",
   },
 
   {
@@ -399,6 +427,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/445271f28c01b02fcffac895764c8343.png",
   },
 
   {
@@ -417,6 +447,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 6, chartType: "DOUBLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a2c8a74650ac15de9f85570e013cff72.png",
   },
 
   {
@@ -458,6 +490,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 8, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7cbdd1bf58895fef006dc66f71bc77e0.png",
   },
 
   {
@@ -479,6 +513,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c2aa0c2fc0611c4c820831c649606306.png",
   },
 
   {
@@ -497,6 +533,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0b75dc7c2243277815afefc46a62a135.png",
   },
 
   {
@@ -516,6 +554,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ab07f8e1efa8abf5d3f6b72e8909a409.png",
   },
 
   {
@@ -555,6 +595,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 11, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0d53ae5f97422c33e9d58f5e5660598e.png",
   },
 
   {
@@ -571,6 +613,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5bd3e6508c6ef691a52d8e12149c4b93.png",
   },
 
   {
@@ -584,6 +628,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cf5f765134dddaac40d09a46b4a795a1.png",
   },
 
   {
@@ -598,11 +644,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/46ec4b43c00d3b1eb93303b87d1fff14.png",
   },
 
   {
     // 34
-    name: "트롯프리스 - SHORT CUT",
+    name: "트롯프리스 - SHORT CUT -",
     artist: "도인",
     bpm: "156.118",
     version: "FIESTA_FIESTA2",
@@ -611,11 +659,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 14, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0055c4da6df4d81b47b2036cef3a3feb.png",
   },
 
   {
     // 35
-    name: "클리너 - SHORT CUT",
+    name: "클리너 - SHORT CUT -",
     artist: "도인",
     bpm: "203",
     version: "FIESTA_FIESTA2",
@@ -624,11 +674,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/dbdb3a17cef6b8c0442d271895b7b996.png",
   },
 
   {
     // 36
-    name: "테이크 아웃 - SHORT CUT",
+    name: "테이크 아웃 - SHORT CUT -",
     artist: "SHK",
     bpm: "170",
     version: "FIESTA_FIESTA2",
@@ -637,11 +689,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a5734b9fb24bd66864105a6f0bb20e44.png",
   },
 
   {
     // 37
-    name: "오버블로우 - SHORT CUT",
+    name: "오버블로우 - SHORT CUT -",
     artist: "맥스",
     bpm: "155",
     version: "FIESTA_FIESTA2",
@@ -650,6 +704,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/677310c3875a9de5aa9723ff07bf667d.png",
   },
 
   {
@@ -670,6 +726,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0a20adcd20b664ab3dda36ee2ebbc7b3.png",
   },
 
   {
@@ -687,6 +745,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b72f4902567794d82879737a188d1463.png",
   },
 
   {
@@ -702,6 +762,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/316dcf353e07e846960e71df5e180ba4.png",
   },
 
   {
@@ -717,6 +779,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 10, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ae2b0870e056afa7b20b0387d781736d.png",
   },
 
   {
@@ -736,6 +800,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ce8898e456b78ee4e1fd7ec6001f80a1.png",
   },
 
   {
@@ -754,6 +820,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ba7e3e2c8e3d175c3576d295fbe1e4b2.png",
   },
 
   {
@@ -794,6 +862,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f7234e23fa9a18b900b9fe93f908f6ef.png",
   },
 
   {
@@ -812,6 +882,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8075ad3bc1d71a6a2d42313eff1ecd98.png",
   },
 
   {
@@ -831,6 +903,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/be879f5ee944b5f1fe4dc088b7be923f.png",
   },
 
   {
@@ -862,6 +936,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "SINGLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/24cdd9b5b4687bb673d2aca76a0f463a.png",
   },
 
   {
@@ -880,6 +956,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e8310f71e1b97f5a7ffba97c2405e6eb.png",
   },
 
   {
@@ -896,6 +974,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8d55fa3101649d5beb9ee7921b2ea46c.png",
   },
 
   {
@@ -912,6 +992,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/12efbe773a7f2f0f9d49c9818be4b7f7.png",
   },
 
   {
@@ -930,6 +1012,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/72153505f1e187bcf5121ceb11362f0b.png",
   },
 
   {
@@ -947,6 +1031,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/86929efcc575a3267f8a9a1a100bce41.png",
   },
 
   {
@@ -964,6 +1050,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8d2066c0ba43f7f9ae16d41ed383be27.png",
   },
 
   {
@@ -984,6 +1072,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4d0b34c7c5b03e6a382b30f240af735c.png",
   },
 
   {
@@ -998,6 +1088,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/17fe575abbbc85887e02d18addbab85d.png",
   },
 
   {
@@ -1018,6 +1110,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 9, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c8dd5ba64a3a6459a77086155f1780be.png",
   },
 
   {
@@ -1033,6 +1127,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e149ae9dc278784a016c78f8eac1e8fc.png",
   },
 
   {
@@ -1046,6 +1142,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 10, chartType: "SINGLE" },
       { level: 19, chartType: "SINGLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bf4876be134a42ee4fd077dc8b802551.png",
   },
 
   {
@@ -1059,6 +1157,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "SINGLE" },
       { level: 18, chartType: "SINGLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/adbd1ef8e31aef59ae7094b1951050d5.png",
   },
 
   {
@@ -1069,6 +1169,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
     version: "FIESTA_FIESTA2",
     songType: "REMIX",
     charts: [{ level: 18, chartType: "SINGLE" }],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/96cd60ad4cf28f1613705bc93e51e039.png",
   },
 
   {
@@ -1082,11 +1184,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/050ba0c75807025e3683d4c9942d3f07.png",
   },
 
   {
     // 64
-    name: "파이널 오디션 2 - SHORT CUT",
+    name: "파이널 오디션 2 - SHORT CUT -",
     artist: "반야",
     bpm: "130",
     version: "FIESTA_FIESTA2",
@@ -1095,11 +1199,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5ea0c03a47ab543b972c3cb693fa5a1e.png",
   },
 
   {
     // 65
-    name: "파이널 오디션 3 - SHORT CUT",
+    name: "파이널 오디션 3 - SHORT CUT -",
     artist: "반야",
     bpm: "130.5",
     version: "FIESTA_FIESTA2",
@@ -1108,6 +1214,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/23a1ddf909576d15d831327aa8bb965d.png",
   },
 
   {
@@ -1121,6 +1229,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7fae3405480b558ef84377c9aa09edf9.png",
   },
 
   {
@@ -1135,6 +1245,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c8b416fe9fef9ca7cad637ffb5e8d914.png",
   },
 
   {
@@ -1149,11 +1261,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d3fce409d990438f96f2ca2e036cd99b.png",
   },
 
   {
     // 69
-    name: "엑스트라바간자 - SHORT CUT",
+    name: "엑스트라바간자 - SHORT CUT -",
     artist: "반야",
     bpm: "195",
     version: "FIESTA_FIESTA2",
@@ -1163,11 +1277,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3d13424db511ff90627ea2faecb8351b.png",
   },
 
   {
     // 70
-    name: "치킨 윙 - SHORT CUT",
+    name: "치킨 윙 - SHORT CUT -",
     artist: "반야",
     bpm: "200",
     version: "FIESTA_FIESTA2",
@@ -1176,11 +1292,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/935aaf54c550ca4cdea5a939132f1efc.png",
   },
 
   {
     // 71
-    name: "윈터 - SHORT CUT",
+    name: "윈터 - SHORT CUT -",
     artist: "반야",
     bpm: "168",
     version: "FIESTA_FIESTA2",
@@ -1192,11 +1310,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c2fbab1440c3502c8426cf95bafc4a31.png",
   },
 
   {
     // 72
-    name: "무혼 2 - SHORT CUT",
+    name: "무혼 2 - SHORT CUT -",
     artist: "반야",
     bpm: "136",
     version: "FIESTA_FIESTA2",
@@ -1205,11 +1325,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/df199f0a2a805328b607db239e358fdd.png",
   },
 
   {
     // 73
-    name: "월광 - SHORT CUT",
+    name: "월광 - SHORT CUT -",
     artist: "반야",
     bpm: "180",
     version: "FIESTA_FIESTA2",
@@ -1219,11 +1341,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d1a6b8d0a9fb63642cdcf1e1897adc7c.png",
   },
 
   {
     // 74
-    name: "위치 닥터 - SHORT CUT",
+    name: "위치 닥터 - SHORT CUT -",
     artist: "반야",
     bpm: "195",
     version: "FIESTA_FIESTA2",
@@ -1233,11 +1357,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/505221bd59abc6663b5799b992665198.png",
   },
 
   {
     // 75
-    name: "익시드2 오프닝 - SHORT CUT",
+    name: "익시드2 오프닝 - SHORT CUT -",
     artist: "반야",
     bpm: "178",
     version: "FIESTA_FIESTA2",
@@ -1246,6 +1372,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c1aba7f0547e52cacbf97d4916313f51.png",
   },
 
   {
@@ -1259,11 +1387,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/735ad70b201b35fc48baae71b2396ca2.png",
   },
 
   {
     // 77
-    name: "케이.오.에이 : 엘리스 인 원더월드 - SHORT CUT",
+    name: "케이.오.에이 : 엘리스 인 원더월드 - SHORT CUT -",
     artist: "반야 프로덕션",
     bpm: "156",
     version: "FIESTA_FIESTA2",
@@ -1273,11 +1403,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/43835688d918959d837cc9c0579f36a0.png",
   },
 
   {
     // 78
-    name: "비메라 - SHORT CUT",
+    name: "비메라 - SHORT CUT -",
     artist: "이 얍",
     bpm: "210",
     version: "FIESTA_FIESTA2",
@@ -1288,11 +1420,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 22, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6a85e56f0e34c5b704755073a5d6a790.png",
   },
 
   {
     // 79
-    name: "펌트리스 8비트 ver. - SHORT CUT",
+    name: "펌트리스 8비트 ver. - SHORT CUT -",
     artist: "이 얍",
     bpm: "162",
     version: "FIESTA_FIESTA2",
@@ -1302,6 +1436,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/64c6826b2fa08e7d1366c976e3ac97bc.png",
   },
 
   {
@@ -1317,6 +1453,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e153dc972217a7f0ec8442aef9f5e461.png",
   },
 
   {
@@ -1335,6 +1473,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fbb495de710207040ce185bd2ad7424c.png",
   },
 
   {
@@ -1351,6 +1491,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e3bbf6c00c0de558d4b751b6840efb47.png",
   },
 
   {
@@ -1366,11 +1508,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/149de4217a7f2e3d80c3dbe4090a2ea0.png",
   },
 
   {
     // 84
-    name: "VVV",
+    name: "VVV ",
     artist: "ZiGZaG",
     bpm: "310",
     version: "FIESTA_FIESTA2",
@@ -1381,6 +1525,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3f951d73d3c1c32c7d238b2ce184459d.png",
   },
 
   {
@@ -1402,6 +1548,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/144c2b06732112f18a9342904b058aa4.png",
   },
 
   {
@@ -1456,11 +1604,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8068fe3a93b7fd1ba5ae7bd6910b146c.png",
   },
 
   {
     // 89
-    name: "팝 더 트랙 - SHORT CUT",
+    name: "팝 더 트랙 - SHORT CUT -",
     artist: "J-Mi & Midi-D & Ft. Hanna Stockzell",
     bpm: "160",
     version: "FIESTA_FIESTA2",
@@ -1469,11 +1619,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/faf473f7b56fb309846d8cecf48cab20.png",
   },
 
   {
     // 90
-    name: "파사칼리아 - SHORT CUT",
+    name: "파사칼리아 - SHORT CUT -",
     artist: "SynthWulf",
     bpm: "175",
     version: "FIESTA_FIESTA2",
@@ -1482,6 +1634,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fcbf5b06c9d79d8708585e87f7a10ab9.png",
   },
 
   {
@@ -1501,11 +1655,13 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/909e5df346a72fcd09b5376d50a007c9.png",
   },
 
   {
     // 92
-    name: "레이디 버그",
+    name: "레이디버그",
     artist: "Coconut",
     bpm: "133",
     version: "FIESTA_FIESTA2",
@@ -1518,6 +1674,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 14, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c764058ef1abe73675a6b1b288f0104c.png",
   },
 
   {
@@ -1536,6 +1694,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8f11c284b028ea874be1526d5888ac0a.png",
   },
 
   {
@@ -1554,6 +1714,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bd2a88dd76f59d86f3a536dd3afd3ed2.png",
   },
 
   {
@@ -1572,6 +1734,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4669bfb9682c12e24b3b7ad032166b69.png",
   },
 
   {
@@ -1589,6 +1753,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/00843a3856bebbb34316d9c8368e23a1.png",
   },
 
   {
@@ -1607,6 +1773,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4cb90d0696403eef2913182e0fa88276.png",
   },
 
   {
@@ -1626,6 +1794,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6a06a2eec3aba4df950aa666233999b6.png",
   },
 
   {
@@ -1644,6 +1814,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c0202919b28b74b717b6a02b85840be7.png",
   },
 
   {
@@ -1703,6 +1875,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8494a140a5d0651b691651c094035683.png",
   },
 
   {
@@ -1720,6 +1894,8 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7372cd8bfab53b7f0a4bb9195e545fec.png",
   },
 
   {
@@ -1745,7 +1921,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 105
-    name: "엑스 레이브 - SHORT CUT",
+    name: "엑스 레이브 - SHORT CUT -",
     artist: "DM Ashura",
     bpm: "147",
     version: "FIESTA_FIESTA2",
@@ -1754,5 +1930,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/354335d862bebaf088b793dbcf0167a0.png",
   },
 ];
