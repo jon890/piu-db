@@ -1,5 +1,5 @@
-import LevelBall from "@/components/level-ball";
 import { Paging } from "@/components/common/paging";
+import LevelBall from "@/components/level-ball";
 import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
@@ -95,11 +95,17 @@ export default async function RecordTable({ records, paging }: Props) {
                   <td>{record.bad}</td>
                   <td>{record.miss}</td>
                   <td>
-                    <span>
-                      {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
-                    </span>
-                    <br />
-                    <span>{TimeUtil.format(record.playedAt, "HH:mm:ss")}</span>
+                    {record.playedAt && (
+                      <>
+                        <span>
+                          {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
+                        </span>
+                        <br />
+                        <span>
+                          {TimeUtil.format(record.playedAt, "HH:mm:ss")}
+                        </span>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))
