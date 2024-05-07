@@ -44,9 +44,13 @@ export default async function LevelRecordPage({
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
       {CHART_TYPE ? (
-        <LevelRecordsDetail levelRecords={levelRecords} />
+        levelRecords.length > 0 ? (
+          <LevelRecordsDetail levelRecords={levelRecords} />
+        ) : (
+          <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>
+        )
       ) : (
-        <p>싱글 더블을 선택해주세요</p>
+        <p className="text-gray-500">싱글 더블을 선택해주세요</p>
       )}
     </ContentBox>
   );
