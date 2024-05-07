@@ -5,6 +5,7 @@ import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
+import { raw } from "@prisma/client/runtime/library";
 
 const RECORD_PAGE_UNIT = 50;
 
@@ -291,7 +292,11 @@ export type MaxRecord = {
   is_break_off: number;
   played_at: Date;
 };
-async function getMaxRecordsBy(userSeq: number, chartSeqs: number[]) {
+async function getMaxRecordsBy(
+  userSeq: number,
+  chartSeqs: number[],
+  isBreakOn?: boolean
+) {
   return prisma.$queryRaw<MaxRecord[]>`
   SELECT 
     rec.seq, 
@@ -306,7 +311,7 @@ async function getMaxRecordsBy(userSeq: number, chartSeqs: number[]) {
       FROM td_record
       WHERE user_seq = ${userSeq}
         AND chart_seq IN (${Prisma.join(chartSeqs)})
-        AND is_break_off = 0
+        ${isBreakOn ? Prisma.sql` AND is_break_off = 0` : Prisma.empty}
       GROUP BY user_seq, chart_seq) AS max
   WHERE rec.user_seq = max.user_seq
     AND rec.chart_seq = max.chart_seq

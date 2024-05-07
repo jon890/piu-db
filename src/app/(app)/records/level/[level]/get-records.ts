@@ -32,18 +32,38 @@ export async function getLevelRecordsBy(
     .filter(ArrayUtil.notEmpty);
   if (chartSeqs.length === 0) return [];
 
-  const records = await RecordDB.getMaxRecordsBy(userSeq, chartSeqs);
-  const recordMap = ArrayUtil.associatedBy(
-    records,
+  const breakOnMaxRecords = await RecordDB.getMaxRecordsBy(
+    userSeq,
+    chartSeqs,
+    true
+  );
+  const breakOnMaxRecordMap = ArrayUtil.associatedBy(
+    breakOnMaxRecords,
+    (record) => record.chart_seq
+  );
+  const maxRecords = await RecordDB.getMaxRecordsBy(userSeq, chartSeqs);
+  const maxRecordMap = ArrayUtil.associatedBy(
+    maxRecords,
     (record) => record.chart_seq
   );
 
   const songWithRecord = targetSongs
-    .map((song) => ({
-      song,
-      chart: song.chart,
-      record: recordMap.get(song?.chart?.seq ?? -1),
-    }))
+    .map((song) => {
+      const chartSeq = song?.chart?.seq;
+      if (!chartSeq) throw Error("오류 발생");
+
+      const breakOnMaxRecord = breakOnMaxRecordMap.get(chartSeq);
+      const maxRecord = maxRecordMap.get(chartSeq);
+
+      // console.log("breakOnMaxRecord", breakOnMaxRecord);
+      // console.log("maxRecord", maxRecord);
+
+      return {
+        song,
+        chart: song.chart,
+        record: breakOnMaxRecord ?? maxRecord,
+      };
+    })
     .sort((a, b) => {
       const aScore = a.record?.score ?? 0;
       const bScore = b.record?.score ?? 0;
