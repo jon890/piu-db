@@ -64,8 +64,8 @@ async function initSongAndCharts(songs: SongData[]) {
 async function main() {
   // await initSongAndCharts(FIRST_ZERO_SONGS);
   // await initSongAndCharts(NX_NXA_SONGS);
-  await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
-  // await initSongAndCharts(PRIME_SONGS);
+  // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
+  await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS);
   // await initSongAndCharts(XX_SONGS);
   // await initSongAndCharts(PHOENIX_SONGS);
