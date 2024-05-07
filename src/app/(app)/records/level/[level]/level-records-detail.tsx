@@ -9,6 +9,7 @@ import Decimal from "decimal.js";
 import { useState } from "react";
 
 type Props = {
+  // TODO any 수정
   songAndRecords: any[];
 };
 

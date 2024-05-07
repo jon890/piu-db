@@ -3,7 +3,7 @@ import RecordDB, { MaxRecord } from "@/server/prisma/record.db";
 import ArrayUtil from "@/utils/array.util";
 import { Chart, ChartType } from "@prisma/client";
 
-export async function getRecordsBy(
+export async function getLevelRecordsBy(
   userSeq: number,
   level: number,
   chartType: ChartType

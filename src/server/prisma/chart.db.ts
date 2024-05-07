@@ -6,6 +6,7 @@ import path from "node:path";
 import { TMP_DIR } from "../utils/tmpdir";
 import SongDB from "./song.db";
 import { cache } from "react";
+import ArrayUtil from "@/utils/array.util";
 
 const CACHE_FOLDER = path.resolve(TMP_DIR, "piudb_cache");
 const CACHE_FILE = path.resolve(CACHE_FOLDER, "charts.json");
@@ -38,30 +39,17 @@ const findAll = cache(_findAll);
 export type SongWithCharts = Song & { charts?: Chart[] };
 async function findAllGroupBySong(): Promise<SongWithCharts[]> {
   const songs = await SongDB.findAll();
-  const songMap = new Map<number, Song>();
-
-  for (const song of songs) {
-    songMap.set(song.seq, song);
-  }
+  const songMap = ArrayUtil.associatedBy(songs, (song) => song.seq);
 
   const charts = await findAll();
-  const chartSongSeqMap = new Map<number, Chart[]>();
-
-  for (const chart of charts) {
-    const songSeq = chart.songSeq;
-    const song = songMap.get(songSeq);
-    if (!song) continue;
-
-    if (chartSongSeqMap.has(songSeq)) {
-      chartSongSeqMap.get(songSeq)?.push(chart);
-    } else {
-      chartSongSeqMap.set(songSeq, [chart]);
-    }
-  }
+  const chartSongSeqMap = ArrayUtil.associatedByList(
+    charts,
+    (chart) => chart.songSeq
+  );
 
   const songWithCharts: (Song & { charts: Chart[] | undefined })[] = [];
-  songMap.forEach((song, seq) => {
-    const charts = chartSongSeqMap.get(seq);
+  songMap.forEach((song) => {
+    const charts = chartSongSeqMap.get(song.seq);
     songWithCharts.push({ ...song, charts });
   });
 

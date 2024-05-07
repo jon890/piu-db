@@ -7,7 +7,7 @@ import { ChartType } from "@prisma/client";
 import { notFound } from "next/navigation";
 import SyncMyBestScoreButton from "../../(sync-my-best-score)/sync-my-best-score.button";
 import SyncRecentlyPlayedButton from "../../(sync-recently-played)/sync-recently-played.button";
-import { getRecordsBy } from "./get-records";
+import { getLevelRecordsBy } from "./get-records";
 import LevelRecordsDetail from "./level-records-detail";
 
 type Props = {
@@ -30,7 +30,7 @@ export default async function LevelRecordPage({
   }
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
   const songAndRecords = CHART_TYPE
-    ? await getRecordsBy(userSeq, targetLevel, CHART_TYPE)
+    ? await getLevelRecordsBy(userSeq, targetLevel, CHART_TYPE)
     : [];
 
   return (
@@ -39,6 +39,7 @@ export default async function LevelRecordPage({
         <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
         <SyncMyBestScoreButton piuAuth={piuAuthValue} />
       </div>
+
       <SelectLevel targetLevel={targetLevel} />
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
