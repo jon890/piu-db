@@ -42,9 +42,9 @@ model PiuProfile {
   user             User     @relation(fields: [userSeq], references: [seq])
   userSeq          Int      @map("user_seq")
   isPrimary        Boolean  @default(false) @map("is_primary")
-  records          Record[]
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
+  records          Record[]
 
   @@map("td_piu_profile")
 }
@@ -107,28 +107,34 @@ enum ChartType {
 }
 
 model Record {
-  seq             Int               @id @default(autoincrement())
-  chart           Chart             @relation(fields: [chartSeq], references: [seq])
-  chartSeq        Int               @map("chart_seq")
-  user            User              @relation(fields: [userSeq], references: [seq])
-  userSeq         Int               @map("user_seq")
-  piuProfile      PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
-  piuProfileSeq   Int               @map("piu_profile_seq")
-  score           Int
-  perfect         Int
-  great           Int
-  good            Int
-  bad             Int
-  miss            Int
-  grade           RecordGrade
-  plate           RecordPlate?
-  isBreakOff      Boolean           @default(false) @map("is_break_off")
-  playedAt        DateTime          @map("played_at")
-  createdAt       DateTime          @default(now()) @map("created_at")
-  AssigmentRecord AssigmentRecord[]
+  seq               Int               @id @default(autoincrement())
+  type              RecordType?
+  user              User              @relation(fields: [userSeq], references: [seq])
+  userSeq           Int               @map("user_seq")
+  piuProfile        PiuProfile        @relation(fields: [piuProfileSeq], references: [seq])
+  piuProfileSeq     Int               @map("piu_profile_seq")
+  chart             Chart             @relation(fields: [chartSeq], references: [seq])
+  chartSeq          Int               @map("chart_seq")
+  perfect           Int?
+  great             Int?
+  good              Int?
+  bad               Int?
+  miss              Int?
+  grade             RecordGrade
+  plate             RecordPlate?
+  score             Int
+  isBreakOff        Boolean           @default(false) @map("is_break_off")
+  playedAt          DateTime?         @map("played_at")
+  createdAt         DateTime          @default(now()) @map("created_at")
+  assignmentRecords AssigmentRecord[]
 
   @@unique([chartSeq, piuProfileSeq, playedAt])
   @@map("td_record")
+}
+
+enum RecordType {
+  RECENTLY_PLAYED
+  BEST_SCORE
 }
 
 enum RecordPlate {

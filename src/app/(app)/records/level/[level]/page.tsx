@@ -5,14 +5,9 @@ import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
 import { ChartType } from "@prisma/client";
 import { notFound } from "next/navigation";
-import SyncRecordButton from "../../(sync-record)/sync-record.button";
+import SyncMyBestScoreButton from "../../(sync-my-best-score)/sync-my-best-score.button";
+import SyncRecentlyPlayedButton from "../../(sync-recently-played)/sync-recently-played.button";
 import { getRecordsBy } from "./get-records";
-import RecordList from "@/components/records/record-list";
-import ArrayUtil from "@/utils/array.util";
-import Decimal from "decimal.js";
-import Card from "@/components/common/card";
-import NumberUtil from "@/utils/number.util";
-import CheckBox from "@/components/common/check-box";
 import LevelRecordsDetail from "./level-records-detail";
 
 type Props = {
@@ -40,7 +35,10 @@ export default async function LevelRecordPage({
 
   return (
     <ContentBox title="내 기록">
-      <SyncRecordButton piuAuth={piuAuthValue} />
+      <div className="flex-row flex gap-3 flex-wrap">
+        <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
+        <SyncMyBestScoreButton piuAuth={piuAuthValue} />
+      </div>
       <SelectLevel targetLevel={targetLevel} />
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
