@@ -1,5 +1,4 @@
 import ContentBox from "@/components/layout/content-box";
-import RecordBox from "@/components/records/record-box";
 import SelectChartType from "@/components/records/select-chart-type";
 import SelectLevel from "@/components/records/selet-level";
 import AuthUtil from "@/server/utils/auth-util";
@@ -8,9 +7,13 @@ import { ChartType } from "@prisma/client";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import { getRecordsBy } from "./get-records";
+import RecordList from "@/components/records/record-list";
 import ArrayUtil from "@/utils/array.util";
 import Decimal from "decimal.js";
+import Card from "@/components/common/card";
 import NumberUtil from "@/utils/number.util";
+import CheckBox from "@/components/common/check-box";
+import LevelRecordsDetail from "./level-records-detail";
 
 type Props = {
   params: {
@@ -30,26 +33,10 @@ export default async function LevelRecordPage({
   if (isNaN(targetLevel) || targetLevel < 1 || targetLevel > 28) {
     notFound();
   }
-
+  const piuAuthValue = await CookieUtil.getPiuAuthValue();
   const songAndRecords = CHART_TYPE
     ? await getRecordsBy(userSeq, targetLevel, CHART_TYPE)
     : [];
-  const piuAuthValue = await CookieUtil.getPiuAuthValue();
-
-  const records = songAndRecords
-    .map((it) => it.chart?.record)
-    .filter(ArrayUtil.notEmpty);
-
-  const clearCounts = records.filter((it) => it.is_break_off === 0).length;
-
-  const avgScores =
-    records.length === 0
-      ? 0
-      : records
-          .reduce((acc, cur) => {
-            return acc.plus(cur.score);
-          }, new Decimal(0))
-          .div(records.length);
 
   return (
     <ContentBox title="내 기록">
@@ -58,33 +45,7 @@ export default async function LevelRecordPage({
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
       {CHART_TYPE ? (
-        <>
-          <div className="flex flex-row justify-center items-center gap-3 flex-wrap">
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">점수 평균</h2>
-                <p className="text-center">
-                  {NumberUtil.formatScore(avgScores)}
-                </p>
-              </div>
-            </div>
-
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">클리어</h2>
-                <p className="text-center">
-                  {clearCounts} / {songAndRecords.length}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-row justify-center items-center gap-1 flex-wrap">
-            {songAndRecords.map((song) => (
-              <RecordBox song={song} key={song.seq} />
-            ))}
-          </div>
-        </>
+        <LevelRecordsDetail songAndRecords={songAndRecords} />
       ) : (
         <p>싱글 더블을 선택해주세요</p>
       )}

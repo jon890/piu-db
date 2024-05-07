@@ -65,7 +65,13 @@ export default function SongCard({
     >
       {song.imageUrl && (
         <figure className="relative">
-          <Image src={song.imageUrl} alt={song.name} fill priority={false} />
+          <Image
+            src={song.imageUrl}
+            alt={song.name}
+            fill
+            priority={false}
+            sizes="(max-width: 640px) 100vw, (max-width:1024px) 33vw"
+          />
         </figure>
       )}
 

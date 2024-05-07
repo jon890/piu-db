@@ -1,3 +1,5 @@
+"use client";
+
 import classnames from "@/utils/classnames";
 import { InputHTMLAttributes } from "react";
 
@@ -8,10 +10,9 @@ type Props = {
 
 export default function CheckBox({
   errors,
-  name,
   topLeft,
   disabled,
-  defaultChecked,
+  ...rest
 }: Props) {
   return (
     <div className="form-control w-full max-w-md">
@@ -20,15 +21,13 @@ export default function CheckBox({
 
         <input
           type="checkbox"
-          name={name ?? ""}
           className="checkbox checkbox-primary"
           disabled={disabled}
-          defaultChecked={defaultChecked}
+          {...rest}
         />
       </label>
       {errors && (
         <div
-          id={`${name ?? ""}-error`}
           aria-live="polite"
           className="text-sm text-red-500 font-semibold text-center mt-1"
         >
