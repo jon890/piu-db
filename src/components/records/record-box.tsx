@@ -9,8 +9,8 @@ import Link from "next/link";
 
 type Props = {
   song: Song;
-  chart: Chart;
-  record: MaxRecord | null;
+  chart: Chart | null | undefined;
+  record: MaxRecord | null | undefined;
   visibleClear?: boolean;
 };
 

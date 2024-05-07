@@ -2,7 +2,7 @@ import { LevelRecord } from "@/app/(app)/records/level/[level]/get-records";
 import RecordBox from "@/components/records/record-box";
 
 type Props = {
-  levelRecords: LevelRecord[]; // getRecordsBy return type
+  levelRecords: LevelRecord[];
   visibleClear?: boolean;
 };
 

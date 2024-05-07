@@ -80,14 +80,14 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
         </>
       )}
 
-      {remixRecords.length > 0 && (
+      {fullRecords.length > 0 && (
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">풀송</h3>
           <RecordList levelRecords={fullRecords} visibleClear={visibleClear} />
         </>
       )}
 
-      {remixRecords.length > 0 && (
+      {shortRecords.length > 0 && (
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">숏컷</h3>
           <RecordList levelRecords={shortRecords} visibleClear={visibleClear} />
