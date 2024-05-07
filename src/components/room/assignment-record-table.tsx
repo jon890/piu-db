@@ -90,9 +90,13 @@ export default async function AssignmentRecordTable({
                     {record.plate && <RecordPlate plate={record.plate} />}
                   </td>
                   <td className="text-center">
-                    {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
-                    <br />
-                    {TimeUtil.format(record.playedAt, "HH:mm:ss")}
+                    {record.playedAt && (
+                      <>
+                        {TimeUtil.format(record.playedAt, "YYYY-MM-DD")}
+                        <br />
+                        {TimeUtil.format(record.playedAt, "HH:mm:ss")}
+                      </>
+                    )}
                   </td>
                 </tr>
               ))
