@@ -12,9 +12,9 @@ type Props = {
 };
 
 export default function RecordBox({ song }: Props) {
-  return Boolean(song.chart?.record) ? (
+  return (
     <Link
-      href={`/records/${song.chart?.record?.seq}`}
+      href={song.chart?.record ? `/records/${song.chart?.record?.seq}` : "#"}
       className={classnames("card bg-base-200 size-16 sm:size-20 md:size-24", {
         "image-full": Boolean(song.imageUrl),
       })}
@@ -63,29 +63,5 @@ export default function RecordBox({ song }: Props) {
         )}
       </div>
     </Link>
-  ) : (
-    <div
-      className={classnames("card bg-base-200 size-16 sm:size-20 md:size-24", {
-        "image-full": Boolean(song.imageUrl),
-      })}
-    >
-      {song.imageUrl && (
-        <figure className="relative">
-          <Image
-            src={song.imageUrl}
-            alt={song.name}
-            fill
-            priority={false}
-            sizes="(max-width: 640px) 14vw, (max-width:768px) 12.5vw, (max-width:1024px) 12.5vw"
-          />
-        </figure>
-      )}
-
-      <div className="card-body size-16 sm:size-20 md:size-24 p-0 items-center justify-center">
-        <span className="text-center text-[8px] sm:text-xs max-w-full text-ellipsis overflow-hidden whitespace-nowrap">
-          {song.name}
-        </span>
-      </div>
-    </div>
   );
 }

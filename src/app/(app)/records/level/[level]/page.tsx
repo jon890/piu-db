@@ -11,7 +11,7 @@ import Decimal from "decimal.js";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import { getRecordsBy } from "./get-records";
-import Card from "./card";
+import Card from "@/components/common/card";
 
 type Props = {
   params: {
