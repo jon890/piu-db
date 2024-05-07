@@ -37,6 +37,10 @@ async function _findAll(): Promise<Chart[]> {
 const findAll = cache(_findAll);
 
 export type SongWithCharts = Song & { charts?: Chart[] };
+/**
+ * 노래와 연관된 모든 차트를 찾는다
+ * @returns
+ */
 async function findAllGroupBySong(): Promise<SongWithCharts[]> {
   const songs = await SongDB.findAll();
   const songMap = ArrayUtil.associatedBy(songs, (song) => song.seq);

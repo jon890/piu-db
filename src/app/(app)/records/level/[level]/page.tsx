@@ -29,7 +29,7 @@ export default async function LevelRecordPage({
     notFound();
   }
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
-  const songAndRecords = CHART_TYPE
+  const levelRecords = CHART_TYPE
     ? await getLevelRecordsBy(userSeq, targetLevel, CHART_TYPE)
     : [];
 
@@ -44,7 +44,7 @@ export default async function LevelRecordPage({
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
       {CHART_TYPE ? (
-        <LevelRecordsDetail songAndRecords={songAndRecords} />
+        <LevelRecordsDetail levelRecords={levelRecords} />
       ) : (
         <p>싱글 더블을 선택해주세요</p>
       )}
