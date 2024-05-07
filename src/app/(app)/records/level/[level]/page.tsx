@@ -35,7 +35,7 @@ export default async function LevelRecordPage({
 
   return (
     <ContentBox title="내 기록">
-      <div className="flex-row flex gap-3 flex-wrap">
+      <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
         <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
         <SyncMyBestScoreButton piuAuth={piuAuthValue} />
       </div>
