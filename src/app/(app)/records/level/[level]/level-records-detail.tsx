@@ -7,16 +7,17 @@ import ArrayUtil from "@/utils/array.util";
 import NumberUtil from "@/utils/number.util";
 import Decimal from "decimal.js";
 import { useState } from "react";
+import { LevelRecord } from "./get-records";
 
 type Props = {
-  songAndRecords: any[];
+  levelRecords: LevelRecord[];
 };
 
-export default function LevelRecordsDetail({ songAndRecords }: Props) {
+export default function LevelRecordsDetail({ levelRecords }: Props) {
   const [visibleClear, setVisibleClear] = useState<boolean>(false);
 
-  const records = songAndRecords
-    .map((it) => it.chart?.record)
+  const records = levelRecords
+    .map((it) => it.record)
     .filter(ArrayUtil.notEmpty);
 
   const clearCounts = records.filter((it) => it.is_break_off === 0).length;
@@ -30,13 +31,17 @@ export default function LevelRecordsDetail({ songAndRecords }: Props) {
           }, new Decimal(0))
           .div(records.length);
 
-  const arcadeRecrods = songAndRecords.filter((it) => it.songType === "ARCADE");
-  const remixRecords = songAndRecords.filter((it) => it.songType === "REMIX");
-  const fullRecords = songAndRecords.filter(
-    (it) => it.songType === "FULL_SONG"
+  const arcadeRecrods = levelRecords.filter(
+    (it) => it.song.songType === "ARCADE"
   );
-  const shortRecords = songAndRecords.filter(
-    (it) => it.songType === "SHORT_CUT"
+  const remixRecords = levelRecords.filter(
+    (it) => it.song.songType === "REMIX"
+  );
+  const fullRecords = levelRecords.filter(
+    (it) => it.song.songType === "FULL_SONG"
+  );
+  const shortRecords = levelRecords.filter(
+    (it) => it.song.songType === "SHORT_CUT"
   );
 
   return (
@@ -48,7 +53,7 @@ export default function LevelRecordsDetail({ songAndRecords }: Props) {
 
         <Card title="클리어 수">
           <p className="text-center">
-            {clearCounts} / {songAndRecords.length}
+            {clearCounts} / {levelRecords.length}
           </p>
         </Card>
       </div>
@@ -62,7 +67,7 @@ export default function LevelRecordsDetail({ songAndRecords }: Props) {
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">아케이드</h3>
           <RecordList
-            songAndRecords={arcadeRecrods}
+            levelRecords={arcadeRecrods}
             visibleClear={visibleClear}
           />
         </>
@@ -71,30 +76,21 @@ export default function LevelRecordsDetail({ songAndRecords }: Props) {
       {remixRecords.length > 0 && (
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">리믹스</h3>
-          <RecordList
-            songAndRecords={remixRecords}
-            visibleClear={visibleClear}
-          />
+          <RecordList levelRecords={remixRecords} visibleClear={visibleClear} />
         </>
       )}
 
-      {remixRecords.length > 0 && (
+      {fullRecords.length > 0 && (
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">풀송</h3>
-          <RecordList
-            songAndRecords={fullRecords}
-            visibleClear={visibleClear}
-          />
+          <RecordList levelRecords={fullRecords} visibleClear={visibleClear} />
         </>
       )}
 
-      {remixRecords.length > 0 && (
+      {shortRecords.length > 0 && (
         <>
           <h3 className="font-semibold text-2xl mt-10 mb-3">숏컷</h3>
-          <RecordList
-            songAndRecords={shortRecords}
-            visibleClear={visibleClear}
-          />
+          <RecordList levelRecords={shortRecords} visibleClear={visibleClear} />
         </>
       )}
     </div>

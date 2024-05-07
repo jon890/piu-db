@@ -8,23 +8,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
-  song: Song & { chart: (Chart & { record?: MaxRecord }) | null };
+  song: Song;
+  chart: Chart | null | undefined;
+  record: MaxRecord | null | undefined;
   visibleClear?: boolean;
 };
 
-export default function RecordBox({ song, visibleClear }: Props) {
-  const isBreakOn =
-    song?.chart?.record && !Boolean(song.chart?.record?.is_break_off);
-
+export default function RecordBox({
+  song,
+  chart,
+  record,
+  visibleClear,
+}: Props) {
   return (
     <Link
-      href={song.chart?.record ? `/records/${song.chart?.record?.seq}` : "#"}
+      href={record ? `/records/${record?.seq}` : "#"}
       className={classnames("card bg-base-200 size-16 sm:size-20 md:size-24", {
         "image-full": Boolean(song.imageUrl),
       })}
     >
       {/* Clear Line */}
-      {visibleClear && isBreakOn && (
+      {visibleClear && record && !record.is_break_off && (
         <hr className="w-1 h-full bg-red-500 rotate-45 absolute right-1/2 z-10" />
       )}
 
@@ -44,28 +48,28 @@ export default function RecordBox({ song, visibleClear }: Props) {
         <span className="text-center text-[8px] sm:text-xs max-w-full text-ellipsis overflow-hidden whitespace-nowrap">
           {song.name}
         </span>
-        {song.chart && song.chart.record && (
+        {chart && record && (
           <div className="w-full text-center text-[10px] sm:text-base flex flex-col justify-center items-center gap-1">
             <div className="flex flex-rowjustify-center items-center gap-1">
-              {song.chart.record.score && (
+              {record.score && (
                 <span className="text-[10px] sm:text-xs">
-                  {NumberUtil.formatScore(song.chart.record.score)}
+                  {NumberUtil.formatScore(record.score)}
                 </span>
               )}
 
-              {song.chart.record && (
+              {record && (
                 <RecordGrade
                   className="text-[8px] sm:text-xs"
-                  grade={song.chart.record.grade}
-                  isBreakOff={Boolean(song.chart.record.is_break_off)}
+                  grade={record.grade}
+                  isBreakOff={Boolean(record.is_break_off)}
                 />
               )}
             </div>
 
-            {song.chart.record?.plate && (
+            {record?.plate && (
               <RecordPlate
                 className="text-[10px] sm:text-xs max-w-full px-1 text-ellipsis overflow-hidden whitespace-nowrap"
-                plate={song.chart.record.plate}
+                plate={record.plate}
               />
             )}
           </div>

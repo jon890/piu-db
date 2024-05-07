@@ -7,7 +7,7 @@ import { ChartType } from "@prisma/client";
 import { notFound } from "next/navigation";
 import SyncMyBestScoreButton from "../../(sync-my-best-score)/sync-my-best-score.button";
 import SyncRecentlyPlayedButton from "../../(sync-recently-played)/sync-recently-played.button";
-import { getRecordsBy } from "./get-records";
+import { getLevelRecordsBy } from "./get-records";
 import LevelRecordsDetail from "./level-records-detail";
 
 type Props = {
@@ -29,23 +29,28 @@ export default async function LevelRecordPage({
     notFound();
   }
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
-  const songAndRecords = CHART_TYPE
-    ? await getRecordsBy(userSeq, targetLevel, CHART_TYPE)
+  const levelRecords = CHART_TYPE
+    ? await getLevelRecordsBy(userSeq, targetLevel, CHART_TYPE)
     : [];
 
   return (
     <ContentBox title="내 기록">
-      <div className="flex-row flex gap-3 flex-wrap">
+      <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
         <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
         <SyncMyBestScoreButton piuAuth={piuAuthValue} />
       </div>
+
       <SelectLevel targetLevel={targetLevel} />
       <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
       {CHART_TYPE ? (
-        <LevelRecordsDetail songAndRecords={songAndRecords} />
+        levelRecords.length > 0 ? (
+          <LevelRecordsDetail levelRecords={levelRecords} />
+        ) : (
+          <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>
+        )
       ) : (
-        <p>싱글 더블을 선택해주세요</p>
+        <p className="text-gray-500">싱글 더블을 선택해주세요</p>
       )}
     </ContentBox>
   );
