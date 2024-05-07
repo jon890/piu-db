@@ -431,7 +431,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 23
-    name: "태동",
+    name: "태동 2",
     artist: "반야",
     bpm: "129",
     version: "FIRST_ZERO",
@@ -443,7 +443,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
     ],
     imageUrl:
-      "https://www.piugame.com/data/song_img/1bfeb75e6fe7f37ff2dd027d2866266c.png",
+      "https://www.piugame.com/data/song_img/61a3ffd4fb72c0effb9aad560bf19160.png",
   },
 
   {
@@ -1341,6 +1341,8 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1bfeb75e6fe7f37ff2dd027d2866266c.png",
   },
 
   {

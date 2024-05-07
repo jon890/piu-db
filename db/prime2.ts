@@ -744,7 +744,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 37
-    name: "사라반드",
+    name: "사라반드 - SHORT CUT -",
     artist: "맥스",
     bpm: "157",
     version: "PRIME2",
@@ -755,6 +755,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b2703faf114124f86333035b06611362.png",
   },
 
   {

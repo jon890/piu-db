@@ -263,7 +263,7 @@ export const NX_NXA_SONGS: SongData[] = [
 
   {
     // 15
-    name: "젓가락 변주곡",
+    name: "젓가락 변주곡 - FULL SONG -",
     artist: "이 얍",
     bpm: "128",
     version: "NX_NXA",
@@ -272,6 +272,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4fde0e62adcc20924660ffe853afc178.png",
   },
 
   {
