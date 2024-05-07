@@ -1,7 +1,7 @@
 import ContentBox from "@/components/layout/content-box";
 import AssignmentInfoForm from "@/components/room/assignment-info.form";
 import AssignmentRecordTable from "@/components/room/assignment-record-table";
-import SongCardSC from "@/components/song-card.server";
+import SongCard from "@/components/song-card";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
 import RoomDB from "@/server/prisma/room.db";
@@ -50,7 +50,7 @@ export default async function AssignmentDetailPage({
       </div>
 
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
-        <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
+        <SongCard song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
 
       <AssignmentInfoForm assignment={assignment} disabled />

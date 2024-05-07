@@ -1,7 +1,7 @@
 "use client";
 
-import SearchParamUtil from "@/utils/search-param.util";
 import { SongWithCharts } from "@/server/prisma/chart.db";
+import SearchParamUtil from "@/utils/search-param.util";
 import {
   $Enums,
   type Chart,
@@ -12,9 +12,9 @@ import {
 } from "@prisma/client";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import InputWithLabel from "./common/input-with-label";
 import DropDown from "./common/dropdown";
-import SongCardCC from "./song-card.client";
+import InputWithLabel from "./common/input-with-label";
+import SongCard from "./song-card";
 
 export type DropDown = "piuVersion" | "songType" | "chartType";
 
@@ -96,7 +96,7 @@ export default function SelectSong({
 
   return (
     <div className="flex gap-5 flex-col px-3 pb-10 w-full">
-      <div className="flex flex-row gap-3 w-full justify-start items-start">
+      <div className="flex flex-row gap-3 w-full justify-start items-start flex-wrap">
         {dropDowns.map((dropdown) => {
           switch (dropdown) {
             case "piuVersion":
@@ -155,9 +155,9 @@ export default function SelectSong({
         </button>
       </div>
 
-      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
         {visibleSongs.map((song) => (
-          <SongCardCC
+          <SongCard
             song={song}
             charts={song.charts ?? []}
             key={song.seq}

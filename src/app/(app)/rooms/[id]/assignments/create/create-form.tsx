@@ -3,7 +3,7 @@
 import useToast from "@/client/hooks/use-toast";
 import FormButton from "@/components/FormButton";
 import InputWithLabel from "@/components/common/input-with-label";
-import SongCardCC from "@/components/song-card.client";
+import SongCard from "@/components/song-card";
 import { SongWithCharts } from "@/server/prisma/chart.db";
 import { Chart } from "@prisma/client";
 import { useEffect } from "react";
@@ -40,7 +40,7 @@ export default function AssignmentCreateForm({
             선택한 곡을 확인하고 다음 내용을 입력해주세요
           </h2>
 
-          <SongCardCC song={song} charts={[chart]} />
+          <SongCard song={song} charts={[chart]} />
 
           <InputWithLabel
             topLeft="시작일"

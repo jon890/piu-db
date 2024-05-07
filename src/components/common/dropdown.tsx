@@ -20,7 +20,7 @@ export default function DropDown<T extends string>({
   const [selected, setSelected] = useState<T | null>(initialValue ?? null);
 
   return (
-    <div className="dropdown">
+    <div className="dropdown z-30">
       <div tabIndex={0} role="button" className="btn">
         {selected ?? btnText ?? "선택하기"}
       </div>

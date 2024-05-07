@@ -9,13 +9,13 @@ export default async function AllSongs() {
       <p>노래를 선택하면 상세 기록 페이지로 이동합니다</p>
 
       <Suspense fallback={<p>노래를 불러오고 있습니다...</p>}>
-        <SelectSongHelper />
+        <SelectSongWrapper />
       </Suspense>
     </ContentBox>
   );
 }
 
-async function SelectSongHelper() {
+async function SelectSongWrapper() {
   const allSongs = await ChartDB.findAllGroupBySong();
 
   return (

@@ -1,6 +1,6 @@
 import ContentBox from "@/components/layout/content-box";
 import AssignmentInfoForm from "@/components/room/assignment-info.form";
-import SongCardSC from "@/components/song-card.server";
+import SongCard from "@/components/song-card";
 import AssignmentRecordDB from "@/server/prisma/assignment-record.db";
 import AssignmentDB from "@/server/prisma/assignment.db";
 import ChartDB from "@/server/prisma/chart.db";
@@ -38,7 +38,7 @@ export default async function AssignmentUpdatePage({
   return (
     <ContentBox title="숙제 변경">
       {chartAndSongs && chartAndSongs?.chart && chartAndSongs?.song && (
-        <SongCardSC song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
+        <SongCard song={chartAndSongs.song} charts={[chartAndSongs.chart]} />
       )}
 
       {recordsCount > 0 && (
