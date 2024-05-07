@@ -49,7 +49,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 3
-    name: "체이스 미 - FULL SONG",
+    name: "체이스 미 - FULL SONG -",
     artist: "드림캐쳐",
     bpm: "200",
     version: "PRIME2",
@@ -58,6 +58,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "SINGLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9432dea334959d9f9976b6462cf26154.png",
   },
 
   {
@@ -141,6 +143,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bfaea6d897aedd93f584c1f28bb1bae7.png",
   },
 
   {
@@ -167,7 +171,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 9
-    name: "갓 모드 feat. skizzo",
+    name: "갓 모드 feat. Skizzo",
     artist: "나토",
     bpm: "152",
     version: "PRIME2",
@@ -182,6 +186,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b38900d06ba8d8e1d203691c9ada94d8.png",
   },
 
   {
@@ -262,6 +268,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c4b69bc29223fecd215299e13986bb08.png",
   },
 
   {
@@ -279,6 +287,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 9, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c062a6493e93e5bce2f3796714729d06.png",
   },
 
   {
@@ -298,6 +308,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e4403403d9db30ee30fec0b592d4c9c4.png",
   },
 
   {
@@ -343,6 +355,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/29b6ff6beda3f488e7f64c6f9d5d3ecd.png",
   },
 
   {
@@ -361,6 +375,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/74f9476994a46831b01fe5f541a09ae3.png",
   },
 
   {
@@ -378,6 +394,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 10, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f3003ac39eb07597a42edd57dff46462.png",
   },
 
   {
@@ -417,6 +435,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e8c609ca4151ca2df88a1d78a762db84.png",
   },
 
   {
@@ -436,6 +456,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8973c7077606b39a0caf896a5dd0c935.png",
   },
 
   {
@@ -454,6 +476,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/72dcebcfcb24d784c930b09def038479.png",
   },
 
   {
@@ -471,6 +495,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 10, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/326e0c8257a962e63e604a93e5f69d92.png",
   },
 
   {
@@ -535,6 +561,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/6ebee454d88c863cacf04f8f7dd8b8c3.png",
   },
 
   {
@@ -576,6 +604,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/667bc06cf24139a395f32e72ae65e7f4.png",
   },
 
   {
@@ -597,6 +627,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4fd85c9ac5726a4dda88c2a75d1f548f.png",
   },
 
   {
@@ -637,6 +669,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8e389d6f50ae3129258220d15700e824.png",
   },
 
   {
@@ -655,6 +689,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bbe9961fab6c7bbe7a10f7fc69f8f90f.png",
   },
 
   {
@@ -669,6 +705,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 22, chartType: "SINGLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1b136c94ccb3f8f5ea24009313aa71d1.png",
   },
 
   {
@@ -682,6 +720,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 25, chartType: "SINGLE" },
       { level: 27, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8228790cbf25eafb814aa724adabd93e.png",
   },
 
   {
@@ -698,6 +738,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7a7a1b221de07d92d694b1ccd2bb69e0.png",
   },
 
   {
@@ -717,7 +759,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 38
-    name: "프라임2 오프닝 - SHORT CUT",
+    name: "프라임2 오프닝 - SHORT CUT -",
     artist: "맥스",
     bpm: "145",
     version: "PRIME2",
@@ -728,11 +770,13 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/04e66d9549a79c971dcb7a602b517be5.png",
   },
 
   {
     // 39
-    name: "슈브 니구라스 - SHORT CUT",
+    name: "슈브 니구라스 - SHORT CUT -",
     artist: "나토",
     bpm: "220",
     version: "PRIME2",
@@ -742,11 +786,13 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c42000e6bdad6402546c6c57cad19234.png",
   },
 
   {
     // 40
-    name: "가장 신자 - SHORT CUT",
+    name: "가장신자 - SHORT CUT -",
     artist: "맥스",
     bpm: "170",
     version: "PRIME2",
@@ -755,6 +801,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/276d2d193609bd81ac48f917ce3b3668.png",
   },
 
   {
@@ -772,6 +820,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7ce9382a8674664d7ef61ffdbbbeb409.png",
   },
 
   {
@@ -808,6 +858,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 7, chartType: "DOUBLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f0db8344e5cfa41269abdfb892d1d2b6.png",
   },
 
   {
@@ -826,6 +878,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fd91c66c9280ccb47d5052b97726cad5.png",
   },
 
   {
@@ -848,7 +902,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 46
-    name: "허쉬 - FULL SONG",
+    name: "허쉬 - FULL SONG -",
     artist: "야시 프레스먼 & 나딘 러스트레",
     bpm: "81.5",
     version: "PRIME2",
@@ -857,6 +911,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 15, chartType: "SINGLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/94ccaa2df43d331c3f61a3fa96fb74e9.png",
   },
 
   {
@@ -918,6 +974,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/36500a1c6ebb2627e3afcb03a5dcb18b.png",
   },
 
   {
@@ -938,6 +996,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/05712b8a86cc22bffbd747851d5de1e0.png",
   },
 
   {
@@ -956,6 +1016,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1857f9983830d0d50576693087c9dc23.png",
   },
 
   {
@@ -975,6 +1037,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e5e538252c8e9c9ad3e77b04fde32231.png",
   },
 
   {
@@ -1016,6 +1080,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b0f85d845e869d6613f2c08147cea3e6.png",
   },
 
   {
@@ -1033,6 +1099,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8213db997c49bbfd1977d1115b6441b3.png",
   },
 
   {
@@ -1052,11 +1120,13 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/fe8814659b155fa6a9d534fceee56b2c.png",
   },
 
   {
     // 57
-    name: "비주얼 드림2 (인 픽션)",
+    name: "비주얼 드림 2 (인 픽션)",
     artist: "아라곤",
     bpm: "175",
     version: "PRIME2",
@@ -1069,6 +1139,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 11, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3a3f8b6bf33658f600b689e91767adec.png",
   },
 
   {
@@ -1096,7 +1168,7 @@ export const PRIME2_SONGS: SongData[] = [
 
   {
     // 59
-    name: "슈퍼스타일린",
+    name: "슈퍼 스타일린",
     artist: "와락",
     bpm: "146",
     version: "PRIME2",
@@ -1111,6 +1183,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d73903b1c8e826d1f60d67d622affaf9.png",
   },
 
   {
@@ -1129,6 +1203,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1792bd555efbbbfcb14088f2208d0428.png",
   },
 
   {
@@ -1172,13 +1248,15 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0dc58227912960f525b0de185ab43eb1.png",
   },
 
   {
     // 63
     name: "라 그랑 블루",
     artist: "KIEN",
-    bpm: "175",
+    bpm: "165",
     version: "PRIME2",
     songType: "ARCADE",
     charts: [
@@ -1231,6 +1309,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4b41820a1ce03c6b9ef1c6942772f649.png",
   },
 
   {
@@ -1250,6 +1330,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2ba16d33a1fcdb8f809904ef5a921f3d.png",
   },
 
   {
@@ -1290,6 +1372,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/13ca5d7ee2680c131bfd00f0a4700597.png",
   },
 
   {
@@ -1310,6 +1394,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e4b9307656a5ecd491868c2d9eef1a42.png",
   },
 
   {
@@ -1327,6 +1413,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 10, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/7e9eada7dba14841d75e27806eeb1499.png",
   },
 
   {
@@ -1343,6 +1431,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/87fe929fd50ddc14d42b103c72479b60.png",
   },
 
   {
@@ -1360,6 +1450,8 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cb58368cd334b3de83b6a47fbdca72d6.png",
   },
 
   {
@@ -1374,5 +1466,7 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/797086fdfcbd0fa9bbbfe387f119f3dd.png",
   },
 ];
