@@ -1,4 +1,4 @@
-export type Type = "SINGLE" | "DOUBLE" | "Unknown";
+export type RecordType = "SINGLE" | "DOUBLE" | "Unknown";
 
 export type Grade =
   | "SSS_PLUS"
@@ -29,7 +29,7 @@ export type Plate =
   | "PERFECT_GAME";
 
 export type RecentlyPlayed = {
-  type: Type;
+  type: RecordType;
   level: string;
   grade: Grade;
   plate?: Plate;

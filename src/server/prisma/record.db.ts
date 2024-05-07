@@ -1,4 +1,5 @@
 import prisma from "@/server/prisma/client";
+import { MyBestScore } from "@/types/my-best-score";
 import type { Grade, Plate, RecentlyPlayed } from "@/types/recently-played";
 import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
@@ -312,8 +313,68 @@ async function getMaxRecordsBy(userSeq: number, chartSeqs: number[]) {
   `;
 }
 
+async function saveBestScores(
+  userSeq: number,
+  profileSeq: number,
+  records: MyBestScore[]
+) {
+  for (let i = 0; i < records.length; i++) {
+    const record = records[i];
+    const song = await SongDB.findBySongName(record.songName);
+    if (!song) {
+      console.warn("Target songs not founded", record.songName);
+      continue;
+    }
+    if (record.type === "Unknown") {
+      console.warn("Target song type is not single and double", record.type);
+      continue;
+    }
+
+    const chart = await ChartDB.findChart(
+      song.seq,
+      Number(record.level),
+      record.type
+    );
+    if (!chart) {
+      console.warn(
+        "Target chart not founded",
+        " name",
+        record.songName,
+        ", level",
+        record.level,
+        ", type",
+        record.type
+      );
+      continue;
+    }
+
+    const bestScore = await prisma.record.findFirst({
+      where: {
+        chartSeq: chart.seq,
+        piuProfileSeq: profileSeq,
+        type: "BEST_SCORE",
+      },
+    });
+
+    if (bestScore == null || bestScore?.score > record.score) {
+      await prisma.record.create({
+        data: {
+          grade: record.grade,
+          plate: record.plate,
+          score: record.score,
+          chartSeq: chart.seq,
+          userSeq: userSeq,
+          piuProfileSeq: profileSeq,
+          type: "BEST_SCORE",
+        },
+      });
+    }
+  }
+}
+
 const RecordDB = {
   saveRecentRecord,
+  saveBestScores,
   getRecordsBySongSeq,
   getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
