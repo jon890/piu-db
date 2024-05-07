@@ -1,13 +1,13 @@
 "use client";
 
-import classnames from "@/utils/classnames";
 import { PATCHED_VERSION } from "@/constants/const";
+import classnames from "@/utils/classnames";
 import type { Chart, ChartType, Song } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBall from "./level-ball";
 import SongBadges from "./song-badges";
-import Image from "next/image";
 
 type Props = {
   song: Song;
@@ -21,7 +21,7 @@ type Props = {
   level?: number;
 };
 
-export default function SongCardCC({
+export default function SongCard({
   song,
   charts,
   activeChartSeq,
@@ -64,15 +64,8 @@ export default function SongCardCC({
       })}
     >
       {song.imageUrl && (
-        <figure>
-          <Image
-            src={song.imageUrl}
-            alt={song.name}
-            width={400}
-            height={400}
-            priority={false}
-            className="bg-clip-text"
-          />
+        <figure className="relative">
+          <Image src={song.imageUrl} alt={song.name} fill priority={false} />
         </figure>
       )}
 

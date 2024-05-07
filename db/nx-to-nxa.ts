@@ -20,6 +20,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/93555d69ef2703fcc846dc9f8608a930.png",
   },
 
   {
@@ -38,6 +40,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/40975307786409a32cda392fe62ee7c2.png",
   },
 
   {
@@ -53,6 +57,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 16, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/eb6e4e49ac2ad4c5609b47aa65a3f64b.png",
   },
 
   {
@@ -73,6 +79,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b5beafaf692bb3cd6049f491b0a65038.png",
   },
 
   {
@@ -92,6 +100,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2c17de6390412604fb6f68eafc8c4223.png",
   },
 
   {
@@ -110,6 +120,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 14, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a874f7b05f1a86fa3b80ec45f304c50c.png",
   },
 
   {
@@ -127,6 +139,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f0e7c3a3ceaf6e2538428bc4fa901873.png",
   },
 
   {
@@ -144,6 +158,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 15, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/054ba99dca61cd9cec83d338ed7fad12.png",
   },
 
   {
@@ -162,6 +178,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5b0e6ecc1d2e50f73a354bea2626c78d.png",
   },
 
   {
@@ -176,6 +194,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 6, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/bf2d4dc2448e8bc06eb550199cb541df.png",
   },
 
   {
@@ -189,6 +209,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d34e765f93961268523fd723fe1ffbfb.png",
   },
 
   {
@@ -204,6 +226,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2f1b7f10374f115180df7d41f2fe0971.png",
   },
 
   {
@@ -218,6 +242,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/187acdf5913c909eb65015ed803afe54.png",
   },
 
   {
@@ -231,11 +257,13 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 15, chartType: "SINGLE" },
       { level: 14, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/c2b8fb2000456423c2620ed41e465577.png",
   },
 
   {
     // 15
-    name: "젓가락 변주곡",
+    name: "젓가락 변주곡 - FULL SONG -",
     artist: "이 얍",
     bpm: "128",
     version: "NX_NXA",
@@ -244,6 +272,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4fde0e62adcc20924660ffe853afc178.png",
   },
 
   {
@@ -261,6 +291,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "SINGLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f81410c529797cfed5af41338134cf4c.png",
   },
 
   {
@@ -275,6 +307,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/62480f642aaa40c2434f512c8b1d1134.png",
   },
 
   {
@@ -291,6 +325,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/538da2163ffb699d9e08e666e174fc46.png",
   },
 
   {
@@ -310,6 +346,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/aa22337f4318ef0a3628ccb4afae2fb5.png",
   },
 
   {
@@ -324,6 +362,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 14, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f595d48c5829769fefbfab7fa17e7745.png",
   },
 
   {
@@ -340,6 +380,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 8, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/96998dae2671abc97f62fb04b1d5089a.png",
   },
 
   {
@@ -361,6 +403,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 21, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e1cf59e8f3867e354df5e8271bd92e63.png",
   },
 
   {
@@ -380,6 +424,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2a4110d8bfc915ac81c209903d76e386.png",
   },
 
   {
@@ -396,6 +442,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2a179f40ea1adc1905076f89fa2abc01.png",
   },
 
   {
@@ -416,6 +464,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/3eda55e20c4c47e4f52bbaa001de7dcd.png",
   },
 
   {
@@ -430,6 +480,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/51a6f31329f0ed501b1c9545d1885a55.png",
   },
 
   {
@@ -443,6 +495,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 22, chartType: "SINGLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9a1bdf2d0037182f23e312e469221324.png",
   },
 
   {
@@ -458,6 +512,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 14, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/98b5751282d09e0bd9763b48df1e1d74.png",
   },
 
   {
@@ -479,6 +535,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9e6a42eeefc9181183b71a982b0d6a0c.png",
   },
 
   {
@@ -495,6 +553,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/2ca0c1cad9e5429ecfa1f87e35b56cf4.png",
   },
 
   {
@@ -516,11 +576,13 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 26, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/29515cbcd2bb2db30c23ed5228cdf93d.png",
   },
 
   {
     // 32
-    name: "사랑가 2006",
+    name: "사랑가 2006 ",
     artist: "반야 프로덕션",
     bpm: "96",
     version: "NX_NXA",
@@ -532,6 +594,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 15, chartType: "SINGLE" },
       { level: 14, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0fce84fcd8fbc9d925e39f896f490e91.png",
   },
 
   {
@@ -547,6 +611,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "SINGLE" },
       { level: 20, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9914e31ca9e33cff5f96c594ab936658.png",
   },
 
   {
@@ -565,6 +631,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/a99628699414126f01156a2eff9c4509.png",
   },
 
   {
@@ -584,11 +652,13 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/55f72c63ae5bb6a6573b1b3ae54bc72c.png",
   },
 
   {
     // 36
-    name: "미운오리새끼",
+    name: "미운 오리새끼",
     artist: "반야 프로덕션",
     bpm: "92",
     version: "NX_NXA",
@@ -601,6 +671,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/12bbe66e48139cae01a2057907f88a29.png",
   },
 
   {
@@ -621,6 +693,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 22, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f68501156acb18b48e57c879fd271756.png",
   },
 
   {
@@ -640,6 +714,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 23, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/586259955404d31e77555357b9d421ee.png",
   },
 
   {
@@ -655,6 +731,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 17, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/559e26e1da569c22852e62b4d3f0d2e2.png",
   },
 
   {
@@ -670,6 +748,8 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 26, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/d47a7126d4fdb1969c576f377b8fb480.png",
   },
 
   {
@@ -685,11 +765,13 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 16, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/cf5ab474b33817e5f97f69016cc5beb9.png",
   },
 
   {
     // 42
-    name: "러브 이즈 어 데인저 존 2 - FULL SONG",
+    name: "러브 이즈 어 데인저 존 2 - FULL SONG -",
     artist: "이 얍",
     bpm: "100-162",
     version: "NX_NXA",
@@ -698,11 +780,13 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 20, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9634a478f1b0effd5fb7603f765571d1.png",
   },
 
   {
     // 43
-    name: "비트 오브 더 워 2 - FULL SONG",
+    name: "비트 오브 더 워 2 - FULL SONG -",
     artist: "이 얍",
     bpm: "120-190",
     version: "NX_NXA",
@@ -711,5 +795,7 @@ export const NX_NXA_SONGS: SongData[] = [
       { level: 21, chartType: "SINGLE" },
       { level: 21, chartType: "DOUBLE" },
     ],
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ea7112bef656fdb613a2d8c62be1fb13.png",
   },
 ];

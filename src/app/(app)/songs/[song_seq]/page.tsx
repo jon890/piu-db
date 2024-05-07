@@ -1,6 +1,6 @@
 import ContentBox from "@/components/layout/content-box";
 import RecordTable from "@/components/record/record-table";
-import SongCardCC from "@/components/song-card.client";
+import SongCard from "@/components/song-card";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import SongDB from "@/server/prisma/song.db";
@@ -41,7 +41,7 @@ export default async function SongDetailPage({
 
   return (
     <ContentBox title="노래 상세">
-      <SongCardCC
+      <SongCard
         song={song}
         charts={charts}
         activeChartSeq={searchChartSeq}

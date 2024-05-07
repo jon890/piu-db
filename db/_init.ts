@@ -46,6 +46,7 @@ async function initSongAndCharts(songs: SongData[]) {
         charts: {
           create: [...song.charts],
         },
+        imageUrl: song.imageUrl,
       },
       update: {
         name: song.name,
@@ -67,8 +68,8 @@ async function main() {
   // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
   // await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS);
-  // await initSongAndCharts(XX_SONGS);
-  await initSongAndCharts(PHOENIX_SONGS);
+  await initSongAndCharts(XX_SONGS);
+  // await initSongAndCharts(PHOENIX_SONGS);
 }
 
 main();
