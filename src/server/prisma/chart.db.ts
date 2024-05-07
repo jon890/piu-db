@@ -57,33 +57,16 @@ async function findAllGroupBySong(): Promise<SongWithCharts[]> {
 }
 
 async function findChart(songSeq: number, level: number, chartType: ChartType) {
-  if (isCached()) {
-    const charts = await findAll();
-    return charts.find(
-      (c) =>
-        c.chartType === chartType && c.level === level && c.songSeq === songSeq
-    );
-  } else {
-    const chart = await prisma.chart.findUnique({
-      where: {
-        songSeq_chartType_level: {
-          songSeq,
-          level,
-          chartType,
-        },
-      },
-    });
-    return chart;
-  }
+  const charts = await findAll();
+  return charts.find(
+    (c) =>
+      c.chartType === chartType && c.level === level && c.songSeq === songSeq
+  );
 }
 
 async function findCharts(songSeq: number) {
-  if (isCached()) {
-    const charts = await findAll();
-    return charts.filter((c) => c.songSeq === songSeq);
-  }
-
-  return null;
+  const charts = await findAll();
+  return charts.filter((c) => c.songSeq === songSeq);
 }
 
 async function findBySeq(seq: number) {
