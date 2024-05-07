@@ -4,13 +4,14 @@ import SelectChartType from "@/components/records/select-chart-type";
 import SelectLevel from "@/components/records/selet-level";
 import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
+import ArrayUtil from "@/utils/array.util";
+import NumberUtil from "@/utils/number.util";
 import { ChartType } from "@prisma/client";
+import Decimal from "decimal.js";
 import { notFound } from "next/navigation";
 import SyncRecordButton from "../../(sync-record)/sync-record.button";
 import { getRecordsBy } from "./get-records";
-import ArrayUtil from "@/utils/array.util";
-import Decimal from "decimal.js";
-import NumberUtil from "@/utils/number.util";
+import Card from "./card";
 
 type Props = {
   params: {
@@ -60,23 +61,15 @@ export default async function LevelRecordPage({
       {CHART_TYPE ? (
         <>
           <div className="flex flex-row justify-center items-center gap-3 flex-wrap">
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">점수 평균</h2>
-                <p className="text-center">
-                  {NumberUtil.formatScore(avgScores)}
-                </p>
-              </div>
-            </div>
+            <Card title="평균 점수">
+              <p className="text-center">{NumberUtil.formatScore(avgScores)}</p>
+            </Card>
 
-            <div className="card bg-base-100 shadow-xl">
-              <div className="card-body">
-                <h2 className="card-title">클리어</h2>
-                <p className="text-center">
-                  {clearCounts} / {songAndRecords.length}
-                </p>
-              </div>
-            </div>
+            <Card title="클리어 수">
+              <p className="text-center">
+                {clearCounts} / {songAndRecords.length}
+              </p>
+            </Card>
           </div>
 
           <div className="flex flex-row justify-center items-center gap-1 flex-wrap">

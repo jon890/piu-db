@@ -39,8 +39,8 @@ export default function SyncRecordButton({ piuAuth }: Props) {
       aria-disabled={loading}
     >
       {loading
-        ? "페이지를 이동하지마세요... (최대 10초 정도 소요됩니다)"
-        : "기록 동기화"}
+        ? "페이지를 이동하지마세요... (최대 15초 정도 소요됩니다)"
+        : "최근 기록 불러오기 (최대 50개)"}
     </button>
   ) : (
     <button className="btn btn-disabled">
