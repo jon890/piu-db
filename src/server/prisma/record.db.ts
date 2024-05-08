@@ -5,7 +5,7 @@ import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
-import { raw } from "@prisma/client/runtime/library";
+import ArrayUtil from "@/utils/array.util";
 
 const RECORD_PAGE_UNIT = 50;
 
@@ -321,61 +321,67 @@ async function getMaxRecordsBy(
 
 async function saveBestScores(
   userSeq: number,
-  profileSeq: number,
+  piuProfileSeq: number,
   records: MyBestScore[]
 ) {
-  for (let i = 0; i < records.length; i++) {
-    const record = records[i];
-    const song = await SongDB.findBySongName(record.songName);
-    if (!song) {
-      console.warn("Target songs not founded", record.songName);
-      continue;
-    }
-    if (record.type === "Unknown") {
-      console.warn("Target song type is not single and double", record.type);
-      continue;
-    }
-
-    const chart = await ChartDB.findChart(
-      song.seq,
-      Number(record.level),
-      record.type
-    );
-    if (!chart) {
-      console.warn(
-        "Target chart not founded",
-        " name",
-        record.songName,
-        ", level",
-        record.level,
-        ", type",
-        record.type
-      );
-      continue;
-    }
-
-    const bestScore = await prisma.record.findFirst({
+  await prisma.$transaction(async (tx) => {
+    // 기존 베스트 스코어를 불러온다
+    const prevBestScores = await tx.record.findMany({
       where: {
-        chartSeq: chart.seq,
-        piuProfileSeq: profileSeq,
+        userSeq,
+        piuProfileSeq,
         type: "BEST_SCORE",
       },
     });
+    const prevBestScoreMap = ArrayUtil.associatedBy(
+      prevBestScores,
+      (record) => record.chartSeq
+    );
 
-    if (bestScore == null || bestScore?.score > record.score) {
-      await prisma.record.create({
-        data: {
-          grade: record.grade,
-          plate: record.plate,
-          score: record.score,
-          chartSeq: chart.seq,
-          userSeq: userSeq,
-          piuProfileSeq: profileSeq,
-          type: "BEST_SCORE",
-        },
+    const allCharts = await ChartDB.findAllGroupBySong();
+    const songMap = ArrayUtil.associatedBy(allCharts, (item) => item.name);
+
+    const chartAndRecord = records.map((record) => {
+      const songAndCharts = songMap.get(record.songName);
+      if (!songAndCharts) return null;
+
+      const chart = songAndCharts.charts?.find(
+        (chart) =>
+          chart.level === Number(record.level) &&
+          chart.chartType === record.type
+      );
+      if (!chart) return null;
+      return { record, chart };
+    });
+
+    // 업데이트 된 스코어를 찾는다
+    const updatedRecord = chartAndRecord
+      .filter(ArrayUtil.notEmpty)
+      .filter(({ record, chart }) => {
+        if (prevBestScoreMap.has(chart.seq)) {
+          const prev = prevBestScoreMap.get(chart.seq)!!;
+          if (prev.score > record.score) {
+            return true;
+          }
+        } else {
+          return true;
+        }
+
+        return false;
       });
-    }
-  }
+
+    await tx.record.createMany({
+      data: updatedRecord.map(({ record, chart }) => ({
+        chartSeq: chart.seq,
+        grade: record.grade,
+        userSeq,
+        piuProfileSeq,
+        plate: record.plate,
+        score: record.score,
+        type: "BEST_SCORE",
+      })),
+    });
+  });
 }
 
 const RecordDB = {

@@ -4,11 +4,11 @@ function notEmpty<TValue>(value: TValue | null | undefined): value is TValue {
   return true;
 }
 
-function associatedBy<K>(
-  items: K[],
-  func: (item: K) => number
-): Map<number, K> {
-  const map = new Map<number, K>();
+function associatedBy<KEY extends number | string, ITEM>(
+  items: ITEM[],
+  func: (item: ITEM) => KEY
+): Map<KEY, ITEM> {
+  const map = new Map<KEY, ITEM>();
 
   for (const item of items) {
     const key = func(item);
@@ -18,11 +18,11 @@ function associatedBy<K>(
   return map;
 }
 
-function associatedByList<K>(
-  items: K[],
-  func: (item: K) => number
-): Map<number, K[]> {
-  const map = new Map<number, K[]>();
+function associatedByList<KEY extends number | string, ITEM>(
+  items: ITEM[],
+  func: (item: ITEM) => KEY
+): Map<KEY | string, ITEM[]> {
+  const map = new Map<KEY, ITEM[]>();
 
   for (const item of items) {
     const key = func(item);
