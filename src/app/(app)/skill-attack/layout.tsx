@@ -20,7 +20,7 @@ export default async function SkillAttackLayout({ children }: Props) {
       <SkillAttackTab />
 
       <h2 className="text-center font-medium">
-        * 스킬 어택은 최근 플레이 기록을 통해서만 반영되고 있습니다.
+        * 스킬 어택은 내 기록을 통해서만 반영되고 있습니다.
         <br />
         자주 플레이하고, 점수를 갱신해보세요!
       </h2>
