@@ -9,10 +9,9 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* pnpm-lock.yaml* ./
 COPY prisma ./
-RUN \
-  if [ -f pnpm-lock.yaml ]; then corepack enable && pnpm i --config.platform=linux --config.arch=x64 -config.libc=glibc --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN corepack enable 
+RUN pnpm i --config.platform=linux --config.arch=x64 -config.libc=glibc --frozen-lockfile;
+RUN pnpm i sharp@0.32.6
 
 
 # Rebuild the source code only when needed
