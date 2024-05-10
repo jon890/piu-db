@@ -30,7 +30,7 @@ export default function GetGameId({ onSuccess }: Props) {
         type: "error",
       });
     }
-  }, [state?.message, state?.ok]);
+  }, [state]);
 
   return (
     <form
