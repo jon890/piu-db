@@ -1,6 +1,6 @@
-import { MyBestScore } from "@/types/my-best-score";
-import { PiuAuth } from "@/types/piu-auth";
-import { RecentlyPlayed } from "@/types/recently-played";
+import type { MyBestScore } from "@/types/my-best-score";
+import type { PiuAuth } from "@/types/piu-auth";
+import type { RecentlyPlayed } from "@/types/recently-played";
 import _ky, { HTTPError } from "ky";
 import "server-only";
 
