@@ -1,19 +1,45 @@
-import { MyBestScore } from "@/types/my-best-score";
-import { PiuAuth } from "@/types/piu-auth";
-import { RecentlyPlayed } from "@/types/recently-played";
+import type { GameId } from "@/types/game-id";
+import type { MyBestScore } from "@/types/my-best-score";
+import type { PiuAuth } from "@/types/piu-auth";
+import type { RecentlyPlayed } from "@/types/recently-played";
 import _ky, { HTTPError } from "ky";
 import "server-only";
 
 const ky = _ky.extend({ headers: { "Content-Type": "application/json" } });
 
-function getGameIds(email: string, password: string) {
-  return ky.post(process.env.CRAWLER_URL ?? "", {
-    timeout: false,
-    json: {
-      email,
-      password,
-    },
-  });
+async function _handleKyException(
+  e: unknown
+): Promise<{ ok: false; error: string }> {
+  let errorMsg: string;
+  if (e instanceof HTTPError && e.response.status === 400) {
+    const errorBody = await e.response.json();
+    errorMsg = errorBody;
+  } else {
+    errorMsg = (e as Error).message;
+  }
+
+  return { ok: false, error: errorMsg };
+}
+
+async function getGameIds(
+  email: string,
+  password: string
+): Promise<{ ok: true; data: GameId[] } | { ok: false; error: string }> {
+  try {
+    const resBody = await ky
+      .post(process.env.CRAWLER_URL ?? "", {
+        timeout: false,
+        json: {
+          email,
+          password,
+        },
+      })
+      .json<{ gameIds: GameId[] }>();
+
+    return { ok: true, data: resBody.gameIds };
+  } catch (e) {
+    return _handleKyException(e);
+  }
 }
 
 async function getRecentlyPlayed(
@@ -37,15 +63,7 @@ async function getRecentlyPlayed(
 
     return { ok: true, data: resBody.recentlyPlayed };
   } catch (e) {
-    let errorMsg: string;
-    if (e instanceof HTTPError) {
-      const errorBody = await e.response.json();
-      errorMsg = errorBody;
-    } else {
-      errorMsg = (e as Error).message;
-    }
-
-    return { ok: false, error: errorMsg };
+    return _handleKyException(e);
   }
 }
 
@@ -68,15 +86,7 @@ async function getMyBestScores(
 
     return { ok: true, data: resBody.data };
   } catch (e) {
-    let errorMsg: string;
-    if (e instanceof HTTPError) {
-      const errorBody = await e.response.json();
-      errorMsg = errorBody;
-    } else {
-      errorMsg = (e as Error).message;
-    }
-
-    return { ok: false, error: errorMsg };
+    return _handleKyException(e);
   }
 }
 
