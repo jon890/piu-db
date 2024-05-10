@@ -1,4 +1,38 @@
 import prisma from "@/server/prisma/client";
+import type { GameId } from "@/types/game-id";
+
+async function getByGameId(gameId: string) {
+  return prisma.piuProfile.findUnique({
+    where: {
+      gameId,
+    },
+  });
+}
+
+async function update(gameId: string, profile: GameId) {
+  return prisma.piuProfile.update({
+    where: {
+      gameId,
+    },
+    data: {
+      lastPlayedCenter: profile.latestGameCenter,
+      lastLoginDate:
+        profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
+    },
+  });
+}
+
+async function create(userSeq: number, profile: GameId) {
+  return prisma.piuProfile.create({
+    data: {
+      userSeq,
+      gameId: profile.nickname,
+      lastPlayedCenter: profile.latestGameCenter,
+      lastLoginDate:
+        profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
+    },
+  });
+}
 
 async function getPiuProfiles(userSeq: number) {
   return prisma.piuProfile.findMany({
@@ -52,6 +86,9 @@ async function createIfNotExist(userSeq: number, gameId: string) {
 }
 
 const PiuProfileDB = {
+  create,
+  update,
+  getByGameId,
   getPiuProfiles,
   createIfNotExist,
   setPrimary,

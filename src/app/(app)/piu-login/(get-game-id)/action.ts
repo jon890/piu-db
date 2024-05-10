@@ -1,12 +1,12 @@
 "use server";
 
-import { auth } from "@/auth";
 import crawlerClient from "@/server/client/crawler.client";
 import prisma from "@/server/prisma/client";
+import AuthUtil from "@/server/utils/auth-util";
 import type { GameId } from "@/types/game-id";
 import { HTTPError } from "ky";
 import { GetGameIdSchema } from "./schema";
-import AuthUtil from "@/server/utils/auth-util";
+import PiuProfileDB from "@/server/prisma/piu-profile.db";
 
 type GameIdFormState = {
   ok: boolean;
@@ -32,46 +32,33 @@ export async function getGameIdAction(
 
   const { email, password, userSeq } = validatedFields.data;
 
-  try {
-    const res = await crawlerClient
-      .getGameIds(email, password)
-      .json<{ gameIds: GameId[] }>();
+  const res = await crawlerClient.getGameIds(email, password);
 
-    for (const profile of res.gameIds) {
-      await prisma.piuProfile.upsert({
-        where: {
-          gameId: profile.nickname,
-        },
-        update: {
-          lastPlayedCenter: profile.latestGameCenter,
-          lastLoginDate:
-            profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
-        },
-        create: {
-          userSeq,
-          gameId: profile.nickname,
-          lastPlayedCenter: profile.latestGameCenter,
-          lastLoginDate:
-            profile.latestLoginDate === "-" ? null : profile.latestLoginDate,
-        },
-      });
-    }
-
-    return { ok: true };
-  } catch (e) {
-    let errorMsg: string;
-    if (e instanceof HTTPError) {
-      const errorBody = await e.response.json();
-      // todo crawler 에러 추상화
-      errorMsg = (errorBody as any).error;
-    } else {
-      errorMsg = (e as Error).message;
-    }
-
+  if (!res.ok) {
     return {
       ok: false,
-      error: errorMsg,
-      message: `로그인에 실패했습니다: ${errorMsg}`,
+      error: res.error,
+      message: `로그인에 실패했습니다: ${res.error}`,
     };
   }
+
+  for (const profile of res.data) {
+    const gameId = profile.nickname;
+    const exist = await PiuProfileDB.getByGameId(gameId);
+    if (exist) {
+      if (exist.userSeq !== userSeq) {
+        return {
+          ok: false,
+          error: "ALREADY_ASSOCIATED_OTHER_ACCOUNT",
+          message: `다른 계정에 연동되어있습니다. 관리자에게 문의해주세요`,
+        };
+      } else {
+        await PiuProfileDB.update(gameId, profile);
+      }
+    } else {
+      await PiuProfileDB.create(userSeq, profile);
+    }
+  }
+
+  return { ok: true };
 }
