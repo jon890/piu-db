@@ -8,6 +8,7 @@ import ContentBox from "@/components/layout/content-box";
 import AuthTopBar from "@/components/layout/auth-top-bar";
 import ValidateAccountForm from "./(validate-account)/form";
 import Link from "next/link";
+import ResetPasswordForm from "./(reset-password)/form";
 
 type State = {
   step: number;
@@ -23,12 +24,12 @@ export default function CrawlingPage() {
     setState((prev) => ({ ...prev, step: 1, userId }));
   };
 
-  const handleSelectProfile = async (profile: PiuProfile) => {
-    setState((prev) => ({ ...prev, step: 2, selectedProfile: profile }));
+  const handleResetPasswordSuccess = () => {
     toast.createToast({
+      message: "비밀번호 초기화가 정상적으로 완료되었습니다",
       type: "success",
-      message: `${profile.gameId}를 주 계정으로 설정했습니다`,
     });
+    router.replace("/auth/login");
   };
 
   return (
@@ -48,9 +49,23 @@ export default function CrawlingPage() {
             <Link href="/auth/login" className="btn btn-primary">
               로그인 하러 가기
             </Link>
-            <button className="btn btn-secondary">비밀번호 변경</button>
+            <button
+              className="btn btn-secondary"
+              onClick={() => {
+                setState((prev) => ({ ...prev, step: 2 }));
+              }}
+            >
+              비밀번호 초기화
+            </button>
           </div>
         </>
+      )}
+
+      {state.step === 2 && state?.userId && (
+        <ResetPasswordForm
+          onSuccess={handleResetPasswordSuccess}
+          userId={state.userId}
+        />
       )}
     </>
   );

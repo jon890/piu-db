@@ -2,16 +2,16 @@
 
 import crawlerClient from "@/server/client/crawler.client";
 import PiuProfileDB from "@/server/prisma/piu-profile.db";
-import { FindIdSchema } from "./schema";
 import UserDB from "@/server/prisma/user.db";
+import { FindIdSchema } from "./schema";
 
-type GameIdFormState = {
+type State = {
   ok: boolean;
   message?: string;
 };
 
 export async function findIdAction(
-  prevState: GameIdFormState | null,
+  prevState: State | null,
   formData: FormData
 ) {
   const validatedFields = FindIdSchema.safeParse({
