@@ -1,9 +1,9 @@
 import ContentBox from "@/components/layout/content-box";
-import Notice from "./notice";
-import Link from "next/link";
-import AuthUtil from "@/server/utils/auth-util";
-import UserDB from "@/server/prisma/user.db";
+import Notice from "@/components/notice/notice";
 import NoticeDB from "@/server/prisma/notice.db";
+import UserDB from "@/server/prisma/user.db";
+import AuthUtil from "@/server/utils/auth-util";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 type Props = {
@@ -15,14 +15,13 @@ type Props = {
 export default async function NoticePage({
   searchParams: { page: _page },
 }: Props) {
-  const userSeq = await AuthUtil.getUserSeqThrows();
-  const user = await UserDB.getUserBySeq(userSeq);
-
   const page = Number(_page);
   if (!_page && isNaN(page)) {
     redirect("/notice?page=1");
   }
 
+  const userSeq = await AuthUtil.getUserSeqThrows();
+  const user = await UserDB.getUserBySeq(userSeq);
   const notices = await NoticeDB.getNotices(page);
 
   return (

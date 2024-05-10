@@ -1,14 +1,14 @@
 "use client";
 
+import CreateNoticeReplyForm from "@/app/(app)/notice/(create-reply)/form";
+import getReplyAction from "@/app/(app)/notice/get-reply.action";
+import Reply from "@/components/notice/reply";
 import TimeUtil from "@/server/utils/time-util";
-import { Notice, Reply as ReplyEntity } from "@prisma/client";
+import { Notice as NoticeEntity, Reply as ReplyEntity } from "@prisma/client";
 import { useState } from "react";
-import CreateNoticeReplyForm from "./(create-reply)/form";
-import getReplyAction from "./get-reply.action";
-import Reply from "./reply";
 
 type Props = {
-  notice: Notice;
+  notice: NoticeEntity;
   defaultChecked?: boolean;
 };
 

@@ -19,6 +19,7 @@ export default function CreateNoticeReplyForm({ notice, onSuccess }: Props) {
     }
 
     await createNoticeReply(notice.seq, inputRef.current.value);
+    inputRef.current.value = "";
     onSuccess?.();
   }
 

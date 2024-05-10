@@ -8,7 +8,7 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
       <div className="drawer-content flex flex-col">
         <NavBar />
 
-        <section className="flex flex-row min-h-screen">
+        <section className="flex flex-row min-h-screen pt-12">
           <div className="hidden lg:block transition-all">
             <Menu />
           </div>
@@ -16,7 +16,7 @@ export default function Drawer({ children }: { children: React.ReactNode }) {
         </section>
       </div>
 
-      <div className="drawer-side !w-screen">
+      <div className="drawer-side !w-screen z-50">
         <label
           htmlFor="my-drawer-3"
           aria-label="close sidebar"

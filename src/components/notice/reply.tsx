@@ -1,6 +1,5 @@
 import TimeUtil from "@/server/utils/time-util";
 import { Reply as ReplyEntity } from "@prisma/client";
-import CreateNoticeReplyForm from "./(create-reply)/form";
 
 type Props = {
   reply: ReplyEntity & { user: { nickname: string } };

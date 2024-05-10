@@ -19,7 +19,7 @@ export default async function NavBar() {
   }
 
   return (
-    <nav className="w-full navbar bg-base-100">
+    <nav className="w-full navbar bg-base-100 fixed z-50">
       <div className="flex-none lg:hidden">
         <label
           htmlFor="my-drawer-3"
