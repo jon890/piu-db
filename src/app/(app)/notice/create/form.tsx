@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";

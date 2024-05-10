@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import CheckBox from "@/components/common/check-box";
 import InputWithLabel from "@/components/common/input-with-label";
 import type { RoomParticipants } from "@/server/prisma/room.db";

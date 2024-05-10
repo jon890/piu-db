@@ -1,7 +1,7 @@
 "use client";
 
 import { registerUser } from "@/app/auth/register/action";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
 import AuthTopBar from "@/components/layout/auth-top-bar";
 import { ChangeEventHandler, useState } from "react";

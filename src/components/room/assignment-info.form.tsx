@@ -3,7 +3,7 @@
 import { deleteAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/delete.action";
 import { updateAssignmentAction } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.action";
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
 import CheckBox from "@/components/common/check-box";
 import TimeUtil from "@/server/utils/time-util";

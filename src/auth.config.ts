@@ -1,6 +1,7 @@
 import { NextAuthConfig } from "next-auth";
 
-const AUTH_ROUTE = ["/auth/login", "/auth/register"];
+// TODO /auth/* 로 수정할 수 있을지 고민
+const AUTH_ROUTE = ["/auth/login", "/auth/register", "/auth/find"];
 const PUBLIC_ROUTES = [...AUTH_ROUTE, "/"];
 
 /**
