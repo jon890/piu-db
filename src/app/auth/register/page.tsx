@@ -29,7 +29,7 @@ export default function RegisterPage() {
         <InputWithLabel
           topLeft="아이디"
           topRight="* 아이디는 특수문자를 입력할 수 없습니다."
-          topRightClass="text-red-500 font-semibold"
+          topRightClass="text-red-500"
           placeholder="아이디를 입력해주세요"
           name="name"
           errors={state?.errors?.fieldErrors.name}
