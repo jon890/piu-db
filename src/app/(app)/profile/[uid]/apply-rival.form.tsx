@@ -1,6 +1,6 @@
 "use client";
 
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import type { Rival } from "@prisma/client";
 import { useFormState } from "react-dom";
 import { applyRival } from "./apply-rival.action";

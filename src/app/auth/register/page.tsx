@@ -1,7 +1,7 @@
 "use client";
 
 import { registerUser } from "@/app/auth/register/action";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
 import AuthTopBar from "@/components/layout/auth-top-bar";
 import { ChangeEventHandler, useState } from "react";
@@ -29,7 +29,7 @@ export default function RegisterPage() {
         <InputWithLabel
           topLeft="아이디"
           topRight="* 아이디는 특수문자를 입력할 수 없습니다."
-          topRightClass="text-red-500 font-semibold"
+          topRightClass="text-red-500"
           placeholder="아이디를 입력해주세요"
           name="name"
           errors={state?.errors?.fieldErrors.name}

@@ -42,11 +42,23 @@ async function getUserByUID(uid: string) {
   });
 }
 
+async function updatePassword(userId: string, password: string) {
+  return prisma.user.update({
+    where: {
+      name: userId,
+    },
+    data: {
+      password,
+    },
+  });
+}
+
 const UserDB = {
   getUser,
   getUserBySeq,
   getUserByUID,
   getUsersBy,
+  updatePassword,
 };
 
 export default UserDB;

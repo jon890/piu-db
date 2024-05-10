@@ -2,7 +2,7 @@
 
 import { getGameIdAction } from "@/app/(app)/piu-login/(get-game-id)/action";
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/FormButton";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
 import { useEffect, useRef } from "react";
 import { useFormState } from "react-dom";

@@ -1,6 +1,3 @@
-import ArrowLeftIcon from "@heroicons/react/24/solid/ArrowLeftIcon";
-import Link from "next/link";
-
 export default function AuthLayout({
   children,
 }: {
