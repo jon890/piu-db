@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 
 export default function Menu() {
   return (
-    <ul className="menu menu-sm md:menu-md lg:menu-lg p-4 w-40 lg:w-60 xl:w-80 min-h-full bg-base-200 font-semibold gap-5">
+    <ul className="menu menu-sm md:menu-md lg:menu-lg p-4 w-40 lg:w-60 xl:w-80 min-h-full bg-base-200 font-semibold gap-5 z-40">
       {MENUS.map((menu) => (
         <MenuLink key={menu.href} text={menu.text} href={menu.href} />
       ))}
