@@ -15,7 +15,7 @@ export default function SelectChartType({ level, chartType }: Props) {
         <LevelBall
           className={classnames(
             "size-12 sm:size-20 cursor-pointer bg-red-500",
-            chartType === "SINGLE" ? "opacity-30" : ""
+            chartType === "SINGLE" ? "animate-bounce" : "opacity-50"
           )}
           text="싱글"
           hasHover
@@ -26,7 +26,7 @@ export default function SelectChartType({ level, chartType }: Props) {
         <LevelBall
           className={classnames(
             "size-12 sm:size-20 cursor-pointer bg-green-500",
-            chartType === "DOUBLE" ? "opacity-30" : ""
+            chartType === "DOUBLE" ? "animate-bounce" : "opacity-50"
           )}
           text="더블"
           hasHover
