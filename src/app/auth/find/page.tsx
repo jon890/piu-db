@@ -1,59 +1,57 @@
 "use client";
 
-import InputWithLabel from "@/components/common/input-with-label";
-import AuthTopBar from "@/components/layout/auth-top-bar";
-import { useEffect } from "react";
-import { useFormState } from "react-dom";
-import { findIdAction } from "./action";
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/common/form-button";
+import { PiuProfile } from "@prisma/client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ContentBox from "@/components/layout/content-box";
+import AuthTopBar from "@/components/layout/auth-top-bar";
+import ValidateAccountForm from "./(validate-account)/form";
+import Link from "next/link";
 
-export default function IdPasswordFindPage() {
-  const [state, action] = useFormState(findIdAction, null);
+type State = {
+  step: number;
+  userId?: string;
+};
+
+export default function CrawlingPage() {
+  const router = useRouter();
+  const [state, setState] = useState<State>({ step: 0 });
   const toast = useToast();
 
-  useEffect(() => {
-    if (state?.ok === false) {
-      toast.createToast({
-        message: state?.message ?? "오류가 발생했습니다",
-        type: "error",
-      });
-    } else {
-      alert(JSON.stringify(state));
-    }
-  }, [state]);
+  const handlLoginSuccess = (userId: string) => {
+    setState((prev) => ({ ...prev, step: 1, userId }));
+  };
+
+  const handleSelectProfile = async (profile: PiuProfile) => {
+    setState((prev) => ({ ...prev, step: 2, selectedProfile: profile }));
+    toast.createToast({
+      type: "success",
+      message: `${profile.gameId}를 주 계정으로 설정했습니다`,
+    });
+  };
 
   return (
     <>
       <AuthTopBar title="아이디/비밀번호 찾기" />
-      <p>* 연동된 펌프잇업 계정으로 아이디/비밀번호를 찾습니다</p>
-      <form
-        action={action}
-        className="flex justify-center items-center flex-col w-full max-w-md mt-5"
-      >
-        <InputWithLabel
-          topLeft="펌프잇업 아이디"
-          topRight="* 공식 홈페이지 로그인 계정 정보를 입력해주세요"
-          topRightClass="text-red-500"
-          placeholder="아이디를 입력해주세요"
-          name="email"
-          errors={state?.paramErrors?.fieldErrors?.email}
-        />
+      {state.step === 0 && (
+        <ValidateAccountForm onSuccess={handlLoginSuccess} />
+      )}
 
-        <InputWithLabel
-          type="password"
-          topLeft="펌프잇업 비밀번호"
-          placeholder="비밀번호를 입력해주세요"
-          name="password"
-          errors={state?.paramErrors?.fieldErrors?.password}
-        />
+      {state.step === 1 && (
+        <>
+          <h2 className="my-auto text-xl text-center">
+            가입된 계정은 <strong>{state.userId}</strong> 입니다.
+          </h2>
 
-        <FormButton
-          text="로그인"
-          className="mt-5"
-          loadingText="잠시만 기다려주세요... (최대 10초정도 소요됩니다..)"
-        />
-      </form>
+          <div className="flex flex-col w-full max-w-md gap-5 justify-center">
+            <Link href="/auth/login" className="btn btn-primary">
+              로그인 하러 가기
+            </Link>
+            <button className="btn btn-secondary">비밀번호 변경</button>
+          </div>
+        </>
+      )}
     </>
   );
 }
