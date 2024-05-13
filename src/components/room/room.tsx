@@ -1,7 +1,8 @@
+import Tooltip from "@/components/common/tooltip";
+import classnames from "@/utils/classnames";
+import LockClosedIcon from "@heroicons/react/24/solid/LockClosedIcon";
 import type { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
-import LockClosedIcon from "@heroicons/react/24/solid/LockClosedIcon";
-import Tooltip from "../common/tooltip";
 
 type Props = {
   room: AssignmentRoom & { admin: { nickname: string } };
@@ -10,13 +11,17 @@ type Props = {
 
 export default function Room({ room, count }: Props) {
   return (
-    <div className="card card-side w-full glass">
+    <div
+      className={classnames("card w-full glass", {
+        "card-side": Boolean(room.bannerImage),
+      })}
+    >
       {room.bannerImage && (
-        <figure className="ml-4">
+        <figure className="ml-4 w-1/5 flex-none">
           <img
             src={room.bannerImage}
             alt="banner"
-            className="size-20 rounded-xl object-cover"
+            className="h-32 md:h-20 rounded-xl"
           />
         </figure>
       )}
@@ -30,7 +35,9 @@ export default function Room({ room, count }: Props) {
             </Tooltip>
           )}
         </h2>
-        {room.description && <p className="font-medium">{room.description}</p>}
+        {room.description && (
+          <p className="font-medium text-sm">{room.description}</p>
+        )}
         <p className="text-end font-medium">
           방장 :{" "}
           <span className="font-semibold bg-gradient-to-r from-indigo-500 to-pink-500 bg-clip-text text-transparent">
