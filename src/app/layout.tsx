@@ -1,9 +1,9 @@
 import ToastContextProvier from "@/client/provider/toast-context.provider";
 import classnames from "@/utils/classnames";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -32,7 +32,10 @@ export default function RootLayout({ children, modal }: Props) {
       >
         <ToastContextProvier>
           <main id="app">{children}</main>
-          <div id="toast-container" />
+          <div
+            id="toast-container"
+            style={{ zIndex: 1000, position: "relative" }}
+          />
           {modal}
         </ToastContextProvier>
       </body>
