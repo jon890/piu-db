@@ -82,7 +82,13 @@ async function getRooms(page: number = 0) {
         select: { nickname: true },
       },
       _count: {
-        select: { assignmentRoomParticipants: true },
+        select: {
+          assignmentRoomParticipants: {
+            where: {
+              isExited: false,
+            },
+          },
+        },
       },
     },
   });
@@ -109,12 +115,12 @@ async function getRoom(seq: number, userSeq: number) {
     },
   });
 
-  let _isParticipated = false;
+  let isParticipated = false;
   if (room) {
-    _isParticipated = await isParticipated(room.seq, userSeq);
+    isParticipated = await ParticipantsDB.isParticipated(room.seq, userSeq);
   }
 
-  return { room, isParticipated: _isParticipated };
+  return { room, isParticipated };
 }
 
 export type RoomParticipants = Prisma.PromiseReturnType<typeof getParticipants>;
@@ -138,17 +144,6 @@ async function getParticipants(roomSeq: number) {
   });
 }
 
-async function isParticipated(roomSeq: number, userSeq: number) {
-  const exist = await prisma.assignmentRoomParticipants.count({
-    where: {
-      assignmentRoomSeq: roomSeq,
-      userSeq: userSeq,
-    },
-  });
-
-  return exist > 0;
-}
-
 const RoomDB = {
   create,
   changeSettings,
@@ -156,7 +151,6 @@ const RoomDB = {
   getRoom,
   getRoomOrElseThrows,
   getParticipants,
-  isParticipated,
 };
 
 export default RoomDB;
