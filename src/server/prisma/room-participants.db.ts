@@ -23,9 +23,11 @@ async function participate(
     create: {
       userSeq,
       assignmentRoomSeq: room.seq,
+      participateDate: new Date(),
     },
     update: {
       isExited: false,
+      participateDate: new Date(),
       // TODO 나갔다가 들어왔을 때 기록을 말소할지?
     },
   });
@@ -121,7 +123,7 @@ async function getByRoomWithUser(roomSeq: number) {
       },
     },
     orderBy: {
-      createdAt: "asc",
+      participateDate: "asc",
     },
   });
 }

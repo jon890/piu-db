@@ -51,7 +51,10 @@ export default async function ParticipantsTable({ room }: Props) {
                     )}
                   </Link>
                 </th>
-                <th>{TimeUtil.format(p.createdAt, "YYYY-MM-DD")}</th>
+                <th>
+                  {p.participateDate &&
+                    TimeUtil.format(p.participateDate, "YYYY-MM-DD")}
+                </th>
               </tr>
             ))}
           </tbody>

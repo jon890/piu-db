@@ -196,6 +196,7 @@ model AssignmentRoomParticipants {
   notAttendCount    Int            @default(0) @map("not_attend_count")
   totalScore        Int            @default(0) @map("total_score")
   isExited          Boolean?       @default(false) @map("is_exited")
+  participateDate   DateTime?      @map("participate_date")
   updatedAt         DateTime       @updatedAt @map("updated_at")
   createdAt         DateTime       @default(now()) @map("created_at")
 
