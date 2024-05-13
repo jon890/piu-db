@@ -97,6 +97,7 @@ async function getByRoom(roomSeq: number, tx?: Prisma.TransactionClient) {
   return client.assignmentRoomParticipants.findMany({
     where: {
       assignmentRoomSeq: roomSeq,
+      isExited: false,
     },
   });
 }
