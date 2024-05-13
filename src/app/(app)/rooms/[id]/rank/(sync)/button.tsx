@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import { participateRoomAction } from "@/server/action/participate.action";
+import { participateRoomAction } from "@/server/action/participate-room.action";
 import { syncRoomRankAction } from "@/server/action/sync-room-rank.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useRouter } from "next/navigation";

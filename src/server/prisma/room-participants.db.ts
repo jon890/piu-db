@@ -1,5 +1,35 @@
 import prisma from "@/server/prisma/client";
-import { Prisma } from "@prisma/client";
+import { BusinessException } from "@/utils/business.exception";
+import { AssignmentRoom, Prisma } from "@prisma/client";
+
+async function participate(
+  room: AssignmentRoom,
+  userSeq: number,
+  tx?: Prisma.TransactionClient
+) {
+  const client = tx ? tx : prisma;
+
+  if (room.stopParticipating) {
+    throw new BusinessException("PARTICIPATE_ROOM_RESTRICTED");
+  }
+
+  return client.assignmentRoomParticipants.upsert({
+    where: {
+      assignmentRoomSeq_userSeq: {
+        userSeq,
+        assignmentRoomSeq: room.seq,
+      },
+    },
+    create: {
+      userSeq,
+      assignmentRoomSeq: room.seq,
+    },
+    update: {
+      isExited: false,
+      // TODO 나갔다가 들어왔을 때 기록을 말소할지?
+    },
+  });
+}
 
 async function update(
   roomSeq: number,
@@ -41,6 +71,7 @@ async function getByRoom(roomSeq: number, tx?: Prisma.TransactionClient) {
 }
 
 const ParticipantsDB = {
+  participate,
   update,
   getByRoom,
 };
