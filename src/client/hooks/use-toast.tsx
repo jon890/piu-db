@@ -1,6 +1,6 @@
+import { ToastType } from "@/types/toast";
 import { useCallback, useContext } from "react";
 import ToastContext from "../context/toast.context";
-import { ToastType } from "@/types/toast";
 
 export default function useToast() {
   const [toasts, setToasts] = useContext(ToastContext);
@@ -17,5 +17,26 @@ export default function useToast() {
     [toasts, setToasts]
   );
 
-  return { createToast };
+  const warning = useCallback(
+    (message: string) => {
+      createToast({ type: "warning", message });
+    },
+    [toasts, setToasts, createToast]
+  );
+
+  const error = useCallback(
+    (message: string) => {
+      createToast({ type: "error", message });
+    },
+    [toasts, setToasts, createToast]
+  );
+
+  const success = useCallback(
+    (message: string) => {
+      createToast({ type: "success", message });
+    },
+    [toasts, setToasts, createToast]
+  );
+
+  return { createToast, warning, error, success };
 }

@@ -53,12 +53,24 @@ async function updatePassword(userId: string, password: string) {
   });
 }
 
+async function updateNickname(userSeq: number, nickname: string) {
+  return prisma.user.update({
+    where: {
+      seq: userSeq,
+    },
+    data: {
+      nickname,
+    },
+  });
+}
+
 const UserDB = {
   getUser,
   getUserBySeq,
   getUserByUID,
   getUsersBy,
   updatePassword,
+  updateNickname,
 };
 
 export default UserDB;
