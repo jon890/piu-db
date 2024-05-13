@@ -85,6 +85,16 @@ async function createIfNotExist(userSeq: number, gameId: string) {
   return profile;
 }
 
+async function isExist(userSeq: number) {
+  const count = await prisma.piuProfile.count({
+    where: {
+      userSeq,
+    },
+  });
+
+  return count > 0;
+}
+
 const PiuProfileDB = {
   create,
   update,
@@ -93,6 +103,7 @@ const PiuProfileDB = {
   createIfNotExist,
   setPrimary,
   getPrimary,
+  isExist,
 };
 
 export default PiuProfileDB;
