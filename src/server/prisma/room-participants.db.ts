@@ -100,12 +100,37 @@ async function getByRoom(roomSeq: number, tx?: Prisma.TransactionClient) {
   });
 }
 
+export type RoomParticipantsWithUser = Prisma.PromiseReturnType<
+  typeof getByRoomWithUser
+>;
+async function getByRoomWithUser(roomSeq: number) {
+  return prisma.assignmentRoomParticipants.findMany({
+    where: {
+      assignmentRoomSeq: roomSeq,
+      isExited: false,
+    },
+    include: {
+      user: {
+        select: {
+          seq: true,
+          nickname: true,
+          uid: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+}
+
 const ParticipantsDB = {
-  participate,
   exit,
-  isParticipated,
   update,
+  participate,
+  isParticipated,
   getByRoom,
+  getByRoomWithUser,
 };
 
 export default ParticipantsDB;

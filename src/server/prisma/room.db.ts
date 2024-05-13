@@ -123,34 +123,12 @@ async function getRoom(seq: number, userSeq: number) {
   return { room, isParticipated };
 }
 
-export type RoomParticipants = Prisma.PromiseReturnType<typeof getParticipants>;
-async function getParticipants(roomSeq: number) {
-  return prisma.assignmentRoomParticipants.findMany({
-    where: {
-      assignmentRoomSeq: roomSeq,
-    },
-    include: {
-      user: {
-        select: {
-          seq: true,
-          nickname: true,
-          uid: true,
-        },
-      },
-    },
-    orderBy: {
-      createdAt: "asc",
-    },
-  });
-}
-
 const RoomDB = {
   create,
   changeSettings,
   getRooms,
   getRoom,
   getRoomOrElseThrows,
-  getParticipants,
 };
 
 export default RoomDB;
