@@ -27,7 +27,7 @@ function toMap(array: AssignmentRoomParticipants[]) {
       thirdPlaceSeqs: (item.thirdPlaceSeqs ?? []) as number[],
       totalScore: item.totalScore,
       notAttendCount: item.notAttendCount,
-      attendedDate: item.createdAt,
+      attendedDate: item.updatedAt,
     });
   }
 
