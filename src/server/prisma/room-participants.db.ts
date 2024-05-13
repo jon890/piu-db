@@ -33,7 +33,7 @@ async function participate(
 
 async function exit(room: AssignmentRoom, userSeq: number) {
   const isParticipating = await isParticipated(room.seq, userSeq);
-  if (!isParticipated) {
+  if (!isParticipating) {
     throw BusinessException.newInstance("NOT_PARTICIPATED_ROOM");
   }
 
@@ -55,6 +55,7 @@ async function isParticipated(roomSeq: number, userSeq: number) {
     where: {
       assignmentRoomSeq: roomSeq,
       userSeq: userSeq,
+      isExited: false,
     },
   });
 

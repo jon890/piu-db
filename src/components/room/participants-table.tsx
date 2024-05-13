@@ -1,5 +1,4 @@
 import ParticipantsDB from "@/server/prisma/room-participants.db";
-import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
 import StarIcon from "@heroicons/react/24/solid/StarIcon";

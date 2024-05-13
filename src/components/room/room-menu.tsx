@@ -61,9 +61,11 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
               </Link>
             </li>
 
-            <li>
-              <RoomExitButton room={room} />
-            </li>
+            {userSeq !== room.adminUserSeq && (
+              <li>
+                <RoomExitButton room={room} />
+              </li>
+            )}
           </>
         ) : (
           <li>

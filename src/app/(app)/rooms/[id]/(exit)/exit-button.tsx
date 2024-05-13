@@ -2,7 +2,6 @@
 
 import useToast from "@/client/hooks/use-toast";
 import { exitRoomAction } from "@/server/action/exit-room.action";
-import { participateRoomAction } from "@/server/action/participate-room.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -32,7 +31,9 @@ export default function RoomExitButton({ room }: Props) {
     });
 
     setLoading(false);
-    router.push("/rooms");
+    if (res.ok) {
+      router.push("/rooms");
+    }
   }
 
   return (
