@@ -1,10 +1,10 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import FormButton from "@/components/common/form-button";
 import CheckBox from "@/components/common/check-box";
+import FormButton from "@/components/common/form-button";
 import InputWithLabel from "@/components/common/input-with-label";
-import type { RoomParticipants } from "@/server/prisma/room.db";
+import type { RoomParticipantsWithUser } from "@/server/prisma/room-participants.db";
 import type { AssignmentRoom } from "@prisma/client";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
@@ -12,7 +12,7 @@ import { changeRoomSettings } from "./action";
 
 type Props = {
   room: AssignmentRoom;
-  participants: RoomParticipants;
+  participants: RoomParticipantsWithUser;
 };
 
 export default function RoomSettingsForm({ room, participants }: Props) {

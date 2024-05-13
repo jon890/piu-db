@@ -1,4 +1,4 @@
-import RoomDB from "@/server/prisma/room.db";
+import ParticipantsDB from "@/server/prisma/room-participants.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
 import StarIcon from "@heroicons/react/24/solid/StarIcon";
@@ -16,7 +16,7 @@ type Props = {
  */
 export default async function ParticipantsTable({ room }: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const participants = await RoomDB.getParticipants(room.seq);
+  const participants = await ParticipantsDB.getByRoomWithUser(room.seq);
 
   return (
     <>

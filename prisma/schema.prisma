@@ -195,6 +195,7 @@ model AssignmentRoomParticipants {
   thirdPlaceSeqs    Json?          @map("third_place_seqs")
   notAttendCount    Int            @default(0) @map("not_attend_count")
   totalScore        Int            @default(0) @map("total_score")
+  isExited          Boolean?       @default(false) @map("is_exited")
   updatedAt         DateTime       @updatedAt @map("updated_at")
   createdAt         DateTime       @default(now()) @map("created_at")
 

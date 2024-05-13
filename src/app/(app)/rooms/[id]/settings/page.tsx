@@ -3,6 +3,7 @@ import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import { notFound, redirect } from "next/navigation";
 import RoomSettingsForm from "./form";
+import ParticipantsDB from "@/server/prisma/room-participants.db";
 
 type Props = {
   params: { id: string };
@@ -17,7 +18,7 @@ export default async function RoomSettingsPage({ params: { id: _id } }: Props) {
 
   const userSeq = await AuthUtil.getUserSeqThrows();
   const { room, isParticipated } = await RoomDB.getRoom(roomSeq, userSeq);
-  const participatns = await RoomDB.getParticipants(roomSeq);
+  const participatns = await ParticipantsDB.getByRoomWithUser(roomSeq);
 
   if (!room) return notFound();
   if (!isParticipated) redirect(`/rooms/${room.seq}?message=FORBIDDEN`);

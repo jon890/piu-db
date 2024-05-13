@@ -1,7 +1,7 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import { participateRoomAction } from "@/server/action/participate.action";
+import { participateRoomAction } from "@/server/action/participate-room.action";
 import { AssignmentRoom } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -23,11 +23,10 @@ export default function ParticipateButton({ room, isParticipated }: Props) {
 
     toast.createToast({
       type: res.ok ? "success" : "error",
-      message: res.message ?? "",
+      message: res?.message ?? "",
     });
 
     setLoading(false);
-
     router.refresh();
   }
 

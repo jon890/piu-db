@@ -2,8 +2,10 @@ import { ChangeRoomSettingsSchema } from "@/app/(app)/rooms/[id]/settings/schema
 import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import { ROOM_PAGING_UNIT } from "@/constants/const";
 import prisma from "@/server/prisma/client";
+import { BusinessException } from "@/utils/business.exception";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
+import ParticipantsDB from "./room-participants.db";
 
 async function create({
   adminUserSeq,
@@ -22,12 +24,7 @@ async function create({
       },
     });
 
-    await tx.assignmentRoomParticipants.create({
-      data: {
-        assignmentRoomSeq: room.seq,
-        userSeq: adminUserSeq,
-      },
-    });
+    await ParticipantsDB.participate(room, adminUserSeq, tx);
   });
 }
 
@@ -85,10 +82,30 @@ async function getRooms(page: number = 0) {
         select: { nickname: true },
       },
       _count: {
-        select: { assignmentRoomParticipants: true },
+        select: {
+          assignmentRoomParticipants: {
+            where: {
+              isExited: false,
+            },
+          },
+        },
       },
     },
   });
+}
+
+async function getRoomOrElseThrows(roomSeq: number) {
+  const room = await prisma.assignmentRoom.findUnique({
+    where: {
+      seq: roomSeq,
+    },
+  });
+
+  if (!room) {
+    throw new BusinessException("NOT_EXIST_ROOM");
+  }
+
+  return room;
 }
 
 async function getRoom(seq: number, userSeq: number) {
@@ -98,78 +115,12 @@ async function getRoom(seq: number, userSeq: number) {
     },
   });
 
-  let _isParticipated = false;
+  let isParticipated = false;
   if (room) {
-    _isParticipated = await isParticipated(room.seq, userSeq);
+    isParticipated = await ParticipantsDB.isParticipated(room.seq, userSeq);
   }
 
-  return { room, isParticipated: _isParticipated };
-}
-
-export type RoomParticipants = Prisma.PromiseReturnType<typeof getParticipants>;
-async function getParticipants(roomSeq: number) {
-  return prisma.assignmentRoomParticipants.findMany({
-    where: {
-      assignmentRoomSeq: roomSeq,
-    },
-    include: {
-      user: {
-        select: {
-          seq: true,
-          nickname: true,
-          uid: true,
-        },
-      },
-    },
-    orderBy: {
-      createdAt: "asc",
-    },
-  });
-}
-
-async function participate(roomSeq: number, userSeq: number) {
-  return prisma.$transaction(async (tx) => {
-    const room = await tx.assignmentRoom.findUnique({
-      where: {
-        seq: roomSeq,
-      },
-    });
-
-    if (!room) {
-      return { ok: false, message: "방이 존재하지 않습니다" };
-    }
-
-    if (room.stopParticipating) {
-      return { ok: false, message: "해당 방의 참여가 제한되어있습니다" };
-    }
-
-    await tx.assignmentRoomParticipants.upsert({
-      where: {
-        assignmentRoomSeq_userSeq: {
-          assignmentRoomSeq: roomSeq,
-          userSeq,
-        },
-      },
-      create: {
-        assignmentRoomSeq: roomSeq,
-        userSeq,
-      },
-      update: {},
-    });
-
-    return { ok: true, message: "방에 참여되었습니다" };
-  });
-}
-
-async function isParticipated(roomSeq: number, userSeq: number) {
-  const exist = await prisma.assignmentRoomParticipants.count({
-    where: {
-      assignmentRoomSeq: roomSeq,
-      userSeq: userSeq,
-    },
-  });
-
-  return exist > 0;
+  return { room, isParticipated };
 }
 
 const RoomDB = {
@@ -177,9 +128,7 @@ const RoomDB = {
   changeSettings,
   getRooms,
   getRoom,
-  getParticipants,
-  participate,
-  isParticipated,
+  getRoomOrElseThrows,
 };
 
 export default RoomDB;
