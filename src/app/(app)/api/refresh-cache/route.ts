@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { refreshCache } from "@/server/prisma/init";
+import { refreshCache } from "@/server/prisma/_init";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
