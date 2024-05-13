@@ -271,6 +271,7 @@ model ActionLog {
   userSeq    Int        @map("user_seq")
   user       User       @relation(fields: [userSeq], references: [seq])
   actionType ActionType @map("action_type")
+  extra      Json?
   createdAt  DateTime   @default(now()) @map("created_at")
 
   @@map("td_action_log")
@@ -278,6 +279,7 @@ model ActionLog {
 
 enum ActionType {
   SYNC_RECORD
+  CHANGE_NICKNAME
 }
 
 model Notice {
