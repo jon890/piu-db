@@ -4,6 +4,10 @@ const ErrorCode = {
     code: "PARTICIPATE_ROOM_RESTRICTED",
     message: "해당 방의 참여가 제한되어있습니다",
   },
+  NOT_PARTICIPATED_ROOM: {
+    code: "NOT_PARTICIPATED_ROOM",
+    message: "참여중인 방이 아닙니다",
+  },
 } as const;
 
 export class BusinessException extends Error {

@@ -5,6 +5,8 @@ import CookieUtil from "@/server/utils/cookie-util";
 import EllipsisVerticalIcon from "@heroicons/react/24/solid/EllipsisVerticalIcon";
 import { AssignmentRoom } from "@prisma/client";
 import Link from "next/link";
+import Room from "./room";
+import RoomExitButton from "@/app/(app)/rooms/[id]/(exit)/exit-button";
 
 type Props = {
   room: AssignmentRoom;
@@ -42,6 +44,7 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
                 숙제를 만들 수 있는 권한이 없습니다
               </button>
             )}
+
             <li>
               <SyncAssignmentButton room={room} piuAuth={piuAuthValue} />
             </li>
@@ -55,8 +58,11 @@ export default async function RoomMenu({ room, isParticipated }: Props) {
             <li>
               <Link href={`/rooms/${room.seq}/rank`}>
                 <span>숙제 랭킹</span>
-                <div className="badge badge-secondary">NEW</div>
               </Link>
+            </li>
+
+            <li>
+              <RoomExitButton room={room} />
             </li>
           </>
         ) : (

@@ -31,6 +31,36 @@ async function participate(
   });
 }
 
+async function exit(room: AssignmentRoom, userSeq: number) {
+  const isParticipating = await isParticipated(room.seq, userSeq);
+  if (!isParticipated) {
+    throw BusinessException.newInstance("NOT_PARTICIPATED_ROOM");
+  }
+
+  return prisma.assignmentRoomParticipants.update({
+    where: {
+      assignmentRoomSeq_userSeq: {
+        assignmentRoomSeq: room.seq,
+        userSeq,
+      },
+    },
+    data: {
+      isExited: true,
+    },
+  });
+}
+
+async function isParticipated(roomSeq: number, userSeq: number) {
+  const exist = await prisma.assignmentRoomParticipants.count({
+    where: {
+      assignmentRoomSeq: roomSeq,
+      userSeq: userSeq,
+    },
+  });
+
+  return exist > 0;
+}
+
 async function update(
   roomSeq: number,
   userSeq: number,
@@ -72,6 +102,8 @@ async function getByRoom(roomSeq: number, tx?: Prisma.TransactionClient) {
 
 const ParticipantsDB = {
   participate,
+  exit,
+  isParticipated,
   update,
   getByRoom,
 };
