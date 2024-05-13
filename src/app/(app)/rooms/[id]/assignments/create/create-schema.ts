@@ -1,3 +1,4 @@
+import ParticipantsDB from "@/server/prisma/room-participants.db";
 import RoomDB from "@/server/prisma/room.db";
 import dayjs from "dayjs";
 import { z } from "zod";
@@ -36,7 +37,7 @@ export const CreateAssignmentSchema = z
 
   .refine(
     async ({ user_seq, room_seq }) => {
-      return RoomDB.isParticipated(room_seq, user_seq);
+      return ParticipantsDB.isParticipated(room_seq, user_seq);
     },
     { path: ["room_seq"], message: "해당 숙제방에 참여중인 멤버가 아닙니다" }
   );

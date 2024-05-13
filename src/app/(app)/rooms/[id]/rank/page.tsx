@@ -1,5 +1,6 @@
-import ContentBox from "@/components/layout/content-box";
 import ResponsiveTableBody from "@/components/common/responsive-table-body";
+import ContentBox from "@/components/layout/content-box";
+import ParticipantsDB from "@/server/prisma/room-participants.db";
 import RoomDB from "@/server/prisma/room.db";
 import AuthUtil from "@/server/utils/auth-util";
 import { notFound, redirect } from "next/navigation";
@@ -19,7 +20,7 @@ export default async function AssignmentsPage({ params: { id } }: Props) {
   if (!room) return notFound();
   if (!isParticipated) redirect(`/rooms/${room.seq}?message=FORBIDDEN`);
 
-  const participants = await RoomDB.getParticipants(roomSeq);
+  const participants = await ParticipantsDB.getByRoomWithUser(roomSeq);
 
   return (
     <ContentBox title={room.name} subTitle={"숙제 랭킹"}>
