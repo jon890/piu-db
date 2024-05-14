@@ -21,7 +21,8 @@ export default function RecordGrade({ grade, isBreakOff, className }: Props) {
           grade === "AA" ||
           grade === "AA_PLUS",
 
-        "text-talented": grade === "AAA" || grade === "AAA_PLUS",
+        "text-talented dark:text-gray-800":
+          grade === "AAA" || grade === "AAA_PLUS",
 
         "text-superb":
           grade === "S" ||

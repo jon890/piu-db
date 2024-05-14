@@ -52,7 +52,7 @@ export default function RecordBox({
           <div className="w-full text-center text-[10px] sm:text-base flex flex-col justify-center items-center gap-1">
             <div className="flex flex-rowjustify-center items-center gap-1">
               {record.score && (
-                <span className="text-[10px] sm:text-xs plate">
+                <span className="text-[10px] sm:text-xs plate text-white dark:text-black">
                   {NumberUtil.formatScore(record.score)}
                 </span>
               )}

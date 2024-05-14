@@ -14,9 +14,9 @@ export default function RecordPlate({ plate, className }: Props) {
           plate === "ROUGH_GAME",
         "text-rough after:content-['FG'] md:after:content-['FAIR']":
           plate === "FAIR_GAME",
-        "text-talented after:content-['TG'] md:after:content-['TALENTED']":
+        "text-talented dark:text-gray-800 after:content-['TG'] md:after:content-['TALENTED']":
           plate === "TALENTED_GAME",
-        "text-talented after:content-['MG'] md:after:content-['MARVELOUS']":
+        "text-talented dark:text-gray-800 first-letter:after:content-['MG'] md:after:content-['MARVELOUS']":
           plate === "MARVELOUS_GAME",
         "text-superb after:content-['SG'] md:after:content-['SUPERB']":
           plate === "SUPERB_GAME",
