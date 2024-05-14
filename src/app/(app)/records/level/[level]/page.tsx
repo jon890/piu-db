@@ -1,6 +1,6 @@
 import ContentBox from "@/components/layout/content-box";
 import SelectChartType from "@/components/records/select-chart-type";
-import SelectLevel from "@/components/records/selet-level";
+import SelectLevel from "@/components/records/select-level";
 import AuthUtil from "@/server/utils/auth-util";
 import CookieUtil from "@/server/utils/cookie-util";
 import { ChartType } from "@prisma/client";
@@ -35,23 +35,25 @@ export default async function LevelRecordPage({
 
   return (
     <ContentBox title="내 기록">
-      <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
-        <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
-        <SyncMyBestScoreButton piuAuth={piuAuthValue} />
-      </div>
+      <div className="flex flex-col max-w-screen-sm justify-center items-center gap-5 sm:gap-10">
+        <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
+          <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
+          <SyncMyBestScoreButton piuAuth={piuAuthValue} />
+        </div>
 
-      <SelectLevel targetLevel={targetLevel} />
-      <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
+        <SelectLevel targetLevel={targetLevel} />
+        <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
-      {CHART_TYPE ? (
-        levelRecords.length > 0 ? (
-          <LevelRecordsDetail levelRecords={levelRecords} />
+        {CHART_TYPE ? (
+          levelRecords.length > 0 ? (
+            <LevelRecordsDetail levelRecords={levelRecords} />
+          ) : (
+            <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>
+          )
         ) : (
-          <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>
-        )
-      ) : (
-        <p className="text-gray-500">싱글 더블을 선택해주세요</p>
-      )}
+          <p className="text-gray-500">싱글 더블을 선택해주세요</p>
+        )}
+      </div>
     </ContentBox>
   );
 }

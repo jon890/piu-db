@@ -8,7 +8,7 @@ type Props = {
 
 export default function RecordList({ levelRecords, visibleClear }: Props) {
   return (
-    <div className="flex flex-row justify-center items-center gap-1 flex-wrap">
+    <div className="flex flex-row justify-start items-center gap-1 flex-wrap">
       {levelRecords.map((lr) => (
         <RecordBox
           key={lr.song.seq}
