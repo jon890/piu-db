@@ -27,5 +27,13 @@ body {
 }
 
 .plate {
-  text-shadow: rgb(var(--foreground-rgb)) 1px 0 5px;
+  text-shadow:
+    2px 0 rgb(var(--foreground-rgb)),
+    -2px 0 rgb(var(--foreground-rgb)),
+    0 2px rgb(var(--foreground-rgb)),
+    0 -2px rgb(var(--foreground-rgb)),
+    1px 1px rgb(var(--foreground-rgb)),
+    -1px -1px rgb(var(--foreground-rgb)),
+    1px -1px rgb(var(--foreground-rgb)),
+    -1px 1px rgb(var(--foreground-rgb));
 }
