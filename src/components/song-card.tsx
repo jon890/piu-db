@@ -59,7 +59,7 @@ export default function SongCard({
 
   return (
     <div
-      className={classnames("card bg-base-100 shadow-xl", {
+      className={classnames("card bg-base-100 shadow-xl w-full", {
         "image-full": Boolean(song.imageUrl),
       })}
     >
@@ -75,7 +75,7 @@ export default function SongCard({
         </figure>
       )}
 
-      <div className="card-body p-4 sm:p-6 md:p-8">
+      <div className="card-body p-4 sm:p-6 md:p-8 overflow-hidden">
         <h2 className="card-title text-base sm:text-xl">
           {moveToSongDetail ? (
             <Link href={`/songs/${song.seq}`} className="hover:text-gray-600">
