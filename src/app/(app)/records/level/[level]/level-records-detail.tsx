@@ -75,8 +75,6 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
     if (compareGrade(minGrade.grade, "A") > 0) borderColor = "border-rough";
   }
 
-  console.log(minGrade, allClear, borderColor);
-
   return (
     <div className="flex flex-col justify-center items-center gap-3">
       <div className="flex flex-row gap-3 flex-wrap">
