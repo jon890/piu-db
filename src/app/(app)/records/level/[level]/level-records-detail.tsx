@@ -64,35 +64,55 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
       />
 
       {arcadeRecrods.length > 0 && (
-        <>
-          <h3 className="font-semibold text-2xl mt-10 mb-3">아케이드</h3>
-          <RecordList
-            levelRecords={arcadeRecrods}
-            visibleClear={visibleClear}
-          />
-        </>
+        <RecordsByChartType
+          title="아케이드"
+          levelRecords={arcadeRecrods}
+          visibleClear={visibleClear}
+        />
       )}
 
       {remixRecords.length > 0 && (
-        <>
-          <h3 className="font-semibold text-2xl mt-10 mb-3">리믹스</h3>
-          <RecordList levelRecords={remixRecords} visibleClear={visibleClear} />
-        </>
+        <RecordsByChartType
+          title="리믹스"
+          levelRecords={remixRecords}
+          visibleClear={visibleClear}
+        />
       )}
 
       {fullRecords.length > 0 && (
-        <>
-          <h3 className="font-semibold text-2xl mt-10 mb-3">풀송</h3>
-          <RecordList levelRecords={fullRecords} visibleClear={visibleClear} />
-        </>
+        <RecordsByChartType
+          title="풀송"
+          levelRecords={fullRecords}
+          visibleClear={visibleClear}
+        />
       )}
 
       {shortRecords.length > 0 && (
-        <>
-          <h3 className="font-semibold text-2xl mt-10 mb-3">숏컷</h3>
-          <RecordList levelRecords={shortRecords} visibleClear={visibleClear} />
-        </>
+        <RecordsByChartType
+          title="숏컷"
+          levelRecords={shortRecords}
+          visibleClear={visibleClear}
+        />
       )}
+    </div>
+  );
+}
+
+function RecordsByChartType({
+  title,
+  levelRecords,
+  visibleClear,
+}: {
+  title: string;
+  levelRecords: LevelRecord[];
+  visibleClear: boolean;
+}) {
+  return (
+    <div className="flex flex-col w-full">
+      <h3 className="font-semibold text-xl sm:text-2xl mt-5 sm:mt-10 mb-3">
+        {title}
+      </h3>
+      <RecordList levelRecords={levelRecords} visibleClear={visibleClear} />
     </div>
   );
 }

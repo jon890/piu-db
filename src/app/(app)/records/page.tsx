@@ -1,5 +1,5 @@
 import ContentBox from "@/components/layout/content-box";
-import SelectLevel from "@/components/records/selet-level";
+import SelectLevel from "@/components/records/select-level";
 import CookieUtil from "@/server/utils/cookie-util";
 import SyncRecentlyPlayedButton from "./(sync-recently-played)/sync-recently-played.button";
 import SyncMyBestScoreButton from "./(sync-my-best-score)/sync-my-best-score.button";
