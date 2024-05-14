@@ -6,7 +6,7 @@ import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
 import type { PiuAuth } from "@/types/piu-auth";
-import { getSkillPoint } from "@/utils/skill-point.util";
+import { getSkillPoint } from "@/utils/piu.util";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
 

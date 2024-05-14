@@ -1,11 +1,11 @@
 import prisma from "@/server/prisma/client";
 import { MyBestScore } from "@/types/my-best-score";
-import type { Grade, Plate, RecentlyPlayed } from "@/types/recently-played";
+import type { RecentlyPlayed } from "@/types/recently-played";
+import ArrayUtil from "@/utils/array.util";
 import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
-import ArrayUtil from "@/utils/array.util";
 
 const RECORD_PAGE_UNIT = 50;
 
@@ -287,8 +287,8 @@ export type MaxRecord = {
   seq: number;
   chart_seq: number;
   score: number;
-  grade: Grade;
-  plate: Plate;
+  grade: RecordGrade;
+  plate: RecordPlate;
   is_break_off: number;
   played_at: Date;
 };

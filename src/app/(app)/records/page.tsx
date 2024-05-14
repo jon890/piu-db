@@ -9,12 +9,14 @@ export default async function RecordPage() {
 
   return (
     <ContentBox title="내 기록">
-      <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
-        <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
-        <SyncMyBestScoreButton piuAuth={piuAuthValue} />
-      </div>
+      <div className="flex flex-col max-w-screen-sm justify-center items-center gap-5 sm:gap-10">
+        <div className="flex-row flex gap-3 flex-wrap justify-center items-center">
+          <SyncRecentlyPlayedButton piuAuth={piuAuthValue} />
+          <SyncMyBestScoreButton piuAuth={piuAuthValue} />
+        </div>
 
-      <SelectLevel />
+        <SelectLevel />
+      </div>
     </ContentBox>
   );
 }

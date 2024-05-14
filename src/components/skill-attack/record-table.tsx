@@ -4,7 +4,7 @@ import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import ChartDB from "@/server/prisma/chart.db";
 import SongDB from "@/server/prisma/song.db";
-import { getSkillPoint } from "@/utils/skill-point.util";
+import { getSkillPoint } from "@/utils/piu.util";
 import { Record } from "@prisma/client";
 import Link from "next/link";
 

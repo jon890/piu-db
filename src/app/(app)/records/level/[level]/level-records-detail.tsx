@@ -2,9 +2,17 @@
 
 import Card from "@/components/common/card";
 import CheckBox from "@/components/common/check-box";
+import RecordGrade from "@/components/record/record-grade";
+import RecordPlate from "@/components/record/record-plate";
 import RecordList from "@/components/records/record-list";
 import ArrayUtil from "@/utils/array.util";
+import classnames from "@/utils/classnames";
 import NumberUtil from "@/utils/number.util";
+import {
+  GRADE_INDEX_MAP,
+  PLATE_INDEX_MAP,
+  compareGrade,
+} from "@/utils/piu.util";
 import Decimal from "decimal.js";
 import { useState } from "react";
 import { LevelRecord } from "./get-records";
@@ -31,6 +39,14 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
           }, new Decimal(0))
           .div(records.length);
 
+  const maxPlate = ArrayUtil.maxBy(records, (record) => {
+    return PLATE_INDEX_MAP.get(record.plate) ?? null;
+  });
+
+  const minGrade = ArrayUtil.maxBy(records, (record) => {
+    return GRADE_INDEX_MAP.get(record.grade) ?? null;
+  });
+
   const arcadeRecrods = levelRecords.filter(
     (it) => it.song.songType === "ARCADE"
   );
@@ -44,17 +60,57 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
     (it) => it.song.songType === "SHORT_CUT"
   );
 
+  let borderColor = "";
+  const allClear = clearCounts === levelRecords.length;
+
+  if (allClear && minGrade) {
+    if (compareGrade(minGrade.grade, "SSS") > 0)
+      borderColor = "border-ultimate";
+
+    if (compareGrade(minGrade.grade, "S") > 0) borderColor = "border-superb";
+
+    if (compareGrade(minGrade.grade, "AAA") > 0)
+      borderColor = "border-talented";
+
+    if (compareGrade(minGrade.grade, "A") > 0) borderColor = "border-rough";
+  }
+
+  console.log(minGrade, allClear, borderColor);
+
   return (
     <div className="flex flex-col justify-center items-center gap-3">
       <div className="flex flex-row gap-3 flex-wrap">
-        <Card title="평균 점수">
-          <p className="text-center">{NumberUtil.formatScore(avgScores)}</p>
+        <Card
+          title="평균 점수"
+          classname={classnames(borderColor ? "border-4" : "", borderColor)}
+        >
+          <p className="text-center text-sm sm:text-base">
+            {NumberUtil.formatScore(avgScores)}
+          </p>
         </Card>
 
-        <Card title="클리어 수">
-          <p className="text-center">
+        <Card
+          title="클리어 수"
+          classname={classnames(borderColor ? "border-4" : "", borderColor)}
+        >
+          <p className="text-center text-sm sm:text-base">
             {clearCounts} / {levelRecords.length}
           </p>
+        </Card>
+
+        <Card
+          title="최고 그레이드"
+          classname={classnames(borderColor ? "border-4" : "", borderColor)}
+        >
+          <div className="text-sm sm:text-base flex flex-row gap-2 justify-center">
+            {maxPlate ? <RecordPlate plate={maxPlate.plate} /> : "none"}
+            <span>/</span>
+            {minGrade ? (
+              <RecordGrade grade={minGrade.grade} isBreakOff={false} />
+            ) : (
+              "none"
+            )}
+          </div>
         </Card>
       </div>
 

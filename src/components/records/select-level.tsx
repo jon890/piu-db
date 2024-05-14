@@ -24,7 +24,7 @@ export default function SelectLevel({ targetLevel }: Props) {
           >
             <div
               className={classnames(
-                "text-xs sm:text-sm",
+                "text-xs sm:text-base",
                 "flex size-12 sm:size-20 rounded-md bg-base-200 justify-center items-center",
                 "hover:bg-gray-500 active:bg-gray-500 transition-colors text-center",
                 targetLevel === level ? "bg-gray-500" : ""
