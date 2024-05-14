@@ -47,9 +47,8 @@ export default function SelectSong({
     keyword: searchParams.get("keyword") ?? "",
   });
 
-  const [visibleSongs, setVisibleSongs] = useState<SongWithCharts[]>([
-    ...songWithCharts,
-  ]);
+  const [visibleSongs, setVisibleSongs] =
+    useState<SongWithCharts[]>(songWithCharts);
 
   useEffect(() => {
     const songType = searchParams.get("songType");
@@ -74,8 +73,10 @@ export default function SelectSong({
     setVisibleSongs(filtered);
   }, [songWithCharts, searchParams]);
 
-  function handleSearchClick() {
-    searchMultiple({ ...inputs });
+  function search(key: string, value?: string) {
+    const param = SearchParamUtil.fromUseSearchParam(searchParams);
+    SearchParamUtil.replaceIfExistElseDelete(param, key, value);
+    router.push(pathname + "?" + param.toString());
   }
 
   function searchMultiple(condition: Record<string, string | undefined>) {
@@ -88,10 +89,8 @@ export default function SelectSong({
     router.push(pathname + "?" + param.toString());
   }
 
-  function search(key: string, value?: string) {
-    const param = SearchParamUtil.fromUseSearchParam(searchParams);
-    SearchParamUtil.replaceIfExistElseDelete(param, key, value);
-    router.push(pathname + "?" + param.toString());
+  function handleSearchClick() {
+    searchMultiple({ ...inputs });
   }
 
   return (

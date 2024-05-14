@@ -59,7 +59,7 @@ export default function SongCard({
 
   return (
     <div
-      className={classnames("card bg-base-100 shadow-xl w-full", {
+      className={classnames("card bg-base-100 shadow-xl w-full max-w-md", {
         "image-full": Boolean(song.imageUrl),
       })}
     >
