@@ -30,9 +30,21 @@ async function sendKickOutMessage(
   });
 }
 
+async function readMessage(messageSeq: number) {
+  return prisma.message.update({
+    where: {
+      seq: messageSeq,
+    },
+    data: {
+      isRead: true,
+    },
+  });
+}
+
 const MessageDB = {
   getMessagesByUser,
   sendKickOutMessage,
+  readMessage,
 };
 
 export default MessageDB;
