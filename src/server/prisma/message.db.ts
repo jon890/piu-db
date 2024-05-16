@@ -23,7 +23,7 @@ async function sendKickOutMessage(
     data: {
       userSeq: targetUserSeq,
       title: "방 추방 안내",
-      content: `${room.name} 방에서 추방되었습니다`,
+      content: `"${room.name}" 방에서 추방되었습니다`,
       extra: JSON.stringify({ roomSeq: room.seq }),
       type: "KICKED_OUT_OF_THE_ASSIGNMENT_ROOM",
     },
