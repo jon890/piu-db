@@ -1,7 +1,9 @@
 import { signOut } from "@/auth";
+import MessageDB from "@/server/prisma/message.db";
 import UserDB from "@/server/prisma/user.db";
 import AuthUtil from "@/server/utils/auth-util";
 import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
+import BellIcon from "@heroicons/react/24/solid/BellIcon";
 import Link from "next/link";
 import ServerToastHelper from "../server-toast-helper";
 
@@ -17,6 +19,9 @@ export default async function NavBar() {
       />
     );
   }
+
+  const messages = await MessageDB.getMessagesByUser(userSeq);
+  const messageNotReadCount = messages.filter((it) => !it.isRead).length;
 
   return (
     <nav className="w-full navbar bg-base-100 fixed z-50">
@@ -36,7 +41,7 @@ export default async function NavBar() {
         </Link>
       </div>
 
-      <div className="flex-none">
+      <div className="navbar-end">
         <div className="dropdown dropdown-end dropdown-bottom">
           <button tabIndex={0} className="btn btn-primary btn-ghost">
             <div className="size-8 rounded-full bg-green-500 flex items-center justify-center text-white dark:text-black">
@@ -66,6 +71,19 @@ export default async function NavBar() {
             </li>
           </ul>
         </div>
+
+        <button className="btn btn-ghost btn-circle">
+          {messageNotReadCount ? (
+            <div className="indicator">
+              <BellIcon className="size-6" />
+              <span className="badge badge-xs badge-primary indicator-item">
+                {messageNotReadCount}
+              </span>
+            </div>
+          ) : (
+            <BellIcon className="size-6" />
+          )}
+        </button>
       </div>
     </nav>
   );
