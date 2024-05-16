@@ -1,10 +1,11 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
+import { syncSkillAttackAction } from "@/server/action/sync-skill-attack.action";
 import type { PiuAuth } from "@/types/piu-auth";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { syncSkillAttackAction } from "@/server/action/sync-skill-attack.action";
 
 type Props = {
   piuAuth: PiuAuth;
@@ -23,7 +24,7 @@ export default function SkillAttackSyncButton({ piuAuth }: Props) {
   async function run() {
     setLoading(true);
 
-    const res = await syncSkillAttackAction(piuAuth);
+    const res = await syncSkillAttackAction();
     toast.createToast({
       type: res.ok ? "success" : "error",
       message: res.message ?? "",
@@ -43,13 +44,11 @@ export default function SkillAttackSyncButton({ piuAuth }: Props) {
       disabled={loading}
       aria-disabled={loading}
     >
-      {loading
-        ? "페이지를 이동하지 마세요... (최대 15초 정도 소요됩니다)"
-        : "스킬 어택 동기화"}
+      {loading ? "스킬어택을 갱신중입니다..." : "스킬 어택 동기화"}
     </button>
   ) : (
-    <button className="btn btn-disabled">
+    <Link className="btn btn-info" href="/piu-login">
       스킬어택을 사용하려면 하려면 먼저 펌프잇업 로그인을 이용하세요
-    </button>
+    </Link>
   );
 }

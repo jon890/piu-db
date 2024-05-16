@@ -1,23 +1,15 @@
 "use server";
 
-import { syncRecentlyPlayedAction } from "@/server/action/sync-recently-played.action";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
-import type { PiuAuth } from "@/types/piu-auth";
 import { getSkillPoint } from "@/utils/piu.util";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
 
-export async function syncSkillAttackAction(piuAuth: PiuAuth) {
+export async function syncSkillAttackAction() {
   const userSeq = await AuthUtil.getUserSeqThrows();
-
-  // 기록 동기화
-  const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
-  if (!crawlingRes.ok) {
-    return { ok: false, message: crawlingRes.message };
-  }
 
   // 이전 스킬어택 기록과, 그 이후 새로 등록된 기록을 모두 가져온다
   const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);

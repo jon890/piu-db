@@ -1,7 +1,6 @@
-import { Prisma, User } from "@prisma/client";
-import prisma from "./client";
-import UserDB from "./user.db";
+import { Prisma } from "@prisma/client";
 import Decimal from "decimal.js";
+import prisma from "./client";
 
 async function create({
   userSeq,
