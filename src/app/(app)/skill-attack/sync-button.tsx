@@ -27,7 +27,7 @@ export default function SkillAttackSyncButton({ piuAuth }: Props) {
     const res = await syncSkillAttackAction();
     toast.createToast({
       type: res.ok ? "success" : "error",
-      message: res.message ?? "",
+      message: res.message?.replace("\n", "<br/>") ?? "",
     });
 
     setLoading(false);

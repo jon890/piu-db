@@ -1,16 +1,16 @@
-import classnames from "@/utils/classnames";
+import ResponsiveTableBody from "@/components/common/responsive-table-body";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
 import TimeUtil from "@/server/utils/time-util";
+import classnames from "@/utils/classnames";
 import TrophyIcon from "@heroicons/react/24/solid/TrophyIcon";
 import Link from "next/link";
-import ResponsiveTableBody from "@/components/common/responsive-table-body";
 
 type Props = {};
 
 export default async function SkillAttackRankingTable({}: Props) {
   const userSeq = await AuthUtil.getUserSeqThrows();
-  const rankings = await SkillAttackDB.getRanking(0);
+  const rankings = await SkillAttackDB.getRanking();
 
   return (
     <>

@@ -222,12 +222,12 @@ async function getRecordsByChartSeq(chartSeq: number, page: number) {
 }
 
 /**
- * 해당 차트의 최대 기록을 찾는다
+ * 유저가 등록한 chartSeq를 찾는다
  * @param userSeq
  * @param after
  * @returns
  */
-async function findAllMaxRecordsGroupByChart(userSeq: number, after?: Date) {
+async function findAllChartSeqsByUser(userSeq: number, after?: Date) {
   // 해당 유저가 등록한 차트 seq 번호
   const charts = await prisma.record.findMany({
     where: {
@@ -242,27 +242,7 @@ async function findAllMaxRecordsGroupByChart(userSeq: number, after?: Date) {
     select: { chartSeq: true },
   });
 
-  const maxRecords = [];
-  for (const chart of charts) {
-    const maxRecord = await prisma.record.findFirst({
-      where: {
-        userSeq,
-        chartSeq: chart.chartSeq,
-      },
-      orderBy: {
-        score: "desc",
-      },
-      select: {
-        score: true,
-        seq: true,
-        chartSeq: true,
-      },
-    });
-
-    if (maxRecord) maxRecords.push(maxRecord);
-  }
-
-  return maxRecords;
+  return charts.map((it) => it.chartSeq);
 }
 
 async function findBySeq(seq: number) {
@@ -390,10 +370,10 @@ const RecordDB = {
   getRecordsBySongSeq,
   getRecordsByChartSeq,
   getMaxRecordByUserAndChartDateBetween,
-  findAllMaxRecordsGroupByChart,
   findBySeq,
   findBySeqIn,
   getMaxRecordsBy,
+  findAllChartSeqsByUser,
 };
 
 export default RecordDB;
