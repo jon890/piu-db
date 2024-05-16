@@ -30,6 +30,7 @@ model User {
   actionLogs                 ActionLog[]
   notices                    Notice[]
   replies                    Reply[]
+  messagees                  Message[]
 
   @@map("td_user")
 }
@@ -313,4 +314,23 @@ model Reply {
 
 enum ReplyType {
   NOTICE
+}
+
+model Message {
+  seq       Int         @id @default(autoincrement())
+  user      User        @relation(fields: [userSeq], references: [seq])
+  userSeq   Int         @map("user_seq")
+  type      MessageType
+  title     String
+  content   String
+  extra     Json?
+  isRead    Boolean     @default(false) @map("is_read")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+  createdAt DateTime    @default(now()) @map("created_at")
+
+  @@map("td_message")
+}
+
+enum MessageType {
+  KICKED_OUT_OF_THE_ASSIGNMENT_ROOM
 }
