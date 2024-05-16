@@ -4,8 +4,12 @@ import classnames from "@/utils/classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const SkillAttackRankRegex = /^\/skill-attack\/[a-zA-Z]{4,6}$/;
+
 export default function SkillAttackTab() {
   const pathname = usePathname();
+
+  console.log("matched?", SkillAttackRankRegex.test(pathname), pathname);
 
   return (
     <div role="tablist" className="tabs tabs-bordered">
@@ -14,7 +18,7 @@ export default function SkillAttackTab() {
         role="tab"
         className={classnames(
           "tab",
-          pathname === "/skill-attack" ? "tab-active" : ""
+          !SkillAttackRankRegex.test(pathname) ? "tab-active" : ""
         )}
       >
         내 기록
@@ -24,7 +28,7 @@ export default function SkillAttackTab() {
         role="tab"
         className={classnames(
           "tab",
-          pathname === "/skill-attack/rank" ? "tab-active" : ""
+          SkillAttackRankRegex.test(pathname) ? "tab-active" : ""
         )}
       >
         랭킹
