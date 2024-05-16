@@ -9,6 +9,8 @@ import type { AssignmentRoom } from "@prisma/client";
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { changeRoomSettings } from "./action";
+import { kickOutAction } from "./kick-out.action";
+import { useRouter } from "next/navigation";
 
 type Props = {
   room: AssignmentRoom;
@@ -16,8 +18,9 @@ type Props = {
 };
 
 export default function RoomSettingsForm({ room, participants }: Props) {
-  const [state, action] = useFormState(changeRoomSettings, null);
   const toast = useToast();
+  const router = useRouter();
+  const [state, action] = useFormState(changeRoomSettings, null);
 
   useEffect(() => {
     if (state?.ok === false) {
@@ -27,6 +30,21 @@ export default function RoomSettingsForm({ room, participants }: Props) {
       });
     }
   }, [state]);
+
+  async function kickOut(userSeq: number) {
+    if (!confirm("정말 추방하시겠습니까?\n해당 작업은 되돌릴 수 없습니다")) {
+      return;
+    }
+
+    const res = await kickOutAction(room.seq, userSeq);
+
+    if (res.ok) {
+      toast.success(res.message);
+      router.refresh();
+    } else {
+      toast.error(res.message);
+    }
+  }
 
   return (
     <form
@@ -67,13 +85,14 @@ export default function RoomSettingsForm({ room, participants }: Props) {
       />
 
       <div className="overflow-x-auto w-full border rounded-md shadow-md p-3">
-        <h2 className="text-center font-semibold my-3">선곡 권한</h2>
+        <h2 className="text-center font-semibold my-3">참여자 관리</h2>
         <table className="table table-xs">
           <thead>
             <tr>
               <th></th>
               <th>닉네임</th>
               <th>선곡권한</th>
+              <th>추방</th>
             </tr>
           </thead>
           <tbody>
@@ -95,6 +114,17 @@ export default function RoomSettingsForm({ room, participants }: Props) {
                     }
                     className="checkbox"
                   />
+                </td>
+                <td>
+                  {user.userSeq !== room.adminUserSeq && (
+                    <button
+                      type="button"
+                      className="btn btn-error"
+                      onClick={() => kickOut(user.userSeq)}
+                    >
+                      추방
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

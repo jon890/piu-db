@@ -12,6 +12,10 @@ const ErrorCode = {
     code: "NOT_PARTICIPATED_ROOM",
     message: "방장은 방을 나갈 수 없습니다",
   },
+  NOT_ROOM_ADMIN_USER: {
+    code: "NOT_ROOM_ADMIN_USER",
+    message: "방 관리자가 아닙니다",
+  },
 } as const;
 
 export class BusinessException extends Error {

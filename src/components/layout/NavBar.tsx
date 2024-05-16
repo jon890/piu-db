@@ -1,9 +1,11 @@
 import { signOut } from "@/auth";
+import MessageDB from "@/server/prisma/message.db";
 import UserDB from "@/server/prisma/user.db";
 import AuthUtil from "@/server/utils/auth-util";
 import Bars3Icon from "@heroicons/react/24/solid/Bars3Icon";
 import Link from "next/link";
 import ServerToastHelper from "../server-toast-helper";
+import NavBarMessages from "./navbar-messages";
 
 export default async function NavBar() {
   const userSeq = await AuthUtil.getUserSeqThrows();
@@ -17,6 +19,8 @@ export default async function NavBar() {
       />
     );
   }
+
+  const messages = await MessageDB.getMessagesByUser(userSeq);
 
   return (
     <nav className="w-full navbar bg-base-100 fixed z-50">
@@ -36,7 +40,7 @@ export default async function NavBar() {
         </Link>
       </div>
 
-      <div className="flex-none">
+      <div className="navbar-end">
         <div className="dropdown dropdown-end dropdown-bottom">
           <button tabIndex={0} className="btn btn-primary btn-ghost">
             <div className="size-8 rounded-full bg-green-500 flex items-center justify-center text-white dark:text-black">
@@ -66,6 +70,8 @@ export default async function NavBar() {
             </li>
           </ul>
         </div>
+
+        <NavBarMessages messages={messages} />
       </div>
     </nav>
   );
