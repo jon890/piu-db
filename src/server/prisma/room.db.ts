@@ -94,8 +94,13 @@ async function getRooms(page: number = 0) {
   });
 }
 
-async function getRoomOrElseThrows(roomSeq: number) {
-  const room = await prisma.assignmentRoom.findUnique({
+async function getRoomOrElseThrows(
+  roomSeq: number,
+  tx?: Prisma.TransactionClient
+) {
+  const client = tx ? tx : prisma;
+
+  const room = await client.assignmentRoom.findUnique({
     where: {
       seq: roomSeq,
     },

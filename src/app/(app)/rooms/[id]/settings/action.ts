@@ -11,7 +11,7 @@ type State = {
 };
 
 export async function changeRoomSettings(
-  prevState: State | null,
+  _prevState: State | null,
   formData: FormData
 ) {
   const userSeq = await AuthUtil.getUserSeqThrows();
