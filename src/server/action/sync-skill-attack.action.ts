@@ -1,65 +1,72 @@
 "use server";
 
-import { syncRecentlyPlayedAction } from "@/server/action/sync-recently-played.action";
 import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import SkillAttackDB from "@/server/prisma/skill-attack.db";
 import AuthUtil from "@/server/utils/auth-util";
-import type { PiuAuth } from "@/types/piu-auth";
+import ArrayUtil from "@/utils/array.util";
 import { getSkillPoint } from "@/utils/piu.util";
 import type { Chart } from "@prisma/client";
 import Decimal from "decimal.js";
 
-export async function syncSkillAttackAction(piuAuth: PiuAuth) {
+export async function syncSkillAttackAction() {
   const userSeq = await AuthUtil.getUserSeqThrows();
 
-  // 기록 동기화
-  const crawlingRes = await syncRecentlyPlayedAction(piuAuth, userSeq);
-  if (!crawlingRes.ok) {
-    return { ok: false, message: crawlingRes.message };
+  const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);
+
+  // 스킬어택 갱신 이후에 등록된 chartSeqs를 찾는다
+  const latestSubmittedChartSeqs = await RecordDB.findAllChartSeqsByUser(
+    userSeq,
+    prevSkillAttack?.createdAt
+  );
+  if (latestSubmittedChartSeqs.length === 0) {
+    return {
+      ok: true,
+      message:
+        "새로운 기록이 등록되지 않았습니다\n 내 기록 목록에서 동기화를 진행해주세요",
+    };
   }
 
-  // 이전 스킬어택 기록과, 그 이후 새로 등록된 기록을 모두 가져온다
-  const prevSkillAttack = await SkillAttackDB.findByUserLatest(userSeq);
-  const records = prevSkillAttack
-    ? [
-        ...(await RecordDB.findBySeqIn(prevSkillAttack.recordSeqs as number[])),
-        ...(await RecordDB.findAllMaxRecordsGroupByChart(
-          userSeq,
-          prevSkillAttack.createdAt
-        )),
-      ]
-    : await RecordDB.findAllMaxRecordsGroupByChart(userSeq);
+  // 최신 스킬어택에 등록된 기록
+  const prevSubmittedRecords = prevSkillAttack
+    ? await RecordDB.findBySeqIn(prevSkillAttack.recordSeqs as number[])
+    : [];
+  // 그 이후에 등록된 최고 기록
+  const maxRecords = await RecordDB.getMaxRecordsBy(
+    userSeq,
+    latestSubmittedChartSeqs
+  );
 
-  const chartSeqs = records.map((it) => it.chartSeq);
-  const charts = await ChartDB.findBySeqIn(chartSeqs);
-  const chartMap = getChartSeqMap(charts);
+  const allCharts = await ChartDB.findAll();
+  const chartMap = ArrayUtil.associatedBy(allCharts, (chart) => chart.seq);
 
   // 스킬 점수 계산
-  const skills = records
+  const skills = [
+    ...prevSubmittedRecords.map((record) => ({
+      seq: record.seq,
+      chartSeq: record.chartSeq,
+      score: record.score,
+    })),
+    ...maxRecords.map((maxRecord) => ({
+      seq: maxRecord.seq,
+      chartSeq: maxRecord.chart_seq,
+      score: maxRecord.score,
+    })),
+  ]
     .map(({ chartSeq, score, seq }) => {
       const chart = chartMap.get(chartSeq);
-      if (!chart) {
-        console.warn("Cannot find chart with", chartSeq);
-        return null;
-      }
-      if (!score) {
-        console.warn("Score is null");
-        return null;
-      }
-
-      const skillPoint = getSkillPoint(score, chart);
+      if (!chart) throw Error(`Target chart is null chartSeq:${chartSeq}`);
 
       return {
         recordSeq: seq,
         chartSeq,
         score,
         level: chart.level,
-        skillPoint: Number(skillPoint),
+        skillPoint: Number(getSkillPoint(score, chart)),
       };
     })
-    .filter((it) => it != null)
-    .sort((a, b) => (b?.skillPoint ?? 0) - (a?.skillPoint ?? 0));
+    .filter(ArrayUtil.notEmpty)
+    .sort((a, b) => b.skillPoint - a.skillPoint);
 
   // 50개만 다시 분류하여 계산하기
   // 같은 차트 중복 제거
@@ -85,13 +92,23 @@ export async function syncSkillAttackAction(piuAuth: PiuAuth) {
     skillPoints = skillPoints.add(skill.skillPoint);
   }
 
-  await SkillAttackDB.create({
+  const isRecorded = await SkillAttackDB.create({
     userSeq,
     skillPoints: skillPoints.toNumber(),
     recordSeqs: targetRecords.map((it) => it.recordSeq),
   });
 
-  return { ok: true, message: "스킬 어택 갱신이 완료되었습니다" };
+  if (isRecorded) {
+    return {
+      ok: true,
+      message: `스킬 어택 갱신이 완료되었습니다\n 증가 점수: +${isRecorded.delta}`,
+    };
+  } else {
+    return {
+      ok: true,
+      message: "스킬 어택을 갱신했으나, 점수가 오르지 않았습니다",
+    };
+  }
 }
 
 function getChartSeqMap(charts: Chart[]) {

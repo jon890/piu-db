@@ -1,7 +1,6 @@
-import { Prisma, User } from "@prisma/client";
-import prisma from "./client";
-import UserDB from "./user.db";
+import { Prisma } from "@prisma/client";
 import Decimal from "decimal.js";
+import prisma from "./client";
 
 async function create({
   userSeq,
@@ -31,6 +30,14 @@ async function create({
         skillPoints,
       },
     });
+    return {
+      ok: true,
+      delta: new Decimal(skillPoints).minus(prevSkillPoints ?? 0).toNumber(),
+    };
+  } else {
+    return {
+      ok: false,
+    };
   }
 }
 
@@ -45,11 +52,6 @@ async function findByUserLatest(userSeq: number) {
   return skillAttack;
 }
 
-/**
- * 각 유저의 최신 기록을 불러온다
- * @param page
- * @returns
- */
 type SkillAttackRanking = {
   sp_seq: number;
   user_seq: number;
@@ -58,7 +60,7 @@ type SkillAttackRanking = {
   skill_points: Decimal;
   created_at: Date;
 };
-async function getRanking(page: number) {
+async function getRanking() {
   return prisma.$queryRaw<SkillAttackRanking[]>`
   select 
     sp.seq sp_seq,
