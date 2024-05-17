@@ -76,6 +76,7 @@ export default async function AssignmentRecordTable({
                     <Link
                       href={`/records/${record.seq}`}
                       className="hover:text-gray-500"
+                      scroll={false}
                     >
                       {record.score}
                     </Link>
