@@ -39,7 +39,7 @@ export default async function RecordDetailPage({
           className={classnames("card p-0", song.imageUrl ? "image-full" : "")}
         >
           {song.imageUrl && (
-            <figure className="relative opacity-90">
+            <figure className="relative">
               <Image
                 src={song.imageUrl}
                 alt={song.name}
@@ -51,22 +51,15 @@ export default async function RecordDetailPage({
           )}
 
           <div className="card-body space-y-4">
-            <h2 className="card-title text-black dark:text-white">
-              {song.name}
-            </h2>
+            <h2 className="card-title">{song.name}</h2>
             <div className="flex flex-row justify-between px-12 items-center">
-              <LevelBall
-                chart={chart}
-                className="size-12 text-black dark:text-white"
-              />
+              <LevelBall chart={chart} className="size-12" />
               <div className="flex flex-col items-center">
                 <RecordGrade
                   grade={record.grade}
                   isBreakOff={record.isBreakOff}
                 />
-                <span className="text-black dark:text-white">
-                  {record.score}
-                </span>
+                <span className="">{record.score}</span>
               </div>
               {record?.plate && <RecordPlate plate={record.plate} />}
             </div>
@@ -95,7 +88,7 @@ export default async function RecordDetailPage({
             </div>
 
             {record.playedAt && (
-              <span className="text-xs text-end text-black dark:text-white">
+              <span className="text-xs text-end">
                 플레이 시간:{" "}
                 {TimeUtil.format(record.playedAt, "YYYY-MM-DD hh:mm:ss")}
               </span>
