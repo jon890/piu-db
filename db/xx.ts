@@ -2263,4 +2263,24 @@ export const XX_SONGS: SongData[] = [
     imageUrl:
       "https://www.piugame.com/data/song_img/cb6ef748fd4bb7ef98dd181d77085bb8.png",
   },
+
+  {
+    // 109 - 피닉스에서 부활
+    name: "컨플릭트",
+    artist: "Siromaru + Cranky",
+    bpm: "160",
+    version: "XX",
+    songType: "ARCADE",
+    charts: [
+      { level: 6, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+  },
 ];

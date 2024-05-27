@@ -88,8 +88,8 @@ async function main() {
   // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS, true);
   // await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS, true);
-  // await initSongAndCharts(XX_SONGS);
-  await initSongAndCharts(PHOENIX_SONGS, true);
+  await initSongAndCharts(XX_SONGS);
+  // await initSongAndCharts(PHOENIX_SONGS, true);
 }
 
 main();
