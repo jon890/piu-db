@@ -40,11 +40,13 @@ async function saveRecentRecord(
     for (const record of records) {
       const song = await SongDB.findBySongName(record.songName);
       if (!song) {
-        logger.warn("Target songs not founded", record.songName);
+        logger.warn(`Target songs not founded ===> name:${record.songName}`);
         continue;
       }
       if (record.type === "Unknown") {
-        logger.warn("Target song type is not single and double", record.type);
+        logger.warn(
+          `Target song type is not single and double ===> type:${record.type}`
+        );
         continue;
       }
 
@@ -55,13 +57,7 @@ async function saveRecentRecord(
       );
       if (!chart) {
         logger.warn(
-          "Target chart not founded",
-          " name",
-          record.songName,
-          ", level",
-          record.level,
-          ", type",
-          record.type
+          `Target chart not founded ===> name:${record.songName}, level:${record.level}, type:${record.type}`
         );
         continue;
       }
