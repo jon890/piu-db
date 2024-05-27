@@ -60,12 +60,3 @@ async function AssignmentTableWrapper({ room }: { room: AssignmentRoom }) {
   const assignments = await AssignmentDB.getOngoingAssignments(room.seq);
   return <AssignmentTable room={room} assignments={assignments} onGoing />;
 }
-
-/**
- * statically generate routes at build time
- * @returns
- */
-export async function generateStaticParams() {
-  const rooms = await RoomDB.getRooms();
-  return rooms.map((it) => it.seq);
-}
