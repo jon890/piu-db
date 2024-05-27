@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import logger from "@/server/client/logger.client";
 import { refreshCache } from "@/server/prisma/_init";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -15,7 +16,7 @@ export async function GET(request: NextRequest) {
   }
 
   await refreshCache();
-  console.log("Cache refreshed!! by", id);
+  logger.info("Cache refreshed!! by", id);
 
   return NextResponse.json({ message: "success" }, { status: 200 });
 }

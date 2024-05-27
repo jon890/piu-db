@@ -9,8 +9,6 @@ const SkillAttackRankRegex = /^\/skill-attack\/[a-zA-Z]{4,6}$/;
 export default function SkillAttackTab() {
   const pathname = usePathname();
 
-  console.log("matched?", SkillAttackRankRegex.test(pathname), pathname);
-
   return (
     <div role="tablist" className="tabs tabs-bordered">
       <Link

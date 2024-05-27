@@ -4,6 +4,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { LoginSchema } from "./app/auth/login/schema";
 import UserDB from "./server/prisma/user.db";
+import logger from "./server/client/logger.client";
 
 /**
  * Next.js Middleware에서
@@ -13,6 +14,11 @@ import UserDB from "./server/prisma/user.db";
  */
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  logger: {
+    error(code, ...message) {
+      logger.error(`AuthError code:${code}, message:${message}`);
+    },
+  },
   providers: [
     Credentials({
       async authorize(credentials) {

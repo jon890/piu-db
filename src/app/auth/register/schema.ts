@@ -1,4 +1,4 @@
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { z } from "zod";
 
 // todo 쿼리 2건을 한 번에 처리 가능?

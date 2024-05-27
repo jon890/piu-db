@@ -1,7 +1,7 @@
 import { ChangeRoomSettingsSchema } from "@/app/(app)/rooms/[id]/settings/schema";
 import { CreateRoomSchema } from "@/app/(app)/rooms/create/schema";
 import { ROOM_PAGING_UNIT } from "@/constants/const";
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { BusinessException } from "@/utils/business.exception";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";

@@ -1,6 +1,6 @@
 import { UpdateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/[assignment_seq]/update/update.schema";
 import { CreateAssignmentSchema } from "@/app/(app)/rooms/[id]/assignments/create/create-schema";
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { z } from "zod";
 import TimeUtil from "../utils/time-util";
 import { Prisma, PrismaClient } from "@prisma/client";
