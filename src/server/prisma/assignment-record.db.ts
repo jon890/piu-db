@@ -1,5 +1,5 @@
 import { Prisma, Record } from "@prisma/client";
-import prisma from "./client";
+import prisma from "./prisma.client";
 
 async function getRecordByUser(assignmentSeq: number, userSeq: number) {
   return prisma.assigmentRecord.findFirst({

@@ -14,11 +14,16 @@ export const authConfig = {
   },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = !!auth?.user;
+      const isLoggedIn = Boolean(auth?.user);
       const isPublic = PUBLIC_ROUTES.includes(nextUrl.pathname);
       const isAuth = AUTH_ROUTE.includes(nextUrl.pathname);
+      const isHome = "/" === nextUrl.pathname;
 
       if (isPublic) {
+        if (isHome && isLoggedIn) {
+          return Response.redirect(new URL("/rooms", nextUrl));
+        }
+
         if (isAuth && isLoggedIn) {
           return Response.redirect(new URL("/rooms", nextUrl));
         }

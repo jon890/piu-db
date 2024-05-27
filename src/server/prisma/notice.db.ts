@@ -1,6 +1,6 @@
 import { CreateNoticeSchema } from "@/app/(app)/notice/create/schema";
 import { z } from "zod";
-import prisma from "./client";
+import prisma from "./prisma.client";
 
 async function getNotices(page: number) {
   const unit = 10;

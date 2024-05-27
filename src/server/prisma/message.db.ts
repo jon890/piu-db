@@ -1,5 +1,5 @@
 import { AssignmentRoom, Prisma } from "@prisma/client";
-import prisma from "./client";
+import prisma from "./prisma.client";
 
 async function getMessagesByUser(userSeq: number) {
   return prisma.message.findMany({

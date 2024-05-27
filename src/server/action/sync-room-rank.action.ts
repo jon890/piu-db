@@ -4,7 +4,7 @@ import type { AssignmentRoomParticipants } from "@prisma/client";
 import AssignmentRecordDB from "../prisma/assignment-record.db";
 import AssignmentDB from "../prisma/assignment.db";
 import ChartDB from "../prisma/chart.db";
-import prisma from "../prisma/client";
+import prisma from "../prisma/prisma.client";
 import ParticipantsDB from "../prisma/room-participants.db";
 import dayjs from "dayjs";
 

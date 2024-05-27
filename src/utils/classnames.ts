@@ -9,7 +9,6 @@ export default function classnames(
       return true;
     })
     .map((it) => {
-      // console.log(typeof it)
       if (typeof it === "string") {
         return it;
       } else if (typeof it === "object") {

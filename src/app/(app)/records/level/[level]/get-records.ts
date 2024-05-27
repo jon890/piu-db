@@ -55,9 +55,6 @@ export async function getLevelRecordsBy(
       const breakOnMaxRecord = breakOnMaxRecordMap.get(chartSeq);
       const maxRecord = maxRecordMap.get(chartSeq);
 
-      // console.log("breakOnMaxRecord", breakOnMaxRecord);
-      // console.log("maxRecord", maxRecord);
-
       return {
         song,
         chart: song.chart,

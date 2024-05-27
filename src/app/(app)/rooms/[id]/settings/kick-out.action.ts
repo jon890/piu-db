@@ -1,6 +1,6 @@
 "use server";
 
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import MessageDB from "@/server/prisma/message.db";
 import ParticipantsDB from "@/server/prisma/room-participants.db";
 import RoomDB from "@/server/prisma/room.db";

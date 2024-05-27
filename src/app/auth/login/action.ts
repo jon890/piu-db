@@ -4,6 +4,7 @@ import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { LOGIN_CODE, LoginSchema } from "./schema";
 import { isRedirectError } from "next/dist/client/components/redirect";
+import logger from "@/server/client/logger.client";
 
 type State = {
   code: string;
@@ -37,7 +38,7 @@ export async function authenticate(
     if (error instanceof AuthError) {
       return { code: error.type, message: error.name };
     } else {
-      console.error(error);
+      logger.error(error);
       return { code: "Unknown", message: "알 수 없는 오류가 발생했습니다." };
     }
   }

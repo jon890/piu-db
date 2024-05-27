@@ -1,4 +1,4 @@
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { Chart, ChartType, Song } from "@prisma/client";
 import fs from "node:fs";
 import fsPromise from "node:fs/promises";
@@ -7,6 +7,7 @@ import { TMP_DIR } from "../utils/tmpdir";
 import SongDB from "./song.db";
 import { cache } from "react";
 import ArrayUtil from "@/utils/array.util";
+import logger from "../client/logger.client";
 
 const CACHE_FOLDER = path.resolve(TMP_DIR, "piudb_cache");
 const CACHE_FILE = path.resolve(CACHE_FOLDER, "charts.json");
@@ -18,7 +19,7 @@ function isCached() {
 async function _findAll(): Promise<Chart[]> {
   // from cache
   if (isCached()) {
-    console.log("...Parse Chart JSON file...");
+    logger.info("...Parse Chart JSON file...");
     const cached = await fsPromise.readFile(CACHE_FILE, {
       encoding: "utf-8",
     });

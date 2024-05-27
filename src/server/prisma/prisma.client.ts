@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import logger from "../client/logger.client";
 
 const prisma = new PrismaClient({
   log: [
@@ -22,9 +23,16 @@ const prisma = new PrismaClient({
 });
 
 prisma.$on("query", (e) => {
-  console.log("Query: " + e.query);
-  console.log("Params: " + e.params);
-  console.log("Duration: " + e.duration + "ms");
+  const isSlow = e.duration > 1000;
+  const isDev = process.env.NODE_ENV === "development";
+
+  if (isDev || isSlow) {
+    logger.info(`
+    Query: ${e.query}
+    Params: ${e.params}
+    Duration: ${e.duration}ms
+    `);
+  }
 });
 
 export default prisma;

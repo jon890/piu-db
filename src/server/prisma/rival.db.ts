@@ -1,4 +1,4 @@
-import prisma from "./client";
+import prisma from "./prisma.client";
 import UserDB from "./user.db";
 
 async function getMyRivalByUID(userSeq: number, uid: string) {

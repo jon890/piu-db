@@ -1,4 +1,4 @@
-import prisma from "./client";
+import prisma from "./prisma.client";
 
 async function getUser(name: string) {
   return prisma.user.findUnique({ where: { name } });

@@ -4,6 +4,7 @@ import classnames from "@/utils/classnames";
 import BellIcon from "@heroicons/react/24/solid/BellIcon";
 import type { Message } from "@prisma/client";
 import { readMessageAction } from "./read-message.action";
+import logger from "@/server/client/logger.client";
 
 type Props = {
   messages: Message[];

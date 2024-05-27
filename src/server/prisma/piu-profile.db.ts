@@ -1,4 +1,4 @@
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import type { GameId } from "@/types/game-id";
 
 async function getByGameId(gameId: string) {

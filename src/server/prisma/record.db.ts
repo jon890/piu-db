@@ -1,4 +1,4 @@
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { MyBestScore } from "@/types/my-best-score";
 import type { RecentlyPlayed } from "@/types/recently-played";
 import ArrayUtil from "@/utils/array.util";
@@ -6,6 +6,7 @@ import { Prisma, RecordGrade, RecordPlate } from "@prisma/client";
 import TimeUtil from "../utils/time-util";
 import ChartDB from "./chart.db";
 import SongDB from "./song.db";
+import logger from "../client/logger.client";
 
 const RECORD_PAGE_UNIT = 50;
 
@@ -39,11 +40,11 @@ async function saveRecentRecord(
     for (const record of records) {
       const song = await SongDB.findBySongName(record.songName);
       if (!song) {
-        console.warn("Target songs not founded", record.songName);
+        logger.warn("Target songs not founded", record.songName);
         continue;
       }
       if (record.type === "Unknown") {
-        console.warn("Target song type is not single and double", record.type);
+        logger.warn("Target song type is not single and double", record.type);
         continue;
       }
 
@@ -53,7 +54,7 @@ async function saveRecentRecord(
         record.type
       );
       if (!chart) {
-        console.warn(
+        logger.warn(
           "Target chart not founded",
           " name",
           record.songName,

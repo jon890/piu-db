@@ -1,4 +1,4 @@
-import prisma from "@/server/prisma/client";
+import prisma from "@/server/prisma/prisma.client";
 import { BusinessException } from "@/utils/business.exception";
 import { AssignmentRoom, Prisma } from "@prisma/client";
 
