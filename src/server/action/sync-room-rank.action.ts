@@ -84,7 +84,8 @@ export async function syncRoomRankAction(roomSeq: number) {
           const record = records[i];
           const score = records.length - i;
 
-          const data = updateMap.get(record.user.seq)!;
+          const data = updateMap.get(record.user.seq);
+          if (!data) continue; // 숙제방을 나간 사람은 건너 뛴다
           data.totalScore += score;
           if (i === 0) {
             data.firstPlaceSeqs.push(assignment.seq);
