@@ -13,7 +13,7 @@ async function _handleKyException(
   let errorMsg: string;
   if (e instanceof HTTPError && e.response.status === 400) {
     const errorBody = await e.response.json();
-    errorMsg = errorBody;
+    errorMsg = JSON.stringify(errorBody);
   } else {
     errorMsg = (e as Error).message;
   }

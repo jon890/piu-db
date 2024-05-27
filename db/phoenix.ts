@@ -19,6 +19,8 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 19, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
       { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.00",
     imageUrl:
@@ -180,6 +182,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 8, chartType: "DOUBLE" },
       { level: 15, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
     ],
     patchVersion: "1.02",
     imageUrl:
@@ -202,6 +205,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 18, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.06",
     imageUrl:
@@ -761,6 +765,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 15, chartType: "SINGLE" },
       { level: 18, chartType: "SINGLE" },
       { level: 20, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
       { level: 22, chartType: "SINGLE" },
       { level: 24, chartType: "SINGLE" },
       { level: 17, chartType: "DOUBLE" },

@@ -126,6 +126,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/58403fabf329090e4d54d0116733d2e2.png",
@@ -634,7 +635,7 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
 
   {
     // 33
-    name: "인터퍼런스 - FULL SONG",
+    name: "인터퍼런스 - FULL SONG -",
     artist: "도인",
     bpm: "180.4",
     version: "FIESTA_FIESTA2",
@@ -915,9 +916,11 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
     version: "FIESTA_FIESTA2",
     songType: "ARCADE",
     charts: [
+      { level: 16, chartType: "SINGLE" },
       { level: 19, chartType: "SINGLE" },
       { level: 21, chartType: "SINGLE" },
       { level: 23, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
       { level: 25, chartType: "DOUBLE" },
     ],
@@ -1750,8 +1753,10 @@ export const FIESTA_TO_FIESTA2_SONGS: SongData[] = [
       { level: 7, chartType: "SINGLE" },
       { level: 10, chartType: "SINGLE" },
       { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/00843a3856bebbb34316d9c8368e23a1.png",

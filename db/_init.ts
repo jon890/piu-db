@@ -29,9 +29,9 @@ const prisma = new PrismaClient({
   ],
 });
 
-async function initSongAndCharts(songs: SongData[]) {
+async function initSongAndCharts(songs: SongData[], upsertCharts?: boolean) {
   for (const song of songs) {
-    await prisma.song.upsert({
+    const songEntity = await prisma.song.upsert({
       where: {
         name: song.name,
       },
@@ -59,17 +59,37 @@ async function initSongAndCharts(songs: SongData[]) {
         imageUrl: song.imageUrl,
       },
     });
+
+    if (upsertCharts) {
+      for (const chart of song.charts) {
+        await prisma.chart.upsert({
+          where: {
+            songSeq_chartType_level: {
+              songSeq: songEntity.seq,
+              chartType: chart.chartType,
+              level: chart.level,
+            },
+          },
+          create: {
+            songSeq: songEntity.seq,
+            chartType: chart.chartType,
+            level: chart.level,
+          },
+          update: {},
+        });
+      }
+    }
   }
 }
 
 async function main() {
-  // await initSongAndCharts(FIRST_ZERO_SONGS);
+  // await initSongAndCharts(FIRST_ZERO_SONGS, true);
   // await initSongAndCharts(NX_NXA_SONGS);
-  // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS);
+  // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS, true);
   // await initSongAndCharts(PRIME_SONGS);
-  // await initSongAndCharts(PRIME2_SONGS);
-  await initSongAndCharts(XX_SONGS);
-  // await initSongAndCharts(PHOENIX_SONGS);
+  // await initSongAndCharts(PRIME2_SONGS, true);
+  // await initSongAndCharts(XX_SONGS);
+  await initSongAndCharts(PHOENIX_SONGS, true);
 }
 
 main();

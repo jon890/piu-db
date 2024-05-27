@@ -659,6 +659,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 16, chartType: "SINGLE" },
       { level: 14, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/45da932db12016764e41e2d6086cac14.png",
@@ -791,6 +792,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 13, chartType: "SINGLE" },
       { level: 7, chartType: "DOUBLE" },
       { level: 14, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/46bde033426573b8606e09e834705941.png",
@@ -1155,6 +1157,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 8, chartType: "SINGLE" },
       { level: 12, chartType: "SINGLE" },
       { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
       { level: 5, chartType: "DOUBLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
@@ -1429,7 +1432,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 75
-    name: "프리스타일",
+    name: "프리 스타일",
     artist: "반야",
     bpm: "99",
     version: "FIRST_ZERO",
@@ -1480,7 +1483,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 78
-    name: "펌핑 업",
+    name: "펌핑업",
     artist: "반야",
     bpm: "135",
     version: "FIRST_ZERO",

@@ -997,6 +997,7 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/05712b8a86cc22bffbd747851d5de1e0.png",

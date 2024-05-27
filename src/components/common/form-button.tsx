@@ -26,7 +26,14 @@ export default function FormButton({
       disabled={disabled || pending}
       {...rest}
     >
-      {pending ? loadingText ?? text : text}
+      {pending ? (
+        <>
+          <span className="loading loading-spinner"></span>
+          {loadingText ?? text}
+        </>
+      ) : (
+        text
+      )}
     </button>
   );
 }
