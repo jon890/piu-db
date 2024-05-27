@@ -18,6 +18,9 @@ export const { auth, signIn, signOut } = NextAuth({
     error(code, ...message) {
       logger.error(`AuthError code:${code}, message:${message}`);
     },
+    warn(code, ...message) {
+      logger.warn(`AuthWarn code:${code}, message:${message}`);
+    },
   },
   providers: [
     Credentials({
