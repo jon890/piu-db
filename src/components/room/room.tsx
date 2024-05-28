@@ -7,9 +7,10 @@ import Link from "next/link";
 type Props = {
   room: AssignmentRoom & { admin: { nickname: string } };
   count: number;
+  isParticipating: boolean;
 };
 
-export default function Room({ room, count }: Props) {
+export default function Room({ room, count, isParticipating }: Props) {
   return (
     <div
       className={classnames("card w-full glass", {
@@ -35,6 +36,9 @@ export default function Room({ room, count }: Props) {
             </Tooltip>
           )}
         </h2>
+        {isParticipating && (
+          <div className="badge badge-secondary">참여 중</div>
+        )}
         {room.description && (
           <p className="font-medium text-sm">{room.description}</p>
         )}

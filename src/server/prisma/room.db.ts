@@ -70,10 +70,7 @@ async function changeSettings(
   return { ok: true, message: "설정을 변경했습니다" };
 }
 
-/**
- * 방 목록
- */
-async function getRooms(page: number = 0) {
+async function getRooms(userSeq: number, page: number = 0) {
   return prisma.assignmentRoom.findMany({
     skip: page * ROOM_PAGING_UNIT,
     take: ROOM_PAGING_UNIT,
@@ -85,9 +82,18 @@ async function getRooms(page: number = 0) {
         select: {
           assignmentRoomParticipants: {
             where: {
+              userSeq,
               isExited: false,
             },
           },
+        },
+      },
+      assignmentRoomParticipants: {
+        select: {
+          seq: true,
+        },
+        where: {
+          isExited: false,
         },
       },
     },
