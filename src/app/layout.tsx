@@ -4,6 +4,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -40,6 +41,11 @@ export default function RootLayout({ children, modal }: Props) {
         </ToastContextProvier>
       </body>
       <GoogleTagManager gtmId="GTM-5SFSJWM6" />
+      <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8708804524583195"
+        async
+        crossOrigin="anonymous"
+      />
     </html>
   );
 }
