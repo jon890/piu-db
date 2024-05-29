@@ -8,7 +8,6 @@ import classnames from "@/utils/classnames";
 import type { Chart, Record, Song } from "@prisma/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
 
 type Props = {
   record: Record;
@@ -26,10 +25,8 @@ export default function RecordModal({ record, chart, song }: Props) {
       open
       onClose={() => router.back()}
     >
-      <div className="modal-box p-0 border-4 border-black dark:border-white">
-        <div
-          className={classnames("card p-0", song.imageUrl ? "image-full" : "")}
-        >
+      <div className="modal-box p-0">
+        <div className={classnames("card", song.imageUrl ? "image-full" : "")}>
           {song.imageUrl && (
             <figure className="relative">
               <Image
@@ -91,7 +88,6 @@ export default function RecordModal({ record, chart, song }: Props) {
             <div className="card-actions justify-end">
               <div className="modal-action mt-0">
                 <form method="dialog">
-                  {/* If there is a button in formn, it will close the modal */}
                   <button className="btn">닫기</button>
                 </form>
               </div>
