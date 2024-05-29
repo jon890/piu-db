@@ -9,7 +9,7 @@ export async function syncRecentlyPlayedAction(piuAuth: PiuAuth) {
 
   const crawlingRes = await _syncRecentlyPlayedAction(piuAuth, userSeq);
   if (!crawlingRes.ok) {
-    return { ok: false, message: crawlingRes.message };
+    return { ok: false, message: crawlingRes.message, type: crawlingRes.type };
   }
 
   return { ok: true, message: "기록 동기화가 완료되었습니다" };

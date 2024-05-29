@@ -13,7 +13,13 @@ async function _handleKyException(
   let errorMsg: string;
   if (e instanceof HTTPError && e.response.status === 400) {
     const errorBody = await e.response.json();
-    errorMsg = JSON.stringify(errorBody);
+    console.log(errorBody);
+    if (errorBody?.message && errorBody?.error) {
+      errorMsg = `${errorBody.error}: ${errorBody.message}`;
+    } else {
+      errorMsg =
+        "에러가 발생했습니다. 계속해서 발생하면 관리자에게 문의해주세요";
+    }
   } else {
     errorMsg = (e as Error).message;
   }

@@ -4,8 +4,9 @@ import useToast from "@/client/hooks/use-toast";
 import type { PiuAuth } from "@/types/piu-auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { syncRecentlyPlayedAction } from "../(sync-recently-played)/sync-recently-played.action";
 import { syncMyBestScoreAction } from "./sync-my-best-score.action";
+import ButtonWithLoading from "@/components/common/button-with-loading";
+import Link from "next/link";
 
 type Props = {
   piuAuth: PiuAuth;
@@ -33,19 +34,18 @@ export default function SyncMyBestScoreButton({ piuAuth }: Props) {
   }
 
   return piuAuth ? (
-    <button
+    <ButtonWithLoading
+      loading={loading}
       onClick={run}
-      className="btn btn-secondary text-xs sm:text-sm"
       disabled={loading}
       aria-disabled={loading}
-    >
-      {loading
-        ? "페이지를 이동하지마세요... (최대 1분 정도 소요됩니다)"
-        : "마이 베스트 불러오기 (전체)"}
-    </button>
+      loadingText="페이지를 이동하지마세요... (최대 1분 정도 소요됩니다)"
+      text="마이 베스트 불러오기 (전체)"
+      className="btn-secondary"
+    />
   ) : (
-    <button className="btn btn-disabled">
-      기록을 가져오려면 로그인이 필요합니다
-    </button>
+    <Link className="btn btn-info" href="/piu-login">
+      마이베스트를 불러오려면 먼저 펌프잇업 로그인을 이용하세요
+    </Link>
   );
 }
