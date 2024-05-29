@@ -6,6 +6,7 @@ import RecordDB from "@/server/prisma/record.db";
 import { PiuAuth } from "@/types/piu-auth";
 import dayjs from "dayjs";
 import ActionLogDB from "../prisma/action-log.db";
+import { ToastLevel } from "@/types/toast";
 
 /**
  * 크롤러에 최근 플레이 데이터를 요청하고
@@ -26,7 +27,8 @@ export async function syncRecentlyPlayedAction(
     dayjs().utc().diff(latestSyncRecord.createdAt, "minute") < 10
   ) {
     return {
-      ok: true,
+      ok: false,
+      type: "info" as ToastLevel,
       message: "10분 이내에 동기화 한 기록이 있어서 다시 실행하지 않습니다",
     };
   }

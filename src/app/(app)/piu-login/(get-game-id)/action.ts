@@ -11,7 +11,7 @@ type GameIdFormState = {
 };
 
 export async function getGameIdAction(
-  prevState: GameIdFormState | null,
+  _prevState: GameIdFormState | null,
   formData: FormData
 ) {
   const validatedFields = GetGameIdSchema.safeParse({
@@ -29,17 +29,15 @@ export async function getGameIdAction(
 
   const { email, password, userSeq } = validatedFields.data;
 
-  const res = await crawlerClient.getGameIds(email, password);
-
-  if (!res.ok) {
+  const crawlingResponse = await crawlerClient.getGameIds(email, password);
+  if (!crawlingResponse.ok) {
     return {
       ok: false,
-      error: res.error,
-      message: `로그인에 실패했습니다: ${res.error}`,
+      message: crawlingResponse.error,
     };
   }
 
-  for (const profile of res.data) {
+  for (const profile of crawlingResponse.data) {
     const gameId = profile.nickname;
     const exist = await PiuProfileDB.getByGameId(gameId);
     if (exist) {
