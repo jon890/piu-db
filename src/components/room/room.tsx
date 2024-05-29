@@ -27,7 +27,7 @@ export default function Room({ room, count, isParticipating }: Props) {
         </figure>
       )}
 
-      <div className="card-body">
+      <div className="card-body px-4 sm:px-6 md:px-8">
         <h2 className="card-title">
           <span>{room.name}</span>
           {room.stopParticipating && (
