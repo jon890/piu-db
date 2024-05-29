@@ -1,0 +1,20 @@
+{
+  "name": "piu-db/song-management",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "prisma generate",
+    "db-init:dev": "dotenv -e ../.env.development -- ts-node ./_init",
+    "db-image:dev": "dotenv -e ../.env.development -- ts-node ./song-image/update"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.12.12",
+    "dotenv-cli": "^7.4.2",
+    "prisma": "^5.14.0",
+    "ts-node": "^10.9.2"
+  },
+  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
+}

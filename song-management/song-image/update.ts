@@ -45,9 +45,8 @@ async function updateSongImages() {
       });
       console.log("Updated song Image with (", song.songname, ")");
     }
-
-    console.log("Update song image completed...");
   }
+  console.log("Update song image completed...");
 }
 
 updateSongImages();

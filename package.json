@@ -12,11 +12,7 @@
     "db-pull:local": "dotenv -e .env.local -- prisma db pull",
     "db-pull:dev": "dotenv -e .env.development -- prisma db pull",
     "db-push:local": "dotenv -e .env.local -- prisma db push",
-    "db-push:dev": "dotenv -e .env.development -- prisma db push",
-    "db:generate": "prisma generate",
-    "db-init:local": "dotenv -e .env.local -- ts-node ./db/_init",
-    "db-init:dev": "dotenv -e .env.development -- ts-node ./db/_init",
-    "db-image:dev": "dotenv -e .env.development -- ts-node ./db/song-image/update"
+    "db-push:dev": "dotenv -e .env.development -- prisma db push"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
@@ -51,7 +47,6 @@
     "prettier-plugin-tailwindcss": "^0.5.14",
     "prisma": "^5.14.0",
     "tailwindcss": "3.4.3",
-    "ts-node": "^10.9.2",
     "typescript": "5.4.5"
   },
   "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"

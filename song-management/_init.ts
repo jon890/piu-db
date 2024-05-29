@@ -1,12 +1,12 @@
 import { PrismaClient } from "@prisma/client";
-import { FIESTA_TO_FIESTA2_SONGS } from "./fiesta-to-fiesta2";
-import { FIRST_ZERO_SONGS } from "./first-to-zero";
-import { NX_NXA_SONGS } from "./nx-to-nxa";
-import { PHOENIX_SONGS } from "./phoenix";
-import { PRIME_SONGS } from "./prime";
-import { PRIME2_SONGS } from "./prime2";
-import { SongData } from "./song-type";
-import { XX_SONGS } from "./xx";
+import { FIESTA_TO_FIESTA2_SONGS } from "./data/fiesta-to-fiesta2";
+import { FIRST_ZERO_SONGS } from "./data/first-to-zero";
+import { NX_NXA_SONGS } from "./data/nx-to-nxa";
+import { PHOENIX_SONGS } from "./data/phoenix";
+import { PRIME_SONGS } from "./data/prime";
+import { PRIME2_SONGS } from "./data/prime2";
+import { SongData } from "./data/song-type";
+import { XX_SONGS } from "./data/xx";
 
 const prisma = new PrismaClient({
   log: [
