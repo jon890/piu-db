@@ -40,7 +40,7 @@ export default function SyncRecentlyPlayedButton({ piuAuth }: Props) {
       disabled={loading}
       aria-disabled={loading}
       loadingText="페이지를 이동하지마세요... (최대 15초 정도 소요됩니다)"
-      text="마이 베스트 불러오기 (전체)"
+      text="최근플레이 불러오기 (최대 50개)"
       className="btn-primary"
     />
   ) : (
