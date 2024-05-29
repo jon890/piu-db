@@ -4,7 +4,6 @@ import type { PiuAuth } from "@/types/piu-auth";
 import type { RecentlyPlayed } from "@/types/recently-played";
 import _ky, { HTTPError } from "ky";
 import "server-only";
-import logger from "./logger.client";
 
 const ky = _ky.extend({ headers: { "Content-Type": "application/json" } });
 
@@ -13,8 +12,6 @@ async function _handleKyException(
 ): Promise<{ ok: false; error: string }> {
   let errorMsg: string;
   if (e instanceof HTTPError && e.response.status === 400) {
-    logger.error(e);
-
     const errorBody = await e.response.json();
     if (errorBody?.message && errorBody?.error) {
       errorMsg = `${errorBody.error}: ${errorBody.message}`;
