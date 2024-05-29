@@ -17,7 +17,6 @@ type Props = {
 };
 
 export default function RecordModal({ record, chart, song }: Props) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const router = useRouter();
 
   return (
@@ -25,7 +24,6 @@ export default function RecordModal({ record, chart, song }: Props) {
       id={`record_modal_${record.seq}`}
       className="modal"
       open
-      ref={dialogRef}
       onClose={() => router.back()}
     >
       <div className="modal-box p-0 border-4 border-black dark:border-white">
@@ -58,28 +56,30 @@ export default function RecordModal({ record, chart, song }: Props) {
               {record?.plate && <RecordPlate plate={record.plate} />}
             </div>
 
-            <div className="flex flex-row justify-between px-3 bg-black bg-opacity-75 text-center p-4 rounded-md">
-              <div className="flex flex-col">
-                <span className="text-blue-500 font-semibold">PERFECT</span>
-                <span className="text-white">{record?.perfect ?? 0}</span>
+            {record.type !== "BEST_SCORE" && (
+              <div className="flex flex-row justify-between px-3 bg-black bg-opacity-75 text-center p-4 rounded-md">
+                <div className="flex flex-col">
+                  <span className="text-blue-500 font-semibold">PERFECT</span>
+                  <span className="text-white">{record?.perfect ?? 0}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-green-500 font-semibold">GREAT</span>
+                  <span className="text-white">{record?.great ?? 0}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-yellow-500 font-semibold">GOOD</span>
+                  <span className="text-white">{record?.good ?? 0}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-violet-500 font-semibold">BAD</span>
+                  <span className="text-white">{record?.bad ?? 0}</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-red-500 font-semibold">MISS</span>
+                  <span className="text-white">{record?.miss ?? 0}</span>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-green-500 font-semibold">GREAT</span>
-                <span className="text-white">{record?.great ?? 0}</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-yellow-500 font-semibold">GOOD</span>
-                <span className="text-white">{record?.good ?? 0}</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-violet-500 font-semibold">BAD</span>
-                <span className="text-white">{record?.bad ?? 0}</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-red-500 font-semibold">MISS</span>
-                <span className="text-white">{record?.miss ?? 0}</span>
-              </div>
-            </div>
+            )}
 
             {record.playedAt && (
               <span className="text-xs text-end">
