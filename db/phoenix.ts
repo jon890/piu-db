@@ -1412,32 +1412,6 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "호랑이가 쫓아온다",
-    artist: "DKZ",
-    bpm: "128",
-    version: "PHOENIX",
-    songType: "ARCADE",
-    charts: [
-      { level: 2, chartType: "SINGLE" },
-      { level: 4, chartType: "SINGLE" },
-      { level: 7, chartType: "SINGLE" },
-      { level: 9, chartType: "SINGLE" },
-      { level: 14, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 20, chartType: "SINGLE" },
-      { level: 22, chartType: "SINGLE" },
-      { level: 11, chartType: "DOUBLE" },
-      { level: 16, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 21, chartType: "DOUBLE" },
-      { level: 24, chartType: "DOUBLE" },
-    ],
-    patchVersion: "2.01",
-    imageUrl:
-      "https://www.piugame.com/data/song_img/9095d45d33d1c8cf8495c1295604e0af.png",
-  },
-
-  {
     name: " 호랑이가 쫓아온다",
     artist: "디케이지",
     bpm: "128",
@@ -1525,27 +1499,6 @@ export const PHOENIX_SONGS: SongData[] = [
     patchVersion: "2.01",
     imageUrl:
       "https://www.piugame.com/data/song_img/89ac6afc39e1dbaf27cede9586f53f2d.png",
-  },
-
-  {
-    name: "메가하츠",
-    artist: "DJ Noriken",
-    bpm: "200",
-    version: "PHOENIX",
-    songType: "ARCADE",
-    charts: [
-      { level: 12, chartType: "SINGLE" },
-      { level: 17, chartType: "SINGLE" },
-      { level: 21, chartType: "SINGLE" },
-      { level: 23, chartType: "SINGLE" },
-      { level: 14, chartType: "DOUBLE" },
-      { level: 18, chartType: "DOUBLE" },
-      { level: 23, chartType: "DOUBLE" },
-      { level: 25, chartType: "DOUBLE" },
-    ],
-    patchVersion: "2.01",
-    imageUrl:
-      "https://www.piugame.com/data/song_img/557ee99561f8a1522c7c87f2a4a11a4e.png",
   },
 
   {
