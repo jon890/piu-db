@@ -83,13 +83,13 @@ async function initSongAndCharts(songs: SongData[], upsertCharts?: boolean) {
 }
 
 async function main() {
-  await initSongAndCharts(FIRST_ZERO_SONGS, true);
+  // await initSongAndCharts(FIRST_ZERO_SONGS, true);
   // await initSongAndCharts(NX_NXA_SONGS);
   // await initSongAndCharts(FIESTA_TO_FIESTA2_SONGS, true);
-  await initSongAndCharts(PRIME_SONGS);
-  await initSongAndCharts(PRIME2_SONGS, true);
-  await initSongAndCharts(XX_SONGS, true);
-  await initSongAndCharts(PHOENIX_SONGS, true);
+  // await initSongAndCharts(PRIME_SONGS);
+  // await initSongAndCharts(PRIME2_SONGS, true);
+  // await initSongAndCharts(XX_SONGS, true);
+  await initSongAndCharts(PHOENIX_SONGS);
 }
 
 main();

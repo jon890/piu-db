@@ -1,9 +1,9 @@
 /**
  * 한 페이지에 보여줄 갯수
  */
-export const ROOM_PAGING_UNIT = 20;
+export const ROOM_PAGING_UNIT = 50;
 
 /**
  * 최신 패치 버전
  */
-export const PATCHED_VERSION = "2.00";
+export const PATCHED_VERSION = "2.02";
