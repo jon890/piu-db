@@ -455,7 +455,7 @@ export const PRIME_SONGS: SongData[] = [
 
   {
     // 23
-    name: "블레이즈 이모션(Band Version)",
+    name: "블레이즈 이모션 (Band version)",
     artist: "이얍",
     bpm: "170",
     version: "PRIME",
@@ -1022,6 +1022,7 @@ export const PRIME_SONGS: SongData[] = [
       { level: 6, chartType: "SINGLE" },
       { level: 8, chartType: "SINGLE" },
       { level: 14, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
       { level: 11, chartType: "DOUBLE" },
       { level: 15, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },

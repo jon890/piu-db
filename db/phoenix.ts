@@ -272,6 +272,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 6, chartType: "DOUBLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
     ],
     patchVersion: "1.06",
     imageUrl:
@@ -294,6 +295,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 8, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.01",
     imageUrl:
@@ -316,6 +318,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 8, chartType: "DOUBLE" },
       { level: 16, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.01",
     imageUrl:
@@ -1379,5 +1382,254 @@ export const PHOENIX_SONGS: SongData[] = [
     patchVersion: "1.08",
     imageUrl:
       "https://www.piugame.com/data/song_img/d9ca9ba14be1f8d7bc007bfcae6f19a1.png",
+  },
+
+  // todo 2.00??
+
+  // 2.01
+  {
+    name: " 디스코드",
+    artist: "QWER",
+    bpm: "132",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 6, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 8, chartType: "DOUBLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/468a5036181f048540d85bfb210b4486.png",
+  },
+
+  {
+    name: "호랑이가 쫓아온다",
+    artist: "DKZ",
+    bpm: "128",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 2, chartType: "SINGLE" },
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9095d45d33d1c8cf8495c1295604e0af.png",
+  },
+
+  {
+    name: " 호랑이가 쫓아온다",
+    artist: "디케이지",
+    bpm: "128",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 2, chartType: "SINGLE" },
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 9, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/9095d45d33d1c8cf8495c1295604e0af.png",
+  },
+
+  {
+    name: "하이웨이 체이서",
+    artist: "Cosmograph",
+    bpm: "155",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/f06cbde6cc0b8747421f52ac75b3ee8b.png",
+  },
+
+  {
+    name: "에렌델",
+    artist: "Palami feat.neur6sia",
+    bpm: "180",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/972549a9c03d8cc569270252aa405cf8.png",
+  },
+
+  {
+    name: "러쉬-모어",
+    artist: "litmus*",
+    bpm: "160",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/89ac6afc39e1dbaf27cede9586f53f2d.png",
+  },
+
+  {
+    name: "메가하츠",
+    artist: "DJ Noriken",
+    bpm: "200",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/557ee99561f8a1522c7c87f2a4a11a4e.png",
+  },
+
+  {
+    name: "메가하츠",
+    artist: "DJ Noriken",
+    bpm: "200",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/557ee99561f8a1522c7c87f2a4a11a4e.png",
+  },
+
+  {
+    name: "아테나의 방패",
+    artist: "Jehezukiel",
+    bpm: "176",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e9d9f977024488f5bb31c9e203621e84.png",
+  },
+
+  {
+    name: "쵸빗 플레이버",
+    artist: "aran & t+pazolite",
+    bpm: "180",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0da2130360d6066534052ce19789e013.png",
+  },
+
+  {
+    name: "프렉쳐 텀퍼렐르",
+    artist: "Kurokotei",
+    bpm: "232",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 24, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.01",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4f176d4f60c502692f8e1b0715e495e2.png",
   },
 ];

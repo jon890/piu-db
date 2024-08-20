@@ -621,10 +621,12 @@ export const PRIME2_SONGS: SongData[] = [
       { level: 14, chartType: "SINGLE" },
       { level: 16, chartType: "SINGLE" },
       { level: 19, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
       { level: 9, chartType: "DOUBLE" },
       { level: 13, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
       { level: 50, chartType: "CO_OP" },
     ],
     imageUrl:

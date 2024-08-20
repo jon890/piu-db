@@ -494,6 +494,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 3, chartType: "SINGLE" },
       { level: 6, chartType: "SINGLE" },
       { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
       { level: 18, chartType: "SINGLE" },
       { level: 15, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
@@ -800,7 +801,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 42
-    name: "스트리트 쇼 다운",
+    name: "스트리트 쇼다운",
     artist: "반야",
     bpm: "124",
     version: "FIRST_ZERO",
@@ -1212,7 +1213,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
 
   {
     // 63
-    name: "오! 로사!",
+    name: "오! 로사",
     artist: "반야",
     bpm: "148",
     version: "FIRST_ZERO",

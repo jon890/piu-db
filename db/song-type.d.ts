@@ -1,4 +1,4 @@
-import { ChartType, PiuVersion, SongType } from "@prisma/client";
+import type { ChartType, PiuVersion, SongType } from "@prisma/client";
 
 export type SongData = {
   name: string;

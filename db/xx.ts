@@ -468,6 +468,7 @@ export const XX_SONGS: SongData[] = [
       { level: 22, chartType: "SINGLE" },
       { level: 11, chartType: "DOUBLE" },
       { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
       { level: 24, chartType: "DOUBLE" },
     ],
