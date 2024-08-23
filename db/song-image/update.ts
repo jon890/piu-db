@@ -29,6 +29,7 @@ async function updateSongImages() {
         name: song.songname,
       },
     });
+
     if (!songEntity) {
       console.log("Song not founded ===> songname:", song.songname);
       continue;
