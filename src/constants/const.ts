@@ -6,4 +6,4 @@ export const ROOM_PAGING_UNIT = 50;
 /**
  * 최신 패치 버전
  */
-export const PATCHED_VERSION = "2.02";
+export const PATCHED_VERSION = "2.03";
