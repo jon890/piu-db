@@ -1683,4 +1683,115 @@ export const PHOENIX_SONGS: SongData[] = [
     ],
     patchVersion: "2.02",
   },
+
+  // 2.03
+  {
+    name: "힘 오브 골든 글로리",
+    artist: "Essbee",
+    bpm: "244",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 15, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 25, chartType: "SINGLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/5713ab6fbd6510744918896c7f949bce.png",
+  },
+
+  {
+    name: "노스텔지어",
+    artist: "우디",
+    bpm: "100",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 8, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 10, chartType: "DOUBLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8c79ce4830470629ea3de71335222909.png",
+  },
+
+  {
+    name: "퍼페츄얼",
+    artist: "Qu-ail",
+    bpm: "180",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/aaa768a0b807b815409ed97d9efac188.png",
+  },
+
+  {
+    name: "스타드림 -Eurobeat Remix-",
+    artist: "MAX x Cashew x Dave Rodgers",
+    bpm: "160",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/1e7f149bb81b419a51d930540d002bec.png",
+  },
+
+  {
+    name: "* 이 게임은 존재하지 않습니다 *",
+    artist: "litmus* x Ester",
+    bpm: "40-240",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 24, chartType: "SINGLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 22, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.03",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/89f84e8cf3b3b99a00a93bf032100f8e.png",
+  },
 ];
