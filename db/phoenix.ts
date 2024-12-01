@@ -1388,7 +1388,7 @@ export const PHOENIX_SONGS: SongData[] = [
 
   // 2.01
   {
-    name: " 디스코드",
+    name: "디스코드",
     artist: "QWER",
     bpm: "132",
     version: "PHOENIX",
@@ -1412,7 +1412,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: " 호랑이가 쫓아온다",
+    name: "호랑이가 쫓아온다",
     artist: "디케이지",
     bpm: "128",
     version: "PHOENIX",
@@ -1836,7 +1836,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "솔저스",
+    name: "솔저스 (TANO*C W TEAM RED ANTHEM)",
     artist: "DJ Noriken",
     bpm: "170",
     version: "PHOENIX",
@@ -1856,7 +1856,7 @@ export const PHOENIX_SONGS: SongData[] = [
   },
 
   {
-    name: "언더월드",
+    name: "언더월드 ft. Skizzo (PIU Edit.)",
     artist: "MonstDeath vs Neutral Moon",
     bpm: "190",
     version: "PHOENIX",
@@ -1893,5 +1893,114 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 25, chartType: "DOUBLE" },
     ],
     patchVersion: "2.04",
+  },
+
+  {
+    name: "도플갱어",
+    artist: "MonstDeath",
+    bpm: "210",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 9, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 24, chartType: "SINGLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/e704a8cd90610ee999d0111de18a729c.png",
+  },
+
+  {
+    name: "소닉 붐",
+    artist: "USAO",
+    bpm: "205",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/47d2111d0be2b8851490d29a191d9ac7.png",
+  },
+
+  {
+    name: "익스트림 음악학원 1교시  feat. Nanahira",
+    artist: "Massive New Krew & RoughSketch",
+    bpm: "210",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 15, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/abec5c2e20d275765d72cbe1c98bb4bb.png",
+  },
+
+  {
+    name: "냥-턴 (feat. KuTiNA)",
+    artist: "Cashew & Castellia",
+    bpm: "202.1",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 4, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 12, chartType: "DOUBLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
+    ],
+    patchVersion: "2.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/11b773bf4751b7d202b025ea11d25a80.png",
+  },
+
+  {
+    name: "익스트림 음악학원 2교시  feat. Nanahira",
+    artist: "Massive New Krew & RoughSketch",
+    bpm: "210",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 16, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 24, chartType: "SINGLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+      { level: 26, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.05",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/67c498e07e3c0a8265e4270034e91398.png",
   },
 ];
