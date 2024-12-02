@@ -8,8 +8,16 @@ import loadGameIds from "./load-gameid";
 import getPumbilityRanking from "./puppeteer/get-pumbility-ranking";
 import loginToPIU, { checkLoginState } from "./puppeteer/login-piu";
 import { isBlank } from "./util";
+import "dotenv/config";
 
 functions.http("pumbility_ranking", async (req, res) => {
+  const authToken = req.get("Authorization");
+
+  if (authToken !== process.env.PUMBILITY_RANKING_AUTH_TOKEN) {
+    res.status(401).send(CrawlingResponse.error("UNKNOWN", "인증 실패"));
+    return;
+  }
+
   try {
     const pumbilityRankingList = await getPumbilityRanking();
     res.send({ ok: true, pumbilityRankingList });
