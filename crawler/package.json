@@ -1,0 +1,22 @@
+{
+  "name": "piudb-crawling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "gcp-build": "node node_modules/puppeteer/install.mjs && tsc",
+    "prestart": "npm run gcp-build",
+    "start": "nodemon -e ts --exec functions-framework --target=crawling --port=18080"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
+    "puppeteer": "^22.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "typescript": "^5.3.3"
+  }
+}
