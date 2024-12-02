@@ -1,7 +1,7 @@
 import { Browser } from "puppeteer";
-import { CrawlingException } from "./exception/crawling.exception";
-import { getBrowser, getPageWithNotImage } from "./puppeteer/ready-browser";
-import { sleep } from "./util";
+import { CrawlingException } from "../exception/crawling.exception";
+import { getBrowser, getPageWithNotImage } from "./ready-browser";
+import { sleep } from "../util";
 
 export type LoginParams = {
   email: string;

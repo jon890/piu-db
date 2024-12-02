@@ -1,5 +1,4 @@
 import { Browser } from "puppeteer";
-import { sleep } from "./util";
 import { getPageWithNotImage } from "./puppeteer/ready-browser";
 
 export type GameId = {

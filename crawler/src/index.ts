@@ -2,11 +2,24 @@ import * as functions from "@google-cloud/functions-framework";
 import changeGameId from "./change-gameid";
 import { CrawlingResponse } from "./common/crawling.response";
 import { CrawlingException } from "./exception/crawling.exception";
+import getMyBestScore from "./get-my-best-score";
 import getRecentlyPlayed from "./get-recently-played";
 import loadGameIds from "./load-gameid";
-import loginToPIU, { checkLoginState } from "./login-piu";
+import getPumbilityRanking from "./puppeteer/get-pumbility-ranking";
+import loginToPIU, { checkLoginState } from "./puppeteer/login-piu";
 import { isBlank } from "./util";
-import getMyBestScore from "./get-my-best-score";
+
+functions.http("pumbility_ranking", async (req, res) => {
+  try {
+    const pumbilityRankingList = await getPumbilityRanking();
+    res.send({ ok: true, pumbilityRankingList });
+  } catch (e) {
+    console.log(e);
+    res
+      .status(500)
+      .send(CrawlingResponse.error("UNKNOWN", (e as Error).message));
+  }
+});
 
 functions.http("crawling", async (req, res) => {
   // console.log("reqIp", req.ip);
