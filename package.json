@@ -8,13 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "studio:dev": "dotenv -e .env.development -- prisma studio",
-    "db-pull:local": "dotenv -e .env.local -- prisma db pull",
-    "db-pull:dev": "dotenv -e .env.development -- prisma db pull",
-    "db-push:local": "dotenv -e .env.local -- prisma db push",
     "db-push:dev": "dotenv -e .env.development -- prisma db push",
     "db:generate": "prisma generate",
-    "db-init:local": "dotenv -e .env.local -- ts-node ./db/_init",
     "db-init:dev": "dotenv -e .env.development -- ts-node ./db/_init",
     "db-image:dev": "dotenv -e .env.development -- ts-node ./db/song-image/update"
   },

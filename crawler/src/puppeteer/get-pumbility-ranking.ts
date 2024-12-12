@@ -8,17 +8,23 @@ export default async function getPumbilityRanking() {
   const pumbilityRankingList = await page.$$eval(
     "ul.pumbilitySt li",
     (liList) => {
-      return liList.map((el) => {
+      return liList.map((el, index) => {
         const profileName = el.querySelector(
           "div.profile_name.en.pl0"
         )?.textContent;
         const hashtag = el.querySelector(
           "div.profile_name.en.st1"
         )?.textContent;
-        const score = el.querySelector("div.score > i.tt.en")?.textContent;
+        const score =
+          el.querySelector("div.score > i.tt.en")?.textContent ?? "";
         const date = el.querySelector("div.date > i.tt")?.textContent;
 
-        return { profileName, hashtag, score, date };
+        return {
+          rank: index + 1,
+          gameId: `${profileName} ${hashtag}`,
+          score: Number(score.replaceAll(",", "")),
+          date,
+        };
       });
     }
   );

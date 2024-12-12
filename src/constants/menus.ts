@@ -8,6 +8,7 @@ export const MENUS = [
     href: "/records",
   },
   { text: "스킬 어택", href: "/skill-attack" },
+  { text: "펌빌리티", href: "/pumbility" },
   { text: "프로필", href: "/profile" },
 ] as const;
 

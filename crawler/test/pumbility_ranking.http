@@ -1,4 +1,4 @@
 ### 펌빌리티 랭킹 목록
 POST http://localhost:18081/
 Content-Type: application/json
-Authorization: ASDFASDF
+Authorization: 5e0aea97-a600-46b1-b605-b5e1f445dd77
