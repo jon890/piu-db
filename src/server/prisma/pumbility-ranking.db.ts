@@ -2,13 +2,16 @@ import TimeUtil from "../utils/time-util";
 import prisma from "./prisma.client";
 
 async function findByGameId(gameId: string) {
-  const pumbilityRanking = await prisma.pumbilityRanking.findFirst({
+  return prisma.pumbilityRanking.findMany({
     where: {
       gameId,
       isActive: true,
     },
+    orderBy: {
+      score: "desc",
+    },
+    take: 10,
   });
-  return pumbilityRanking;
 }
 
 async function findAll() {
