@@ -23,8 +23,6 @@ export default async function PumbilityRankingTable({}: Props) {
               <th>랭킹</th>
               <th>게임아이디</th>
               <th>점수</th>
-              <th>점수 변동량</th>
-              <th>랭킹 변동</th>
               <th>마지막 점수 변경시간</th>
             </tr>
           </thead>
@@ -37,8 +35,6 @@ export default async function PumbilityRankingTable({}: Props) {
                     <td>{ranking.rank}</td>
                     <td>{ranking.gameId}</td>
                     <td>{ranking.score}</td>
-                    <td>{ranking.deltaScore}</td>
-                    <td>{ranking.deltaRank}</td>
                     <td>
                       {TimeUtil.format(
                         ranking.officialUpdatedAt,

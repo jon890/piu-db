@@ -9,13 +9,26 @@ export default function Menu() {
   return (
     <ul className="menu menu-sm md:menu-md lg:menu-lg p-4 w-40 lg:w-60 xl:w-80 min-h-full bg-base-200 font-semibold gap-5 z-40">
       {MENUS.map((menu) => (
-        <MenuLink key={menu.href} text={menu.text} href={menu.href} />
+        <MenuLink
+          key={menu.href}
+          text={menu.text}
+          href={menu.href}
+          isBeta={menu.isBeta}
+        />
       ))}
     </ul>
   );
 }
 
-function MenuLink({ href, text }: { href: string; text: string }) {
+function MenuLink({
+  href,
+  text,
+  isBeta,
+}: {
+  href: string;
+  text: string;
+  isBeta: boolean;
+}) {
   const pathname = usePathname();
 
   return (
@@ -25,6 +38,7 @@ function MenuLink({ href, text }: { href: string; text: string }) {
         className={classnames(pathname.startsWith(href) ? "active" : "")}
       >
         {text}
+        {isBeta && <span className="badge badge-primary badge-sm">Beta</span>}
       </Link>
     </li>
   );

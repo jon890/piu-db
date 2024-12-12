@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
   }
 
   await PumbilityRankingDb.createMany(newRankings, batchedAt);
-  await PumbilityRankingDb.createMany(updatedRankings, batchedAt);
+  await PumbilityRankingDb.updateMany(updatedRankings, batchedAt);
 
   return NextResponse.json({ message: "success" }, { status: 200 });
 }
