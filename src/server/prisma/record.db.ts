@@ -288,7 +288,7 @@ async function getMaxRecordsBy(
       FROM td_record
       WHERE user_seq = ${userSeq}
         AND chart_seq IN (${Prisma.join(chartSeqs)})
-        ${isBreakOn ? Prisma.sql` AND is_break_off = 0` : Prisma.empty}
+        ${isBreakOn ? Prisma.sql` AND is_break_off = true` : Prisma.empty}
       GROUP BY user_seq, chart_seq) AS max
   WHERE rec.user_seq = max.user_seq
     AND rec.chart_seq = max.chart_seq
