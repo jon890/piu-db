@@ -21,6 +21,10 @@ export const getBrowser = async () => {
 
 export const getPageWithNotImage = async (browser: Browser) => {
   const page = await browser.newPage();
+
+  await page.setRequestInterception(true);
+  await page.setViewport({ width: 1920, height: 1080 });
+
   page.on("request", (req) => {
     switch (req.resourceType()) {
       case "image":
@@ -32,6 +36,6 @@ export const getPageWithNotImage = async (browser: Browser) => {
 
     req.continue();
   });
-  await page.setRequestInterception(true);
+
   return page;
 };

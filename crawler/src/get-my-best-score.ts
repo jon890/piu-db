@@ -1,46 +1,11 @@
 import { Browser, Page } from "puppeteer";
 import { getPageWithNotImage } from "./puppeteer/ready-browser";
 import { handleMultiplePages } from "./util";
-
-export type Type = "SINGLE" | "DOUBLE" | "Unknown";
-
-export type Grade =
-  | "SSS_PLUS"
-  | "SSS"
-  | "SS_PLUS"
-  | "SS"
-  | "S_PLUS"
-  | "S"
-  | "AAA_PLUS"
-  | "AAA"
-  | "AA_PLUS"
-  | "AA"
-  | "A_PLUS"
-  | "A"
-  | "B"
-  | "C"
-  | "D"
-  | "F";
-
-export type Plate =
-  | "ROUGH_GAME"
-  | "FAIR_GAME"
-  | "TALENTED_GAME"
-  | "MARVELOUS_GAME"
-  | "SUPERB_GAME"
-  | "EXTREME_GAME"
-  | "ULTIMATE_GAME"
-  | "PERFECT_GAME"
-  | null;
-
-export type MyBestScore = {
-  type: Type;
-  level: string;
-  grade: Grade;
-  plate: Plate;
-  songName: string;
-  score: number;
-};
+import { Grade } from "./@types/grade";
+import { Plate } from "./@types/plate";
+import { MyBestScore } from "./@types/my-best-score";
+import { ChartType } from "./@types/chart-type";
+import os from "os";
 
 /**
  * 마이 베스트 기록 가져오기
@@ -74,19 +39,33 @@ export default async function getMyBestScore(browser: Browser) {
     }
   );
 
+  const sessionId = Math.random().toString(36).substring(2, 15);
+  console.debug("sessionId", sessionId, "getMyBestScore totalPage", lastPage);
+
   if (lastPage == null) {
     return [];
   }
 
-  const unit = 10;
+  const unit = 20;
   const data: MyBestScore[] = [];
   const iterationCount = Math.floor(lastPage / unit);
 
   for (let i = 0; i <= iterationCount; i++) {
+    console.debug(
+      "sessionId",
+      sessionId,
+      "getMyBetScore memoryUsage",
+      "totalMemory",
+      (os.totalmem() / 1024 / 1024).toFixed(2) + "MB",
+      "freeMemory",
+      (os.freemem() / 1024 / 1024).toFixed(2) + "MB"
+    );
+
     const result = await handleMultiplePages(
       browser,
       i !== iterationCount ? unit : lastPage % unit,
-      (page, pageNumber) => getMyBestScorePage(page, unit * i + pageNumber)
+      (page, pageNumber) =>
+        getMyBestScorePage(sessionId, page, unit * i + pageNumber)
     );
     data.push(...result);
   }
@@ -94,7 +73,17 @@ export default async function getMyBestScore(browser: Browser) {
   return data;
 }
 
-async function getMyBestScorePage(puppeteer: Page, pageNumber: number) {
+async function getMyBestScorePage(
+  sessionId: string,
+  puppeteer: Page,
+  pageNumber: number
+) {
+  console.debug(
+    "sessionId",
+    sessionId,
+    "getMyBestScorePage pageNumber",
+    pageNumber
+  );
   const URL = `https://www.piugame.com/my_page/my_best_score.php?&page=${pageNumber}`;
   await puppeteer.goto(URL, { waitUntil: "domcontentloaded" });
 
@@ -106,7 +95,7 @@ async function getMyBestScorePage(puppeteer: Page, pageNumber: number) {
         const typeEl = it.querySelector("div.tw img"); // single or double
         const typeSrc = (typeEl as HTMLImageElement)?.src ?? "";
 
-        let type: Type;
+        let type: ChartType;
         if (typeSrc.includes("s_text.png")) {
           type = "SINGLE";
         } else if (typeSrc.includes("d_text.png")) {
@@ -184,7 +173,7 @@ async function getMyBestScorePage(puppeteer: Page, pageNumber: number) {
           level,
           songName,
           grade: grade as Grade,
-          plate,
+          plate: plate as Plate,
           score: score !== "" ? Number(score.replaceAll(",", "")) : 0,
         };
       })

@@ -20,10 +20,10 @@ export default async function loginToPIU(params: LoginParams) {
   await page.type("input[name='mb_id']", params.email);
   await page.type("input[name='mb_password']", params.password);
   await page.click("form#login_fs button[type='submit']");
-
+  const cookies = await page.cookies();
   await sleep(200);
   await page.close();
-  return browser;
+  return { browser, cookies };
 }
 
 export async function checkLoginState(browser: Browser) {

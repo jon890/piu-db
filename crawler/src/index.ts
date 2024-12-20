@@ -9,6 +9,8 @@ import getPumbilityRanking from "./puppeteer/get-pumbility-ranking";
 import loginToPIU, { checkLoginState } from "./puppeteer/login-piu";
 import { isBlank } from "./util";
 import "dotenv/config";
+import axios from "axios";
+import getMyBestScoreFromApi from "./get-my-best-score-api";
 
 functions.http("pumbility_ranking", async (req, res) => {
   const authToken = req.get("Authorization");
@@ -39,14 +41,14 @@ functions.http("crawling", async (req, res) => {
     if (isBlank(email)) throw new CrawlingException("EMAIL_REQUIRED");
     if (isBlank(password)) throw new CrawlingException("PASSWORD_REQUIRED");
 
-    const browser = await loginToPIU({ email, password });
+    const { browser, cookies } = await loginToPIU({ email, password });
     await checkLoginState(browser);
 
     if (nickname) {
       await changeGameId(browser, nickname);
 
       if (mode === "MY_BEST") {
-        const myBestScore = await getMyBestScore(browser);
+        const myBestScore = await getMyBestScoreFromApi(cookies);
         await browser.close();
         res.status(200).send(CrawlingResponse.ok(myBestScore));
       } else {

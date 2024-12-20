@@ -1,0 +1,17 @@
+export type Grade =
+  | "SSS_PLUS"
+  | "SSS"
+  | "SS_PLUS"
+  | "SS"
+  | "S_PLUS"
+  | "S"
+  | "AAA_PLUS"
+  | "AAA"
+  | "AA_PLUS"
+  | "AA"
+  | "A_PLUS"
+  | "A"
+  | "B"
+  | "C"
+  | "D"
+  | "F";

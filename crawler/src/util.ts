@@ -1,4 +1,5 @@
 import { Browser, Page } from "puppeteer";
+import { getPageWithNotImage } from "./puppeteer/ready-browser";
 
 export function isBlank(v: string | undefined | null): boolean {
   if (v === undefined) {
@@ -30,7 +31,7 @@ export async function handleMultiplePages<T>(
       let newPage;
       const pageNumber = index + 1;
       try {
-        newPage = await browser.newPage();
+        newPage = await getPageWithNotImage(browser);
         const data = await func(newPage, pageNumber);
         return { ok: true, data };
       } catch (e) {
@@ -38,7 +39,7 @@ export async function handleMultiplePages<T>(
         console.error("page number ===> ", pageNumber);
         throw e;
       } finally {
-        newPage?.close();
+        await newPage?.close();
       }
     })
   );
