@@ -121,6 +121,7 @@ export const FIRST_ZERO_SONGS: SongData[] = [
       { level: 12, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
       { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
     ],
     imageUrl:
       "https://www.piugame.com/data/song_img/682deef3bbe633670e77fb83018e5271.png",
