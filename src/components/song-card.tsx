@@ -8,6 +8,7 @@ import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import LevelBall from "./level-ball";
 import SongBadges from "./song-badges";
+import PiuImageLoader from "@/utils/song-image-loader";
 
 type Props = {
   song: Song;
@@ -66,6 +67,7 @@ export default function SongCard({
       {song.imageUrl && (
         <figure className="relative">
           <Image
+            loader={PiuImageLoader}
             src={song.imageUrl}
             alt={song.name}
             fill

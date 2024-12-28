@@ -5,6 +5,7 @@ import RecordGrade from "@/components/record/record-grade";
 import RecordPlate from "@/components/record/record-plate";
 import TimeUtil from "@/server/utils/time-util";
 import classnames from "@/utils/classnames";
+import PiuImageLoader from "@/utils/song-image-loader";
 import type { Chart, Record, Song } from "@prisma/client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -35,6 +36,7 @@ export default function RecordModal({ record, chart, song }: Props) {
           {song.imageUrl && (
             <figure className="relative">
               <Image
+                loader={PiuImageLoader}
                 src={song.imageUrl}
                 alt={song.name}
                 fill

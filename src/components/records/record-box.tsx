@@ -3,6 +3,7 @@ import RecordPlate from "@/components/record/record-plate";
 import type { MaxRecord } from "@/server/prisma/record.db";
 import classnames from "@/utils/classnames";
 import NumberUtil from "@/utils/number.util";
+import PiuImageLoader from "@/utils/song-image-loader";
 import type { Chart, Song } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,6 +36,7 @@ export default function RecordBox({
       {song.imageUrl && (
         <figure className="relative">
           <Image
+            loader={PiuImageLoader}
             src={song.imageUrl}
             alt={song.name}
             fill

@@ -6,6 +6,7 @@ import ChartDB from "@/server/prisma/chart.db";
 import RecordDB from "@/server/prisma/record.db";
 import TimeUtil from "@/server/utils/time-util";
 import classnames from "@/utils/classnames";
+import PiuImageLoader from "@/utils/song-image-loader";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -41,9 +42,11 @@ export default async function RecordDetailPage({
           {song.imageUrl && (
             <figure className="relative">
               <Image
+                loader={PiuImageLoader}
                 src={song.imageUrl}
                 alt={song.name}
                 fill
+                quality={100}
                 priority={false}
                 sizes="50vw"
               />
