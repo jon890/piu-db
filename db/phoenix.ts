@@ -862,6 +862,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 13, chartType: "DOUBLE" },
       { level: 19, chartType: "DOUBLE" },
       { level: 22, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "1.00",
     imageUrl:
@@ -1405,6 +1406,7 @@ export const PHOENIX_SONGS: SongData[] = [
       { level: 14, chartType: "DOUBLE" },
       { level: 17, chartType: "DOUBLE" },
       { level: 20, chartType: "DOUBLE" },
+      { level: 50, chartType: "CO_OP" },
     ],
     patchVersion: "2.01",
     imageUrl:
@@ -2002,5 +2004,177 @@ export const PHOENIX_SONGS: SongData[] = [
     patchVersion: "2.05",
     imageUrl:
       "https://www.piugame.com/data/song_img/67c498e07e3c0a8265e4270034e91398.png",
+  },
+
+  // 2.06
+  {
+    name: "E.O.N",
+    artist: "HiTECH NINJA",
+    bpm: "165",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 17, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 13, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    isPremium: true,
+    imageUrl:
+      "https://www.piugame.com/data/song_img/faf4869b39a5e7616d5be4121a9a9424.png",
+  },
+
+  {
+    name: "테디베어 - FULL SONG -",
+    artist: "STAYC",
+    bpm: "119",
+    version: "PHOENIX",
+    songType: "FULL_SONG",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 20, chartType: "SINGLE" },
+      { level: 22, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/45661f5949d8c1086de58bd0d8c5abe9.png",
+  },
+
+  {
+    name: "이매저너라이즈드 시티",
+    artist: "Reku Mochizuki",
+    bpm: "156",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 7, chartType: "SINGLE" },
+      { level: 12, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 14, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/896fd90e000d90442da420fa16d262c4.png",
+  },
+
+  {
+    name: "에모모모",
+    artist: "Ras",
+    bpm: "145",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 7, chartType: "SINGLE" },
+      { level: 10, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 16, chartType: "SINGLE" },
+      { level: 19, chartType: "SINGLE" },
+      { level: 12, chartType: "DOUBLE" },
+      { level: 18, chartType: "DOUBLE" },
+      { level: 21, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/ef5d306f648cd9b2ba4be5bb87f43825.png",
+  },
+
+  {
+    name: "쥬핀 - SHORT CUT -",
+    artist: "Sobrem",
+    bpm: "173",
+    version: "PHOENIX",
+    songType: "SHORT_CUT",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 13, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 16, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/b208400865f868b06fa53953868dc5b6.png",
+  },
+
+  {
+    name: "사월의 축제",
+    artist: "SHK",
+    bpm: "204",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 3, chartType: "SINGLE" },
+      { level: 5, chartType: "SINGLE" },
+      { level: 11, chartType: "SINGLE" },
+      { level: 14, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 11, chartType: "DOUBLE" },
+      { level: 15, chartType: "DOUBLE" },
+      { level: 19, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/0e911aaabb42d076ba2b39a6138b0d5c.png",
+  },
+
+  {
+    name: "브레이크 스루 마이셀프 feat. Risa Yuzuki",
+    artist: "DJ Myosuke & Laur",
+    bpm: "200",
+    version: "PHOENIX",
+    songType: "ARCADE",
+    charts: [
+      { level: 12, chartType: "SINGLE" },
+      { level: 15, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 21, chartType: "SINGLE" },
+      { level: 23, chartType: "SINGLE" },
+      { level: 17, chartType: "DOUBLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 23, chartType: "DOUBLE" },
+      { level: 25, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/8fbc8632f74adc19c443e1470294fdc2.png",
+  },
+
+  {
+    name: "디스트릭트 V",
+    artist: "DJ Myosuke & Laur",
+    bpm: "200",
+    version: "PHOENIX",
+    songType: "REMIX",
+    charts: [
+      { level: 13, chartType: "SINGLE" },
+      { level: 18, chartType: "SINGLE" },
+      { level: 22, chartType: "SINGLE" },
+      { level: 20, chartType: "DOUBLE" },
+      { level: 24, chartType: "DOUBLE" },
+    ],
+    patchVersion: "2.06",
+    imageUrl:
+      "https://www.piugame.com/data/song_img/4ff9261874561382057961782c8be6b2.png",
   },
 ];

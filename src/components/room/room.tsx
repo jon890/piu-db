@@ -29,7 +29,7 @@ export default function Room({ room, count, isParticipating }: Props) {
 
       <div className="card-body">
         <h2 className="card-title">
-          <span>{room.name}</span>
+          <span className="text-base">{room.name}</span>
           {room.stopParticipating && (
             <Tooltip text="일시적으로 참여가 제한되어 있습니다">
               <LockClosedIcon className="size-6 text-superb" />
@@ -37,10 +37,14 @@ export default function Room({ room, count, isParticipating }: Props) {
           )}
         </h2>
         {isParticipating && (
-          <div className="badge badge-secondary">참여 중</div>
+          <div className="badge-sm lg:badge-md badge badge-secondary">
+            참여 중
+          </div>
         )}
         {room.description && (
-          <p className="font-medium text-sm">{room.description}</p>
+          <p className="text-xs max-w-[200px] lg:max-w-[260px] font-medium lg:text-sm text-ellipsis overflow-hidden whitespace-nowrap">
+            {room.description}
+          </p>
         )}
         <p className="text-end font-medium">
           방장 :{" "}

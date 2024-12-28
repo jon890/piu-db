@@ -30,7 +30,20 @@ const prisma = new PrismaClient({
 });
 
 async function initSongAndCharts(songs: SongData[], upsertCharts?: boolean) {
+  const results: string[] = [];
+
   for (const song of songs) {
+    const exist = await prisma.song.findUnique({
+      where: {
+        name: song.name,
+      },
+    });
+    if (exist) {
+      results.push(`${song.name} already exists update`);
+    } else {
+      results.push(`${song.name} not exists create`);
+    }
+
     const songEntity = await prisma.song.upsert({
       where: {
         name: song.name,
@@ -80,6 +93,8 @@ async function initSongAndCharts(songs: SongData[], upsertCharts?: boolean) {
       }
     }
   }
+
+  console.log(results.join("\n"));
 }
 
 async function main() {
@@ -89,7 +104,7 @@ async function main() {
   // await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS, true);
   // await initSongAndCharts(XX_SONGS, true);
-  await initSongAndCharts(PHOENIX_SONGS);
+  await initSongAndCharts(PHOENIX_SONGS, true);
 }
 
 main();
