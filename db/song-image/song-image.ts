@@ -1,4 +1,4 @@
-const SONG_IMAGES_2024_12_28 = [
+export const SONG_IMAGES_2024_12_28 = [
   {
     imageUrl:
       "https://www.piugame.com/data/song_img/eb729c74a7b424a6598e6a18b5025346.png",

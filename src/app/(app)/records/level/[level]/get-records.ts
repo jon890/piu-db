@@ -37,6 +37,7 @@ export async function getLevelRecordsBy(
     chartSeqs,
     true
   );
+
   const breakOnMaxRecordMap = ArrayUtil.associatedBy(
     breakOnMaxRecords,
     (record) => record.chart_seq

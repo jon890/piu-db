@@ -9,6 +9,7 @@ import SyncMyBestScoreButton from "../../(sync-my-best-score)/sync-my-best-score
 import SyncRecentlyPlayedButton from "../../(sync-recently-played)/sync-recently-played.button";
 import { getLevelRecordsBy } from "./get-records";
 import LevelRecordsDetail from "./level-records-detail";
+import { Suspense } from "react";
 
 type Props = {
   params: {
@@ -29,9 +30,6 @@ export default async function LevelRecordPage({
     notFound();
   }
   const piuAuthValue = await CookieUtil.getPiuAuthValue();
-  const levelRecords = CHART_TYPE
-    ? await getLevelRecordsBy(userSeq, targetLevel, CHART_TYPE)
-    : [];
 
   return (
     <ContentBox title="내 기록">
@@ -45,15 +43,38 @@ export default async function LevelRecordPage({
         <SelectChartType level={targetLevel} chartType={CHART_TYPE} />
 
         {CHART_TYPE ? (
-          levelRecords.length > 0 ? (
-            <LevelRecordsDetail levelRecords={levelRecords} />
-          ) : (
-            <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>
-          )
+          <Suspense fallback={<p className="text-gray-500">로딩중...</p>}>
+            {" "}
+            <LevelRecordsDetailHelper
+              chartType={CHART_TYPE}
+              userSeq={userSeq}
+              targetLevel={targetLevel}
+            />
+          </Suspense>
         ) : (
           <p className="text-gray-500">싱글 더블을 선택해주세요</p>
         )}
       </div>
     </ContentBox>
   );
+}
+
+async function LevelRecordsDetailHelper({
+  chartType,
+  userSeq,
+  targetLevel,
+}: {
+  chartType?: ChartType;
+  userSeq: number;
+  targetLevel: number;
+}) {
+  const levelRecords = chartType
+    ? await getLevelRecordsBy(userSeq, targetLevel, chartType)
+    : [];
+
+  if (levelRecords.length === 0) {
+    return <p className="text-gray-500">해당 레벨에 노래가 없습니다</p>;
+  }
+
+  return <LevelRecordsDetail levelRecords={levelRecords} />;
 }

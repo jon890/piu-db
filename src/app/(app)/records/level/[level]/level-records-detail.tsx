@@ -28,7 +28,7 @@ export default function LevelRecordsDetail({ levelRecords }: Props) {
     .map((it) => it.record)
     .filter(ArrayUtil.notEmpty);
 
-  const clearCounts = records.filter((it) => it.is_break_off === 0).length;
+  const clearCounts = records.filter((it) => it.is_break_off === false).length;
 
   const avgScores =
     records.length === 0

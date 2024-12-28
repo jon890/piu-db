@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { SONG_IMAGES } from "./song-image";
+import { SONG_IMAGES_2024_12_28 } from "./song-image";
 
 const prisma = new PrismaClient({
   // log: [
@@ -23,7 +23,7 @@ const prisma = new PrismaClient({
 });
 
 async function updateSongImages() {
-  for (const song of SONG_IMAGES) {
+  for (const song of SONG_IMAGES_2024_12_28) {
     const songEntity = await prisma.song.findUnique({
       where: {
         name: song.songname,
