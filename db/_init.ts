@@ -104,7 +104,7 @@ async function main() {
   // await initSongAndCharts(PRIME_SONGS);
   // await initSongAndCharts(PRIME2_SONGS, true);
   // await initSongAndCharts(XX_SONGS, true);
-  // await initSongAndCharts(PHOENIX_SONGS);
+  await initSongAndCharts(PHOENIX_SONGS, true);
 }
 
 main();

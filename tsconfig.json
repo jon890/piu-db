@@ -21,14 +21,14 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    },
+    }
 
     // For Next.js
     // "module": "ESNext"
 
     // For seed DB
-    "preserveValueImports": false,
-    "module": "CommonJS"
+    // "preserveValueImports": false,
+    // "module": "CommonJS"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
