@@ -1,14 +1,12 @@
 "use client";
 
 import useToast from "@/client/hooks/use-toast";
-import { PiuProfile } from "@prisma/client";
+import AuthTopBar from "@/components/layout/auth-top-bar";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ContentBox from "@/components/layout/content-box";
-import AuthTopBar from "@/components/layout/auth-top-bar";
-import ValidateAccountForm from "./(validate-account)/form";
-import Link from "next/link";
 import ResetPasswordForm from "./(reset-password)/form";
+import ValidateAccountForm from "./(validate-account)/form";
 
 type State = {
   step: number;
