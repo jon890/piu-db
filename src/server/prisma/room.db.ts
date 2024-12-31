@@ -115,6 +115,11 @@ async function getRooms(userSeq: number, page: number) {
         },
       },
     },
+    orderBy: [
+      {
+        createdAt: "asc",
+      },
+    ],
   });
 
   return {

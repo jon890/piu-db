@@ -21,6 +21,7 @@ export default async function RoomList({ page }: Props) {
 
   return (
     <>
+      {/* todo 내가 참여한 방만 보기 */}
       <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-5 w-full">
         {participatingRooms.map((room) => (
           <Room
