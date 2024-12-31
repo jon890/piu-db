@@ -62,21 +62,22 @@ type SkillAttackRanking = {
 };
 async function getRanking() {
   return prisma.$queryRaw<SkillAttackRanking[]>`
-  select 
-    sp.seq sp_seq,
-    user.seq user_seq ,
-    user.nickname ,
-    user.uid , 
-    max_sp.skill_points, sp.created_at
-  from td_user user,
-     (select user_seq, max(skill_points) skill_points
-      from td_skill_attack
-      group by user_seq
-      order by max(skill_points) desc) max_sp,
-     td_skill_attack sp
-  where user.seq = max_sp.user_seq
+  select sp.seq sp_seq,
+        td_user.seq,
+        td_user.nickname,
+        td_user.uid,
+        max_sp.skill_points,
+        sp.created_at
+  from td_user,
+      (select user_seq, max(skill_points) skill_points
+        from td_skill_attack
+        group by user_seq
+        order by max(skill_points) desc) max_sp,
+      td_skill_attack sp
+  where td_user.seq = max_sp.user_seq
     and sp.user_seq = max_sp.user_seq
-    and sp.skill_points = max_sp.skill_points;
+    and sp.skill_points = max_sp.skill_points
+  order by max_sp.skill_points desc;
   `;
 }
 
