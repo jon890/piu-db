@@ -7,10 +7,12 @@ export function Paging({
   page,
   count,
   unit,
+  className = "",
 }: {
   page: number;
   count: number;
   unit: number;
+  className?: string;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -24,7 +26,7 @@ export function Paging({
   };
 
   return (
-    <div className="join">
+    <div className={classnames("join", className)}>
       {Array(totalPages)
         .fill(null)
         .map((v, i) => (

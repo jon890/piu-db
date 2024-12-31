@@ -6,9 +6,26 @@ import RoomListSkeleton from "@/components/room/room-list-skeleton";
 import PiuProfileDB from "@/server/prisma/piu-profile.db";
 import AuthUtil from "@/server/utils/auth-util";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
-export default async function RoomListPage() {
+type Props = {
+  searchParams: {
+    page?: number;
+  };
+};
+
+/**
+ * 방목록 페이지
+ */
+export default async function RoomListPage({
+  searchParams: { page: _page },
+}: Props) {
+  const page = Number(_page);
+  if (!_page && isNaN(page)) {
+    redirect("/rooms?page=1");
+  }
+
   const userSeq = await AuthUtil.getUserSeqThrows();
   const isExistProfile = await PiuProfileDB.isExist(userSeq);
 
@@ -37,7 +54,7 @@ export default async function RoomListPage() {
       </div>
 
       <Suspense fallback={<RoomListSkeleton />}>
-        <RoomList />
+        <RoomList page={page} />
       </Suspense>
     </ContentBox>
   );

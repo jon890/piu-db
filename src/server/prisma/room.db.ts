@@ -70,14 +70,32 @@ async function changeSettings(
   return { ok: true, message: "설정을 변경했습니다" };
 }
 
-async function getRooms(userSeq: number, page: number = 0) {
-  return prisma.assignmentRoom.findMany({
-    skip: page * ROOM_PAGING_UNIT,
+/**
+ * 방 목록을 조회한다
+ *
+ * todo 내가 참여한 방이 우선 조회 되도록..
+ * @param userSeq
+ * @param page
+ * @returns
+ */
+async function getRooms(userSeq: number, page: number) {
+  const totalItemCount = await prisma.assignmentRoom.count({
+    where: {
+      isActive: true,
+    },
+  });
+
+  const rooms = await prisma.assignmentRoom.findMany({
+    skip: (page - 1) * ROOM_PAGING_UNIT,
     take: ROOM_PAGING_UNIT,
+    where: {
+      isActive: true,
+    },
     include: {
       admin: {
         select: { nickname: true },
       },
+      // 해당 유저 참여 여부 조회용
       _count: {
         select: {
           assignmentRoomParticipants: {
@@ -98,6 +116,12 @@ async function getRooms(userSeq: number, page: number = 0) {
       },
     },
   });
+
+  return {
+    totalItemCount,
+    totalPage: Math.ceil(totalItemCount / ROOM_PAGING_UNIT),
+    rooms,
+  };
 }
 
 async function getRoomOrElseThrows(
